@@ -1,0 +1,36 @@
+---
+title: "나의 데이터 기반 자산 포트폴리오"
+date: "2026-05-08"
+categories: [Investment, Python]
+format:
+  html:
+    css: styles.css
+    theme: none # Apple 스타일을 위해 기본 테마 간섭을 최소화합니다.
+jupyter: python3
+---
+
+현재 제가 관리하고 있는 주요 자산 비중입니다. 
+아래 차트는 파이썬 `matplotlib` 라이브러리를 통해 실시간으로 생성되었습니다.
+
+```{python}
+#| label: fig-asset-distribution
+#| fig-cap: "현재 자산 포트폴리오 비중"
+#| echo: false
+
+import matplotlib.pyplot as plt
+
+# 1. 데이터 설정 (T1의 실제 비중에 맞춰 수정해 보세요)
+labels = ['SCHD', 'JEPQ', 'TQQQ', 'Cash']
+sizes = [40, 25, 20, 15]
+colors = ['#2E5A88', '#4F9BD9', '#A5D8FF', '#D9D9D9'] # 신뢰감을 주는 블루톤 배색
+
+# 2. 그래프 생성
+plt.figure(figsize=(8, 5))
+plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140, 
+        colors=colors, explode=(0.05, 0, 0, 0)) # 첫 번째 항목(SCHD) 강조
+
+plt.axis('equal') # 원형 유지
+plt.show()
+```
+
+데이터를 기반으로 자산을 관리하면 감정에 휘둘리지 않는 투자가 가능해집니다. 앞으로 이 블로그를 통해 매월 변화하는 자산 배분을 기록할 예정입니다.
