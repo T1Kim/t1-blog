@@ -46,28 +46,6 @@ Figure&nbsp;1: 현재 자산 포트폴리오 비중
   <pubDate>Thu, 07 May 2026 15:00:00 GMT</pubDate>
 </item>
 <item>
-  <title>Post With Code</title>
-  <dc:creator>Harlow Malloc</dc:creator>
-  <link>https://github.com/T1Kim/t1-blog/posts/post-with-code/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>This is a post with executable code.</p>
-
-
-
- ]]></description>
-  <category>news</category>
-  <category>code</category>
-  <category>analysis</category>
-  <guid>https://github.com/T1Kim/t1-blog/posts/post-with-code/</guid>
-  <pubDate>Thu, 07 May 2026 15:00:00 GMT</pubDate>
-  <media:content url="https://github.com/T1Kim/t1-blog/posts/post-with-code/image.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
   <title>Welcome To My Blog</title>
   <dc:creator>Tristan O&#39;Malley</dc:creator>
   <link>https://github.com/T1Kim/t1-blog/posts/welcome/</link>
