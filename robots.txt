@@ -1,1 +1,1 @@
-Sitemap: https://github.com/T1Kim/t1-blog/sitemap.xml
+Sitemap: https://T1Kim.github.io/t1-blog/sitemap.xml

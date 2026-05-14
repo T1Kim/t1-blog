@@ -1,9 +1,16 @@
 [
   {
-    "listing": "/index.html",
+    "listing": "/investment/index.html",
     "items": [
-      "/posts/2026-05-01-test/index.html",
-      "/posts/welcome/index.html"
+      "/investment/strategies/dividend.html"
     ]
+  },
+  {
+    "listing": "/hobbies/index.html",
+    "items": []
+  },
+  {
+    "listing": "/blog/index.html",
+    "items": []
   }
 ]
