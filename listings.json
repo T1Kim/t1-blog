@@ -1,15 +1,5 @@
 [
   {
-    "listing": "/investment/index.html",
-    "items": [
-      "/investment/strategies/dividend.html"
-    ]
-  },
-  {
-    "listing": "/hobbies/index.html",
-    "items": []
-  },
-  {
     "listing": "/blog/index.html",
     "items": []
   }

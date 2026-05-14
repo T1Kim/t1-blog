@@ -1,30 +1,37 @@
 [
   {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
+    "objectID": "investment/index.html",
+    "href": "investment/index.html",
+    "title": "Investment",
     "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "text": "T1의 투자 전략과 자산 배분 원칙을 정리하는 공간입니다."
+  },
+  {
+    "objectID": "hobbies/index.html",
+    "href": "hobbies/index.html",
+    "title": "Hobbies",
+    "section": "",
+    "text": "러닝, 사진, 바이브 코딩 등 일상의 기록입니다."
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Archive",
+    "section": "",
+    "text": "전체 포스팅 아카이브입니다.\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "t1-blog",
+    "title": "T1 Kim",
     "section": "",
-    "text": "나의 데이터 기반 자산 포트폴리오\n\n\n\nInvestment\n\nPython\n\n\n\n\n\n\n\n\n\nMay 8, 2026\n\n\nT1 Kim\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nMay 5, 2026\n\n\nTristan O’Malley\n\n\n\n\n\nNo matching items"
+    "text": "최고의 분석은 군더더기 없는 시각화에서 시작됩니다."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this blog"
-  },
-  {
-    "objectID": "posts/2026-05-01-test/index.html",
-    "href": "posts/2026-05-01-test/index.html",
-    "title": "나의 데이터 기반 자산 포트폴리오",
-    "section": "",
-    "text": "현재 제가 관리하고 있는 주요 자산 비중입니다. 아래 차트는 파이썬 matplotlib 라이브러리를 통해 실시간으로 생성되었습니다.\n\n\n\n\n\n\n\n\nFigure 1: 현재 자산 포트폴리오 비중\n\n\n\n\n\n데이터를 기반으로 자산을 관리하면 감정에 휘둘리지 않는 투자가 가능해집니다. 앞으로 이 블로그를 통해 매월 변화하는 자산 배분을 기록할 예정입니다."
+    "objectID": "index.html#실시간-자산-현황-dashboard",
+    "href": "index.html#실시간-자산-현황-dashboard",
+    "title": "T1 Kim",
+    "section": "실시간 자산 현황 (Dashboard)",
+    "text": "실시간 자산 현황 (Dashboard)\n\n\n\nDashboard"
   }
 ]
