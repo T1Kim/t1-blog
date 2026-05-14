@@ -1,23 +1,23 @@
+
 project:
   type: website
 
 website:
-  description: "A blog built with Quarto"
-  site-url: https://github.com/T1Kim/t1-blog/ # you must change this appropriately for RSS feeds to work properly
-  title: "T1-blog"
+  title: "T1 Strategy"
   navbar:
-    right:
-      - about.qmd
-      - icon: github
-        href: https://github.com/
-      - icon: bluesky
-        href: https://bsky.app/
+    background: black
+    left:
+      - href: index.qmd
+        text: Home
+      - href: investment/index.qmd
+        text: Investment
+      - href: hobbies/index.qmd
+        text: Hobbies
+      - href: blog/index.qmd
+        text: Blog
+
 format:
   html:
-    theme:
-      - cosmo
-      - brand
+    theme: none
     css: styles.css
-
-
-
+    toc: true

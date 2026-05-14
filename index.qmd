@@ -1,15 +1,16 @@
+
 ---
-title: "t1-blog"
-listing:
-  contents: posts
-  feed: true
-  sort: "date desc"
-  type: default
-  categories: true
-  sort-ui: false
-  filter-ui: false
-page-layout: full
-title-block-banner: true
+title: "Teawon Kim (T1)"
+subtitle: "전략적 페이스메이커이자 데이터 분석가"
 ---
 
+::: {.column-screen .apple-tile-light}
+# 데이터가 예술이 되는 순간
+최고의 분석은 군더더기 없는 시각화에서 시작됩니다. 
+현재 저는 **WaveGreen** 스타트업 런칭을 준비하며, 자산의 퀀트 분석과 러닝을 병행하고 있습니다.
+:::
 
+## 실시간 자산 현황 (Dashboard)
+::: {.column-page}
+![[자산 현황 예시 이미지] 현재 SCHD 40%, JEPQ 25%, TQQQ 20% 비중으로 관리 중입니다. (기능 구현 예정)](https://via.placeholder.com/1200x600/f5f5f7/1d1d1f?text=Asset+Allocation+Dashboard+Placeholder)
+:::

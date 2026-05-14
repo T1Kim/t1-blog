@@ -1,0 +1,10 @@
+
+---
+title: "Investment Strategies"
+listing:
+  contents: strategies
+  type: grid
+  sort: "order"
+---
+
+저의 투자 철학은 '현금흐름'과 '시장 지배력'에 집중합니다.

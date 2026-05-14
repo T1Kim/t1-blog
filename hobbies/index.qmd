@@ -1,0 +1,9 @@
+
+---
+title: "Hobbies & Interests"
+listing:
+  contents: items
+  type: grid
+---
+
+투자 이외의 삶의 조각들입니다.
