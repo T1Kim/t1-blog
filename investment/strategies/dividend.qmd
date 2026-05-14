@@ -1,9 +1,0 @@
-
----
-title: "배당 성장주 전략"
-order: 1
-image: https://via.placeholder.com/400x250/0066cc/ffffff?text=Dividend+Growth
----
-
-SCHD와 JEPQ를 중심으로 한 월 배당 시스템 구축 전략입니다.
-[배당 관련 글 모두 보기](../blog/index.qmd#category=dividend)

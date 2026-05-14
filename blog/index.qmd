@@ -1,12 +1,8 @@
 ---
-title: "Blog Archive"
+title: "Archive"
 listing:
   contents: ../posts
-  sort: "date desc"
-  type: default # Marvin Schmitt 스타일의 리스트 형태
-  categories: true
-  sort-ui: true
-  filter-ui: true
-  fields: [date, title, reading-time, description, categories] # 보여줄 항목들
-  date-format: "YYYY" # 날짜를 연도로 표시하여 아카이브 느낌 강조
+  type: default
 ---
+
+전체 포스팅 아카이브입니다.

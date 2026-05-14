@@ -3,9 +3,9 @@ project:
 
 website:
   title: "T1 Strategy"
-  site-url: "https://T1Kim.github.io/t1-blog/"
   navbar:
-    background: black # Apple 스타일
+    background: "#1d1d1f" # Apple 다크 그레이
+    search: true
     left:
       - href: index.qmd
         text: Home
@@ -18,6 +18,6 @@ website:
 
 format:
   html:
-    theme: none
-    css: styles.css
+    theme: cosmo # 'none' 대신 표준 테마인 'cosmo'를 기반으로 삼습니다.
+    css: styles.css # 그 위에 T1의 Apple 디자인(styles.css)을 덮어씌웁니다.
     toc: true

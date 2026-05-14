@@ -1,9 +1,5 @@
-
 ---
-title: "Hobbies & Interests"
-listing:
-  contents: items
-  type: grid
+title: "Hobbies"
 ---
 
-투자 이외의 삶의 조각들입니다.
+러닝, 사진, 바이브 코딩 등 일상의 기록입니다.
