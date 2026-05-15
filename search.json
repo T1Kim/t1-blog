@@ -32,7 +32,7 @@
     "href": "index.html#실시간-자산-현황-dashboard",
     "title": "T1 Kim",
     "section": "실시간 자산 현황 (Dashboard)",
-    "text": "실시간 자산 현황 (Dashboard)\n\nd3 = require(\"d3@7\")\n\ndata = d3.csv(\"https://docs.google.com/spreadsheets/d/e/2PACX-1vTQi4SzVyyjp3DnusOmC6Cmyehy-Ro7ZT4ZndYplvu9lVE2G4xEK3OFf1TiV3JXzN4Rz8PikXqAzskw/pub?gid=0&single=true&output=csv\")\n\n// 2. 도넛 차트 구현\nPlot.plot({\n  height: 400,\n  width: 600,\n  marks: [\n    Plot.arc(data, Plot.stackY({\n      value: d =&gt; parseFloat(d.Portfolio_Weight.replace('%', '')) || 0,\n      fill: \"Ticker\",\n      title: d =&gt; `${d.Ticker}: ${d.Portfolio_Weight}`,\n      innerRadius: 100,\n      outerRadius: 160,\n      stroke: \"white\",\n      strokeWidth: 2\n    })),\n    Plot.text([\"Portfolio\"], {frameAnchor: \"middle\", fontSize: 18, fontWeight: \"500\"})\n  ],\n  color: {\n    range: [\"#007AFF\", \"#5AC8FA\", \"#4CD964\", \"#FFCC00\", \"#FF9500\", \"#FF2D55\", \"#5856D6\"]\n  },\n  style: {\n    background: \"transparent\"\n  }\n})"
+    "text": "실시간 자산 현황 (Dashboard)\n\n  \n    \n      데이터를 불러오는 중입니다..."
   },
   {
     "objectID": "index.html#site-map",
