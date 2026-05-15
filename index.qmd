@@ -1,16 +1,104 @@
 ---
 title: "T1 Kim"
-subtitle: "Passive Compounder / Light Preserver / Mileage Earner / Vibe Coder"
+subtitle: "Passive Compounder / Light Preserver / Running Learner / Vibe Coder"
+toc: true
+toc-location: right
+page-layout: article
+header-includes: |
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 ---
 
 ::: {.apple-tile-section}
 # The Stillness of Growth
-자산의 성장만큼이나 일상의 수율을 높이는 정교한 시스템에 집중합니다.
-지속 가능한 투자를 설계하고, 찰나의 빛을 기록하며, 매일의 러닝과 코딩으로 삶의 밀도를 채워갑니다.
-공학자의 시선으로 세상을 관측하며 얻은 이 기록들이, 각자의 목표를 향해 달리는 당신의 여정에도 든든한 전략적 페이스메이커가 되기를 바랍니다.
+:::
+
+자산의 성장만큼이나 일상의 수율을 높이는 정교한 시스템에 집중합니다. 지속 가능한 투자를 설계하고, 찰나의 빛을 기록하며, 매일의 러닝과 코딩으로 삶의 밀도를 채워갑니다. 공학자의 시선으로 세상을 관측하며 얻은 이 기록들이, 각자의 목표를 향해 달리는 당신의 여정에도 든든한 전략적 페이스메이커가 되기를 바랍니다.
+
+---
 
 ## 실시간 자산 현황 (Dashboard)
-![Dashboard](https://via.placeholder.com/1200x500/f5f5f7/1d1d1f?text=Asset+Allocation+Dashboard+Ready)
 
-# News
+```{=html}
+<div class="chart-container-wrapper" style="display: block; width: 100%; clear: both; margin: 3rem 0; padding: 1rem 0;">
+  <div id="assetChart" style="width: 100%; max-width: 850px; height: 500px; margin: 0 auto; position: relative;">
+    <p id="statusMsg" style="text-align: center; color: #86868b; padding-top: 200px; font-family: 'SF Pro Text', sans-serif;">
+      데이터를 불러오는 중입니다...
+    </p>
+  </div>
+</div>
+
+<div style="clear: both;"></div> <script>
+  (function() {
+    const sheetID = "1ZgcJc8n-pC4crM3zqq4LPUJ9hTGbmhgpfV6XI87wr5A";
+    const gid = "0"; 
+    const finalUrl = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:csv&gid=${gid}`;
+
+    function startApp() {
+      const container = document.getElementById('assetChart');
+      if (typeof Plotly === 'undefined') { setTimeout(startApp, 200); return; }
+
+      fetch(finalUrl)
+        .then(res => res.text())
+        .then(csvText => {
+          container.innerHTML = "";
+          
+          const rows = csvText.split(/\r?\n/).filter(line => line.trim() !== "");
+          const labels = [];
+          const values = [];
+
+          for (let i = 1; i < rows.length; i++) {
+            const cols = rows[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+            if (cols.length >= 2) {
+              const ticker = cols[0].replace(/"/g, '').trim();
+              const weight = parseFloat(cols[1].replace(/"/g, '').replace('%', '').trim()) || 0;
+              if (weight > 0) {
+                labels.push(ticker);
+                values.push(weight);
+              }
+            }
+          }
+
+          Plotly.newPlot('assetChart', [{
+            values: values, labels: labels, type: 'pie', hole: 0.6,
+            marker: { colors: ["#007AFF", "#5AC8FA", "#4CD964", "#FFCC00", "#FF9500", "#FF2D55", "#5856D6"] },
+            textinfo: 'label+percent',
+            textfont: { family: 'SF Pro Text', size: 13 }
+          }], {
+            title: { 
+              text: 'Current Asset Allocation', 
+              font: { size: 22, family: 'SF Pro Display', color: '#1d1d1f' },
+              pad: { b: 20 }
+            },
+            showlegend: true,
+            // 범례 위치를 다시 우측 수직 배치로 변경
+            legend: { 
+              orientation: 'v', 
+              x: 1.05, 
+              xanchor: 'left',
+              y: 0.5, 
+              font: { family: 'SF Pro Text', size: 12 } 
+            },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            // 우측 범례가 잘리지 않도록 r(right) 마진을 충분히 확보(100)
+            margin: { t: 80, b: 60, l: 20, r: 120 } 
+          }, {responsive: true, displayModeBar: false});
+        });
+    }
+    window.addEventListener('load', startApp);
+    startApp();
+  })();
+</script>
+```
+
+## Site Map
+- **Investment**: T1의 투자 전략과 현황, 그리고 백테스트 결과를 공유하는 공간입니다. 
+- **Hobbies**: 러닝, 사진, 코딩 등 일상과 취미를 기록하는 공간입니다. 
+- **Blog**: 모든 블로그 포스팅이 모이는 공간입니다.
+
+## Highlights
+
 - **2026-06-01**: T1 Log 블로그 런칭!
+- **2026-04-05**: 2026 The Race Seoul Half Course 완주 (02:01:59)
+- **2026-03-01**: Vibe Coding 입문
+- **2026-02-21**: 2026 Osaka Marathon Full Course 완주 (4:55:56)

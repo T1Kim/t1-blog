@@ -21,4 +21,9 @@ format:
   html:
     theme: cosmo # 'none' 대신 표준 테마인 'cosmo'를 기반으로 삼습니다.
     css: styles.css # 그 위에 T1의 Apple 디자인(styles.css)을 덮어씌웁니다.
-    toc: true
+    toc: true                # TOC 활성화
+    toc-depth: 3             # ###(h3)까지만 표시하여 깔끔함 유지
+    toc-location: left      # Apple 공식 문서처럼 우측 배치를 추천
+    toc-title: "On this page" # 제목을 담백하게 설정 (또는 "Contents")
+    toc-expand: true         # 모든 목차를 처음부터 펼쳐서 보여줄지 여부
+    page-layout: article
