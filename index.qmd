@@ -1,12 +1,16 @@
 ---
 title: "T1 Kim"
-subtitle: "전략적 페이스메이커이자 데이터 분석가"
+subtitle: "Passive Compounder / Light Preserver / Mileage Earner / Vibe Coder"
 ---
 
 ::: {.apple-tile-section}
-# 데이터가 예술이 되는 순간
-최고의 분석은 군더더기 없는 시각화에서 시작됩니다. 
-:::
+# The Stillness of Growth
+자산의 성장만큼이나 일상의 수율을 높이는 정교한 시스템에 집중합니다.
+지속 가능한 투자를 설계하고, 찰나의 빛을 기록하며, 매일의 러닝과 코딩으로 삶의 밀도를 채워갑니다.
+공학자의 시선으로 세상을 관측하며 얻은 이 기록들이, 각자의 목표를 향해 달리는 당신의 여정에도 든든한 전략적 페이스메이커가 되기를 바랍니다.
 
 ## 실시간 자산 현황 (Dashboard)
 ![Dashboard](https://via.placeholder.com/1200x500/f5f5f7/1d1d1f?text=Asset+Allocation+Dashboard+Ready)
+
+# News
+- **2026-06-01**: T1 Log 블로그 런칭!
