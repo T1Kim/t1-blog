@@ -190,7 +190,7 @@ ul.task-list li input[type="checkbox"] {
             const cols = rows[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
             if (cols.length >= 2) {
               const ticker = cols[0].replace(/"/g, '').trim();
-              const weight = parseFloat(cols[1].replace(/"/g, '').replace('%', '').trim()) || 0;
+              const weight = parseFloat(cols[8].replace(/"/g, '').replace('%', '').trim()) || 0;
               if (weight > 0) {
                 labels.push(ticker);
                 values.push(weight);
