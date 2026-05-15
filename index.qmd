@@ -10,13 +10,10 @@ header-includes: |
 
 ::: {.apple-tile-section}
 # The Stillness of Growth
-:::
+
 
 자산의 성장만큼이나 일상의 수율을 높이는 정교한 시스템에 집중합니다. 지속 가능한 투자를 설계하고, 찰나의 빛을 기록하며, 매일의 러닝과 코딩으로 삶의 밀도를 채워갑니다. 공학자의 시선으로 세상을 관측하며 얻은 이 기록들이, 각자의 목표를 향해 달리는 당신의 여정에도 든든한 전략적 페이스메이커가 되기를 바랍니다.
 
----
-
-## 실시간 자산 현황 (Dashboard)
 
 ```{=html}
 <div class="chart-container-wrapper" style="display: block; width: 100%; clear: both; margin: 3rem 0; padding: 1rem 0;">
@@ -102,3 +99,5 @@ header-includes: |
 - **2026-04-05**: 2026 The Race Seoul Half Course 완주 (02:01:59)
 - **2026-03-01**: Vibe Coding 입문
 - **2026-02-21**: 2026 Osaka Marathon Full Course 완주 (4:55:56)
+
+:::
