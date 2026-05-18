@@ -85,3 +85,16 @@ a:hover {
 .page-columns .content {
     max-width: 850px;
 }
+
+/* ==========================================================================
+   7. Quarto 페이지 서브타이틀 (Subtitle) Apple 스타일 회색조 적용
+   ========================================================================== */
+.quarto-title-block .subtitle,
+.subtitle {
+    color: #86868b !important;       /* Apple 표준 Secondary Text 컬러 */
+    font-weight: 400 !important;     /* 글씨 두께를 가볍게 하여 은은함 극대화 */
+    font-size: 1.15rem !important;   /* 본문과 대비되는 최적의 크기 */
+    letter-spacing: -0.01em;         /* SF Pro 서체 특유의 정갈한 자간 */
+    margin-top: 0.6rem !important;   /* 메인 타이틀과의 간격 확보 */
+    opacity: 0.95;
+}

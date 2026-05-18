@@ -1,8 +1,9 @@
 ---
-title: "📷 Light Preserver Archive (Gallery)"
+title: "📷 Light Preserver Archive"
+subtitle: "DIGITAL & ANALOG PHOTOGRAPH GALLERY"
 ---
 
-디지털 및 아날로그 사진 갤러리 입니다.
+본문 어쩌고저쩌고
 
 ```{=html}
 <style>

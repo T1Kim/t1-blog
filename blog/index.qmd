@@ -1,5 +1,6 @@
 ---
-title: "Archive"
+title: "📝 T1 Collected Notes"
+subtitle: "A COLLECTION OF THOUGHTS, OBSERVATIONS, AND LEARNINGS"
 listing:
   contents: ../posts
   type: default
