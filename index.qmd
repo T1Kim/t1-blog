@@ -9,14 +9,15 @@ header-includes: |
 ---
 
 ::: {.apple-tile-section}
-# The Stillness of Growth
+# The Stillness of Growth {.mb-5}
+
 
 자산의 성장만큼이나 일상의 수율을 높이는 정교한 시스템에 집중합니다. 지속 가능한 투자를 설계하고, 찰나의 빛을 기록하며, 매일의 러닝과 코딩으로 삶의 밀도를 채워갑니다. 공학자의 시선으로 세상을 관측하며 얻은 이 기록들이, 각자의 목표를 향해 달리는 당신의 여정에도 든든한 전략적 페이스메이커가 되기를 바랍니다.
 
 ```{=html}
 <div class="chart-container-wrapper" style="display: block; width: 100%; clear: both; margin: 3rem 0; padding: 1rem 0;">
-  <div id="assetChart" style="width: 100%; max-width: 850px; height: 500px; margin: 0 auto; position: relative;">
-    <p id="statusMsg" style="text-align: center; color: #86868b; padding-top: 200px; font-family: 'SF Pro Text', sans-serif;">
+  <div id="assetChart" style="width: 100%; max-width: 850px; height: 550px; margin: 0 auto; position: relative;">
+    <p id="statusMsg" style="text-align: center; color: #86868b; padding-top: 220px; font-family: 'SF Pro Text', sans-serif;">
       데이터를 불러오는 중입니다...
     </p>
   </div>
@@ -43,16 +44,20 @@ header-includes: |
 
           for (let i = 1; i < rows.length; i++) {
             const cols = rows[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-            if (cols.length >= 2) {
+            // [데이터 무결성 복구] I열(Index 8)의 Portfolio Weight를 정확히 조준합니다.
+            if (cols.length >= 9) {
               const ticker = cols[0].replace(/"/g, '').trim();
-              const weight = parseFloat(cols[8].replace(/"/g, '').replace('%', '').trim()) || 0;
-              if (weight > 0) {
+              const weightStr = cols[8].replace(/"/g, '').replace('%', '').trim();
+              const weight = parseFloat(weightStr);
+              
+              if (!isNaN(weight) && weight > 0) {
                 labels.push(ticker);
                 values.push(weight);
               }
             }
           }
 
+          // Plotly 도넛 차트 렌더링
           Plotly.newPlot('assetChart', [{
             values: values, labels: labels, type: 'pie', hole: 0.6,
             marker: { colors: ["#007AFF", "#5AC8FA", "#4CD964", "#FFCC00", "#FF9500", "#FF2D55", "#5856D6"] },
@@ -65,18 +70,19 @@ header-includes: |
               pad: { b: 20 }
             },
             showlegend: true,
-            // 범례 위치를 다시 우측 수직 배치로 변경
+            // [구조 최적화] 범례를 아래쪽(하단) 중앙 가로 배열로 배치합니다.
             legend: { 
-              orientation: 'v', 
-              x: 1.05, 
-              xanchor: 'left',
-              y: 0.5, 
+              orientation: 'h',      /* 가로 배열 설정 */
+              x: 0.5,                /* 정중앙 정렬 */
+              xanchor: 'center',
+              y: -0.15,              /* 차트 영역 아래로 이동 */
+              yanchor: 'top',
               font: { family: 'SF Pro Text', size: 12 } 
             },
             paper_bgcolor: 'rgba(0,0,0,0)',
             plot_bgcolor: 'rgba(0,0,0,0)',
-            // 우측 범례가 잘리지 않도록 r(right) 마진을 충분히 확보(100)
-            margin: { t: 80, b: 60, l: 20, r: 120 } 
+            // 하단 범례가 본문 텍스트와 겹치지 않도록 b(bottom) 마진을 100으로 대폭 확장
+            margin: { t: 60, b: 100, l: 20, r: 20 } 
           }, {responsive: true, displayModeBar: false});
         });
     }
