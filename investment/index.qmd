@@ -2,5 +2,3 @@
 title: "⚖️ Passive Compounder Studio"
 subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
 ---
-
-투자 전략과 자산 배분 원칙을 정리하는 공간입니다.

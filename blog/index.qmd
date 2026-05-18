@@ -5,5 +5,3 @@ listing:
   contents: ../posts
   type: default
 ---
-
-전체 포스팅 아카이브입니다.

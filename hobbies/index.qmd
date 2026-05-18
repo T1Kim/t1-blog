@@ -2,5 +2,3 @@
 title: "✍️ The Logic & Vibe Journal"
 subtitle: "OBSERVATIONS ON RUNNING, CODING, AND LIFE DENSITY"
 ---
-
-러닝, 여행, 코딩 등 일상의 기록입니다.

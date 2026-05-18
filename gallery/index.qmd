@@ -3,7 +3,6 @@ title: "📷 Light Preserver Archive"
 subtitle: "DIGITAL & ANALOG PHOTOGRAPH GALLERY"
 ---
 
-본문 어쩌고저쩌고
 
 ```{=html}
 <style>
