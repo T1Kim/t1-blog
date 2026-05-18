@@ -1,5 +1,9 @@
 project:
   type: website
+  output-dir: _site
+  resources:
+    - gallery/gallery.json  # 위치를 gallery 폴더 내부로 갱신
+    - assets/gallery/
 
 website:
   title: "T1 Log"
@@ -14,6 +18,8 @@ website:
         text: Investment
       - href: hobbies/index.qmd
         text: Hobbies
+      - href: gallery/index.qmd
+        text: Gallery
       - href: blog/index.qmd
         text: Blog
 

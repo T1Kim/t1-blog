@@ -106,6 +106,10 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Hobbies</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./gallery/index.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./blog/index.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
@@ -190,7 +194,7 @@ ul.task-list li input[type="checkbox"] {
             const cols = rows[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
             if (cols.length >= 2) {
               const ticker = cols[0].replace(/"/g, '').trim();
-              const weight = parseFloat(cols[1].replace(/"/g, '').replace('%', '').trim()) || 0;
+              const weight = parseFloat(cols[8].replace(/"/g, '').replace('%', '').trim()) || 0;
               if (weight > 0) {
                 labels.push(ticker);
                 values.push(weight);
@@ -232,8 +236,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="site-map" class="level2">
 <h2 class="anchored" data-anchor-id="site-map">Site Map</h2>
 <ul>
-<li><strong>Investment</strong>: T1의 투자 전략과 현황, 그리고 백테스트 결과를 공유하는 공간입니다.</li>
-<li><strong>Hobbies</strong>: 러닝, 사진, 코딩 등 일상과 취미를 기록하는 공간입니다.</li>
+<li><strong>Investment</strong>: 투자 전략과 현황, 그리고 백테스트 결과를 공유하는 공간입니다.</li>
+<li><strong>Hobbies</strong>: 러닝, 여행, 코딩 등 일상과 취미를 기록하는 공간입니다.</li>
 <li><strong>Blog</strong>: 모든 블로그 포스팅이 모이는 공간입니다.</li>
 </ul>
 </section>

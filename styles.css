@@ -1,0 +1,87 @@
+/* ==========================================================================
+   T1 Log - Global Stylesheet (styles.css)
+   Aesthetics: Minimal, Typography-focused, Apple-inspired
+   ========================================================================== */
+
+/* 1. 글로벌 레이아웃 및 본문 배경색 전체 동기화 */
+body, 
+#quarto-content, 
+.page-columns, 
+main.content, 
+.quarto-title-block,
+.quarto-container,
+.nav-footer {
+    background-color: #ffffff !important; /* 전체 배경을 순백색으로 통일 */
+    color: #1d1d1f !important;            /* Apple 표준 텍스트 컬러 */
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;  /* 폰트 렌더링 최적화 */
+}
+
+/* 2. 타이포그래피 및 헤더 정렬 */
+h1, h2, h3, h4, h5, h6 {
+    color: #1d1d1f;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* 3. 리스트 영역 정렬 보정 (Site Map, Highlights 정밀 타격) */
+ul, ol {
+    text-align: left !important;
+    margin-left: 1.5rem !important;
+    padding-left: 0 !important;
+}
+
+li {
+    text-align: left !important;
+    margin-bottom: 0.6rem;
+    color: #424245; /* 가독성을 위해 본문보다 미세하게 부드러운 회색조 적용 */
+    line-height: 1.5;
+}
+
+/* 4. 링크 스타일 정의 */
+a {
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #0044bb;
+}
+
+/* 5. 커스텀 컴포넌트: Apple 상단 타일 섹션 */
+.apple-tile-section {
+    background: #f5f5f7;
+    border-radius: 22px;
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    clear: both;
+}
+
+.apple-tile-section h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin: 0;
+    color: #1d1d1f;
+}
+
+/* 6. 대시보드 및 레이아웃 보호용 유틸리티 */
+.chart-container-wrapper,
+.chart-container-wrapper * {
+    box-sizing: border-box;
+}
+
+.clear-fix {
+    clear: both !important;
+}
+
+/* 본문 폭 최적화 (하마다 히데아키 스타일의 와이드 감성 확보) */
+.page-columns .content {
+    max-width: 850px;
+}
