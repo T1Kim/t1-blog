@@ -151,262 +151,415 @@ ul.task-list li input[type="checkbox"] {
 
 
 <style>
-  .gallery-layout-container {
-    display: flex;
-    gap: 2.5rem;
-    margin-top: 2rem;
-  }
-  
-  /* 좌측 격자형 사진 적재 영역 */
-  .gallery-grid-zone {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    align-content: start;
-  }
-  
-  /* 우측 미니멀 필터 타워 */
-  .gallery-sidebar-zone {
-    width: 180px;
-    flex-shrink: 0;
-  }
+.page-columns .content, 
+main.content, 
+#quarto-document-content, 
+.quarto-title-block, 
+#title-block-header {
+  max-width: 1400px !important; 
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 
-  /* 프리미엄 포토 카드 컴포넌트 */
-  .gallery-photo-card {
-    background: #ffffff;
-    border-radius: 18px;
-    overflow: hidden;
-    border: 1px solid rgba(0,0,0,0.04);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.01);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-  .gallery-photo-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.04);
-  }
-  
-  .gallery-card-img-wrapper {
-    width: 100%;
-    height: 180px; /* 시각적 몰입감을 위해 세로고를 미세하게 증설 */
-    overflow: hidden;
-    background: #f5f5f7;
-  }
-  .gallery-card-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition: transform 0.3s ease;
-  }
-  .gallery-photo-card:hover .gallery-card-img {
-    transform: scale(1.02);
-  }
-  
-  .gallery-card-info {
-    padding: 1rem;
-  }
-  .gallery-card-date {
-    font-size: 0.75rem;
-    color: #86868b;
-    margin-bottom: 0.15rem;
-    font-family: "SF Pro Text", sans-serif;
-  }
-  .gallery-card-title {
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: #1d1d1f;
-    margin: 0 0 0.4rem 0;
-    line-height: 1.3;
-  }
-  .gallery-card-desc {
-    font-size: 0.85rem;
-    color: #424245;
-    line-height: 1.4;
-    margin: 0 0 0.6rem 0;
-  }
+/* 상단 수평 제어 필터 허브 */
+.gallery-filter-hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 2rem auto 3rem auto;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e8e8ed;
+  max-width: 850px; 
+  width: 100%;
+}
 
-  /* 하단 태그 미니멀 칩 스타일 */
-  .gallery-card-tag {
-    display: inline-block;
-    border: 1px solid #e8e8ed;
-    color: #86868b;
-    border-radius: 4px;
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    padding: 0.1rem 0.4rem;
-    margin-right: 0.3rem;
-    margin-bottom: 0.3rem;
-  }
-  
-  /* 3축 필터 링크 디자인 */
-  .gallery-filter-block {
-    margin-bottom: 2rem;
-    border-bottom: 1px solid #e8e8ed;
-    padding-bottom: 1.2rem;
-  }
-  .gallery-filter-block:last-child {
-    border-bottom: none;
-  }
-  .gallery-filter-title {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #1d1d1f;
-    margin-bottom: 0.6rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-  .gallery-filter-link {
-    display: block;
-    color: #86868b;
-    font-size: 0.88rem;
-    text-decoration: none;
-    padding: 0.2rem 0;
-    transition: color 0.2s;
-  }
-  .gallery-filter-link:hover, 
-  .gallery-filter-link.active {
-    color: #007aff;
-    font-weight: 600;
-    text-decoration: none;
-  }
+.gallery-filter-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  justify-content: center;
+}
 
-  @media (max-width: 768px) {
-    .gallery-layout-container { flex-direction: column-reverse; gap: 1.5rem; }
-    .gallery-grid-zone { grid-template-columns: 1fr; gap: 1rem; }
-    .gallery-sidebar-zone { width: 100%; display: flex; flex-wrap: wrap; gap: 1.5rem; border-bottom: 1px solid #e8e8ed; padding-bottom: 1rem; }
-    .gallery-filter-block { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
-  }
+.gallery-filter-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  min-width: 70px;
+  text-align: right;
+}
+
+.gallery-filter-chips-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.gallery-filter-link {
+  display: inline-block;
+  color: #86868b;
+  font-size: 0.85rem;
+  text-decoration: none;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+.gallery-filter-link:hover {
+  color: #1d1d1f;
+}
+.gallery-filter-link.active {
+  color: #007aff !important; 
+  background-color: #f5f5f7;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* 🌟 [정밀 보정] 이미지 최소 폭을 기존 320px에서 2/3 수준인 215px로 전면 축소 */
+.gallery-grid-zone {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); 
+  gap: 1.2rem; /* 카드가 작아진 만큼 격자 간격도 1.5rem에서 1.2rem으로 슬림화 */
+  width: 100%;
+  align-content: start;
+}
+
+/* 하마다 히데아키 스타일 프리미엄 이미지 마스크 */
+.gallery-photo-card {
+  position: relative;
+  background: #f5f5f7;
+  border-radius: 12px; /* 카드 크기에 맞춰 둥근 모서리 곡률도 미세하게 상향 조정 */
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 3 / 2;
+  border: 1px solid rgba(0,0,0,0.02);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.01);
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.gallery-photo-card:hover {
+  transform: scale(1.02); /* 작아진 카드 피드백 강도를 위해 스케일 핏 미세 조정 */
+}
+
+.gallery-card-img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center;
+}
+
+/* 마우스 오버 시 페이드인 오버레이 */
+.gallery-hover-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.gallery-photo-card:hover .gallery-hover-overlay {
+  opacity: 1;
+}
+
+.gallery-hover-title {
+  color: #ffffff; font-size: 0.95rem; font-weight: 500; margin: auto 0 0 0;
+  letter-spacing: -0.01em; text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+/* 라이트박스 확장 시네마 스튜디오 */
+.lightbox-modal {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  z-index: 9999; display: none; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box;
+}
+
+.lightbox-content-wrapper {
+  max-width: 850px; width: 100%; height: 90vh;
+  display: flex; flex-direction: column; justify-content: space-between; padding: 1rem; box-sizing: border-box; position: relative;
+}
+
+.lightbox-close-btn {
+  position: absolute; top: 0.5rem; right: 1rem; font-size: 1.8rem; font-weight: 300; color: #1d1d1f; cursor: pointer; z-index: 10001; transition: transform 0.2s;
+}
+.lightbox-close-btn:hover { transform: scale(1.1); color: #ff3b30; }
+
+.lightbox-main-stage { flex: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; max-height: 55vh; }
+.lightbox-expanded-img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; }
+
+.lightbox-meta-panel { text-align: left; margin-top: 1.5rem; border-top: 1px solid #e8e8ed; padding-top: 1.2rem; }
+.lightbox-meta-date { font-size: 0.8rem; color: #86868b; margin-bottom: 0.2rem; }
+.lightbox-meta-title { font-size: 1.5rem; font-weight: 600; color: #1d1d1f; margin: 0 0 0.5rem 0; }
+.lightbox-meta-desc { font-size: 0.95rem; color: #424245; line-height: 1.5; margin: 0 0 1rem 0; }
+
+.lightbox-tag-chip {
+  display: inline-block; border: 1px solid #e8e8ed; color: #86868b; border-radius: 4px; font-size: 0.7rem; text-transform: uppercase; padding: 0.15rem 0.5rem; margin-right: 0.4rem;
+}
+
+.lightbox-thumb-rail {
+  display: flex; gap: 0.6rem; overflow-x: auto; padding: 0.8rem 0; margin-top: 1rem; border-top: 1px solid #f5f5f7; width: 100%;
+}
+.lightbox-thumb-rail::-webkit-scrollbar { height: 4px; }
+.lightbox-thumb-rail::-webkit-scrollbar-thumb { background: #e8e8ed; border-radius: 2px; }
+
+.rail-thumb-node {
+  width: 68px; height: 46px; object-fit: cover; border-radius: 6px; cursor: pointer; opacity: 0.4; transition: opacity 0.2s, border-color 0.2s; border: 2px solid transparent; flex-shrink: 0;
+}
+.rail-thumb-node:hover, .rail-thumb-node.active { opacity: 1; border-color: #007aff; }
+
+@media (max-width: 768px) {
+  .gallery-filter-row { flex-direction: column; align-items: flex-start; gap: 0.2rem; }
+  .gallery-filter-title { text-align: left; min-width: auto; }
+  .lightbox-content-wrapper { height: 95vh; }
+  .lightbox-main-stage { max-height: 40vh; }
+  .lightbox-meta-title { font-size: 1.2rem; }
+}
 </style>
 
-<div class="gallery-layout-container">
-  <div class="gallery-grid-zone" id="galleryGrid">
-    <p style="color: #86868b;">JSON 데이터 허브 결합 중...</p>
-  </div>
-  
-  <div class="gallery-sidebar-zone" id="gallerySidebar"></div>
+<div class="gallery-filter-hero-container" id="gallerySidebar"></div>
+
+<div class="gallery-grid-zone" id="galleryGrid">
+  <p style="color: #86868b; text-align: center;">JSON 데이터 허브 결합 중...</p>
+</div>
+
+<div class="lightbox-modal" id="lightboxModal">
+<div class="lightbox-content-wrapper">
+<div class="lightbox-close-btn" id="lightboxClose">×</div>
+<div class="lightbox-main-stage">
+<img src="" class="lightbox-expanded-img" id="lightboxTargetImg" alt="Expanded Asset">
+</div>
+<div class="lightbox-meta-panel">
+<div class="lightbox-meta-date" id="lightboxTargetDate"></div>
+<h3 class="lightbox-meta-title anchored" id="lightboxTargetTitle"></h3>
+<p class="lightbox-meta-desc" id="lightboxTargetDesc"></p>
+<div id="lightboxTargetTags"></div>
+</div>
+<div class="lightbox-thumb-rail" id="lightboxThumbRail"></div>
+</div>
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const gridZone = document.getElementById('galleryGrid');
-    const sidebarZone = document.getElementById('gallerySidebar');
-    
-    const activeFilters = { period: 'all', theme: 'all', camera: 'all' };
-    let globalPhotoData = [];
+document.addEventListener("DOMContentLoaded", function() {
+  const gridZone = document.getElementById('galleryGrid');
+  const sidebarZone = document.getElementById('gallerySidebar');
+  
+  const modal = document.getElementById('lightboxModal');
+  const closeBtn = document.getElementById('lightboxClose');
+  const targetImg = document.getElementById('lightboxTargetImg');
+  const targetTitle = document.getElementById('lightboxTargetTitle');
+  const targetDate = document.getElementById('lightboxTargetDate');
+  const targetDesc = document.getElementById('lightboxTargetDesc');
+  const targetTags = document.getElementById('lightboxTargetTags');
+  const thumbRail = document.getElementById('lightboxThumbRail');
+  
+  const activeFilters = { period: 'all', theme: 'all', camera: 'all' };
+  let globalPhotoData = [];
+  let currentRenderedData = [];
+  let activeIndex = 0;
 
-    // 🌟 Step 1: JSON 데이터 공급원 인입
-    fetch('gallery.json')
-      .then(res => {
-        if(!res.ok) throw new Error("JSON 파이프라인 응답 실패");
-        return res.json();
-      })
-      .then(data => {
-        globalPhotoData = data;
-        buildEngine();
-      })
-      .catch(err => {
-        gridZone.innerHTML = `<p style="color: #ff3b30;">자산 공급선 데이터 에러: ${err.message}</p>`;
-      });
+  fetch('gallery.json')
+    .then(res => {
+      if(!res.ok) throw new Error("데이터 파이프라인 결합 에러");
+      return res.json();
+    })
+    .then(data => {
+      globalPhotoData = data;
+      buildEngine();
+    })
+    .catch(err => {
+      gridZone.innerHTML = `<p style="color: #ff3b30; text-align: center;">자산 인입 오염: ${err.message}</p>`;
+    });
 
-    function buildEngine() {
-      const periods = new Set();
-      const themes = new Set();
-      const cameras = new Set();
+  function buildEngine() {
+    const periods = new Set();
+    const themes = new Set();
+    const cameras = new Set();
 
-      // 🌟 Step 2: 박사님의 고유 스키마(period, theme, camera) 직결 파싱
-      globalPhotoData.forEach(item => {
-        // "2021.05" 에서 필터링에 사용할 4자리 연도(Year) 추출
-        const yearYear = item.period ? item.period.substring(0, 4) : "Unknown";
-        const themeTheme = item.theme || "Unknown";
-        const cameraCamera = item.camera || "Unknown";
-
-        periods.add(yearYear);
-        themes.add(themeTheme);
-        cameras.add(cameraCamera);
-
-        // 연산 전용 캐시 데이터 매핑
-        item.computed = { period: yearYear, theme: themeTheme, camera: cameraCamera };
-      });
-
-      // 🌟 Step 3: 3축 필터 보드 구축
-      renderFilterBlock('Period', periods, 'period');
-      renderFilterBlock('Theme', themes, 'theme');
-      renderFilterBlock('Camera', cameras, 'camera');
-
-      // 초기 리스트 출하
-      executeCrossFilter();
-    }
-
-    function renderFilterBlock(title, dataSet, filterKey) {
-      const sorted = Array.from(dataSet).sort();
-      if(filterKey === 'period') sorted.reverse();
-
-      const block = document.createElement('div');
-      block.className = 'gallery-filter-block';
+    globalPhotoData.forEach(item => {
+      const yearStr = item.period ? item.period.substring(0, 4) : "Unknown";
+      const yearVal = parseInt(yearStr);
+      let decadeStr = "Unknown";
       
-      let html = `<div class="gallery-filter-title">${title}</div>`;
-      html += `<a href="#" class="gallery-filter-link active" data-key="${filterKey}" data-val="all">All</a>`;
-      sorted.forEach(val => {
-        html += `<a href="#" class="gallery-filter-link" data-key="${filterKey}" data-val="${val}">${val}</a>`;
-      });
-      
-      block.innerHTML = html;
-      sidebarZone.appendChild(block);
-
-      block.querySelectorAll('.gallery-filter-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          block.querySelectorAll('.gallery-filter-link').forEach(l => l.classList.remove('active'));
-          this.classList.add('active');
-
-          activeFilters[filterKey] = this.getAttribute('data-val');
-          executeCrossFilter();
-        });
-      });
-    }
-
-    // 🌟 Step 4: 다차원 교집합(AND) 필터 연산 시스템
-    function executeCrossFilter() {
-      gridZone.innerHTML = '';
-      
-      const filteredData = globalPhotoData.filter(item => {
-        const matchPeriod = (activeFilters.period === 'all') || (item.computed.period === activeFilters.period);
-        const matchTheme = (activeFilters.theme === 'all') || (item.computed.theme === activeFilters.theme);
-        const matchCamera = (activeFilters.camera === 'all') || (item.computed.camera === activeFilters.camera);
-        return matchPeriod && matchTheme && matchCamera;
-      });
-
-      if(filteredData.length === 0) {
-        gridZone.innerHTML = `<p style="grid-column: span 2; color: #86868b; text-align: center; padding: 4rem 0;">조건에 부합하는 사진 자산이 없습니다.</p>`;
-        return;
+      if (!isNaN(yearVal)) {
+        const decadeVal = Math.floor(yearVal / 10) * 10;
+        decadeStr = decadeVal + "s";
+        periods.add(decadeStr);
+      } else {
+        periods.add("Unknown");
       }
 
-      // 🌟 Step 5: 실시간 최종 렌더링 카드 주입 (`desc` 및 `period` 바인딩)
-      filteredData.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'gallery-photo-card';
-        
-        // 메타 칩 자동 동기화 생성
-        const tags = [item.period, item.theme, item.camera].filter(Boolean);
-        let tagsHtml = '';
-        tags.forEach(t => { tagsHtml += `<span class="gallery-card-tag">${t}</span>`; });
+      const themeTheme = item.theme || "Unknown";
+      const cameraCamera = item.camera || "Unknown";
 
-        card.innerHTML = `
-          <div class="gallery-card-img-wrapper">
-            <img src="${item.image}" class="gallery-card-img" alt="${item.title}" loading="lazy">
-          </div>
-          <div class="gallery-card-info">
-            <div class="gallery-card-date">${item.period}</div>
-            <h3 class="gallery-card-title">${item.title}</h3>
-            <p class="gallery-card-desc">${item.desc || ''}</p>
-            <div class="gallery-card-tags">${tagsHtml}</div>
-          </div>
-        `;
-        gridZone.appendChild(card);
+      themes.add(themeTheme);
+      cameras.add(cameraCamera);
+
+      item.computed = { period: decadeStr, theme: themeTheme, camera: cameraCamera, rawPeriod: item.period || "Unknown" };
+    });
+
+    renderFilterBlock('Period', periods, 'period');
+    renderFilterBlock('Theme', themes, 'theme');
+    renderFilterBlock('Camera', cameras, 'camera');
+
+    executeCrossFilter();
+  }
+
+  function renderFilterBlock(title, dataSet, filterKey) {
+    const sorted = Array.from(dataSet).sort();
+    if(filterKey === 'period') {
+      sorted.sort((a, b) => b.localeCompare(a));
+    }
+
+    const rowBlock = document.createElement('div');
+    rowBlock.className = 'gallery-filter-row';
+    
+    let html = `<div class="gallery-filter-title">${title}</div>`;
+    html += `<div class="gallery-filter-chips-group">`;
+    html += `<a href="#" class="gallery-filter-link active" data-key="${filterKey}" data-val="all">All</a>`;
+    sorted.forEach(val => {
+      html += `<a href="#" class="gallery-filter-link" data-key="${filterKey}" data-val="${val}">${val}</a>`;
+    });
+    html += `</div>`;
+    
+    rowBlock.innerHTML = html;
+    sidebarZone.appendChild(rowBlock);
+
+    rowBlock.querySelectorAll('.gallery-filter-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        rowBlock.querySelectorAll('.gallery-filter-link').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+
+        activeFilters[filterKey] = this.getAttribute('data-val');
+        executeCrossFilter();
       });
+    });
+  }
+
+  function executeCrossFilter() {
+    gridZone.innerHTML = '';
+    
+    currentRenderedData = globalPhotoData.filter(item => {
+      const matchPeriod = (activeFilters.period === 'all') || (item.computed.period === activeFilters.period);
+      const matchTheme = (activeFilters.theme === 'all') || (item.computed.theme === activeFilters.theme);
+      const matchCamera = (activeFilters.camera === 'all') || (item.computed.camera === activeFilters.camera);
+      return matchPeriod && matchTheme && matchCamera;
+    });
+
+    if(currentRenderedData.length === 0) {
+      gridZone.innerHTML = `<p style="grid-column: span 3; color: #86868b; text-align: center; padding: 4rem 0;">조건에 매칭되는 사진 자산이 없습니다.</p>`;
+      return;
+    }
+
+    currentRenderedData.forEach((item, index) => {
+      const card = document.createElement('div');
+      card.className = 'gallery-photo-card';
+      
+      card.innerHTML = `
+        <img src="${item.image}" class="gallery-card-img" alt="${item.title}" loading="lazy">
+        <div class="gallery-hover-overlay">
+          <div class="gallery-hover-title">${item.title}</div>
+        </div>
+      `;
+      
+      card.addEventListener('click', () => {
+        openLightbox(index);
+      });
+
+      gridZone.appendChild(card);
+    });
+  }
+
+  function openLightbox(index) {
+    activeIndex = index;
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    
+    updateLightboxStage();
+    buildThumbnailRail();
+  }
+
+  function updateLightboxStage() {
+    const activeData = currentRenderedData[activeIndex];
+    
+    targetImg.src = activeData.image;
+    targetTitle.innerText = activeData.title;
+    targetDate.innerText = activeData.computed.rawPeriod;
+    targetDesc.innerText = activeData.desc || '';
+    
+    targetTags.innerHTML = '';
+    const chips = [activeData.computed.rawPeriod, activeData.computed.theme, activeData.computed.camera].filter(Boolean);
+    chips.forEach(chip => {
+      const span = document.createElement('span');
+      span.className = 'lightbox-tag-chip';
+      span.innerText = chip;
+      targetTags.appendChild(span);
+    });
+
+    const thumbNodes = thumbRail.querySelectorAll('.rail-thumb-node');
+    thumbNodes.forEach((node, idx) => {
+      if(idx === activeIndex) {
+        node.classList.add('active');
+        node.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      } else {
+        node.classList.remove('active');
+      }
+    });
+  }
+
+  function buildThumbnailRail() {
+    thumbRail.innerHTML = '';
+    
+    currentRenderedData.forEach((item, idx) => {
+      const imgNode = document.createElement('img');
+      imgNode.src = item.image;
+      imgNode.className = 'rail-thumb-node';
+      if(idx === activeIndex) imgNode.classList.add('active');
+      
+      imgNode.addEventListener('click', () => {
+        activeIndex = idx;
+        updateLightboxStage();
+      });
+      
+      thumbRail.appendChild(imgNode);
+    });
+  }
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  });
+
+  modal.addEventListener('click', (e) => {
+    if(e.target === modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
     }
   });
+
+  document.addEventListener('keydown', (e) => {
+    if (modal.style.display === 'flex') {
+      if (e.key === 'Escape') {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      } else if (e.key === 'ArrowRight') {
+        if (activeIndex < currentRenderedData.length - 1) {
+          activeIndex++;
+          updateLightboxStage();
+        }
+      } else if (e.key === 'ArrowLeft') {
+        if (activeIndex > 0) {
+          activeIndex--;
+          updateLightboxStage();
+        }
+      }
+    }
+  });
+});
 </script>
 
 
