@@ -1,0 +1,16 @@
+---
+title: "T1' Quarto Blog Released!"
+date: "2026-05-18"
+author: "T1"
+categories: [Vibe Coding, Project, Personal] # 대소문자 구분하며, 메인 페이지 우측에 필터로 자동 생성됨
+description: "개인적인 바이브 코딩 프로젝트 중 하나인 Quarto Blog 런칭이 드디어 완료되었습니다. 블로그에서는 투자, 러닝, 여행, 사진 등의 주제를 다룰 에정입니다."
+image: "/assets/posts/20260518-thumbnail.jpg" # 선택 사항: 카드의 대표 썸네일 이미지 경로
+---
+
+이곳부터 본문 내용을 편안하게 작성하시면 됩니다. 
+5장 이하의 사진은 파일명 규칙만 맞춰서 `/assets/posts/` 폴더에 넣고 호출하세요.
+
+## 여기에 첫 번째 헤드라인 작성
+
+이곳부터 본문 내용을 편안하게 작성하시면 됩니다. 
+5장 이하의 사진은 파일명 규칙만 맞춰서 `/assets/posts/` 폴더에 넣고 호출하세요.

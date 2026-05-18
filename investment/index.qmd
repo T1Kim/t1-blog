@@ -2,3 +2,207 @@
 title: "⚖️ Passive Compounder Studio"
 subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
 ---
+
+```{=html}
+<style>
+  .investment-container {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Arial, sans-serif;
+    color: #1d1d1f;
+    margin: 2rem 0;
+  }
+
+  /* 대형 카드 레이아웃 구성 */
+  .large-project-card {
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    border: 1px solid rgba(0,0,0,0.04);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .large-project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04);
+  }
+
+  /* 카드 내부 텍스트 헤더 */
+  .card-subtitle {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #86868b;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+  .card-main-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  /* 시각 자료 적재 영역 */
+  .card-visual-zone {
+    width: 100%;
+    background: #f5f5f7;
+    border-radius: 18px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* 메타데이터 태그 칩 */
+  .card-tags-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .tag-chip {
+    background: #e8e8ed;
+    color: #424245;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.3rem 0.7rem;
+    border-radius: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  /* 설명문 단락 */
+  .card-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #424245;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .large-project-card { padding: 1.5rem; border-radius: 20px; }
+    .card-main-title { font-size: 1.4rem; }
+  }
+</style>
+
+<div class="investment-container">
+
+  <div class="large-project-card">
+    <div class="card-subtitle">Matrix 01 . Strategic Base</div>
+    <div class="card-main-title">Global Asset Allocation Portfolio</div>
+    
+    <div class="card-visual-zone" style="background: #ffffff; border: 1px solid rgba(0,0,0,0.03);">
+      <div id="assetChart" style="width: 100%; height: 480px; margin: 0 auto;">
+        <p style="text-align: center; color: #86868b; padding-top: 200px;">Gviz 오케스트레이션 가동 중...</p>
+      </div>
+    </div>
+
+    <div class="card-tags-group">
+      <span class="tag-chip">Static Allocation</span>
+      <span class="tag-chip">Compound Interest</span>
+      <span class="tag-chip">Google Sheets API</span>
+    </div>
+    <p class="card-description">
+      매크로 시장의 일시적 노이즈에 흔들리지 않는 자산의 단단한 뿌리입니다. 구글 스프레드시트 Gviz API를 통해 실시간 자산 수율을 추적하며, 글로벌 자산 배분 원칙에 입각한 최적의 자본 분할 포지션을 시각화합니다.
+    </p>
+  </div>
+
+  <div class="large-project-card">
+    <div class="card-subtitle">Matrix 02 . Passive Stream</div>
+    <div class="card-main-title">Dividend Growth Pipeline</div>
+    
+    <div class="card-visual-zone" style="height: 240px; flex-direction: column; background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);">
+      <div style="font-size: 2.2rem; font-weight: 700; color: #1d1d1f; margin-bottom: 0.5rem;">$ SCHD + JEPQ</div>
+      <div style="font-size: 0.85rem; color: #86868b; letter-spacing: 0.05em;">AUTOMATED CASHFLOW RADAR</div>
+    </div>
+
+    <div class="card-tags-group">
+      <span class="tag-chip">Dividend Growth</span>
+      <span class="tag-chip">Passive Income</span>
+      <span class="tag-chip">Retirement Runway</span>
+    </div>
+    <p class="card-description">
+      시간의 마찰력을 복리의 에너지로 전환하는 패시브 인컴 엔진입니다. 매월 누적되는 배당 자산의 재투자 수율을 관리하여, 장기적으로 외부 거시경제 환경과 완전히 독립된 지속 가능한 현금흐름 파이프라인을 구축합니다.
+    </p>
+  </div>
+
+  <div class="large-project-card">
+    <div class="card-subtitle">Matrix 03 . Tactical Rule</div>
+    <div class="card-main-title">Tactical Swing & Rebalancing Indicator</div>
+    
+    <div class="card-visual-zone" style="height: 240px; background: #1d1d1f; color: #fff; flex-direction: column; gap: 8px;">
+      <div style="font-family: monospace; font-size: 0.9rem; color: #34c759;">[SYSTEM] RSI / MACD SIGNAL DETECTED</div>
+      <div style="font-size: 1.5rem; font-weight: 600; color: #fff;">TQQQ Dynamic Rebalancing Protocol</div>
+    </div>
+
+    <div class="card-tags-group">
+      <span class="tag-chip">Tactical Asset Allocation</span>
+      <span class="tag-chip">Momentum Indicators</span>
+      <span class="tag-chip">Mathematical Discipline</span>
+    </div>
+    <p class="card-description">
+      시장 참여자들의 과도한 공포와 탐욕 구간에서 발생하는 괴리를 포착하는 알파 스윙 전략입니다. 내장된 기술적 지표(RSI/MACD) 매트릭스를 기반으로 감정을 배제한 기계적 리밸런싱 규칙을 실행하여 변동성을 방어하고 초과 수율을 도출합니다.
+    </p>
+  </div>
+
+</div>
+
+<script>
+  (function() {
+    const sheetID = "1ZgcJc8n-pC4crM3zqq4LPUJ9hTGbmhgpfV6XI87wr5A";
+    const gid = "0"; 
+    const finalUrl = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:csv&gid=${gid}`;
+
+    function startApp() {
+      const container = document.getElementById('assetChart');
+      if (typeof Plotly === 'undefined') { setTimeout(startApp, 200); return; }
+
+      fetch(finalUrl)
+        .then(res => res.text())
+        .then(csvText => {
+          container.innerHTML = "";
+          
+          const rows = csvText.split(/\r?\n/).filter(line => line.trim() !== "");
+          const labels = [];
+          const values = [];
+
+          for (let i = 1; i < rows.length; i++) {
+            const cols = rows[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+            if (cols.length >= 9) {
+              const ticker = cols[0].replace(/"/g, '').trim();
+              const weightStr = cols[8].replace(/"/g, '').replace('%', '').trim();
+              const weight = parseFloat(weightStr);
+              if (!isNaN(weight) && weight > 0) {
+                labels.push(ticker);
+                values.push(weight);
+              }
+            }
+          }
+
+          Plotly.newPlot('assetChart', [{
+            values: values, labels: labels, type: 'pie', hole: 0.6,
+            marker: { colors: ["#007AFF", "#5AC8FA", "#4CD964", "#FFCC00", "#FF9500", "#FF2D55", "#5856D6"] },
+            textinfo: 'label+percent',
+            textfont: { family: 'SF Pro Text', size: 12 }
+          }], {
+            showlegend: true,
+            legend: { 
+              orientation: 'h',
+              x: 0.5, xanchor: 'center',
+              y: -0.05, yanchor: 'top',
+              font: { family: 'SF Pro Text', size: 11 } 
+            },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            margin: { t: 20, b: 60, l: 10, r: 10 } 
+          }, {responsive: true, displayModeBar: false});
+        });
+    }
+    window.addEventListener('load', startApp);
+    startApp();
+  })();
+</script>
+```

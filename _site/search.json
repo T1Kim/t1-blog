@@ -1,17 +1,80 @@
 [
   {
+    "objectID": "investment/index.html",
+    "href": "investment/index.html",
+    "title": "⚖️ Passive Compounder Studio",
+    "section": "",
+    "text": "Matrix 01 . Strategic Base\n    Global Asset Allocation Portfolio\n    \n    \n      \n        Gviz 오케스트레이션 가동 중...\n      \n    \n\n    \n      Static Allocation\n      Compound Interest\n      Google Sheets API\n    \n    \n      매크로 시장의 일시적 노이즈에 흔들리지 않는 자산의 단단한 뿌리입니다. 구글 스프레드시트 Gviz API를 통해 실시간 자산 수율을 추적하며, 글로벌 자산 배분 원칙에 입각한 최적의 자본 분할 포지션을 시각화합니다.\n    \n  \n\n  \n    Matrix 02 . Passive Stream\n    Dividend Growth Pipeline\n    \n    \n      $ SCHD + JEPQ\n      AUTOMATED CASHFLOW RADAR\n    \n\n    \n      Dividend Growth\n      Passive Income\n      Retirement Runway\n    \n    \n      시간의 마찰력을 복리의 에너지로 전환하는 패시브 인컴 엔진입니다. 매월 누적되는 배당 자산의 재투자 수율을 관리하여, 장기적으로 외부 거시경제 환경과 완전히 독립된 지속 가능한 현금흐름 파이프라인을 구축합니다.\n    \n  \n\n  \n    Matrix 03 . Tactical Rule\n    Tactical Swing & Rebalancing Indicator\n    \n    \n      [SYSTEM] RSI / MACD SIGNAL DETECTED\n      TQQQ Dynamic Rebalancing Protocol\n    \n\n    \n      Tactical Asset Allocation\n      Momentum Indicators\n      Mathematical Discipline\n    \n    \n      시장 참여자들의 과도한 공포와 탐욕 구간에서 발생하는 괴리를 포착하는 알파 스윙 전략입니다. 내장된 기술적 지표(RSI/MACD) 매트릭스를 기반으로 감정을 배제한 기계적 리밸런싱 규칙을 실행하여 변동성을 방어하고 초과 수율을 도출합니다."
+  },
+  {
+    "objectID": "blog/posts/test3.html",
+    "href": "blog/posts/test3.html",
+    "title": "여기에 포스팅 제목 입력",
+    "section": "",
+    "text": "이곳부터 본문 내용을 편안하게 작성하시면 됩니다. 5장 이하의 사진은 파일명 규칙만 맞춰서 /assets/posts/ 폴더에 넣고 호출하세요."
+  },
+  {
+    "objectID": "blog/posts/test3.html#여기에-첫-번째-헤드라인-작성",
+    "href": "blog/posts/test3.html#여기에-첫-번째-헤드라인-작성",
+    "title": "여기에 포스팅 제목 입력",
+    "section": "",
+    "text": "이곳부터 본문 내용을 편안하게 작성하시면 됩니다. 5장 이하의 사진은 파일명 규칙만 맞춰서 /assets/posts/ 폴더에 넣고 호출하세요."
+  },
+  {
+    "objectID": "blog/posts/test.html",
+    "href": "blog/posts/test.html",
+    "title": "여기에 포스팅 제목 입력",
+    "section": "",
+    "text": "이곳부터 본문 내용을 편안하게 작성하시면 됩니다. 5장 이하의 사진은 파일명 규칙만 맞춰서 /assets/posts/ 폴더에 넣고 호출하세요."
+  },
+  {
+    "objectID": "blog/posts/test.html#여기에-첫-번째-헤드라인-작성",
+    "href": "blog/posts/test.html#여기에-첫-번째-헤드라인-작성",
+    "title": "여기에 포스팅 제목 입력",
+    "section": "",
+    "text": "이곳부터 본문 내용을 편안하게 작성하시면 됩니다. 5장 이하의 사진은 파일명 규칙만 맞춰서 /assets/posts/ 폴더에 넣고 호출하세요."
+  },
+  {
     "objectID": "blog/index.html",
     "href": "blog/index.html",
     "title": "📝 T1 Collected Notes",
     "section": "",
-    "text": "No matching items"
+    "text": "T1’ Quarto Blog Released!\n\n\n\n\n\n\nVibe Coding\n\nProject\n\nPersonal\n\n\n\n개인적인 바이브 코딩 프로젝트 중 하나인 Quarto Blog 런칭이 드디어 완료되었습니다. 블로그에서는 투자, 러닝, 여행, 사진 등의 주제를 다룰 에정입니다.\n\n\n\n\n\nMay 18, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n여기에 포스팅 제목 입력\n\n\n\n\n\n\nTag1\n\nTag2\n\nTag3\n\n\n\n블로그 메인 리스트 카드에 보일 2~3줄짜리 매력적인 요약문 입력\n\n\n\n\n\nApril 18, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n여기에 포스팅 제목 입력\n\n\n\n\n\n\nTag1\n\nTag2\n\nTag3\n\n\n\n블로그 메인 리스트 카드에 보일 2~3줄짜리 매력적인 요약문 입력\n\n\n\n\n\nMay 18, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n여기에 포스팅 제목 입력\n\n\n\n\n\n\nTag1\n\nTag2\n\nTag3\n\n\n\n블로그 메인 리스트 카드에 보일 2~3줄짜리 매력적인 요약문 입력\n\n\n\n\n\nApril 18, 2025\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blog/posts/2026-05-18-test-01.html",
+    "href": "blog/posts/2026-05-18-test-01.html",
+    "title": "T1’ Quarto Blog Released!",
+    "section": "",
+    "text": "이곳부터 본문 내용을 편안하게 작성하시면 됩니다. 5장 이하의 사진은 파일명 규칙만 맞춰서 /assets/posts/ 폴더에 넣고 호출하세요."
+  },
+  {
+    "objectID": "blog/posts/2026-05-18-test-01.html#여기에-첫-번째-헤드라인-작성",
+    "href": "blog/posts/2026-05-18-test-01.html#여기에-첫-번째-헤드라인-작성",
+    "title": "T1’ Quarto Blog Released!",
+    "section": "여기에 첫 번째 헤드라인 작성",
+    "text": "여기에 첫 번째 헤드라인 작성\n이곳부터 본문 내용을 편안하게 작성하시면 됩니다. 5장 이하의 사진은 파일명 규칙만 맞춰서 /assets/posts/ 폴더에 넣고 호출하세요."
+  },
+  {
+    "objectID": "blog/posts/test2.html",
+    "href": "blog/posts/test2.html",
+    "title": "여기에 포스팅 제목 입력",
+    "section": "",
+    "text": "이곳부터 본문 내용을 편안하게 작성하시면 됩니다. 5장 이하의 사진은 파일명 규칙만 맞춰서 /assets/posts/ 폴더에 넣고 호출하세요."
+  },
+  {
+    "objectID": "blog/posts/test2.html#여기에-첫-번째-헤드라인-작성",
+    "href": "blog/posts/test2.html#여기에-첫-번째-헤드라인-작성",
+    "title": "여기에 포스팅 제목 입력",
+    "section": "",
+    "text": "이곳부터 본문 내용을 편안하게 작성하시면 됩니다. 5장 이하의 사진은 파일명 규칙만 맞춰서 /assets/posts/ 폴더에 넣고 호출하세요."
   },
   {
     "objectID": "gallery/index.html",
     "href": "gallery/index.html",
     "title": "📷 Light Preserver Archive",
     "section": "",
-    "text": "Period\n      \n        All\n        ~2010\n        2011~2020\n        2021~2030\n      \n    \n    ThemeAllCityNaturePortraitFood\n    CameraAllSonyNikonLeicaFilm"
+    "text": "JSON 데이터 허브 결합 중..."
   },
   {
     "objectID": "index.html",

@@ -1,7 +1,186 @@
 ---
 title: "📝 T1 Collected Notes"
 subtitle: "A COLLECTION OF THOUGHTS, OBSERVATIONS, AND LEARNINGS"
+page-layout: full
 listing:
-  contents: ../posts
+  contents: posts
   type: default
+  sort: "date desc"
+  categories: true
+  date-format: "MMMM DD, YYYY"
+  fields: [date, title, subtitle, description, categories, image]
 ---
+
+```{=html}
+<style>
+  /* [보정 1] 포스트 타이틀: Apple 표준 Charcoal(#1d1d1f) 및 호버 시 Apple Blue(#007aff) */
+  .quarto-post .title a,
+  .listing-title a {
+    color: #1d1d1f !important;
+    font-weight: 600 !important;
+    transition: color 0.2s ease;
+  }
+  .quarto-post .title a:hover,
+  .listing-title a:hover {
+    color: #007aff !important; /* 인터랙티브 요소 강조 */
+    text-decoration: none !important;
+  }
+
+  /* 날짜 표시 영역 정렬 및 줄바꿈 자간 최적화 */
+  .listing-date {
+    line-height: 1.4 !important;
+    text-align: left !important;
+    font-family: "SF Pro Text", sans-serif;
+    color: #1d1d1f;
+  }
+
+  /* [보정 3] 연도별 구분선 헤더 슬림화 (2px -> 1px) */
+  .custom-year-heading {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin: 3.5rem 0 1.5rem 0 !important;
+    border-bottom: 1px solid #1d1d1f; /* 두께를 1px로 두어 샤프한 느낌 강조 */
+    padding-bottom: 0.4rem;
+    font-family: "SF Pro Display", sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  /* 카테고리 태그 미니멀 디자인 */
+  .listing-categories .listing-category {
+    border: 1px solid #e8e8ed !important;
+    background-color: transparent !important;
+    color: #86868b !important;
+    border-radius: 4px !important;
+    font-size: 0.7rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* 우측 연도 필터 레이아웃 및 톤앤매너 동기화 */
+  .custom-year-filter-wrapper {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e8e8ed;
+    padding-bottom: 1.5rem;
+  }
+  .filter-section-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.03em;
+  }
+  .year-filter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .year-link {
+    color: #86868b;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .year-link:hover, .year-link.active {
+    color: #007aff; /* 우측 필터 액티브 컬러도 Apple Blue로 일치 */
+    font-weight: 600;
+    text-decoration: none;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const posts = document.querySelectorAll('.quarto-post');
+    if (!posts.length) return;
+
+    const years = new Set();
+
+    posts.forEach(post => {
+      const dateEl = post.querySelector('.listing-date');
+      if (dateEl) {
+        const dateText = dateEl.innerText; // 예: "May 18, 2026"
+        const match = dateText.match(/\d{4}/);
+        if (match) {
+          const year = match[0];
+          years.add(year);
+          post.setAttribute('data-post-year', year);
+        }
+
+        /* [보정 2] 월·일과 연도 사이 줄바꿈(br) 및 하단 연도 서식 고도화 */
+        if (dateText.includes(',')) {
+          const parts = dateText.split(',');
+          const monthDay = parts[0].trim();  /* May 18 */
+          const yearNum = parts[1].trim();   /* 2026 */
+          
+          // 연도 부분은 살짝 크기를 줄이고 투명도를 주어 계층 구조 형성
+          dateEl.innerHTML = `${monthDay}<br><span style="font-size: 0.85rem; color: #86868b; font-weight: 400; display: inline-block; margin-top: 2px;">${yearNum}</span>`;
+        }
+      }
+    });
+
+    const sortedYears = Array.from(years).sort((a, b) => b - a);
+
+    // 본문 영역 연도 헤더 삽입
+    sortedYears.forEach(year => {
+      const firstPostOfYear = document.querySelector(`.quarto-post[data-post-year="${year}"]`);
+      if (firstPostOfYear) {
+        const heading = document.createElement('h2');
+        heading.className = 'custom-year-heading';
+        heading.innerText = year;
+        firstPostOfYear.parentNode.insertBefore(heading, firstPostOfYear);
+      }
+    });
+
+    // 우측 사이드바 연도 필터 주입
+    const quartoSidebar = document.querySelector('.quarto-listing-category');
+    if (quartoSidebar) {
+      const yearFilterContainer = document.createElement('div');
+      yearFilterContainer.className = 'custom-year-filter-wrapper';
+      
+      let yearLinksHtml = `<div class="filter-section-title">Year</div><div class="year-filter-list">`;
+      yearLinksHtml += `<a href="#" class="year-link active" data-target-year="all">All</a>`;
+      sortedYears.forEach(year => {
+        yearLinksHtml += `<a href="#" class="year-link" data-target-year="${year}">${year}</a>`;
+      });
+      yearLinksHtml += `</div>`;
+      
+      yearFilterContainer.innerHTML = yearLinksHtml;
+      quartoSidebar.insertBefore(yearFilterContainer, quartoSidebar.firstChild);
+
+      // 연도 필터 인터랙션 이벤트 바인딩
+      const yearLinks = yearFilterContainer.querySelectorAll('.year-link');
+      yearLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          yearLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+
+          const targetYear = link.getAttribute('data-target-year');
+          const allHeadings = document.querySelectorAll('.custom-year-heading');
+
+          if (targetYear === 'all') {
+            posts.forEach(p => p.style.display = 'flex');
+            allHeadings.forEach(h => h.style.display = 'block');
+          } else {
+            posts.forEach(p => {
+              if (p.getAttribute('data-post-year') === targetYear) {
+                p.style.display = 'flex';
+              } else {
+                p.style.display = 'none';
+              }
+            });
+
+            allHeadings.forEach(h => {
+              if (h.innerText === targetYear) {
+                h.style.display = 'block';
+              } else {
+                h.style.display = 'none';
+              }
+            });
+          }
+        });
+      });
+    }
+  });
+</script>
+```
