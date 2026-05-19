@@ -318,6 +318,7 @@ ul.task-list li input[type="checkbox"] {
           gap: 8px !important;
         }
 
+        /* 💻 데스크톱 기본 상태: 가로 정렬 및 고정 높이 */
         .t1-embedded-wealth-engine .mini-wealth-card {
           background: rgba(15, 23, 42, 0.4) !important;
           border-radius: 10px !important;
@@ -369,6 +370,24 @@ ul.task-list li input[type="checkbox"] {
         .t1-embedded-wealth-engine .cyan-chip .mini-icon-box { background: rgba(6, 182, 212, 0.1); color: #22d3ee; border: 1px solid rgba(6, 182, 212, 0.2); }
         .t1-embedded-wealth-engine .cyan-chip { border-left: 3px solid #22d3ee !important; }
         .t1-embedded-wealth-engine .cyan-chip .mini-tickers { color: #22d3ee; background: rgba(6, 182, 212, 0.05); }
+
+        /* 📱 🌟 [핵심 패치] 모바일 환경 전용 미디어 쿼리 다이내믹 오버라이드 */
+        @media (max-width: 768px) {
+          .t1-embedded-wealth-engine {
+            padding: 16px !important; /* 내부 마진 컴팩트화 */
+          }
+          .t1-embedded-wealth-engine .mini-wealth-card {
+            flex-direction: column !important; /* 상하 수직 구조로 피벗 */
+            align-items: flex-start !important; /* 좌측 정렬 정렬 */
+            height: auto !important; /* 높이 제한 해제하여 유연성 확보 */
+            padding: 12px !important;
+            gap: 10px !important; /* 타이틀과 티커 칩 사이 안전 공간 */
+          }
+          .t1-embedded-wealth-engine .mini-tickers {
+            align-self: flex-end !important; /* 티커 칩은 우측 하단에 정렬하여 시각적 균형 유도 */
+            font-size: 10.5px !important; /* 가독성을 저해하지 않는 선에서 미세 축소 */
+          }
+        }
       </style>
 
       <div class="widget-header">
