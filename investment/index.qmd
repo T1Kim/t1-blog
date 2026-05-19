@@ -6,7 +6,7 @@ subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
 ```{=html}
 <style>
   .investment-container {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
     color: #1d1d1f;
     margin: 2rem 0;
   }
@@ -91,118 +91,400 @@ subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
 <div class="investment-container">
 
   <div class="large-project-card">
-    <div class="card-subtitle">Matrix 01 . Strategic Base</div>
-    <div class="card-main-title">Global Asset Allocation Portfolio</div>
+    <div class="card-subtitle">Matrix 01 . Strategy compass</div>
+    <div class="card-main-title">The Master Plan</div>
     
-    <div class="card-visual-zone" style="background: #ffffff; border: 1px solid rgba(0,0,0,0.03);">
-      <div id="assetChart" style="width: 100%; height: 480px; margin: 0 auto;">
-        <p style="text-align: center; color: #86868b; padding-top: 200px;">Gviz 오케스트레이션 가동 중...</p>
+    <div class="t1-embedded-wealth-engine">
+      <style>
+        .t1-embedded-wealth-engine {
+          width: 100% !important;
+          background-color: #060a13 !important;
+          padding: 24px !important;
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 12px !important;
+          position: relative !important;
+          font-family: -apple-system, BlinkMacSystemFont, sans-serif !important;
+          overflow: hidden !important;
+          color: #f3f4f6 !important;
+          border-radius: 16px !important;
+          border: 1px solid #1e293b !important;
+          box-shadow: inset 0 4px 24px rgba(0, 0, 0, 0.5) !important;
+          box-sizing: border-box !important;
+          margin-bottom: 32px !important;
+        }
+
+        .t1-embedded-wealth-engine::before {
+          content: '' !important;
+          position: absolute !important;
+          top: 0; left: 0; width: 100%; height: 100%;
+          background-image: 
+              radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.06) 0%, transparent 40%),
+              radial-gradient(circle at 90% 90%, rgba(139, 92, 246, 0.06) 0%, transparent 50%),
+              linear-gradient(135deg, rgba(8, 13, 26, 0.99) 0%, rgba(4, 7, 12, 0.97) 100%) !important;
+          z-index: 0 !important;
+          pointer-events: none !important;
+        }
+
+        .t1-embedded-wealth-engine > * {
+          position: relative !important;
+          z-index: 1 !important;
+          box-sizing: border-box !important;
+        }
+
+        .t1-embedded-wealth-engine .widget-header {
+          display: flex !important;
+          justify-content: space-between !important;
+          align-items: center !important;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+          padding-bottom: 10px !important;
+          margin-bottom: 4px !important;
+        }
+
+        .t1-embedded-wealth-engine .widget-title {
+          font-size: 14px !important;
+          font-weight: 800 !important;
+          letter-spacing: 0.05em !important;
+          color: #ffffff !important;
+          text-transform: uppercase !important;
+          margin: 0 !important;
+        }
+        .t1-embedded-wealth-engine .widget-title span { color: #38bdf8; font-weight: 500; }
+
+        .t1-embedded-wealth-engine .widget-status {
+          display: flex !important;
+          align-items: center !important;
+          gap: 6px !important;
+          font-size: 10px !important;
+          font-family: monospace !important;
+          color: #86868b !important;
+        }
+        .t1-embedded-wealth-engine .widget-dot {
+          width: 6px; height: 6px; background-color: #34d399; border-radius: 50%;
+          box-shadow: 0 0 6px #34d399;
+        }
+
+        .t1-embedded-wealth-engine .widget-list {
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 8px !important;
+        }
+
+        .t1-embedded-wealth-engine .mini-wealth-card {
+          background: rgba(15, 23, 42, 0.4) !important;
+          border-radius: 10px !important;
+          padding: 12px 18px !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+          border: 1px solid rgba(255, 255, 255, 0.03) !important;
+          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+          height: 52px !important;
+        }
+        .t1-embedded-wealth-engine .mini-wealth-card:hover {
+          transform: translateX(2px) !important;
+          background: rgba(15, 23, 42, 0.7) !important;
+          border-color: rgba(255, 255, 255, 0.08) !important;
+        }
+
+        .t1-embedded-wealth-engine .card-core { display: flex !important; align-items: center !important; gap: 14px !important; }
+        
+        .t1-embedded-wealth-engine .mini-icon-box {
+          width: 32px; height: 32px; border-radius: 8px;
+          display: flex !important; justify-content: center !important; align-items: center !important;
+          flex-shrink: 0 !important;
+        }
+
+        .t1-embedded-wealth-engine .mini-title {
+          font-size: 13.5px !important; font-weight: 700 !important; color: #ffffff !important; margin: 0 !important;
+        }
+
+        .t1-embedded-wealth-engine .mini-tickers {
+          font-family: monospace !important;
+          font-size: 11.5px !important; font-weight: 700 !important;
+          padding: 4px 10px !important; border-radius: 6px !important;
+          white-space: nowrap !important;
+        }
+
+        .t1-embedded-wealth-engine .gold-chip .mini-icon-box { background: rgba(245, 158, 11, 0.1); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.2); }
+        .t1-embedded-wealth-engine .gold-chip { border-left: 3px solid #fbbf24 !important; }
+        .t1-embedded-wealth-engine .gold-chip .mini-tickers { color: #fbbf24; background: rgba(245, 158, 11, 0.05); }
+
+        .t1-embedded-wealth-engine .emerald-chip .mini-icon-box { background: rgba(16, 185, 129, 0.1); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.2); }
+        .t1-embedded-wealth-engine .emerald-chip { border-left: 3px solid #34d399 !important; }
+        .t1-embedded-wealth-engine .emerald-chip .mini-tickers { color: #34d399; background: rgba(16, 185, 129, 0.05); }
+
+        .t1-embedded-wealth-engine .violet-chip .mini-icon-box { background: rgba(139, 92, 246, 0.1); color: #a78bfa; border: 1px solid rgba(139, 92, 246, 0.2); }
+        .t1-embedded-wealth-engine .violet-chip { border-left: 3px solid #a78bfa !important; }
+        .t1-embedded-wealth-engine .violet-chip .mini-tickers { color: #a78bfa; background: rgba(139, 92, 246, 0.05); }
+
+        .t1-embedded-wealth-engine .cyan-chip .mini-icon-box { background: rgba(6, 182, 212, 0.1); color: #22d3ee; border: 1px solid rgba(6, 182, 212, 0.2); }
+        .t1-embedded-wealth-engine .cyan-chip { border-left: 3px solid #22d3ee !important; }
+        .t1-embedded-wealth-engine .cyan-chip .mini-tickers { color: #22d3ee; background: rgba(6, 182, 212, 0.05); }
+      </style>
+
+      <div class="widget-header">
+        <h4 class="widget-title">Strategic Wealth Engine <span>// Pillars</span></h4>
+        <div class="widget-status">
+          <span class="widget-dot"></span>
+          <span>SYSTEM ACTIVE</span>
+        </div>
+      </div>
+
+      <div class="widget-list">
+        <div class="mini-wealth-card gold-chip">
+          <div class="card-core">
+            <div class="mini-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:18px; height:18px;"><path d="M3 3v18h18"></path><path d="m18.7 8-5.1 5.2-2.8-2.7L7 14.3"></path></svg>
+            </div>
+            <h5 class="mini-title">Compounding Growth</h5>
+          </div>
+          <span class="mini-tickers">VOO / BRK-A / TQQQ</span>
+        </div>
+
+        <div class="mini-wealth-card emerald-chip">
+          <div class="card-core">
+            <div class="mini-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:18px; height:18px;"><path d="M23 6l-9.5 9.5-5-5L1 18"></path><polyline points="17 6 23 6 23 12"></polyline></svg>
+            </div>
+            <h5 class="mini-title">Stable Income</h5>
+          </div>
+          <span class="mini-tickers">SCHD / SPYI / JEPQ</span>
+        </div>
+
+        <div class="mini-wealth-card violet-chip">
+          <div class="card-core">
+            <div class="mini-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:18px; height:18px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h5 class="mini-title">Tax Shield Defense</h5>
+          </div>
+          <span class="mini-tickers">Pension / IRP / ISA</span>
+        </div>
+
+        <div class="mini-wealth-card cyan-chip">
+          <div class="card-core">
+            <div class="mini-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:18px; height:18px;"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v12M15 9H10.5a2.5 2.5 0 0 0 0 5h3a2.5 2.5 0 0 1 0 5H9"></path></svg>
+            </div>
+            <h5 class="mini-title">USD Cash Runway</h5>
+          </div>
+          <span class="mini-tickers">SGOV Treasury</span>
+        </div>
       </div>
     </div>
 
     <div class="card-tags-group">
-      <span class="tag-chip">Static Allocation</span>
-      <span class="tag-chip">Compound Interest</span>
-      <span class="tag-chip">Google Sheets API</span>
+      <span class="tag-chip">자산배분</span>
+      <span class="tag-chip">복리효과</span>
+      <span class="tag-chip">절세전략</span>
+      <span class="tag-chip">노후대비</span>
     </div>
     <p class="card-description">
-      매크로 시장의 일시적 노이즈에 흔들리지 않는 자산의 단단한 뿌리입니다. 구글 스프레드시트 Gviz API를 통해 실시간 자산 수율을 추적하며, 글로벌 자산 배분 원칙에 입각한 최적의 자본 분할 포지션을 시각화합니다.
+      대표 지수 기반 안정적 복리효과, 배당 성장 기반 심리적 안정감, 그리고 버핏의 장기 투자 원칙을 결합한 전략적 자산 배분 시스템입니다.
+      시장의 변동성 속에서도 일관된 성장과 수익률을 추구하는, 지속 가능한 투자 여정의 탄탄한 기반이 됩니다.
     </p>
   </div>
 
   <div class="large-project-card">
-    <div class="card-subtitle">Matrix 02 . Passive Stream</div>
-    <div class="card-main-title">Dividend Growth Pipeline</div>
+    <div class="card-subtitle">Matrix 02 . Global Capital</div>
+    <div class="card-main-title">US Equity & Growth</div>
     
-    <div class="card-visual-zone" style="height: 240px; flex-direction: column; background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);">
-      <div style="font-size: 2.2rem; font-weight: 700; color: #1d1d1f; margin-bottom: 0.5rem;">$ SCHD + JEPQ</div>
-      <div style="font-size: 0.85rem; color: #86868b; letter-spacing: 0.05em;">AUTOMATED CASHFLOW RADAR</div>
+    <div class="card-visual-zone" style="height: 420px; background: #ffffff; padding: 2rem; flex-direction: column;">
+      <style>
+        .css-chart-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2.5rem;
+          width: 100%;
+          height: 100%;
+          align-items: center;
+          box-sizing: border-box;
+        }
+        .css-chart-box {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          width: 100%;
+          position: relative;
+        }
+        
+        /* 1. 하이엔드 모던 CSS 도넛 그래픽 */
+        .css-donut-ring {
+          width: 210px;
+          height: 210px;
+          border-radius: 50%;
+          /* 하드웨어 가속 원형 그라데이션 분할 배정 (VOO, TQQQ, SCHD, BRK-A, Cash 순) */
+          background: conic-gradient(
+            #007AFF 0% 40%,
+            #5AC8FA 40% 65%,
+            #4CD964 65% 85%,
+            #FFCC00 85% 95%,
+            #AFAFB6 95% 100%
+          );
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+        .css-donut-hole {
+          width: 150px; /* 정밀 71% 화이트 스페이스 마스크 */
+          height: 150px;
+          background: #ffffff;
+          border-radius: 50%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        .css-donut-label {
+          font-size: 0.72rem;
+          color: #86868b;
+          text-transform: uppercase;
+          font-weight: 700;
+          letter-spacing: 0.05em;
+          margin-bottom: 2px;
+        }
+        .css-donut-value {
+          font-size: 1.4rem;
+          font-weight: 700;
+          color: #1d1d1f;
+          font-family: monospace;
+          letter-spacing: -0.02em;
+        }
+        
+        /* 2. 모던 컴팩트 CSS 바 그래픽 구조 */
+        .css-bar-wrapper {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          height: 190px;
+          justify-content: flex-end;
+        }
+        .css-bar-axis {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          width: 100%;
+          height: 100%;
+          border-bottom: 1px solid #e8e8ed;
+          padding-bottom: 4px;
+          box-sizing: border-box;
+        }
+        .css-bar-column {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 14%;
+          height: 100%;
+          justify-content: flex-end;
+        }
+        .css-bar-fill {
+          width: 100%;
+          background-color: #E5E5EA;
+          border-radius: 5px 5px 0 0;
+          transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .css-bar-fill.active {
+          background-color: #007AFF; /* 올해 지표 시각적 전방 강조색 */
+          box-shadow: 0 2px 8px rgba(0,122,255,0.2);
+        }
+        .css-bar-label {
+          font-size: 0.7rem;
+          color: #86868b;
+          margin-top: 8px;
+          font-weight: 500;
+        }
+        
+        /* KPI 오버레이 연동 */
+        .css-kpi-row {
+          display: flex;
+          justify-content: space-around;
+          width: 100%;
+          background: #f5f5f7;
+          border-radius: 12px;
+          padding: 0.6rem;
+          margin-bottom: 1.2rem;
+          box-sizing: border-box;
+        }
+        .css-kpi-item { text-align: center; }
+        .css-kpi-label { font-size: 0.62rem; color: #86868b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.03em; }
+        .css-kpi-value { font-size: 1.05rem; font-weight: 700; color: #1d1d1f; font-family: monospace; }
+        
+        @media (max-width: 900px) {
+          .css-chart-grid { grid-template-columns: 1fr; gap: 2rem; }
+          .card-visual-zone { height: auto !important; }
+          .css-bar-wrapper { height: 160px; }
+        }
+      </style>
+      
+      <div class="css-chart-grid">
+        <div class="css-chart-box">
+          <div class="css-donut-ring">
+            <div class="css-donut-hole">
+              <span class="css-donut-label">Total Value</span>
+              <span class="css-donut-value">$1,240,500</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="css-chart-box">
+          <div class="css-kpi-row">
+            <div class="css-kpi-item">
+              <div class="css-kpi-label">Cumulative Total</div>
+              <div class="css-kpi-value">$45,280</div>
+            </div>
+            <div class="css-kpi-item">
+              <div class="css-kpi-label">2026 YTD</div>
+              <div class="css-kpi-value" style="color: #007aff;">$8,420</div>
+            </div>
+          </div>
+          
+          <div class="css-bar-wrapper">
+            <div class="css-bar-axis">
+              <div class="css-bar-column"><div class="css-bar-fill" style="height: 55%;"></div><span class="css-bar-label">2022</span></div>
+              <div class="css-bar-column"><div class="css-bar-fill" style="height: 70%;"></div><span class="css-bar-label">2023</span></div>
+              <div class="css-bar-column"><div class="css-bar-fill" style="height: 85%;"></div><span class="css-bar-label">2024</span></div>
+              <div class="css-bar-column"><div class="css-bar-fill" style="height: 100%;"></div><span class="css-bar-label">2025</span></div>
+              <div class="css-bar-column"><div class="css-bar-fill active" style="height: 72%;"></div><span class="css-bar-label">2026</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="card-tags-group">
+    <div class="card-tags-group" style="margin-top: 1.5rem;">
+      <span class="tag-chip">Portfolio Management</span>
       <span class="tag-chip">Dividend Growth</span>
-      <span class="tag-chip">Passive Income</span>
-      <span class="tag-chip">Retirement Runway</span>
+      <span class="tag-chip">Total Return</span>
     </div>
     <p class="card-description">
-      시간의 마찰력을 복리의 에너지로 전환하는 패시브 인컴 엔진입니다. 매월 누적되는 배당 자산의 재투자 수율을 관리하여, 장기적으로 외부 거시경제 환경과 완전히 독립된 지속 가능한 현금흐름 파이프라인을 구축합니다.
+      시간의 마찰력을 복리의 에너지로 전환하는 패시브 인컴 엔진입니다.
+      매월 누적되는 배당 자산의 재투자 수율을 관리하여, 장기적으로 외부 거시경제 환경과 완전히 독립된 지속 가능한 현금흐름 파이프라인을 구축합니다.
     </p>
   </div>
 
   <div class="large-project-card">
-    <div class="card-subtitle">Matrix 03 . Tactical Rule</div>
-    <div class="card-main-title">Tactical Swing & Rebalancing Indicator</div>
+    <div class="card-subtitle">Matrix 03 . Shield & Harvest</div>
+    <div class="card-main-title">Tax & Decumulation</div>
     
     <div class="card-visual-zone" style="height: 240px; background: #1d1d1f; color: #fff; flex-direction: column; gap: 8px;">
-      <div style="font-family: monospace; font-size: 0.9rem; color: #34c759;">[SYSTEM] RSI / MACD SIGNAL DETECTED</div>
-      <div style="font-size: 1.5rem; font-weight: 600; color: #fff;">TQQQ Dynamic Rebalancing Protocol</div>
+      <div style="font-family: monospace; font-size: 0.9rem; color: #34c759;">Withdrawal-Focused Pension Strategy</div>
+      <div style="font-size: 1.5rem; font-weight: 600; color: #fff;">연금저축 + IRP + ISA</div>
     </div>
 
     <div class="card-tags-group">
-      <span class="tag-chip">Tactical Asset Allocation</span>
-      <span class="tag-chip">Momentum Indicators</span>
-      <span class="tag-chip">Mathematical Discipline</span>
+      <span class="tag-chip">연금 저축</span>
+      <span class="tag-chip">세금 혜택</span>
+      <span class="tag-chip">인출 전략</span>
     </div>
     <p class="card-description">
-      시장 참여자들의 과도한 공포와 탐욕 구간에서 발생하는 괴리를 포착하는 알파 스윙 전략입니다. 내장된 기술적 지표(RSI/MACD) 매트릭스를 기반으로 감정을 배제한 기계적 리밸런싱 규칙을 실행하여 변동성을 방어하고 초과 수율을 도출합니다.
+      은퇴 후 인출 시점에서의 세금 부담을 최소화하는 전략적 자산 배분과 리밸런싱 시스템입니다.
+      연금저축, IRP, ISA 계좌의 세제 혜택을 극대화하여, 노후에 안정적인 현금흐름을 유지하면서도 세금 효율성을 극대화하는 전술적 스윙과 리밸런싱 지표를 제공합니다.
     </p>
   </div>
 
 </div>
-
-<script>
-  (function() {
-    const sheetID = "1ZgcJc8n-pC4crM3zqq4LPUJ9hTGbmhgpfV6XI87wr5A";
-    const gid = "0"; 
-    const finalUrl = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:csv&gid=${gid}`;
-
-    function startApp() {
-      const container = document.getElementById('assetChart');
-      if (typeof Plotly === 'undefined') { setTimeout(startApp, 200); return; }
-
-      fetch(finalUrl)
-        .then(res => res.text())
-        .then(csvText => {
-          container.innerHTML = "";
-          
-          const rows = csvText.split(/\r?\n/).filter(line => line.trim() !== "");
-          const labels = [];
-          const values = [];
-
-          for (let i = 1; i < rows.length; i++) {
-            const cols = rows[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-            if (cols.length >= 9) {
-              const ticker = cols[0].replace(/"/g, '').trim();
-              const weightStr = cols[8].replace(/"/g, '').replace('%', '').trim();
-              const weight = parseFloat(weightStr);
-              if (!isNaN(weight) && weight > 0) {
-                labels.push(ticker);
-                values.push(weight);
-              }
-            }
-          }
-
-          Plotly.newPlot('assetChart', [{
-            values: values, labels: labels, type: 'pie', hole: 0.6,
-            marker: { colors: ["#007AFF", "#5AC8FA", "#4CD964", "#FFCC00", "#FF9500", "#FF2D55", "#5856D6"] },
-            textinfo: 'label+percent',
-            textfont: { family: 'SF Pro Text', size: 12 }
-          }], {
-            showlegend: true,
-            legend: { 
-              orientation: 'h',
-              x: 0.5, xanchor: 'center',
-              y: -0.05, yanchor: 'top',
-              font: { family: 'SF Pro Text', size: 11 } 
-            },
-            paper_bgcolor: 'rgba(0,0,0,0)',
-            plot_bgcolor: 'rgba(0,0,0,0)',
-            margin: { t: 20, b: 60, l: 10, r: 10 } 
-          }, {responsive: true, displayModeBar: false});
-        });
-    }
-    window.addEventListener('load', startApp);
-    startApp();
-  })();
-</script>
 ```
