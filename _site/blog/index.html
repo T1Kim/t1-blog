@@ -211,7 +211,9 @@ window.Quarto = {
 
 
 <style>
-  /* [보정 1] 포스트 타이틀: Apple 표준 Charcoal(#1d1d1f) 및 호버 시 Apple Blue(#007aff) */
+  /* ==========================================================================
+     1. 데스크톱 및 전역 표준 톤앤매너 디자인 (Apple Charcoal & Blue)
+     ========================================================================== */
   .quarto-post .title a,
   .listing-title a {
     color: #1d1d1f !important;
@@ -220,11 +222,10 @@ window.Quarto = {
   }
   .quarto-post .title a:hover,
   .listing-title a:hover {
-    color: #007aff !important; /* 인터랙티브 요소 강조 */
+    color: #007aff !important;
     text-decoration: none !important;
   }
 
-  /* 날짜 표시 영역 정렬 및 줄바꿈 자간 최적화 */
   .listing-date {
     line-height: 1.4 !important;
     text-align: left !important;
@@ -232,19 +233,17 @@ window.Quarto = {
     color: #1d1d1f;
   }
 
-  /* [보정 3] 연도별 구분선 헤더 슬림화 (2px -> 1px) */
   .custom-year-heading {
     font-size: 1.8rem;
     font-weight: 700;
     color: #1d1d1f;
     margin: 3.5rem 0 1.5rem 0 !important;
-    border-bottom: 1px solid #1d1d1f; /* 두께를 1px로 두어 샤프한 느낌 강조 */
+    border-bottom: 1px solid #1d1d1f;
     padding-bottom: 0.4rem;
     font-family: "SF Pro Display", sans-serif;
     letter-spacing: -0.01em;
   }
 
-  /* 카테고리 태그 미니멀 디자인 */
   .listing-categories .listing-category {
     border: 1px solid #e8e8ed !important;
     background-color: transparent !important;
@@ -255,7 +254,6 @@ window.Quarto = {
     letter-spacing: 0.05em;
   }
 
-  /* 우측 연도 필터 레이아웃 및 톤앤매너 동기화 */
   .custom-year-filter-wrapper {
     margin-bottom: 2rem;
     border-bottom: 1px solid #e8e8ed;
@@ -280,9 +278,89 @@ window.Quarto = {
     transition: color 0.2s;
   }
   .year-link:hover, .year-link.active {
-    color: #007aff; /* 우측 필터 액티브 컬러도 Apple Blue로 일치 */
+    color: #007aff;
     font-weight: 600;
     text-decoration: none;
+  }
+
+  /* ==========================================================================
+     2. 📱 [핵심 공정] 모바일 독점 고밀도 콤팩트 레이아웃 패치
+     ========================================================================== */
+  @media (max-width: 768px) {
+    /* 개별 포스트 행 격자 리모델링 */
+    .quarto-post {
+      display: flex !important;
+      flex-direction: column !important; /* 전체 요소를 상하로 배치 */
+      gap: 0.8rem !important;
+      padding: 1.5rem 0 !important;
+      border-bottom: 1px solid #e8e8ed !important;
+    }
+
+    /* 🌟 날짜와 썸네일을 한 줄(Row)로 결합하는 인라인 동기화 트랙 */
+    .quarto-post .metadata {
+      display: flex !important;
+      flex-direction: row !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      width: 100% !important;
+      order: 1 !important; /* 날짜+썸네일 트랙을 가장 상단으로 강제 배치 */
+      margin-bottom: 0.2rem !important;
+    }
+
+    /* 모바일 날짜 서식 가웃 조정 */
+    .quarto-post .metadata .listing-date {
+      font-size: 0.85rem !important;
+      color: #86868b !important;
+      line-height: 1.2 !important;
+    }
+
+    /* 🌟 썸네일 이미지를 날짜 우측 끝 행선에 조밀하게 안착 */
+    .quarto-post .thumbnail {
+      display: block !important;
+      width: 70px !important;  /* 낭비 없는 황금비 가로 폭 구속 */
+      height: 48px !important; /* 시각적 마찰 최소화 고정 높이 */
+      margin: 0 !important;
+      border-radius: 6px !important;
+      overflow: hidden !important;
+    }
+    .quarto-post .thumbnail img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+    }
+
+    /* 본문 서사(제목, 태그, 설명글) 바인딩 룸 */
+    .quarto-post .body {
+      display: flex !important;
+      flex-direction: column !important;
+      width: 100% !important;
+      order: 2 !important; /* 날짜 트랙 바로 하단에 배치 */
+      gap: 0.4rem !important;
+    }
+
+    .quarto-post .listing-title {
+      font-size: 1.25rem !important; /* 모바일 화면 맞춤 폰트 스케일 다운 */
+      line-height: 1.3 !important;
+      margin: 0 !important;
+    }
+
+    .quarto-post .listing-categories {
+      margin: 0 !important;
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 0.3rem !important;
+    }
+
+    .quarto-post .listing-description {
+      font-size: 0.88rem !important;
+      line-height: 1.5 !important;
+      color: #424245 !important;
+      margin-top: 0.2rem !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2 !important; /* 모바일 가독성을 위해 긴 설명은 2줄 제약 말줄임 */
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+    }
   }
 </style>
 
@@ -296,7 +374,7 @@ window.Quarto = {
     posts.forEach(post => {
       const dateEl = post.querySelector('.listing-date');
       if (dateEl) {
-        const dateText = dateEl.innerText; // 예: "May 18, 2026"
+        const dateText = dateEl.innerText;
         const match = dateText.match(/\d{4}/);
         if (match) {
           const year = match[0];
@@ -304,21 +382,24 @@ window.Quarto = {
           post.setAttribute('data-post-year', year);
         }
 
-        /* [보정 2] 월·일과 연도 사이 줄바꿈(br) 및 하단 연도 서식 고도화 */
         if (dateText.includes(',')) {
           const parts = dateText.split(',');
-          const monthDay = parts[0].trim();  /* May 18 */
-          const yearNum = parts[1].trim();   /* 2026 */
+          const monthDay = parts[0].trim();
+          const yearNum = parts[1].trim();
           
-          // 연도 부분은 살짝 크기를 줄이고 투명도를 주어 계층 구조 형성
-          dateEl.innerHTML = `${monthDay}<br><span style="font-size: 0.85rem; color: #86868b; font-weight: 400; display: inline-block; margin-top: 2px;">${yearNum}</span>`;
+          // 💻 데스크톱 뷰 전용 레이아웃 가공 (자바스크립트 내 하드코딩 스타일 유지)
+          // 단, 모바일(화면 폭 768px 이하)인 경우 Quarto 순정 가독성을 해치지 않기 위해 미디어 쿼리 흐름에 맡김
+          if (window.innerWidth > 768) {
+            dateEl.innerHTML = `${monthDay}<br><span style="font-size: 0.85rem; color: #86868b; font-weight: 400; display: inline-block; margin-top: 2px;">${yearNum}</span>`;
+          } else {
+            dateEl.innerHTML = `${monthDay}, ${yearNum}`;
+          }
         }
       }
     });
 
     const sortedYears = Array.from(years).sort((a, b) => b - a);
 
-    // 본문 영역 연도 헤더 삽입
     sortedYears.forEach(year => {
       const firstPostOfYear = document.querySelector(`.quarto-post[data-post-year="${year}"]`);
       if (firstPostOfYear) {
@@ -329,7 +410,6 @@ window.Quarto = {
       }
     });
 
-    // 우측 사이드바 연도 필터 주입
     const quartoSidebar = document.querySelector('.quarto-listing-category');
     if (quartoSidebar) {
       const yearFilterContainer = document.createElement('div');
@@ -345,7 +425,6 @@ window.Quarto = {
       yearFilterContainer.innerHTML = yearLinksHtml;
       quartoSidebar.insertBefore(yearFilterContainer, quartoSidebar.firstChild);
 
-      // 연도 필터 인터랙션 이벤트 바인딩
       const yearLinks = yearFilterContainer.querySelectorAll('.year-link');
       yearLinks.forEach(link => {
         link.addEventListener('click', function(e) {
