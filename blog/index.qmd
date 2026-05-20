@@ -86,80 +86,102 @@ listing:
   }
 
   /* ==========================================================================
-     2. 📱 [핵심 공정] 모바일 독점 고밀도 콤팩트 레이아웃 패치
+     2. 📱 [모바일 고도화 패치] 박사님 맞춤형 4개 층 레이아웃 & 유격 소각선
      ========================================================================== */
   @media (max-width: 768px) {
-    /* 개별 포스트 행 격자 리모델링 */
     .quarto-post {
       display: flex !important;
-      flex-direction: column !important; /* 전체 요소를 상하로 배치 */
-      gap: 0.8rem !important;
-      padding: 1.5rem 0 !important;
+      flex-direction: column !important;
+      gap: 0.45rem !important; /* 각 층간의 균일한 마찰 유격 확보 */
+      padding: 1.2rem 0 !important;
       border-bottom: 1px solid #e8e8ed !important;
     }
 
-    /* 🌟 날짜와 썸네일을 한 줄(Row)로 결합하는 인라인 동기화 트랙 */
+    /* [1층] 좌측 날짜 영역 - 잉여 공간 및 상단 썸네일 완전 소각 */
     .quarto-post .metadata {
-      display: flex !important;
-      flex-direction: row !important;
-      justify-content: space-between !important;
-      align-items: center !important;
-      width: 100% !important;
-      order: 1 !important; /* 날짜+썸네일 트랙을 가장 상단으로 강제 배치 */
-      margin-bottom: 0.2rem !important;
-    }
-
-    /* 모바일 날짜 서식 가웃 조정 */
-    .quarto-post .metadata .listing-date {
-      font-size: 0.85rem !important;
-      color: #86868b !important;
-      line-height: 1.2 !important;
-    }
-
-    /* 🌟 썸네일 이미지를 날짜 우측 끝 행선에 조밀하게 안착 */
-    .quarto-post .thumbnail {
       display: block !important;
-      width: 70px !important;  /* 낭비 없는 황금비 가로 폭 구속 */
-      height: 48px !important; /* 시각적 마찰 최소화 고정 높이 */
-      margin: 0 !important;
-      border-radius: 6px !important;
-      overflow: hidden !important;
-    }
-    .quarto-post .thumbnail img {
       width: 100% !important;
-      height: 100% !important;
-      object-fit: cover !important;
+      order: 1 !important;
+      margin-bottom: 0 !important;
     }
 
-    /* 본문 서사(제목, 태그, 설명글) 바인딩 룸 */
+    .quarto-post .metadata .listing-date {
+      font-size: 0.82rem !important;
+      color: #86868b !important;
+      line-height: 1.1 !important;
+    }
+
+    /* Quarto 기본 썸네일 컨테이너 차단벽 작동 (중복 노출 방지) */
+    .quarto-post > .thumbnail,
+    .quarto-post .metadata .thumbnail {
+      display: none !important;
+    }
+
+    /* 2층, 3층 메인 바디 구역 */
     .quarto-post .body {
       display: flex !important;
       flex-direction: column !important;
       width: 100% !important;
-      order: 2 !important; /* 날짜 트랙 바로 하단에 배치 */
-      gap: 0.4rem !important;
+      order: 2 !important;
+      gap: 0.45rem !important; /* 🌟 [보정] 날짜와 제목, 제목과 태그 사이 유격 완전 통일 */
+      margin-top: 0 !important; /* 기존 상단 마진 완전 연소 */
     }
 
+    /* [2층] 포스트 제목 */
     .quarto-post .listing-title {
-      font-size: 1.25rem !important; /* 모바일 화면 맞춤 폰트 스케일 다운 */
+      font-size: 1.25rem !important;
       line-height: 1.3 !important;
       margin: 0 !important;
+      padding: 0 !important;
     }
 
+    /* [3층] 태그 칩셋 그룹 */
     .quarto-post .listing-categories {
       margin: 0 !important;
+      padding: 0 !important;
       display: flex !important;
       flex-wrap: wrap !important;
       gap: 0.3rem !important;
     }
 
-    .quarto-post .listing-description {
-      font-size: 0.88rem !important;
-      line-height: 1.5 !important;
+    /* [4층] 좌측 썸네일 + 우측 본문 설명글 결합 수평 행 트랙 */
+    .quarto-post .custom-mobile-content-row {
+      display: flex !important;
+      flex-direction: row !important; /* 가로 수평 축 정렬 */
+      align-items: flex-start !important;
+      gap: 0.8rem !important; /* 이미지와 설명문 사이 정갈한 안전 유격 */
+      width: 100% !important;
+      margin-top: 0.1rem !important;
+      order: 3 !important;
+    }
+
+    /* 4층 좌측 슬롯: 정방향 컴팩트 썸네일 핏 */
+    .quarto-post .custom-mobile-content-row .mobile-row-thumbnail {
+      display: block !important;
+      width: 76px !important;
+      height: 52px !important;
+      border-radius: 6px !important;
+      overflow: hidden !important;
+      flex-shrink: 0 !important; /* 뷰포트 압착 방어 */
+      border: 1px solid rgba(0,0,0,0.02) !important;
+    }
+    
+    .quarto-post .custom-mobile-content-row .mobile-row-thumbnail img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
+    }
+
+    /* 4층 우측 슬롯: 말줄임 설명문 */
+    .quarto-post .custom-mobile-content-row .listing-description {
+      font-size: 0.86rem !important;
+      line-height: 1.45 !important;
       color: #424245 !important;
-      margin-top: 0.2rem !important;
+      margin: 0 !important;
+      flex-grow: 1 !important;
       display: -webkit-box !important;
-      -webkit-line-clamp: 2 !important; /* 모바일 가독성을 위해 긴 설명은 2줄 제약 말줄임 */
+      -webkit-line-clamp: 2 !important; /* 2줄 제약 장치 */
       -webkit-box-orient: vertical !important;
       overflow: hidden !important;
     }
@@ -175,6 +197,29 @@ listing:
 
     posts.forEach(post => {
       const dateEl = post.querySelector('.listing-date');
+      const bodyEl = post.querySelector('.body');
+      const descEl = post.querySelector('.listing-description');
+      
+      // 런타임 썸네일 주입 파이프라인
+      const rawImgEl = post.querySelector('.thumbnail img');
+      
+      if (window.innerWidth <= 768 && bodyEl && descEl && rawImgEl) {
+        const imgSrc = rawImgEl.getAttribute('src');
+        
+        // 4층 전용 수평 로우 생성
+        const contentRow = document.createElement('div');
+        contentRow.className = 'custom-mobile-content-row';
+        
+        const thumbDiv = document.createElement('div');
+        thumbDiv.className = 'mobile-row-thumbnail';
+        thumbDiv.innerHTML = `<img src="${imgSrc}" alt="Mobile Post Thumbnail">`;
+        
+        // 마크업 재배치로 4층 구조 안착
+        descEl.parentNode.insertBefore(contentRow, descEl);
+        contentRow.appendChild(thumbDiv);
+        contentRow.appendChild(descEl);
+      }
+
       if (dateEl) {
         const dateText = dateEl.innerText;
         const match = dateText.match(/\d{4}/);
@@ -189,8 +234,6 @@ listing:
           const monthDay = parts[0].trim();
           const yearNum = parts[1].trim();
           
-          // 💻 데스크톱 뷰 전용 레이아웃 가공 (자바스크립트 내 하드코딩 스타일 유지)
-          // 단, 모바일(화면 폭 768px 이하)인 경우 Quarto 순정 가독성을 해치지 않기 위해 미디어 쿼리 흐름에 맡김
           if (window.innerWidth > 768) {
             dateEl.innerHTML = `${monthDay}<br><span style="font-size: 0.85rem; color: #86868b; font-weight: 400; display: inline-block; margin-top: 2px;">${yearNum}</span>`;
           } else {
