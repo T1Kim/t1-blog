@@ -294,7 +294,7 @@ subtitle: "ENDURANCE, CREATIVITY, AND CONTINUOUS GROWTH"
 
   <div class="large-project-card">
     <div class="card-subtitle">Hobby 02 . Inspiration & Perspective</div>
-    <div class="card-main-title">Travel & Global Footprints</div>
+    <div class="card-main-title">Travel & Photography</div>
     
     <div class="card-visual-zone" style="height: auto; min-height: 380px; background: #ffffff; padding: 2rem; align-items: flex-start;">
       <div class="squad-container">
