@@ -1,4 +1,411 @@
 ---
-title: "✍️ The Logic & Vibe Journal"
-subtitle: "OBSERVATIONS ON RUNNING, CODING, AND LIFE DENSITY"
+title: "🎨 Life Beyond Numbers"
+subtitle: "ENDURANCE, CREATIVITY, AND CONTINUOUS GROWTH"
 ---
+
+```{=html}
+<style>
+  /* ==========================================================================
+     1. 전역 레이아웃 및 카드 프레임 (Investment 페이지와 100% 동치)
+     ========================================================================== */
+  .hobbies-container {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+    color: #1d1d1f;
+    margin: 2rem 0;
+  }
+
+  .large-project-card {
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    border: 1px solid rgba(0,0,0,0.04);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .large-project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04);
+  }
+
+  .card-subtitle {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #86868b;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+  .card-main-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .card-visual-zone {
+    width: 100%;
+    background: #f5f5f7;
+    border-radius: 18px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .card-tags-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .tag-chip {
+    background: #e8e8ed;
+    color: #424245;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.3rem 0.7rem;
+    border-radius: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .card-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #424245;
+    margin: 0;
+  }
+
+  /* ==========================================================================
+     2. Running 카드 전용 구조 스타일
+     ========================================================================== */
+  .running-chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  .running-chart-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
+  .pb-list-board {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 260px;
+    gap: 0.9rem;
+    background: #f5f5f7;
+    padding: 1.5rem;
+    border-radius: 20px;
+    box-sizing: border-box;
+  }
+  .pb-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    padding-bottom: 0.5rem;
+  }
+  .pb-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .pb-distance { font-size: 1rem; font-weight: 800; letter-spacing: -0.01em; }
+  .pb-distance.full  { color: #FF2D55; }
+  .pb-distance.half  { color: #AF52DE; }
+  .pb-distance.k10   { color: #007AFF; }
+  .pb-distance.k5    { color: #34C759; }
+  .pb-time { font-size: 1.1rem; font-weight: 700; color: #1d1d1f; font-family: monospace; }
+
+  .mileage-bar-wrapper { display: flex; flex-direction: column; width: 100%; height: 190px; justify-content: flex-end; }
+  .mileage-bar-axis { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; height: 100%; border-bottom: 1px solid #e8e8ed; padding-bottom: 4px; box-sizing: border-box; }
+  .mileage-bar-column { display: flex; flex-direction: column; align-items: center; width: 14%; height: 100%; justify-content: flex-end; }
+  .mileage-bar-fill { width: 100%; background-color: #E5E5EA; border-radius: 5px 5px 0 0; }
+  .mileage-bar-fill.active { background-color: #FF5733 !important; box-shadow: 0 2px 8px rgba(255,87,51,0.2); }
+  .mileage-bar-label { font-size: 0.65rem; color: #86868b; margin-top: 8px; font-weight: 500; }
+
+  .running-kpi-row {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background: #f5f5f7;
+    border-radius: 12px;
+    padding: 0.6rem;
+    margin-bottom: 1.2rem;
+    box-sizing: border-box;
+  }
+  .running-kpi-item { text-align: center; }
+  .running-kpi-label { font-size: 0.62rem; color: #86868b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.03em; }
+  .running-kpi-value { font-size: 1.05rem; font-weight: 700; color: #1d1d1f; font-family: monospace; }
+
+  /* ==========================================================================
+     3. Travel 전용 스쿼드 3열 레이아웃 스타일 (Squad List Matrix)
+     ========================================================================== */
+  .squad-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  .squad-master-kpi {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1d1d1f;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    margin-bottom: 1.8rem;
+    border-bottom: 2px solid #1d1d1f;
+    padding-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .squad-master-kpi span {
+    color: #007AFF;
+  }
+
+  .squad-matrix-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .squad-country-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .squad-country-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1d1d1f;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem; /* 텍스트와 국기 패널 유격 고정 */
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.2rem;
+  }
+
+  /* 🌟 [인프라 크래시 해결] 윈도우 OS 디바이스 편차를 분쇄하는 고해상도 벡터 국기 프레임 */
+  .squad-flag-img {
+    width: 20px !important;
+    height: 15px !important;
+    border-radius: 2px !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+    display: inline-block !important;
+    object-fit: cover !important;
+    vertical-align: middle !important;
+  }
+
+  .squad-city-list {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1.85rem; /* 벡터 국기 가로축 폭에 맞춰 들여쓰기 선 동치화 */
+    gap: 0.35rem;
+  }
+  .squad-city-item {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #424245;
+    position: relative;
+    transition: color 0.2s ease;
+  }
+  .squad-city-item:hover {
+    color: #007AFF;
+  }
+
+  @media (max-width: 900px) {
+    .running-chart-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .squad-matrix-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .card-visual-zone { height: auto !important; }
+  }
+  @media (max-width: 600px) {
+    .squad-matrix-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .squad-master-kpi { font-size: 1.25rem; }
+  }
+</style>
+
+<div class="hobbies-container">
+
+  <div class="large-project-card">
+    <div class="card-subtitle">Hobby 01 . Endurance & Discipline</div>
+    <div class="card-main-title">Running & Marathon</div>
+    
+    <div class="card-visual-zone" style="height: 420px; background: #ffffff; padding: 1.5rem; flex-direction: column;">
+      <div class="running-chart-grid">
+        
+        <div class="running-chart-box">
+          <div class="pb-list-board">
+            <div class="pb-row">
+              <span class="pb-distance full">Full</span>
+              <span class="pb-time">3:55:21</span>
+            </div>
+            <div class="pb-row">
+              <span class="pb-distance half">Half</span>
+              <span class="pb-time">1:45:10</span>
+            </div>
+            <div class="pb-row">
+              <span class="pb-distance k10">10km</span>
+              <span class="pb-time">0:46:30</span>
+            </div>
+            <div class="pb-row">
+              <span class="pb-distance k5">5km</span>
+              <span class="pb-time">0:21:15</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="running-chart-box">
+          <div class="running-kpi-row">
+            <div class="running-kpi-item">
+              <div class="running-kpi-label">2026 Total</div>
+              <div class="running-kpi-value">842.5 km</div>
+            </div>
+            <div class="running-kpi-item">
+              <div class="running-kpi-label">May Vol</div>
+              <div class="running-kpi-value" style="color: #FF5733;">124.2 km</div>
+            </div>
+          </div>
+          
+          <div class="mileage-bar-wrapper">
+            <div class="mileage-bar-axis">
+              <div class="mileage-bar-column"><div class="mileage-bar-fill" style="height: 60%;"></div><span class="mileage-bar-label">Jan</span></div>
+              <div class="mileage-bar-column"><div class="mileage-bar-fill" style="height: 45%;"></div><span class="mileage-bar-label">Feb</span></div>
+              <div class="mileage-bar-column"><div class="mileage-bar-fill" style="height: 85%;"></div><span class="mileage-bar-label">Mar</span></div>
+              <div class="mileage-bar-column"><div class="mileage-bar-fill" style="height: 100%;"></div><span class="mileage-bar-label">Apr</span></div>
+              <div class="mileage-bar-column"><div class="mileage-bar-fill active" style="height: 72%;"></div><span class="mileage-bar-label">May</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card-tags-group">
+      <span class="tag-chip">Marathoner</span>
+      <span class="tag-chip">Endurance</span>
+      <span class="tag-chip">Health Tech</span>
+      <span class="tag-chip">Consistency</span>
+    </div>
+    <p class="card-description">
+      러닝은 정직한 노력의 결과를 숫자로 증명하는 가장 명확한 투자입니다. 
+      매일 쌓아가는 마일리지는 심폐지구력이라는 보이지 않는 자산을 구축하며, 대회에서의 PB 갱신은 한계를 넘어서는 성취감을 제공합니다. 
+      올해는 서브-4 진입을 안정적으로 수립하기 위해 체계적인 존2(Zone 2) 빌드업 트레이닝과 마일리지 축적을 병행하고 있습니다.
+    </p>
+  </div>
+
+
+  <div class="large-project-card">
+    <div class="card-subtitle">Hobby 02 . Inspiration & Perspective</div>
+    <div class="card-main-title">Travel & Global Footprints</div>
+    
+    <div class="card-visual-zone" style="height: auto; min-height: 380px; background: #ffffff; padding: 2rem; align-items: flex-start;">
+      <div class="squad-container">
+        
+        <div class="squad-master-kpi">
+          <span style="font-size: 1.3rem;">🌐</span> <span>12</span> Countries, <span>24</span> Cities
+        </div>
+        
+        <div class="squad-matrix-grid">
+          
+          <div class="squad-country-block">
+            <div class="squad-country-name">
+              <img class="squad-flag-img" src="[https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/flags/4x3/us.svg](https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/flags/4x3/us.svg)" alt="USA Flag">
+              United States
+            </div>
+            <div class="squad-city-list">
+              <div class="squad-city-item">Hawaii</div>
+              <div class="squad-city-item">Los Angeles</div>
+              <div class="squad-city-item">New York</div>
+              <div class="squad-city-item">San Francisco</div>
+            </div>
+          </div>
+          
+          <div class="squad-country-block">
+            <div class="squad-country-name">
+              <img class="squad-flag-img" src="[https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/flags/4x3/de.svg](https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/flags/4x3/de.svg)" alt="Germany Flag">
+              Germany
+            </div>
+            <div class="squad-city-list">
+              <div class="squad-city-item">Munich</div>
+              <div class="squad-city-item">Frankfurt</div>
+              <div class="squad-city-item">Stuttgart</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-country-name">
+              <img class="squad-flag-img" src="[https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/flags/4x3/jp.svg](https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/flags/4x3/jp.svg)" alt="Japan Flag">
+              Japan
+            </div>
+            <div class="squad-city-list">
+              <div class="squad-city-item">Kyoto</div>
+              <div class="squad-city-item">Tokyo</div>
+              <div class="squad-city-item">Osaka</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-country-name">
+              <img class="squad-flag-img" src="[https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/flags/4x3/fr.svg](https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/flags/4x3/fr.svg)" alt="France Flag">
+              France
+            </div>
+            <div class="squad-city-list">
+              <div class="squad-city-item">Paris</div>
+              <div class="squad-city-item">Nice</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-country-name">
+              <img class="squad-flag-img" src="[https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/flags/4x3/gb.svg](https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/flags/4x3/gb.svg)" alt="UK Flag">
+              United Kingdom
+            </div>
+            <div class="squad-city-list">
+              <div class="squad-city-item">London</div>
+              <div class="squad-city-item">Edinburgh</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-country-name">
+              <img class="squad-flag-img" src="[https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/flags/4x3/ch.svg](https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/flags/4x3/ch.svg)" alt="Switzerland Flag">
+              Switzerland
+            </div>
+            <div class="squad-city-list">
+              <div class="squad-city-item">Zurich</div>
+              <div class="squad-city-item">Interlaken</div>
+            </div>
+          </div>
+
+        </div> </div>
+    </div>
+
+    <div class="card-tags-group">
+      <span class="tag-chip">Global Nomad</span>
+      <span class="tag-chip">Insight Hunting</span>
+      <span class="tag-chip">Photography</span>
+      <span class="tag-chip">Family Trip</span>
+    </div>
+    <p class="card-description">
+      새로운 공간에 발을 딛는 것은 일상의 관성을 깨고 생각의 지평을 넓히는 가장 직관적인 자극입니다. 
+      세계 각국을 여행하며 다양한 추억을 남기고, 새로운 인사이트와 영감을 얻는 것을 즐깁니다.
+    </p>
+  </div>
+
+</div>
+```
