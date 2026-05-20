@@ -36,12 +36,13 @@ subtitle: "ENDURANCE, CREATIVITY, AND CONTINUOUS GROWTH"
     letter-spacing: 0.08em;
     margin-bottom: 0.5rem;
   }
-  .card-main-title {
+  .large-project-card .card-main-title {
     font-size: 1.8rem;
     font-weight: 600;
     margin-top: 0;
     margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
+    color: #1d1d1f !important;
   }
 
   .card-visual-zone {
@@ -81,9 +82,9 @@ subtitle: "ENDURANCE, CREATIVITY, AND CONTINUOUS GROWTH"
   }
 
   /* ==========================================================================
-     2. Running 카드 전용 구조 스타일
+     2. 공통 그리드 및 통합 KPI 컴포넌트 스타일
      ========================================================================== */
-  .running-chart-grid {
+  .hobbies-chart-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
@@ -92,7 +93,7 @@ subtitle: "ENDURANCE, CREATIVITY, AND CONTINUOUS GROWTH"
     align-items: center;
     box-sizing: border-box;
   }
-  .running-chart-box {
+  .hobbies-chart-box {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -101,6 +102,24 @@ subtitle: "ENDURANCE, CREATIVITY, AND CONTINUOUS GROWTH"
     width: 100%;
     position: relative;
   }
+
+  .hobbies-kpi-row {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background: #f5f5f7;
+    border-radius: 12px;
+    padding: 0.6rem;
+    margin-bottom: 1.2rem;
+    box-sizing: border-box;
+  }
+  .hobbies-kpi-item { text-align: center; }
+  .hobbies-kpi-label { font-size: 0.62rem; color: #86868b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.03em; }
+  .hobbies-kpi-value { font-size: 1.05rem; font-weight: 700; color: #1d1d1f; font-family: monospace; }
+
+  /* ==========================================================================
+     3. Running 카드 전용 구조 스타일 (🌟 정갈한 고밀도 목록형 스코어보드 고정)
+     ========================================================================== */
   .pb-list-board {
     display: flex;
     flex-direction: column;
@@ -134,30 +153,11 @@ subtitle: "ENDURANCE, CREATIVITY, AND CONTINUOUS GROWTH"
   .mileage-bar-fill.active { background-color: #FF5733 !important; box-shadow: 0 2px 8px rgba(255,87,51,0.2); }
   .mileage-bar-label { font-size: 0.65rem; color: #86868b; margin-top: 8px; font-weight: 500; }
 
-  .running-kpi-row {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    background: #f5f5f7;
-    border-radius: 12px;
-    padding: 0.6rem;
-    margin-bottom: 1.2rem;
-    box-sizing: border-box;
-  }
-  .running-kpi-item { text-align: center; }
-  .running-kpi-label { font-size: 0.62rem; color: #86868b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.03em; }
-  .running-kpi-value { font-size: 1.05rem; font-weight: 700; color: #1d1d1f; font-family: monospace; }
-
   /* ==========================================================================
-     3. Travel 전용 스쿼드 3열 레이아웃 스타일 (Squad List Matrix)
+     4. Travel & Vibe Coding 전용 스쿼드 공통 스타일 (Squad List Matrix)
      ========================================================================== */
-  .squad-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-  }
-
+  .squad-container { display: flex; flex-direction: column; width: 100%; height: 100%; }
+  
   .squad-master-kpi {
     font-size: 1.5rem;
     font-weight: 800;
@@ -171,24 +171,18 @@ subtitle: "ENDURANCE, CREATIVITY, AND CONTINUOUS GROWTH"
     align-items: center;
     gap: 0.6rem;
   }
-  .squad-master-kpi span {
-    color: #007AFF;
-  }
-
+  .squad-master-kpi span { color: #007AFF; }
+  
   .squad-matrix-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
     width: 100%;
   }
-
-  .squad-country-block {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-
-  .squad-country-name {
+  
+  .squad-block { display: flex; flex-direction: column; gap: 0.4rem; }
+  
+  .squad-header-title {
     font-size: 1.05rem;
     font-weight: 700;
     color: #1d1d1f;
@@ -198,38 +192,29 @@ subtitle: "ENDURANCE, CREATIVITY, AND CONTINUOUS GROWTH"
     border-bottom: 1px solid rgba(0,0,0,0.06);
     padding-bottom: 0.3rem;
     margin-bottom: 0.2rem;
+    min-height: 32px; /* 🌟 제목 줄수 차이로 인한 정렬 틀어짐 방지용 최소 높이 락인 */
   }
-
-  /* 🌟 [인프라 패치 완료] 깨짐 마찰을 원천 차단하는 임베디드 시각 보정선 */
-  .squad-embedded-flag {
-    width: 21px !important;
-    height: 15px !important;
-    border-radius: 2px !important;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
-    display: inline-block !important;
-    vertical-align: middle !important;
-    flex-shrink: 0 !important;
-  }
-
-  .squad-city-list {
+  
+  .squad-embedded-flag { width: 21px !important; height: 15px !important; border-radius: 2px !important; box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important; display: inline-block !important; vertical-align: middle !important; flex-shrink: 0 !important; }
+  
+  .squad-indent-list {
     display: flex;
     flex-direction: column;
     padding-left: 1.9rem;
     gap: 0.35rem;
   }
-  .squad-city-item {
+  .squad-indent-item {
     font-size: 0.9rem;
     font-weight: 500;
     color: #424245;
     position: relative;
     transition: color 0.2s ease;
   }
-  .squad-city-item:hover {
-    color: #007AFF;
-  }
+  .squad-indent-item:hover { color: #007AFF; }
 
+  /* 반응형 분기선 제어선 동치화 */
   @media (max-width: 900px) {
-    .running-chart-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .running-chart-grid, .hobbies-chart-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .squad-matrix-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
     .card-visual-zone { height: auto !important; }
   }
@@ -246,9 +231,9 @@ subtitle: "ENDURANCE, CREATIVITY, AND CONTINUOUS GROWTH"
     <div class="card-main-title">Running & Marathon</div>
     
     <div class="card-visual-zone" style="height: 420px; background: #ffffff; padding: 1.5rem; flex-direction: column;">
-      <div class="running-chart-grid">
+      <div class="hobbies-chart-grid">
         
-        <div class="running-chart-box">
+        <div class="hobbies-chart-box">
           <div class="pb-list-board">
             <div class="pb-row">
               <span class="pb-distance full">Full</span>
@@ -269,15 +254,15 @@ subtitle: "ENDURANCE, CREATIVITY, AND CONTINUOUS GROWTH"
           </div>
         </div>
         
-        <div class="running-chart-box">
-          <div class="running-kpi-row">
-            <div class="running-kpi-item">
-              <div class="running-kpi-label">2026 Total</div>
-              <div class="running-kpi-value">842.5 km</div>
+        <div class="hobbies-chart-box">
+          <div class="hobbies-kpi-row">
+            <div class="hobbies-kpi-item">
+              <div class="hobbies-kpi-label">2026 Total</div>
+              <div class="hobbies-kpi-value">842.5 km</div>
             </div>
-            <div class="running-kpi-item">
-              <div class="running-kpi-label">May Vol</div>
-              <div class="running-kpi-value" style="color: #FF5733;">124.2 km</div>
+            <div class="hobbies-kpi-item">
+              <div class="hobbies-kpi-label">May Vol</div>
+              <div class="hobbies-kpi-value" style="color: #FF5733;">124.2 km</div>
             </div>
           </div>
           
@@ -302,9 +287,7 @@ subtitle: "ENDURANCE, CREATIVITY, AND CONTINUOUS GROWTH"
       <span class="tag-chip">Consistency</span>
     </div>
     <p class="card-description">
-      러닝은 정직한 노력의 결과를 숫자로 증명하는 가장 명확한 투자입니다. 
-      매일 쌓아가는 마일리지는 심폐지구력이라는 보이지 않는 자산을 구축하며, 대회에서의 PB 갱신은 한계를 넘어서는 성취감을 제공합니다. 
-      올해는 서브-4 진입을 안정적으로 수립하기 위해 체계적인 존2(Zone 2) 빌드업 트레이닝과 마일리지 축적을 병행하고 있습니다.
+      러닝은 정직한 노력의 결과를 숫자로 증명하는 가장 명확한 투자입니다. 매일 쌓아가는 마일리지는 심폐지구력이라는 보이지 않는 자산을 구축하며, 대회에서의 PB 갱신은 한계를 넘어서는 성취감을 제공합니다. 올해는 서브-4 진입을 안정적으로 수립하기 위해 체계적인 존2(Zone 2) 빌드업 트레이닝과 마일리지 축적을 병행하고 있습니다.
     </p>
   </div>
 
@@ -324,100 +307,77 @@ subtitle: "ENDURANCE, CREATIVITY, AND CONTINUOUS GROWTH"
         <div class="squad-matrix-grid">
           
           <div class="squad-country-block">
-            <div class="squad-country-name">
-              <svg class="squad-embedded-flag" viewBox="0 0 741 390">
-                <rect width="741" height="390" fill="#b31942"/>
-                <path d="M0 30h741M0 90h741M0 150h741M0 210h741M0 270h741M0 330h741" stroke="#fff" stroke-width="30"/>
-                <rect width="296" height="210" fill="#0a3161"/>
-                <path d="M0 0h296v210H0z" fill="#0a3161"/>
-                <circle cx="148" cy="105" r="50" fill="#fff"/> </svg>
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 741 390"><rect width="741" height="390" fill="#b31942"/><path d="M0 30h741M0 90h741M0 150h741M0 210h741M0 270h741M0 330h741" stroke="#fff" stroke-width="30"/><rect width="296" height="210" fill="#0a3161"/><circle cx="148" cy="105" r="50" fill="#fff"/></svg>
               United States
             </div>
-            <div class="squad-city-list">
-              <div class="squad-city-item">Hawaii</div>
-              <div class="squad-city-item">Los Angeles</div>
-              <div class="squad-city-item">New York</div>
-              <div class="squad-city-item">San Francisco</div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Hawaii</div>
+              <div class="squad-indent-item">Los Angeles</div>
+              <div class="squad-indent-item">New York</div>
+              <div class="squad-indent-item">San Francisco</div>
             </div>
           </div>
           
           <div class="squad-country-block">
-            <div class="squad-country-name">
-              <svg class="squad-embedded-flag" viewBox="0 0 5 3">
-                <rect width="5" height="1" fill="#000"/>
-                <rect y="1" width="5" height="1" fill="#D00"/>
-                <rect y="2" width="5" height="1" fill="#FFCE00"/>
-              </svg>
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 5 3"><rect width="5" height="1" fill="#000"/><rect y="1" width="5" height="1" fill="#D00"/><rect y="2" width="5" height="1" fill="#FFCE00"/></svg>
               Germany
             </div>
-            <div class="squad-city-list">
-              <div class="squad-city-item">Munich</div>
-              <div class="squad-city-item">Frankfurt</div>
-              <div class="squad-city-item">Stuttgart</div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Munich</div>
+              <div class="squad-indent-item">Frankfurt</div>
+              <div class="squad-indent-item">Stuttgart</div>
             </div>
           </div>
 
           <div class="squad-country-block">
-            <div class="squad-country-name">
-              <svg class="squad-embedded-flag" viewBox="0 0 3 2" style="background:#fff; border:1px solid rgba(0,0,0,0.03);">
-                <circle cx="1.5" cy="1" r="0.6" fill="#bc002d"/>
-              </svg>
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 3 2" style="background:#fff; border:1px solid rgba(0,0,0,0.03);"><circle cx="1.5" cy="1" r="0.6" fill="#bc002d"/></svg>
               Japan
             </div>
-            <div class="squad-city-list">
-              <div class="squad-city-item">Kyoto</div>
-              <div class="squad-city-item">Tokyo</div>
-              <div class="squad-city-item">Osaka</div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Kyoto</div>
+              <div class="squad-indent-item">Tokyo</div>
+              <div class="squad-indent-item">Osaka</div>
             </div>
           </div>
 
           <div class="squad-country-block">
-            <div class="squad-country-name">
-              <svg class="squad-embedded-flag" viewBox="0 0 3 2">
-                <rect width="1" height="2" fill="#002395"/>
-                <rect x="1" width="1" height="2" fill="#fff"/>
-                <rect x="2" width="1" height="2" fill="#ED2939"/>
-              </svg>
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 3 2"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg>
               France
             </div>
-            <div class="squad-city-list">
-              <div class="squad-city-item">Paris</div>
-              <div class="squad-city-item">Nice</div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Paris</div>
+              <div class="squad-indent-item">Nice</div>
             </div>
           </div>
 
           <div class="squad-country-block">
-            <div class="squad-country-name">
-              <svg class="squad-embedded-flag" viewBox="0 0 2 1" fill="#00247d">
-                <path d="M0 0h2v1H0z"/>
-                <path d="M0 0l2 1M2 0L0 1" stroke="#fff" stroke-width="0.2"/>
-                <path d="M0 0l2 1M2 0L0 1" stroke="#cf142b" stroke-width="0.12"/>
-                <path d="M1 0v1M0 0.5h2" stroke="#fff" stroke-width="0.3"/>
-                <path d="M1 0v1M0 0.5h2" stroke="#cf142b" stroke-width="0.18"/>
-              </svg>
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 2 1" fill="#00247d"><path d="M0 0h2v1H0z"/><path d="M0 0l2 1M2 0L0 1" stroke="#fff" stroke-width="0.2"/><path d="M0 0l2 1M2 0L0 1" stroke="#cf142b" stroke-width="0.12"/><path d="M1 0v1M0 0.5h2" stroke="#fff" stroke-width="0.3"/><path d="M1 0v1M0 0.5h2" stroke="#cf142b" stroke-width="0.18"/></svg>
               United Kingdom
             </div>
-            <div class="squad-city-list">
-              <div class="squad-city-item">London</div>
-              <div class="squad-city-item">Edinburgh</div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">London</div>
+              <div class="squad-indent-item">Edinburgh</div>
             </div>
           </div>
 
           <div class="squad-country-block">
-            <div class="squad-country-name">
-              <svg class="squad-embedded-flag" viewBox="0 0 1 1" fill="#d52b1e">
-                <rect width="1" height="1"/>
-                <path d="M0.2 0.45h0.6v0.1h-0.6zM0.45 0.2h0.1v0.6h-0.1z" fill="#fff"/>
-              </svg>
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 1 1" fill="#d52b1e"><rect width="1" height="1"/><path d="M0.2 0.45h0.6v0.1h-0.6zM0.45 0.2h0.1v0.6h-0.1z" fill="#fff"/></svg>
               Switzerland
             </div>
-            <div class="squad-city-list">
-              <div class="squad-city-item">Zurich</div>
-              <div class="squad-city-item">Interlaken</div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Zurich</div>
+              <div class="squad-indent-item">Interlaken</div>
             </div>
           </div>
-
-        </div> </div>
+        </div>
+        
+      </div>
     </div>
 
     <div class="card-tags-group">
@@ -427,8 +387,71 @@ subtitle: "ENDURANCE, CREATIVITY, AND CONTINUOUS GROWTH"
       <span class="tag-chip">Family Trip</span>
     </div>
     <p class="card-description">
-      새로운 공간에 발을 딛는 것은 일상의 관성을 깨고 생각의 지평을 넓히는 가장 직관적인 자극입니다. 
-      세계 각국을 여행하며 다양한 추억을 남기고, 새로운 인사이트와 영감을 얻는 것을 즐깁니다.
+      새로운 공간에 발을 딛는 것은 일상의 관성을 깨고 생각의 지평을 넓히는 가장 직관적인 자극입니다. 세계 각국을 여행하며 다양한 추억을 남기고, 새로운 인사이트와 영감을 얻는 것을 즐깁니다.
+    </p>
+  </div>
+
+
+  <div class="large-project-card">
+    <div class="card-subtitle">Hobby 03 . Synergy with AI Agents</div>
+    <div class="card-main-title">Vibe Coding & Automation</div>
+    
+    <div class="card-visual-zone" style="height: auto; min-height: 380px; background: #ffffff; padding: 2rem; align-items: flex-start;">
+      <div class="squad-container">
+        
+        <div class="squad-master-kpi">
+          🤖 <span>AI-Assisted</span> Production Lineup
+        </div>
+        
+        <div class="squad-matrix-grid">
+          
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <span style="font-size: 1.15rem; vertical-align: middle; line-height: 1;">⚖️</span>
+              Finance & Wealth
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Asset Allocation Dashboard</div>
+              <div class="squad-indent-item">Fire & Tax Calculator</div>
+              <div class="squad-indent-item">Dividend Tracker Engine</div>
+            </div>
+          </div>
+          
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <span style="font-size: 1.15rem; vertical-align: middle; line-height: 1;">🔬</span>
+              Research & Deep Tech
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Patent Scout & Paper Digest</div>
+              <div class="squad-indent-item">Microwave Synthesis Simulator</div>
+              <div class="squad-indent-item">Carbon Cycle Efficiency Analyzer</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <span style="font-size: 1.15rem; vertical-align: middle; line-height: 1;">🏃‍♂️</span>
+              Life & Automation
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Sub-4 Pacemaker Log</div>
+              <div class="squad-indent-item">Overnight Oats Nutrient Calculator</div>
+              <div class="squad-indent-item">Custom AI Gems Hub</div>
+            </div>
+          </div>
+
+        </div> </div>
+    </div>
+
+    <div class="card-tags-group">
+      <span class="tag-chip">Vibe Coding</span>
+      <span class="tag-chip">LLM Orchestration</span>
+      <span class="tag-chip">Rapid Prototyping</span>
+      <span class="tag-chip">Python Blueprint</span>
+    </div>
+    <p class="card-description">
+      코알못의 바이브 코딩을 활용한 프로젝트들을 소개합니다. AI 에이전트를 활용해 개인 생산성 도구부터 딥테크 연구 보조까지 다양한 영역에서 시너지를 창출하는 것을 즐깁니다.
     </p>
   </div>
 
