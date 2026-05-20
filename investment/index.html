@@ -153,13 +153,15 @@ ul.task-list li input[type="checkbox"] {
 
 
 <style>
+  /* ==========================================================================
+     1. 전역 레이아웃 및 카드 프레임 인프라
+     ========================================================================== */
   .investment-container {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
     color: #1d1d1f;
     margin: 2rem 0;
   }
 
-  /* 대형 카드 레이아웃 구성 */
   .large-project-card {
     background: #ffffff;
     border-radius: 28px;
@@ -174,7 +176,6 @@ ul.task-list li input[type="checkbox"] {
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04);
   }
 
-  /* 카드 내부 텍스트 헤더 */
   .card-subtitle {
     font-size: 0.8rem;
     font-weight: 700;
@@ -191,7 +192,6 @@ ul.task-list li input[type="checkbox"] {
     letter-spacing: -0.02em;
   }
 
-  /* 시각 자료 적재 영역 */
   .card-visual-zone {
     width: 100%;
     background: #f5f5f7;
@@ -205,7 +205,6 @@ ul.task-list li input[type="checkbox"] {
     overflow: hidden;
   }
 
-  /* 메타데이터 태그 칩 */
   .card-tags-group {
     display: flex;
     flex-wrap: wrap;
@@ -222,12 +221,220 @@ ul.task-list li input[type="checkbox"] {
     letter-spacing: -0.01em;
   }
 
-  /* 설명문 단락 */
   .card-description {
     font-size: 0.95rem;
     line-height: 1.6;
     color: #424245;
     margin: 0;
+  }
+
+  /* ==========================================================================
+     2. Matrix 02 전용 모던 CSS 듀얼 차트 스타일
+     ========================================================================== */
+  .css-chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  .css-chart-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
+  .css-donut-ring {
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    background: conic-gradient(#007AFF 0% 40%, #5AC8FA 40% 65%, #4CD964 65% 85%, #FFCC00 85% 95%, #AFAFB6 95% 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  }
+  .css-donut-hole {
+    width: 150px;
+    height: 150px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .css-donut-label {
+    font-size: 0.72rem;
+    color: #86868b;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 2px;
+  }
+  .css-donut-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1d1d1f;
+    font-family: monospace;
+    letter-spacing: -0.02em;
+  }
+  .css-bar-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 190px;
+    justify-content: flex-end;
+  }
+  .css-bar-axis {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #e8e8ed;
+    padding-bottom: 4px;
+    box-sizing: border-box;
+  }
+  .css-bar-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 14%;
+    height: 100%;
+    justify-content: flex-end;
+  }
+  .css-bar-fill {
+    width: 100%;
+    background-color: #E5E5EA;
+    border-radius: 5px 5px 0 0;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .css-bar-fill.active {
+    background-color: #007AFF !important;
+    box-shadow: 0 2px 8px rgba(0,122,255,0.2);
+  }
+  .css-bar-label {
+    font-size: 0.7rem;
+    color: #86868b;
+    margin-top: 8px;
+    font-weight: 500;
+  }
+  .css-kpi-row {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background: #f5f5f7;
+    border-radius: 12px;
+    padding: 0.6rem;
+    margin-bottom: 1.2rem;
+    box-sizing: border-box;
+  }
+  .css-kpi-item { text-align: center; }
+  .css-kpi-label { font-size: 0.62rem; color: #86868b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.03em; }
+  .css-kpi-value { font-size: 1.05rem; font-weight: 700; color: #1d1d1f; font-family: monospace; }
+
+  /* ==========================================================================
+     3. Matrix 03 전용 SVG 링-패스 차트 스타일
+     ========================================================================== */
+  .tax-chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  .tax-chart-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
+  .tax-donut-container {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .svg-donut-text {
+    font-size: 10px;
+    font-weight: 800;
+    fill: #ffffff;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    dominant-baseline: central;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+  .tax-bar-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 190px;
+    justify-content: flex-end;
+  }
+  .tax-bar-axis {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #e8e8ed;
+    padding-bottom: 4px;
+    box-sizing: border-box;
+  }
+  .tax-bar-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 14%;
+    height: 100%;
+    justify-content: flex-end;
+  }
+  .tax-bar-fill {
+    width: 100%;
+    background-color: #E5E5EA;
+    border-radius: 5px 5px 0 0;
+  }
+  .tax-bar-fill.active {
+    background-color: #34C759 !important;
+    box-shadow: 0 2px 8px rgba(52,199,89,0.2);
+  }
+  .tax-bar-label {
+    font-size: 0.7rem;
+    color: #86868b;
+    margin-top: 8px;
+    font-weight: 500;
+  }
+  .tax-kpi-row {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background: #f5f5f7;
+    border-radius: 12px;
+    padding: 0.6rem;
+    margin-bottom: 1.2rem;
+    box-sizing: border-box;
+  }
+  .tax-kpi-item { text-align: center; }
+  .tax-kpi-label { font-size: 0.62rem; color: #86868b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.03em; }
+  .tax-kpi-value { font-size: 1.05rem; font-weight: 700; color: #1d1d1f; font-family: monospace; }
+
+  @media (max-width: 900px) {
+    .css-chart-grid, .tax-chart-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .card-visual-zone { height: auto !important; }
+    .css-bar-wrapper, .tax-bar-wrapper { height: 160px; }
   }
 
   @media (max-width: 768px) {
@@ -261,7 +468,6 @@ ul.task-list li input[type="checkbox"] {
           box-sizing: border-box !important;
           margin-bottom: 32px !important;
         }
-
         .t1-embedded-wealth-engine::before {
           content: '' !important;
           position: absolute !important;
@@ -273,52 +479,14 @@ ul.task-list li input[type="checkbox"] {
           z-index: 0 !important;
           pointer-events: none !important;
         }
-
-        .t1-embedded-wealth-engine > * {
-          position: relative !important;
-          z-index: 1 !important;
-          box-sizing: border-box !important;
-        }
-
-        .t1-embedded-wealth-engine .widget-header {
-          display: flex !important;
-          justify-content: space-between !important;
-          align-items: center !important;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
-          padding-bottom: 10px !important;
-          margin-bottom: 4px !important;
-        }
-
-        .t1-embedded-wealth-engine .widget-title {
-          font-size: 14px !important;
-          font-weight: 800 !important;
-          letter-spacing: 0.05em !important;
-          color: #ffffff !important;
-          text-transform: uppercase !important;
-          margin: 0 !important;
-        }
+        .t1-embedded-wealth-engine > * { position: relative !important; z-index: 1 !important; box-sizing: border-box !important; }
+        .t1-embedded-wealth-engine .widget-header { display: flex !important; justify-content: space-between !important; align-items: center !important; border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important; padding-bottom: 10px !important; margin-bottom: 4px !important; }
+        .t1-embedded-wealth-engine .widget-title { font-size: 14px !important; font-weight: 800 !important; letter-spacing: 0.05em !important; color: #ffffff !important; text-transform: uppercase !important; margin: 0 !important; }
         .t1-embedded-wealth-engine .widget-title span { color: #38bdf8; font-weight: 500; }
-
-        .t1-embedded-wealth-engine .widget-status {
-          display: flex !important;
-          align-items: center !important;
-          gap: 6px !important;
-          font-size: 10px !important;
-          font-family: monospace !important;
-          color: #86868b !important;
-        }
-        .t1-embedded-wealth-engine .widget-dot {
-          width: 6px; height: 6px; background-color: #34d399; border-radius: 50%;
-          box-shadow: 0 0 6px #34d399;
-        }
-
-        .t1-embedded-wealth-engine .widget-list {
-          display: flex !important;
-          flex-direction: column !important;
-          gap: 8px !important;
-        }
-
-        /* 💻 데스크톱 기본 상태: 가로 정렬 및 고정 높이 */
+        .t1-embedded-wealth-engine .widget-status { display: flex !important; align-items: center !important; gap: 6px !important; font-size: 10px !important; font-family: monospace !important; color: #86868b !important; }
+        .t1-embedded-wealth-engine .widget-dot { width: 6px; height: 6px; background-color: #34d399; border-radius: 50%; box-shadow: 0 0 6px #34d399; }
+        .t1-embedded-wealth-engine .widget-list { display: flex !important; flex-direction: column !important; gap: 8px !important; }
+        
         .t1-embedded-wealth-engine .mini-wealth-card {
           background: rgba(15, 23, 42, 0.4) !important;
           border-radius: 10px !important;
@@ -330,63 +498,29 @@ ul.task-list li input[type="checkbox"] {
           transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
           height: 52px !important;
         }
-        .t1-embedded-wealth-engine .mini-wealth-card:hover {
-          transform: translateX(2px) !important;
-          background: rgba(15, 23, 42, 0.7) !important;
-          border-color: rgba(255, 255, 255, 0.08) !important;
-        }
-
+        .t1-embedded-wealth-engine .mini-wealth-card:hover { transform: translateX(2px) !important; background: rgba(15, 23, 42, 0.7) !important; border-color: rgba(255, 255, 255, 0.08) !important; }
         .t1-embedded-wealth-engine .card-core { display: flex !important; align-items: center !important; gap: 14px !important; }
-        
-        .t1-embedded-wealth-engine .mini-icon-box {
-          width: 32px; height: 32px; border-radius: 8px;
-          display: flex !important; justify-content: center !important; align-items: center !important;
-          flex-shrink: 0 !important;
-        }
-
-        .t1-embedded-wealth-engine .mini-title {
-          font-size: 13.5px !important; font-weight: 700 !important; color: #ffffff !important; margin: 0 !important;
-        }
-
-        .t1-embedded-wealth-engine .mini-tickers {
-          font-family: monospace !important;
-          font-size: 11.5px !important; font-weight: 700 !important;
-          padding: 4px 10px !important; border-radius: 6px !important;
-          white-space: nowrap !important;
-        }
+        .t1-embedded-wealth-engine .mini-icon-box { width: 32px; height: 32px; border-radius: 8px; display: flex !important; justify-content: center !important; align-items: center !important; flex-shrink: 0 !important; }
+        .t1-embedded-wealth-engine .mini-title { font-size: 13.5px !important; font-weight: 700 !important; color: #ffffff !important; margin: 0 !important; }
+        .t1-embedded-wealth-engine .mini-tickers { font-family: monospace !important; font-size: 11.5px !important; font-weight: 700 !important; padding: 4px 10px !important; border-radius: 6px !important; white-space: nowrap !important; }
 
         .t1-embedded-wealth-engine .gold-chip .mini-icon-box { background: rgba(245, 158, 11, 0.1); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.2); }
         .t1-embedded-wealth-engine .gold-chip { border-left: 3px solid #fbbf24 !important; }
         .t1-embedded-wealth-engine .gold-chip .mini-tickers { color: #fbbf24; background: rgba(245, 158, 11, 0.05); }
-
         .t1-embedded-wealth-engine .emerald-chip .mini-icon-box { background: rgba(16, 185, 129, 0.1); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.2); }
         .t1-embedded-wealth-engine .emerald-chip { border-left: 3px solid #34d399 !important; }
         .t1-embedded-wealth-engine .emerald-chip .mini-tickers { color: #34d399; background: rgba(16, 185, 129, 0.05); }
-
         .t1-embedded-wealth-engine .violet-chip .mini-icon-box { background: rgba(139, 92, 246, 0.1); color: #a78bfa; border: 1px solid rgba(139, 92, 246, 0.2); }
         .t1-embedded-wealth-engine .violet-chip { border-left: 3px solid #a78bfa !important; }
         .t1-embedded-wealth-engine .violet-chip .mini-tickers { color: #a78bfa; background: rgba(139, 92, 246, 0.05); }
-
         .t1-embedded-wealth-engine .cyan-chip .mini-icon-box { background: rgba(6, 182, 212, 0.1); color: #22d3ee; border: 1px solid rgba(6, 182, 212, 0.2); }
         .t1-embedded-wealth-engine .cyan-chip { border-left: 3px solid #22d3ee !important; }
         .t1-embedded-wealth-engine .cyan-chip .mini-tickers { color: #22d3ee; background: rgba(6, 182, 212, 0.05); }
 
-        /* 📱 🌟 [핵심 패치] 모바일 환경 전용 미디어 쿼리 다이내믹 오버라이드 */
         @media (max-width: 768px) {
-          .t1-embedded-wealth-engine {
-            padding: 16px !important; /* 내부 마진 컴팩트화 */
-          }
-          .t1-embedded-wealth-engine .mini-wealth-card {
-            flex-direction: column !important; /* 상하 수직 구조로 피벗 */
-            align-items: flex-start !important; /* 좌측 정렬 정렬 */
-            height: auto !important; /* 높이 제한 해제하여 유연성 확보 */
-            padding: 12px !important;
-            gap: 10px !important; /* 타이틀과 티커 칩 사이 안전 공간 */
-          }
-          .t1-embedded-wealth-engine .mini-tickers {
-            align-self: flex-end !important; /* 티커 칩은 우측 하단에 정렬하여 시각적 균형 유도 */
-            font-size: 10.5px !important; /* 가독성을 저해하지 않는 선에서 미세 축소 */
-          }
+          .t1-embedded-wealth-engine { padding: 16px !important; }
+          .t1-embedded-wealth-engine .mini-wealth-card { flex-direction: column !important; align-items: flex-start !important; height: auto !important; padding: 12px !important; gap: 10px !important; }
+          .t1-embedded-wealth-engine .mini-tickers { align-self: flex-end !important; font-size: 10.5px !important; }
         }
       </style>
 
@@ -448,7 +582,8 @@ ul.task-list li input[type="checkbox"] {
       <span class="tag-chip">노후대비</span>
     </div>
     <p class="card-description">
-      대표 지수 기반 안정적 복리효과, 배당 성장 기반 심리적 안정감, 그리고 버핏의 장기 투자 원칙을 결합한 전략적 자산 배분 시스템입니다.
+      대표 지수와 배당성장 ETF들을 바탕으로 안정적인 복리효과를 추구합니다. 
+      또한, 세금 방어를 위한 절세계좌의 활용 및 단기 현금성 자산의 전략적 배분을 통해 효율을 극대화합니다. 
       시장의 변동성 속에서도 일관된 성장과 수익률을 추구하는, 지속 가능한 투자 여정의 탄탄한 기반이 됩니다.
     </p>
   </div>
@@ -457,136 +592,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="card-subtitle">Matrix 02 . Global Capital</div>
     <div class="card-main-title">US Equity &amp; Growth</div>
     
-    <div class="card-visual-zone" style="height: 420px; background: #ffffff; padding: 2rem; flex-direction: column;">
-      <style>
-        .css-chart-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 2.5rem;
-          width: 100%;
-          height: 100%;
-          align-items: center;
-          box-sizing: border-box;
-        }
-        .css-chart-box {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          height: 100%;
-          width: 100%;
-          position: relative;
-        }
-        
-        /* 1. 하이엔드 모던 CSS 도넛 그래픽 */
-        .css-donut-ring {
-          width: 210px;
-          height: 210px;
-          border-radius: 50%;
-          /* 하드웨어 가속 원형 그라데이션 분할 배정 (VOO, TQQQ, SCHD, BRK-A, Cash 순) */
-          background: conic-gradient(
-            #007AFF 0% 40%,
-            #5AC8FA 40% 65%,
-            #4CD964 65% 85%,
-            #FFCC00 85% 95%,
-            #AFAFB6 95% 100%
-          );
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-        }
-        .css-donut-hole {
-          width: 150px; /* 정밀 71% 화이트 스페이스 마스크 */
-          height: 150px;
-          background: #ffffff;
-          border-radius: 50%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-        }
-        .css-donut-label {
-          font-size: 0.72rem;
-          color: #86868b;
-          text-transform: uppercase;
-          font-weight: 700;
-          letter-spacing: 0.05em;
-          margin-bottom: 2px;
-        }
-        .css-donut-value {
-          font-size: 1.4rem;
-          font-weight: 700;
-          color: #1d1d1f;
-          font-family: monospace;
-          letter-spacing: -0.02em;
-        }
-        
-        /* 2. 모던 컴팩트 CSS 바 그래픽 구조 */
-        .css-bar-wrapper {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-          height: 190px;
-          justify-content: flex-end;
-        }
-        .css-bar-axis {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-end;
-          width: 100%;
-          height: 100%;
-          border-bottom: 1px solid #e8e8ed;
-          padding-bottom: 4px;
-          box-sizing: border-box;
-        }
-        .css-bar-column {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          width: 14%;
-          height: 100%;
-          justify-content: flex-end;
-        }
-        .css-bar-fill {
-          width: 100%;
-          background-color: #E5E5EA;
-          border-radius: 5px 5px 0 0;
-          transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .css-bar-fill.active {
-          background-color: #007AFF; /* 올해 지표 시각적 전방 강조색 */
-          box-shadow: 0 2px 8px rgba(0,122,255,0.2);
-        }
-        .css-bar-label {
-          font-size: 0.7rem;
-          color: #86868b;
-          margin-top: 8px;
-          font-weight: 500;
-        }
-        
-        /* KPI 오버레이 연동 */
-        .css-kpi-row {
-          display: flex;
-          justify-content: space-around;
-          width: 100%;
-          background: #f5f5f7;
-          border-radius: 12px;
-          padding: 0.6rem;
-          margin-bottom: 1.2rem;
-          box-sizing: border-box;
-        }
-        .css-kpi-item { text-align: center; }
-        .css-kpi-label { font-size: 0.62rem; color: #86868b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.03em; }
-        .css-kpi-value { font-size: 1.05rem; font-weight: 700; color: #1d1d1f; font-family: monospace; }
-        
-        @media (max-width: 900px) {
-          .css-chart-grid { grid-template-columns: 1fr; gap: 2rem; }
-          .card-visual-zone { height: auto !important; }
-          .css-bar-wrapper { height: 160px; }
-        }
-      </style>
-      
+    <div class="card-visual-zone" style="height: 420px; background: #ffffff; padding: 1.5rem; flex-direction: column;">
       <div class="css-chart-grid">
         <div class="css-chart-box">
           <div class="css-donut-ring">
@@ -622,14 +628,14 @@ ul.task-list li input[type="checkbox"] {
       </div>
     </div>
 
-    <div class="card-tags-group" style="margin-top: 1.5rem;">
+    <div class="card-tags-group">
       <span class="tag-chip">Portfolio Management</span>
       <span class="tag-chip">Dividend Growth</span>
       <span class="tag-chip">Total Return</span>
     </div>
     <p class="card-description">
-      시간의 마찰력을 복리의 에너지로 전환하는 패시브 인컴 엔진입니다.
-      매월 누적되는 배당 자산의 재투자 수율을 관리하여, 장기적으로 외부 거시경제 환경과 완전히 독립된 지속 가능한 현금흐름 파이프라인을 구축합니다.
+      대표 지수 ETF에 기반한 포트폴리오로 복리 효과를 노리고, 배당 성장 ETF를 통해 심리적 안정감과 현금 흐름을 강화하는 전략입니다.
+      포트폴리오의 변동 및 성장, 배당금 데이터를 시각적으로 공유합니다.
     </p>
   </div>
 
@@ -637,15 +643,59 @@ ul.task-list li input[type="checkbox"] {
     <div class="card-subtitle">Matrix 03 . Shield &amp; Harvest</div>
     <div class="card-main-title">Tax &amp; Decumulation</div>
     
-    <div class="card-visual-zone" style="height: 240px; background: #1d1d1f; color: #fff; flex-direction: column; gap: 8px;">
-      <div style="font-family: monospace; font-size: 0.9rem; color: #34c759;">Withdrawal-Focused Pension Strategy</div>
-      <div style="font-size: 1.5rem; font-weight: 600; color: #fff;">연금저축 + IRP + ISA</div>
+    <div class="card-visual-zone" style="height: 420px; background: #ffffff; padding: 1.5rem; flex-direction: column;">
+      <div class="tax-chart-grid">
+        <div class="tax-chart-box">
+          <div class="tax-donut-container">
+            <svg width="220" height="220" viewbox="0 0 220 220" style="transform: rotate(-90deg);">
+              <defs>
+                <path id="textTrack" d="M 110,110 m -80,0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0"></path>
+              </defs>
+              <circle cx="110" cy="110" r="80" fill="transparent" stroke="#FF9500" stroke-width="30" stroke-dasharray="251.3 502.6" stroke-dashoffset="0"></circle>
+              <circle cx="110" cy="110" r="80" fill="transparent" stroke="#AF52DE" stroke-width="30" stroke-dasharray="150.8 502.6" stroke-dashoffset="-251.3"></circle>
+              <circle cx="110" cy="110" r="80" fill="transparent" stroke="#5AC8FA" stroke-width="30" stroke-dasharray="100.5 502.6" stroke-dashoffset="-402.1"></circle>
+              
+              <text class="svg-donut-text"><textpath href="#textTrack" startoffset="12.5%">Personal</textpath></text>
+              <text class="svg-donut-text"><textpath href="#textTrack" startoffset="42.5%">IRP</textpath></text>
+              <text class="svg-donut-text"><textpath href="#textTrack" startoffset="67.5%">ISA</textpath></text>
+            </svg>
+
+            <div style="position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 130px; height: 130px; background: #ffffff; border-radius: 50%;">
+              <span class="tax-donut-label">Shield Vol</span>
+              <span class="tax-donut-value" style="font-size: 1.15rem;">₩72,400,000</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="tax-chart-box">
+          <div class="tax-kpi-row">
+            <div class="tax-kpi-item">
+              <div class="tax-kpi-label">Total Tax Saving</div>
+              <div class="tax-kpi-value">₩5,840,000</div>
+            </div>
+            <div class="tax-kpi-item">
+              <div class="tax-kpi-label">2026 Saved</div>
+              <div class="tax-kpi-value" style="color: #34C759;">₩1,184,000</div>
+            </div>
+          </div>
+          
+          <div class="tax-bar-wrapper">
+            <div class="tax-bar-axis">
+              <div class="tax-bar-column"><div class="tax-bar-fill" style="height: 40%;"></div><span class="tax-bar-label">2022</span></div>
+              <div class="tax-bar-column"><div class="tax-bar-fill" style="height: 60%;"></div><span class="tax-bar-label">2023</span></div>
+              <div class="tax-bar-column"><div class="tax-bar-fill" style="height: 75%;"></div><span class="tax-bar-label">2024</span></div>
+              <div class="tax-bar-column"><div class="tax-bar-fill" style="height: 95%;"></div><span class="tax-bar-label">2025</span></div>
+              <div class="tax-bar-column"><div class="tax-bar-fill active" style="height: 70%;"></div><span class="tax-bar-label">2026</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="card-tags-group">
-      <span class="tag-chip">연금 저축</span>
-      <span class="tag-chip">세금 혜택</span>
-      <span class="tag-chip">인출 전략</span>
+    <div class="card-tags-group" style="margin-top: 1.5rem;">
+      <span class="tag-chip">연금저축</span>
+      <span class="tag-chip">세금혜택</span>
+      <span class="tag-chip">인출전략</span>
     </div>
     <p class="card-description">
       은퇴 후 인출 시점에서의 세금 부담을 최소화하는 전략적 자산 배분과 리밸런싱 시스템입니다.
