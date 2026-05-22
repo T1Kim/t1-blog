@@ -388,41 +388,54 @@ ul.task-list li input[type="checkbox"] {
      📱 5. [모바일 초정밀 튜닝 고도화] 가로 너비 확장 및 글자 크기 통일 제어
      ========================================================================== */
   @media (max-width: 600px) {
-    /* 🌟 [공통] 모바일에서 박스 내부 여백을 줄여 실제 가로 가용 면적을 극한으로 넓힘 */
-    .card-visual-zone {
-      padding: 1rem !important; /* 기존 2rem에서 압착 */
+    /* 🌟 [인프라 정렬 통합] 대형 카드의 모바일 내부 여백 및 외곽 마진 전면 압착 */
+    .large-project-card {
+      padding: 1.2rem !important;      /* 기존 2.5rem에서 대폭 축소하여 investment 규격과 동치 */
+      margin-bottom: 1.8rem !important; /* 카드 간 수직 유격 최적화 */
+      border-radius: 20px !important;    /* 좁아진 여백에 맞춘 라운드 코너 수축 */
     }
 
-    /* 🌟 [요청사항 1] Travel: 12 Countries, 24 Cities 두 행(수직) 분리 장치 */
+    /* 🌟 상단 서브 타이틀 및 메인 타이틀 모바일 가독성 비율 보정 */
+    .large-project-card .card-main-title {
+      font-size: 1.4rem !important;     /* 텍스트가 폰 화면에서 삐져나가지 않도록 수축 */
+      margin-bottom: 1rem !important;
+    }
+
+    /* 🌟 [기존 락인] 모바일에서 비주얼 존 내부 여백 압착 장치 */
+    .card-visual-zone {
+      padding: 1rem !important; 
+    }
+
+    /* Travel: 12 Countries, 24 Cities 두 행(수직) 분리 장치 */
     .squad-master-kpi {
       flex-direction: column !important;
       align-items: flex-start !important;
       gap: 0.2rem !important;
-      font-size: 1.2rem !important;
+      font-size: 1.1rem !important;
       padding-bottom: 0.8rem !important;
     }
 
-    /* 🌟 [요청사항 1] Travel: 모바일 국가/도시 포메이션을 2열 그리드로 정렬 전환 */
+    /* Travel/Vibe Coding: 모바일 국가/도시 포메이션을 2열 그리드로 정렬 전환 */
     .squad-matrix-grid {
-      grid-template-columns: 1fr 1fr !important; /* 2열 강제 구속 */
+      grid-template-columns: 1fr 1fr !important; 
       gap: 1.2rem 0.8rem !important;
     }
 
-    /* 🌟 [요청사항 2] 가로 폭 확장에 맞춰 들여쓰기 공간을 정밀 컴팩트화 */
+    /* 가로 폭 확장에 맞춰 들여쓰기 공간을 정밀 컴팩트화 */
     .squad-indent-list {
       padding-left: 1.2rem !important;
     }
 
-    /* 🌟 [요청사항 1 & 2] 글자 크기를 더 작은 쪽에 맞춰 완벽히 균일 동치화 (0.83rem) */
+    /* 글자 크기를 더 작은 쪽에 맞춰 완벽히 균일 동치화 */
     .squad-header-title {
-      font-size: 0.85rem !important; /* 대분류 타이틀 크기 수축 */
+      font-size: 0.85rem !important; 
       min-height: auto !important;
       margin-bottom: 0.1rem !important;
       gap: 0.4rem !important;
     }
     
     .squad-indent-item {
-      font-size: 0.82rem !important; /* 하부 아이템 글자 크기 최적화로 잘림 전면 방어 */
+      font-size: 0.82rem !important; 
     }
 
     .squad-embedded-flag {
