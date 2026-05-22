@@ -263,7 +263,7 @@ ul.task-list li input[type="checkbox"] {
   .hobbies-kpi-value { font-size: 1.05rem; font-weight: 700; color: #1d1d1f; font-family: monospace; }
 
   /* ==========================================================================
-     3. Running 카드 전용 구조 스타일 (🌟 정갈한 고밀도 목록형 스코어보드 고정)
+     3. Running 카드 전용 구조 스타일
      ========================================================================== */
   .pb-list-board {
     display: flex;
@@ -299,7 +299,7 @@ ul.task-list li input[type="checkbox"] {
   .mileage-bar-label { font-size: 0.65rem; color: #86868b; margin-top: 8px; font-weight: 500; }
 
   /* ==========================================================================
-     4. Travel & Vibe Coding 전용 스쿼드 공통 스타일 (Squad List Matrix)
+     4. Travel & Vibe Coding 전용 데스크톱/패드 기본 스쿼드 스타일
      ========================================================================== */
   .squad-container { display: flex; flex-direction: column; width: 100%; height: 100%; }
   
@@ -325,7 +325,7 @@ ul.task-list li input[type="checkbox"] {
     width: 100%;
   }
   
-  .squad-block { display: flex; flex-direction: column; gap: 0.4rem; }
+  .squad-country-block { display: flex; flex-direction: column; gap: 0.4rem; }
   
   .squad-header-title {
     font-size: 1.05rem;
@@ -337,7 +337,7 @@ ul.task-list li input[type="checkbox"] {
     border-bottom: 1px solid rgba(0,0,0,0.06);
     padding-bottom: 0.3rem;
     margin-bottom: 0.2rem;
-    min-height: 32px; /* 🌟 제목 줄수 차이로 인한 정렬 틀어짐 방지용 최소 높이 락인 */
+    min-height: 32px;
   }
   
   .squad-embedded-flag { width: 21px !important; height: 15px !important; border-radius: 2px !important; box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important; display: inline-block !important; vertical-align: middle !important; flex-shrink: 0 !important; }
@@ -357,15 +357,78 @@ ul.task-list li input[type="checkbox"] {
   }
   .squad-indent-item:hover { color: #007AFF; }
 
-  /* 반응형 분기선 제어선 동치화 */
-  @media (max-width: 900px) {
-    .running-chart-grid, .hobbies-chart-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .squad-matrix-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    .card-visual-zone { height: auto !important; }
+  /* ==========================================================================
+     🛠️ [레이아웃 복원 복구] 데스크톱 전용 그리드 속성 강화 및 오타 수리
+     ========================================================================== */
+  .running-chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 🌟 데스크톱 웹에서 무조건 2열 횡대 강제 구속 */
+    gap: 2.5rem;
+    width: 100%;
+    align-items: center;
+    box-sizing: border-box;
   }
+
+  /* 태블릿 및 미디엄 스크린 제어선 (900px 이하 브레이크포인트 격리) */
+  @media (max-width: 900px) {
+    .running-chart-grid { 
+      grid-template-columns: 1fr !important; /* 화면이 900px 이하로 좁아질 때만 1열로 전환 */
+      gap: 2rem; 
+    }
+    .squad-matrix-grid { 
+      grid-template-columns: 1fr 1fr; 
+      gap: 1.5rem; 
+    }
+    .card-visual-zone { 
+      height: auto !important; 
+    }
+  }
+
+  /* ==========================================================================
+     📱 5. [모바일 초정밀 튜닝 고도화] 가로 너비 확장 및 글자 크기 통일 제어
+     ========================================================================== */
   @media (max-width: 600px) {
-    .squad-matrix-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-    .squad-master-kpi { font-size: 1.25rem; }
+    /* 🌟 [공통] 모바일에서 박스 내부 여백을 줄여 실제 가로 가용 면적을 극한으로 넓힘 */
+    .card-visual-zone {
+      padding: 1rem !important; /* 기존 2rem에서 압착 */
+    }
+
+    /* 🌟 [요청사항 1] Travel: 12 Countries, 24 Cities 두 행(수직) 분리 장치 */
+    .squad-master-kpi {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 0.2rem !important;
+      font-size: 1.2rem !important;
+      padding-bottom: 0.8rem !important;
+    }
+
+    /* 🌟 [요청사항 1] Travel: 모바일 국가/도시 포메이션을 2열 그리드로 정렬 전환 */
+    .squad-matrix-grid {
+      grid-template-columns: 1fr 1fr !important; /* 2열 강제 구속 */
+      gap: 1.2rem 0.8rem !important;
+    }
+
+    /* 🌟 [요청사항 2] 가로 폭 확장에 맞춰 들여쓰기 공간을 정밀 컴팩트화 */
+    .squad-indent-list {
+      padding-left: 1.2rem !important;
+    }
+
+    /* 🌟 [요청사항 1 & 2] 글자 크기를 더 작은 쪽에 맞춰 완벽히 균일 동치화 (0.83rem) */
+    .squad-header-title {
+      font-size: 0.85rem !important; /* 대분류 타이틀 크기 수축 */
+      min-height: auto !important;
+      margin-bottom: 0.1rem !important;
+      gap: 0.4rem !important;
+    }
+    
+    .squad-indent-item {
+      font-size: 0.82rem !important; /* 하부 아이템 글자 크기 최적화로 잘림 전면 방어 */
+    }
+
+    .squad-embedded-flag {
+      width: 18px !important;
+      height: 13px !important;
+    }
   }
 </style>
 
@@ -376,9 +439,9 @@ ul.task-list li input[type="checkbox"] {
     <div class="card-main-title">Running &amp; Marathon</div>
     
     <div class="card-visual-zone" style="height: 420px; background: #ffffff; padding: 1.5rem; flex-direction: column;">
-      <div class="hobbies-chart-grid">
+      <div class="running-chart-grid">
         
-        <div class="hobbies-chart-box">
+        <div class="running-chart-box">
           <div class="pb-list-board">
             <div class="pb-row">
               <span class="pb-distance full">Full</span>
@@ -399,7 +462,7 @@ ul.task-list li input[type="checkbox"] {
           </div>
         </div>
         
-        <div class="hobbies-chart-box">
+        <div class="running-chart-box">
           <div class="hobbies-kpi-row">
             <div class="hobbies-kpi-item">
               <div class="hobbies-kpi-label">2026 Total</div>
@@ -441,12 +504,12 @@ ul.task-list li input[type="checkbox"] {
     <div class="card-subtitle">Hobby 02 . Inspiration &amp; Perspective</div>
     <div class="card-main-title">Travel &amp; Photography</div>
     
-    <div class="card-visual-zone" style="height: auto; min-height: 380px; background: #ffffff; padding: 2rem; align-items: flex-start;">
+    <div class="card-visual-zone" style="height: auto; min-height: 380px; background: #ffffff; align-items: flex-start;">
       <div class="squad-container">
         
         <div class="squad-master-kpi">
-          <svg style="width:22px; height:22px; fill:#007AFF; vertical-align:middle;" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"></path></svg>
-          <span>12</span> Countries, <span>24</span> Cities
+          <div><svg style="width:22px; height:22px; fill:#007AFF; vertical-align:middle; margin-right: 4px;" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"></path></svg><span>Global Map Status</span></div>
+          <div style="font-size: 1.1rem; font-weight: 700; margin-left: 2px;"><span>12</span> Countries, <span>24</span> Cities</div>
         </div>
         
         <div class="squad-matrix-grid">
@@ -541,7 +604,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="card-subtitle">Hobby 03 . Synergy with AI Agents</div>
     <div class="card-main-title">Vibe Coding &amp; Automation</div>
     
-    <div class="card-visual-zone" style="height: auto; min-height: 380px; background: #ffffff; padding: 2rem; align-items: flex-start;">
+    <div class="card-visual-zone" style="height: auto; min-height: 380px; background: #ffffff; align-items: flex-start;">
       <div class="squad-container">
         
         <div class="squad-master-kpi">
@@ -586,7 +649,8 @@ ul.task-list li input[type="checkbox"] {
             </div>
           </div>
 
-        </div> </div>
+        </div> 
+      </div>
     </div>
 
     <div class="card-tags-group">
