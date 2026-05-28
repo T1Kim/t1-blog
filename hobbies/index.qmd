@@ -82,273 +82,272 @@ subtitle: "ENDURANCE, CREATIVITY, AND CONTINUOUS GROWTH"
   }
 
   /* ==========================================================================
-     2. 공통 그리드 및 통합 KPI 컴포넌트 스타일
+     2. Matrix 01 . Endurance Lab 전용 모던 CSS 바 차트 및 타이포그래피 튜닝
      ========================================================================== */
-  .hobbies-chart-grid {
+  .run-chart-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.1fr 0.9fr;
     gap: 2.5rem;
     width: 100%;
-    height: 100%;
-    align-items: center;
     box-sizing: border-box;
   }
-  .hobbies-chart-box {
+  .run-chart-box {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    position: relative;
-  }
-
-  .hobbies-kpi-row {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    background: #f5f5f7;
-    border-radius: 12px;
-    padding: 0.6rem;
-    margin-bottom: 1.2rem;
-    box-sizing: border-box;
-  }
-  .hobbies-kpi-item { text-align: center; }
-  .hobbies-kpi-label { font-size: 0.62rem; color: #86868b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.03em; }
-  .hobbies-kpi-value { font-size: 1.05rem; font-weight: 700; color: #1d1d1f; font-family: monospace; }
-
-  /* ==========================================================================
-     3. Running 카드 전용 구조 스타일
-     ========================================================================== */
-  .pb-list-board {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 260px;
-    gap: 0.9rem;
-    background: #f5f5f7;
-    padding: 1.5rem;
-    border-radius: 20px;
-    box-sizing: border-box;
-  }
-  .pb-row {
-    display: flex;
     justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-    padding-bottom: 0.5rem;
-  }
-  .pb-row:last-child { border-bottom: none; padding-bottom: 0; }
-  .pb-distance { font-size: 1rem; font-weight: 800; letter-spacing: -0.01em; }
-  .pb-distance.full  { color: #FF2D55; }
-  .pb-distance.half  { color: #AF52DE; }
-  .pb-distance.k10   { color: #007AFF; }
-  .pb-distance.k5    { color: #34C759; }
-  .pb-time { font-size: 1.1rem; font-weight: 700; color: #1d1d1f; font-family: monospace; }
-
-  .mileage-bar-wrapper { display: flex; flex-direction: column; width: 100%; height: 190px; justify-content: flex-end; }
-  .mileage-bar-axis { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; height: 100%; border-bottom: 1px solid #e8e8ed; padding-bottom: 4px; box-sizing: border-box; }
-  .mileage-bar-column { display: flex; flex-direction: column; align-items: center; width: 14%; height: 100%; justify-content: flex-end; }
-  .mileage-bar-fill { width: 100%; background-color: #E5E5EA; border-radius: 5px 5px 0 0; }
-  .mileage-bar-fill.active { background-color: #FF5733 !important; box-shadow: 0 2px 8px rgba(255,87,51,0.2); }
-  .mileage-bar-label { font-size: 0.65rem; color: #86868b; margin-top: 8px; font-weight: 500; }
-
-  /* ==========================================================================
-     4. Travel & Vibe Coding 전용 데스크톱/패드 기본 스쿼드 스타일
-     ========================================================================== */
-  .squad-container { display: flex; flex-direction: column; width: 100%; height: 100%; }
-  
-  .squad-master-kpi {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #1d1d1f;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-    margin-bottom: 1.8rem;
-    border-bottom: 2px solid #1d1d1f;
-    padding-bottom: 0.6rem;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
-  .squad-master-kpi span { color: #007AFF; }
-  
-  .squad-matrix-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2rem;
+    height: 100%;
     width: 100%;
   }
+
+  /* 🌟 막대그래프 축선 제어: 중앙 정렬 및 여백(gap) 인프라 주입 */
+  .run-bar-axis {
+    display: flex;
+    justify-content: center;
+    gap: 1.1rem; /* 막대 사이의 세련된 공기감 부여 */
+    align-items: flex-end;
+    width: 100%;
+    height: 190px;
+    border-bottom: 1px solid #e8e8ed;
+    padding-bottom: 4px;
+    box-sizing: border-box;
+  }
+  .run-bar-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 11%; /* 기둥 두께를 날씬하게 깎아 여백 수율 극대화 */
+    height: 100%;
+    justify-content: flex-end;
+  }
   
-  .squad-country-block { display: flex; flex-direction: column; gap: 0.4rem; }
-  
-  .squad-header-title {
-    font-size: 1.05rem;
+  /* 🌟 직관적인 height 기반 무결성 채우기 */
+  .run-bar-fill {
+    width: 100%;
+    background-color: #E5E5EA;
+    border-radius: 5px 5px 0 0;
+    transition: height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .run-bar-fill.active {
+    background-color: #FF2D55 !important; /* 러닝 테마의 열정적인 핑크-레드 액센트 */
+    box-shadow: 0 2px 8px rgba(255,45,85,0.2);
+  }
+  .run-bar-label {
+    font-size: 0.7rem;
+    color: #86868b;
+    margin-top: 8px;
+    font-weight: 500;
+  }
+
+  /* 🌟 메인 피규어 폰트 아이덴티티 락인 (SF Mono 동치) */
+  .run-pb-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 100%;
+  }
+  .run-pb-card {
+    background: #f5f5f7;
+    border-radius: 14px;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  .run-pb-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #86868b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+  }
+  .run-pb-value {
+    font-family: "SF Mono", Consolas, "Liberation Mono", Menlo, monospace !important; /* 🌟 메인 페이지의 정밀 무드 이식 */
+    font-size: 1.3rem;
     font-weight: 700;
     color: #1d1d1f;
+    letter-spacing: -0.03em;
+  }
+
+  /* ==========================================================================
+     3. Matrix 02 . Travel & Photography 전용 스쿼드 스타일 (순정 복원)
+     ========================================================================== */
+  .squad-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .squad-master-kpi {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    color: #1d1d1f;
+  }
+  .squad-master-kpi span {
+    font-family: "SF Mono", Consolas, monospace !important; /* 🌟 숫자 고정폭 통합 */
+    font-weight: 700;
+  }
+  .squad-matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+  }
+  .squad-country-block {
+    background: #f5f5f7;
+    border-radius: 16px;
+    padding: 1.25rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .squad-header-title {
+    font-size: 0.95rem;
+    font-weight: 600;
     display: flex;
     align-items: center;
-    gap: 0.6rem;
-    border-bottom: 1px solid rgba(0,0,0,0.06);
-    padding-bottom: 0.3rem;
-    margin-bottom: 0.2rem;
-    min-height: 32px;
+    gap: 0.5rem;
+    color: #1d1d1f;
   }
-  
-  .squad-embedded-flag { width: 21px !important; height: 15px !important; border-radius: 2px !important; box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important; display: inline-block !important; vertical-align: middle !important; flex-shrink: 0 !important; }
-  
+  .squad-embedded-flag {
+    width: 20px;
+    height: auto;
+    border-radius: 2px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
   .squad-indent-list {
     display: flex;
     flex-direction: column;
-    padding-left: 1.9rem;
     gap: 0.35rem;
   }
   .squad-indent-item {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #424245;
-    position: relative;
-    transition: color 0.2s ease;
+    font-size: 0.8rem;
+    color: #515154;
+    padding-left: 0.5rem;
+    border-left: 1.5px solid #d2d2d7;
   }
-  .squad-indent-item:hover { color: #007AFF; }
 
   /* ==========================================================================
-     🛠️ [레이아웃 복원 복구] 데스크톱 전용 그리드 속성 강화 및 오타 수리
+     4. Matrix 03 . Squad Command 전용 고정폭 타이포 및 아키텍처 튜닝 (순정 복원)
      ========================================================================== */
-  .running-chart-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 🌟 데스크톱 웹에서 무조건 2열 횡대 강제 구속 */
-    gap: 2.5rem;
+  .squad-board-wrapper {
     width: 100%;
-    align-items: center;
-    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
   }
-
-  /* 태블릿 및 미디엄 스크린 제어선 (900px 이하 브레이크포인트 격리) */
-  @media (max-width: 900px) {
-    .running-chart-grid { 
-      grid-template-columns: 1fr !important; /* 화면이 900px 이하로 좁아질 때만 1열로 전환 */
-      gap: 2rem; 
-    }
-    .squad-matrix-grid { 
-      grid-template-columns: 1fr 1fr; 
-      gap: 1.5rem; 
-    }
-    .card-visual-zone { 
-      height: auto !important; 
-    }
+  .squad-command-kpi {
+    background: #0f172a;
+    border-radius: 14px;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .squad-kpi-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .squad-kpi-value {
+    font-family: "SF Mono", Consolas, monospace !important; /* 🌟 가동 시간 서체 통합 */
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #38bdf8;
+    letter-spacing: -0.02em;
+  }
+  .squad-grid-system {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    width: 100%;
+  }
+  .squad-command-block {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+  }
+  .squad-command-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .squad-command-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .squad-command-item {
+    font-size: 0.88rem;
+    color: #475569;
+    padding-left: 0.8rem;
+    border-left: 2px solid #cbd5e1;
+    font-weight: 500;
   }
 
   /* ==========================================================================
-     📱 5. [모바일 초정밀 튜닝 고도화] 가로 너비 확장 및 글자 크기 통일 제어
+     5. 미디어 쿼리 반응형 제어선 (안정성 확보)
      ========================================================================== */
-  @media (max-width: 600px) {
-    /* 🌟 [인프라 정렬 통합] 대형 카드의 모바일 내부 여백 및 외곽 마진 전면 압착 */
-    .large-project-card {
-      padding: 1.2rem !important;      /* 기존 2.5rem에서 대폭 축소하여 investment 규격과 동치 */
-      margin-bottom: 1.8rem !important; /* 카드 간 수직 유격 최적화 */
-      border-radius: 20px !important;    /* 좁아진 여백에 맞춘 라운드 코너 수축 */
-    }
+  @media (max-width: 900px) {
+    .run-chart-grid, .squad-grid-system { grid-template-columns: 1fr; gap: 2rem; }
+    .card-visual-zone { height: auto !important; }
+  }
 
-    /* 🌟 상단 서브 타이틀 및 메인 타이틀 모바일 가독성 비율 보정 */
-    .large-project-card .card-main-title {
-      font-size: 1.4rem !important;     /* 텍스트가 폰 화면에서 삐져나가지 않도록 수축 */
-      margin-bottom: 1rem !important;
-    }
-
-    /* 🌟 [기존 락인] 모바일에서 비주얼 존 내부 여백 압착 장치 */
-    .card-visual-zone {
-      padding: 1rem !important; 
-    }
-
-    /* Travel: 12 Countries, 24 Cities 두 행(수직) 분리 장치 */
-    .squad-master-kpi {
-      flex-direction: column !important;
-      align-items: flex-start !important;
-      gap: 0.2rem !important;
-      font-size: 1.1rem !important;
-      padding-bottom: 0.8rem !important;
-    }
-
-    /* Travel/Vibe Coding: 모바일 국가/도시 포메이션을 2열 그리드로 정렬 전환 */
-    .squad-matrix-grid {
-      grid-template-columns: 1fr 1fr !important; 
-      gap: 1.2rem 0.8rem !important;
-    }
-
-    /* 가로 폭 확장에 맞춰 들여쓰기 공간을 정밀 컴팩트화 */
-    .squad-indent-list {
-      padding-left: 1.2rem !important;
-    }
-
-    /* 글자 크기를 더 작은 쪽에 맞춰 완벽히 균일 동치화 */
-    .squad-header-title {
-      font-size: 0.85rem !important; 
-      min-height: auto !important;
-      margin-bottom: 0.1rem !important;
-      gap: 0.4rem !important;
-    }
-    
-    .squad-indent-item {
-      font-size: 0.82rem !important; 
-    }
-
-    .squad-embedded-flag {
-      width: 18px !important;
-      height: 13px !important;
-    }
+  @media (max-width: 768px) {
+    .large-project-card { padding: 1.5rem; border-radius: 20px; }
+    .card-main-title { font-size: 1.4rem; }
   }
 </style>
 
 <div class="hobbies-container">
 
   <div class="large-project-card">
-    <div class="card-subtitle">Hobby 01 . Endurance & Discipline</div>
-    <div class="card-main-title">Running & Marathon</div>
+    <div class="card-subtitle">Matrix 01 . Endurance Lab</div>
+    <div class="card-main-title">Marathon & Vo2Max</div>
     
-    <div class="card-visual-zone" style="height: 420px; background: #ffffff; padding: 1.5rem; flex-direction: column;">
-      <div class="running-chart-grid">
+    <div class="card-visual-zone" style="height: auto; background: #ffffff; padding: 1.5rem; flex-direction: column;">
+      <div class="run-chart-grid">
         
-        <div class="running-chart-box">
-          <div class="pb-list-board">
-            <div class="pb-row">
-              <span class="pb-distance full">Full</span>
-              <span class="pb-time">3:55:21</span>
-            </div>
-            <div class="pb-row">
-              <span class="pb-distance half">Half</span>
-              <span class="pb-time">1:45:10</span>
-            </div>
-            <div class="pb-row">
-              <span class="pb-distance k10">10km</span>
-              <span class="pb-time">0:46:30</span>
-            </div>
-            <div class="pb-row">
-              <span class="pb-distance k5">5km</span>
-              <span class="pb-time">0:21:15</span>
-            </div>
+        <div class="run-chart-box">
+          <div class="run-bar-axis">
+            <div class="run-bar-column"><div class="run-bar-fill" style="height: 45%;"></div><span class="run-bar-label">01</span></div>
+            <div class="run-bar-column"><div class="run-bar-fill" style="height: 60%;"></div><span class="run-bar-label">02</span></div>
+            <div class="run-bar-column"><div class="run-bar-fill" style="height: 75%;"></div><span class="run-bar-label">03</span></div>
+            <div class="run-bar-column"><div class="run-bar-fill" style="height: 90%;"></div><span class="run-bar-label">04</span></div>
+            <div class="run-bar-column"><div class="run-bar-fill active" style="height: 100%;"></div><span class="run-bar-label">05</span></div>
+            <div class="run-bar-column"><div class="run-bar-fill" style="height: 0%;"></div><span class="run-bar-label">06</span></div>
           </div>
         </div>
         
-        <div class="running-chart-box">
-          <div class="hobbies-kpi-row">
-            <div class="hobbies-kpi-item">
-              <div class="hobbies-kpi-label">2026 Total</div>
-              <div class="hobbies-kpi-value">842.5 km</div>
+        <div class="run-chart-box" style="gap: 1rem;">
+          <div class="run-pb-grid">
+            <div class="run-pb-card">
+              <div class="run-pb-label">Full Marathon PB</div>
+              <div class="run-pb-value">3:55:21</div>
             </div>
-            <div class="hobbies-kpi-item">
-              <div class="hobbies-kpi-label">May Vol</div>
-              <div class="hobbies-kpi-value" style="color: #FF5733;">124.2 km</div>
+            <div class="run-pb-card">
+              <div class="run-pb-label">10K Sub-50</div>
+              <div class="run-pb-value">46:32</div>
             </div>
           </div>
-          
-          <div class="mileage-bar-wrapper">
-            <div class="mileage-bar-axis">
-              <div class="mileage-bar-column"><div class="mileage-bar-fill" style="height: 60%;"></div><span class="mileage-bar-label">Jan</span></div>
-              <div class="mileage-bar-column"><div class="mileage-bar-fill" style="height: 45%;"></div><span class="mileage-bar-label">Feb</span></div>
-              <div class="mileage-bar-column"><div class="mileage-bar-fill" style="height: 85%;"></div><span class="mileage-bar-label">Mar</span></div>
-              <div class="mileage-bar-column"><div class="mileage-bar-fill" style="height: 100%;"></div><span class="mileage-bar-label">Apr</span></div>
-              <div class="mileage-bar-column"><div class="mileage-bar-fill active" style="height: 72%;"></div><span class="mileage-bar-label">May</span></div>
+          <div class="run-pb-grid">
+            <div class="run-pb-card" style="background: rgba(255,45,85,0.05);">
+              <div class="run-pb-label" style="color: #FF2D55;">Monthly Target</div>
+              <div class="run-pb-value" style="color: #FF2D55;">150 km</div>
+            </div>
+            <div class="run-pb-card">
+              <div class="run-pb-label">Current VO2Max</div>
+              <div class="run-pb-value">54.2</div>
             </div>
           </div>
         </div>
@@ -357,16 +356,15 @@ subtitle: "ENDURANCE, CREATIVITY, AND CONTINUOUS GROWTH"
     </div>
 
     <div class="card-tags-group">
-      <span class="tag-chip">Marathoner</span>
-      <span class="tag-chip">Endurance</span>
-      <span class="tag-chip">Health Tech</span>
-      <span class="tag-chip">Consistency</span>
+      <span class="tag-chip">Full Marathon</span>
+      <span class="tag-chip">Sub-4 Runner</span>
+      <span class="tag-chip">VO2Max 관제</span>
+      <span class="tag-chip">한계 돌파</span>
     </div>
     <p class="card-description">
-      러닝은 정직한 노력의 결과를 숫자로 증명하는 가장 명확한 투자입니다. 매일 쌓아가는 마일리지는 심폐지구력이라는 보이지 않는 자산을 구축하며, 대회에서의 PB 갱신은 한계를 넘어서는 성취감을 제공합니다. 올해는 서브-4 진입을 안정적으로 수립하기 위해 체계적인 존2(Zone 2) 빌드업 트레이닝과 마일리지 축적을 병행하고 있습니다.
+      체계적인 페이스 배분과 임계점 훈련을 통해 신체적 한계를 확장합니다. 풀코스 서브-4 달성 및 10km 40분대 진입 기록을 정밀 기록하며, 월간 마일리지 추이와 심폐 지구력 지표를 실시간 모니터링하여 지속 가능한 러닝 성장을 정량화합니다.
     </p>
   </div>
-
 
   <div class="large-project-card">
     <div class="card-subtitle">Hobby 02 . Inspiration & Perspective</div>
@@ -376,8 +374,9 @@ subtitle: "ENDURANCE, CREATIVITY, AND CONTINUOUS GROWTH"
       <div class="squad-container">
         
         <div class="squad-master-kpi">
-          <div><svg style="width:22px; height:22px; fill:#007AFF; vertical-align:middle; margin-right: 4px;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg><span>Global Map Status</span></div>
-          <div style="font-size: 1.1rem; font-weight: 700; margin-left: 2px;"><span>18</span> Countries, <span>57</span> Cities</div>
+          <div style="font-size: 1.1rem; font-weight: 700; margin-left: 2px;">
+            <span>18</span> Countries, <span>57</span> Cities
+          </div>
         </div>
         
         <div class="squad-matrix-grid">
@@ -601,7 +600,9 @@ subtitle: "ENDURANCE, CREATIVITY, AND CONTINUOUS GROWTH"
             </div>
           </div>
 
-        </div> </div>
+        </div>
+        
+      </div>
     </div>
 
     <div class="card-tags-group">
@@ -614,7 +615,6 @@ subtitle: "ENDURANCE, CREATIVITY, AND CONTINUOUS GROWTH"
       새로운 공간에 발을 딛는 것은 일상의 관성을 깨고 생각의 지평을 넓히는 가장 직관적인 자극입니다. 세계 각국을 여행하며 다양한 추억을 남기고, 새로운 인사이트와 영감을 얻는 것을 즐깁니다.
     </p>
   </div>
-
 
   <div class="large-project-card">
     <div class="card-subtitle">Hobby 03 . Synergy with AI Agents</div>

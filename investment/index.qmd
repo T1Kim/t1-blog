@@ -6,7 +6,7 @@ subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
 ```{=html}
 <style>
   /* ==========================================================================
-     1. 전역 레이아웃 및 카드 프레임 인프라 (박사님 원본 100% 원형 복구)
+     1. 전역 레이아웃 및 카드 프레임 인프라 (원본 상태 100% 복원)
      ========================================================================== */
   .investment-container {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
@@ -128,23 +128,43 @@ subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
     letter-spacing: 0.05em;
     margin-bottom: 2px;
   }
+  
+  /* 🌟 Matrix 02 도넛 중앙 밸류: 고정폭 폰트 아이덴티티 융합 */
   .css-donut-value {
+    font-family: "SF Mono", Consolas, "Liberation Mono", Menlo, monospace !important;
     font-size: 1.4rem;
     font-weight: 700;
     color: #1d1d1f;
-    font-family: monospace;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
   }
+  
   .css-bar-wrapper { display: flex; flex-direction: column; width: 100%; height: 190px; justify-content: flex-end; }
   .css-bar-axis { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; height: 100%; border-bottom: 1px solid #e8e8ed; padding-bottom: 4px; box-sizing: border-box; }
-  .css-bar-column { display: flex; flex-direction: column; align-items: center; width: 10%; height: 100%; justify-content: flex-end; }
+  .css-bar-column { display: flex; flex-direction: column; align-items: center; width: 14%; height: 100%; justify-content: flex-end; }
   .css-bar-fill { width: 100%; background-color: #E5E5EA; border-radius: 5px 5px 0 0; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
   .css-bar-fill.active { background-color: #007AFF !important; box-shadow: 0 2px 8px rgba(0,122,255,0.2); }
-  .css-bar-label { font-size: 0.7rem; color: #86868b; margin-top: 8px; font-weight: 500; }
+  
+  /* 🌟 차트 하단 연도 레이블 서체 통합 */
+  .css-bar-label { 
+    font-family: "SF Mono", Consolas, monospace !important;
+    font-size: 0.7rem; 
+    color: #86868b; 
+    margin-top: 8px; 
+    font-weight: 500; 
+  }
+  
   .css-kpi-row { display: flex; justify-content: space-around; width: 100%; background: #f5f5f7; border-radius: 12px; padding: 0.6rem; margin-bottom: 1.2rem; box-sizing: border-box; }
   .css-kpi-item { text-align: center; }
   .css-kpi-label { font-size: 0.62rem; color: #86868b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.03em; }
-  .css-kpi-value { font-size: 1.05rem; font-weight: 700; color: #1d1d1f; font-family: monospace; }
+  
+  /* 🌟 Matrix 02 KPI 영역 수치 서체 통합 */
+  .css-kpi-value { 
+    font-family: "SF Mono", Consolas, monospace !important;
+    font-size: 1.05rem; 
+    font-weight: 700; 
+    color: #1d1d1f; 
+    letter-spacing: -0.02em;
+  }
 
   /* Matrix 03 전용 SVG 링-패스 차트 스타일 */
   .tax-chart-grid {
@@ -183,7 +203,15 @@ subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
     text-shadow: 0 1px 3px rgba(0,0,0,0.2);
   }
   .tax-donut-label { font-size: 0.65rem; color: #86868b; text-transform: uppercase; font-weight: 700; margin-bottom: 2px; }
-  .tax-donut-value { font-size: 1.15rem; font-weight: 800; color: #1d1d1f; font-family: monospace; }
+  
+  /* 🌟 Matrix 03 도넛 중앙 밸류 서체 통합 */
+  .tax-donut-value { 
+    font-family: "SF Mono", Consolas, monospace !important;
+    font-size: 1.15rem; 
+    font-weight: 800; 
+    color: #1d1d1f; 
+    letter-spacing: -0.02em;
+  }
 
   .tax-kpi-row {
     display: flex;
@@ -197,21 +225,36 @@ subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
   }
   .tax-kpi-item { text-align: center; }
   .tax-kpi-label { font-size: 0.62rem; color: #86868b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.03em; }
-  .tax-kpi-value { font-size: 1.05rem; font-weight: 700; color: #1d1d1f; font-family: monospace; }
+  
+  /* 🌟 Matrix 03 KPI 영역 수치 서체 통합 */
+  .tax-kpi-value { 
+    font-family: "SF Mono", Consolas, monospace !important;
+    font-size: 1.05rem; 
+    font-weight: 700; 
+    color: #1d1d1f; 
+    letter-spacing: -0.02em;
+  }
 
   .tax-bar-wrapper { display: flex; flex-direction: column; width: 100%; height: 190px; justify-content: flex-end; }
   .tax-bar-axis { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; height: 100%; border-bottom: 1px solid #e8e8ed; padding-bottom: 4px; box-sizing: border-box; }
-  .tax-bar-column { display: flex; flex-direction: column; align-items: center; width: 10%; height: 100%; justify-content: flex-end; }
-  
-  /* 🌟 정적 데이터 기반 무결성 애니메이션용 바 채우기 속성 */
+  .tax-bar-column { display: flex; flex-direction: column; align-items: center; width: 16%; height: 100%; justify-content: flex-end; }
   .tax-bar-fill { 
     width: 100%; 
     background-color: #E5E5EA; 
     border-radius: 5px 5px 0 0; 
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    height: 0%; 
+    transition: height 1s cubic-bezier(0.4, 0, 0.2, 1); 
   }
   .tax-bar-fill.active { background-color: #34C759 !important; box-shadow: 0 2px 8px rgba(52,199,89,0.2); }
-  .tax-bar-label { font-size: 0.7rem; color: #86868b; margin-top: 8px; font-weight: 500; }
+  
+  /* 🌟 차트 하단 연도 레이블 서체 통합 */
+  .tax-bar-label { 
+    font-family: "SF Mono", Consolas, monospace !important;
+    font-size: 0.7rem; 
+    color: #86868b; 
+    margin-top: 8px; 
+    font-weight: 500; 
+  }
 
   @media (max-width: 900px) {
     .css-chart-grid, .tax-chart-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -368,8 +411,7 @@ subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
           <div class="css-donut-ring">
             <div class="css-donut-hole">
               <span class="css-donut-label">Total Value</span>
-              <span class="css-donut-value">$1.24M</span>
-            </div>
+              <span class="css-donut-value">$1,240,500</span> </div>
           </div>
         </div>
         
@@ -387,11 +429,11 @@ subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
           
           <div class="css-bar-wrapper">
             <div class="css-bar-axis">
-              <div class="css-bar-column"><div class="css-bar-fill" style="height: 55%;"></div><span class="css-bar-label">2022</span></div>
-              <div class="css-bar-column"><div class="css-bar-fill" style="height: 70%;"></div><span class="css-bar-label">2023</span></div>
-              <div class="css-bar-column"><div class="css-bar-fill" style="height: 85%;"></div><span class="css-bar-label">2024</span></div>
-              <div class="css-bar-column"><div class="css-bar-fill" style="height: 100%;"></div><span class="css-bar-label">2025</span></div>
-              <div class="css-bar-column"><div class="css-bar-fill active" style="height: 72%;"></div><span class="css-bar-label">2026</span></div>
+              <div class="css-bar-column"><div class="css-bar-fill" style="transform: scaleY(0.55); transform-origin: bottom;"></div><span class="css-bar-label">2022</span></div>
+              <div class="css-bar-column"><div class="css-bar-fill" style="transform: scaleY(0.70); transform-origin: bottom;"></div><span class="css-bar-label">2023</span></div>
+              <div class="css-bar-column"><div class="css-bar-fill" style="transform: scaleY(0.85); transform-origin: bottom;"></div><span class="css-bar-label">2024</span></div>
+              <div class="css-bar-column"><div class="css-bar-fill" style="transform: scaleY(1.00); transform-origin: bottom;"></div><span class="css-bar-label">2025</span></div>
+              <div class="css-bar-column"><div class="css-bar-fill active" style="transform: scaleY(0.72); transform-origin: bottom;"></div><span class="css-bar-label">2026</span></div>
             </div>
           </div>
         </div>
@@ -421,18 +463,17 @@ subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
                 <path id="textTrack" d="M 110,110 m -80,0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" />
               </defs>
               <circle cx="110" cy="110" r="80" fill="transparent" stroke="#FF9500" stroke-width="30" stroke-dasharray="251.3 502.6" stroke-dashoffset="0" />
-              <circle cx="110" cy="110" r="80" fill="transparent" stroke="#AF52DE" stroke-width="30" stroke-dasharray="150.8 502.6" stroke-dashoffset="-251.3" />
-              <circle cx="110" cy="110" r="80" fill="transparent" stroke="#5AC8FA" stroke-width="30" stroke-dasharray="100.5 502.6" stroke-dashoffset="-402.1" />
+              <circle cx="110" cy="110" r="80" fill="transparent" stroke="#AF52DE" stroke-width="30" stroke-dasharray="150.8 502.6" stroke-dashoffset="251.3" />
+              <circle cx="110" cy="110" r="80" fill="transparent" stroke="#5AC8FA" stroke-width="30" stroke-dasharray="100.5 502.6" stroke-dashoffset="402.1" />
               
-              <text class="svg-donut-text"><textPath href="#textTrack" startOffset="12.5%">Personal</textPath></text>
-              <text class="svg-donut-text"><textPath href="#textTrack" startOffset="42.5%">IRP</textPath></text>
-              <text class="svg-donut-text"><textPath href="#textTrack" startOffset="67.5%">ISA</textPath></text>
+              <text class="svg-donut-text"><textPath href="#textTrack" startOffset="25.0%">Personal</textPath></text>
+              <text class="svg-donut-text"><textPath href="#textTrack" startOffset="65.0%">IRP</textPath></text>
+              <text class="svg-donut-text"><textPath href="#textTrack" startOffset="90.0%">ISA</textPath></text>
             </svg>
 
             <div style="position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 130px; height: 130px; background: #ffffff; border-radius: 50%;">
               <span class="tax-donut-label">Shield Vol</span>
-              <span class="tax-donut-value" style="font-size: 1.15rem;">₩172.4M</span>
-            </div>
+              <span class="tax-donut-value">₩172M</span> </div>
           </div>
         </div>
         
@@ -440,21 +481,21 @@ subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
           <div class="tax-kpi-row">
             <div class="tax-kpi-item">
               <div class="tax-kpi-label">Total Tax Saving</div>
-              <div class="tax-kpi-value" style="color: #34C759;">₩6,731,514</div>
+              <div class="tax-kpi-value" style="color: #34C759;">₩4,649,000</div>
             </div>
             <div class="tax-kpi-item">
               <div class="tax-kpi-label">2026 Saved</div>
-              <div class="tax-kpi-value" style="color: #34C759;">₩166,320</div>
+              <div class="tax-kpi-value" style="color: #34C759;">₩1,184,000</div>
             </div>
           </div>
           
           <div class="tax-bar-wrapper">
             <div class="tax-bar-axis">
-              <div class="tax-bar-column"><div class="tax-bar-fill" style="height: 85.4%;"></div><span class="tax-bar-label">2022</span></div>
-              <div class="tax-bar-column"><div class="tax-bar-fill" style="height: 56.9%;"></div><span class="tax-bar-label">2023</span></div>
-              <div class="tax-bar-column"><div class="tax-bar-fill" style="height: 100%;"></div><span class="tax-bar-label">2024</span></div>
-              <div class="tax-bar-column"><div class="tax-bar-fill" style="height: 100%;"></div><span class="tax-bar-label">2025</span></div>
-              <div class="tax-bar-column"><div class="tax-bar-fill active" style="height: 14.0%;"></div><span class="tax-bar-label">2026</span></div>
+              <div class="tax-bar-column"><div id="bar-2022" class="tax-bar-fill" style="height: 80%;"></div><span class="tax-bar-label">2022</span></div>
+              <div class="tax-bar-column"><div id="bar-2023" class="tax-bar-fill" style="height: 95.5%;"></div><span class="tax-bar-label">2023</span></div>
+              <div class="tax-bar-column"><div id="bar-2024" class="tax-bar-fill" style="height: 97.5%;"></div><span class="tax-bar-label">2024</span></div>
+              <div class="tax-bar-column"><div id="bar-2025" class="tax-bar-fill" style="height: 100%;"></div><span class="tax-bar-label">2025</span></div>
+              <div class="tax-bar-column"><div id="bar-2026" class="tax-bar-fill active" style="height: 30%;"></div><span class="tax-bar-label">2026</span></div>
             </div>
           </div>
         </div>
