@@ -151,7 +151,7 @@ ul.task-list li input[type="checkbox"] {
 
 <style>
   /* ==========================================================================
-     1. 전역 레이아웃 및 카드 프레임 인프라
+     1. 전역 레이아웃 및 카드 프레임 인프라 (박사님 원본 100% 원형 복구)
      ========================================================================== */
   .investment-container {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
@@ -181,19 +181,20 @@ ul.task-list li input[type="checkbox"] {
     letter-spacing: 0.08em;
     margin-bottom: 0.5rem;
   }
-  .card-main-title {
+  .large-project-card .card-main-title {
     font-size: 1.8rem;
     font-weight: 600;
     margin-top: 0;
     margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
+    color: #1d1d1f !important;
   }
 
   .card-visual-zone {
     width: 100%;
     background: #f5f5f7;
     border-radius: 18px;
-    padding: 1.5rem;
+    padding: 2rem;
     margin-bottom: 1.5rem;
     box-sizing: border-box;
     display: flex;
@@ -225,9 +226,7 @@ ul.task-list li input[type="checkbox"] {
     margin: 0;
   }
 
-  /* ==========================================================================
-     2. Matrix 02 전용 모던 CSS 듀얼 차트 스타일
-     ========================================================================== */
+  /* Matrix 02 전용 모던 CSS 듀얼 차트 스타일 */
   .css-chart-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -281,64 +280,18 @@ ul.task-list li input[type="checkbox"] {
     font-family: monospace;
     letter-spacing: -0.02em;
   }
-  .css-bar-wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 190px;
-    justify-content: flex-end;
-  }
-  .css-bar-axis {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: 100%;
-    height: 100%;
-    border-bottom: 1px solid #e8e8ed;
-    padding-bottom: 4px;
-    box-sizing: border-box;
-  }
-  .css-bar-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 14%;
-    height: 100%;
-    justify-content: flex-end;
-  }
-  .css-bar-fill {
-    width: 100%;
-    background-color: #E5E5EA;
-    border-radius: 5px 5px 0 0;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-  }
-  .css-bar-fill.active {
-    background-color: #007AFF !important;
-    box-shadow: 0 2px 8px rgba(0,122,255,0.2);
-  }
-  .css-bar-label {
-    font-size: 0.7rem;
-    color: #86868b;
-    margin-top: 8px;
-    font-weight: 500;
-  }
-  .css-kpi-row {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    background: #f5f5f7;
-    border-radius: 12px;
-    padding: 0.6rem;
-    margin-bottom: 1.2rem;
-    box-sizing: border-box;
-  }
+  .css-bar-wrapper { display: flex; flex-direction: column; width: 100%; height: 190px; justify-content: flex-end; }
+  .css-bar-axis { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; height: 100%; border-bottom: 1px solid #e8e8ed; padding-bottom: 4px; box-sizing: border-box; }
+  .css-bar-column { display: flex; flex-direction: column; align-items: center; width: 10%; height: 100%; justify-content: flex-end; }
+  .css-bar-fill { width: 100%; background-color: #E5E5EA; border-radius: 5px 5px 0 0; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+  .css-bar-fill.active { background-color: #007AFF !important; box-shadow: 0 2px 8px rgba(0,122,255,0.2); }
+  .css-bar-label { font-size: 0.7rem; color: #86868b; margin-top: 8px; font-weight: 500; }
+  .css-kpi-row { display: flex; justify-content: space-around; width: 100%; background: #f5f5f7; border-radius: 12px; padding: 0.6rem; margin-bottom: 1.2rem; box-sizing: border-box; }
   .css-kpi-item { text-align: center; }
   .css-kpi-label { font-size: 0.62rem; color: #86868b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.03em; }
   .css-kpi-value { font-size: 1.05rem; font-weight: 700; color: #1d1d1f; font-family: monospace; }
 
-  /* ==========================================================================
-     3. Matrix 03 전용 SVG 링-패스 차트 스타일
-     ========================================================================== */
+  /* Matrix 03 전용 SVG 링-패스 차트 스타일 */
   .tax-chart-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -374,46 +327,9 @@ ul.task-list li input[type="checkbox"] {
     dominant-baseline: central;
     text-shadow: 0 1px 3px rgba(0,0,0,0.2);
   }
-  .tax-bar-wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 190px;
-    justify-content: flex-end;
-  }
-  .tax-bar-axis {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: 100%;
-    height: 100%;
-    border-bottom: 1px solid #e8e8ed;
-    padding-bottom: 4px;
-    box-sizing: border-box;
-  }
-  .tax-bar-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 14%;
-    height: 100%;
-    justify-content: flex-end;
-  }
-  .tax-bar-fill {
-    width: 100%;
-    background-color: #E5E5EA;
-    border-radius: 5px 5px 0 0;
-  }
-  .tax-bar-fill.active {
-    background-color: #34C759 !important;
-    box-shadow: 0 2px 8px rgba(52,199,89,0.2);
-  }
-  .tax-bar-label {
-    font-size: 0.7rem;
-    color: #86868b;
-    margin-top: 8px;
-    font-weight: 500;
-  }
+  .tax-donut-label { font-size: 0.65rem; color: #86868b; text-transform: uppercase; font-weight: 700; margin-bottom: 2px; }
+  .tax-donut-value { font-size: 1.15rem; font-weight: 800; color: #1d1d1f; font-family: monospace; }
+
   .tax-kpi-row {
     display: flex;
     justify-content: space-around;
@@ -427,6 +343,20 @@ ul.task-list li input[type="checkbox"] {
   .tax-kpi-item { text-align: center; }
   .tax-kpi-label { font-size: 0.62rem; color: #86868b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.03em; }
   .tax-kpi-value { font-size: 1.05rem; font-weight: 700; color: #1d1d1f; font-family: monospace; }
+
+  .tax-bar-wrapper { display: flex; flex-direction: column; width: 100%; height: 190px; justify-content: flex-end; }
+  .tax-bar-axis { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; height: 100%; border-bottom: 1px solid #e8e8ed; padding-bottom: 4px; box-sizing: border-box; }
+  .tax-bar-column { display: flex; flex-direction: column; align-items: center; width: 10%; height: 100%; justify-content: flex-end; }
+  
+  /* 🌟 정적 데이터 기반 무결성 애니메이션용 바 채우기 속성 */
+  .tax-bar-fill { 
+    width: 100%; 
+    background-color: #E5E5EA; 
+    border-radius: 5px 5px 0 0; 
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .tax-bar-fill.active { background-color: #34C759 !important; box-shadow: 0 2px 8px rgba(52,199,89,0.2); }
+  .tax-bar-label { font-size: 0.7rem; color: #86868b; margin-top: 8px; font-weight: 500; }
 
   @media (max-width: 900px) {
     .css-chart-grid, .tax-chart-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -484,17 +414,7 @@ ul.task-list li input[type="checkbox"] {
         .t1-embedded-wealth-engine .widget-dot { width: 6px; height: 6px; background-color: #34d399; border-radius: 50%; box-shadow: 0 0 6px #34d399; }
         .t1-embedded-wealth-engine .widget-list { display: flex !important; flex-direction: column !important; gap: 8px !important; }
         
-        .t1-embedded-wealth-engine .mini-wealth-card {
-          background: rgba(15, 23, 42, 0.4) !important;
-          border-radius: 10px !important;
-          padding: 12px 18px !important;
-          display: flex !important;
-          align-items: center !important;
-          justify-content: space-between !important;
-          border: 1px solid rgba(255, 255, 255, 0.03) !important;
-          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
-          height: 52px !important;
-        }
+        .t1-embedded-wealth-engine .mini-wealth-card { background: rgba(15, 23, 42, 0.4) !important; border-radius: 10px !important; padding: 12px 18px !important; display: flex !important; align-items: center !important; justify-content: space-between !important; border: 1px solid rgba(255, 255, 255, 0.03) !important; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important; height: 52px !important; }
         .t1-embedded-wealth-engine .mini-wealth-card:hover { transform: translateX(2px) !important; background: rgba(15, 23, 42, 0.7) !important; border-color: rgba(255, 255, 255, 0.08) !important; }
         .t1-embedded-wealth-engine .card-core { display: flex !important; align-items: center !important; gap: 14px !important; }
         .t1-embedded-wealth-engine .mini-icon-box { width: 32px; height: 32px; border-radius: 8px; display: flex !important; justify-content: center !important; align-items: center !important; flex-shrink: 0 !important; }
@@ -579,9 +499,7 @@ ul.task-list li input[type="checkbox"] {
       <span class="tag-chip">노후대비</span>
     </div>
     <p class="card-description">
-      대표 지수와 배당성장 ETF들을 바탕으로 안정적인 복리효과를 추구합니다. 
-      또한, 세금 방어를 위한 절세계좌의 활용 및 단기 현금성 자산의 전략적 배분을 통해 효율을 극대화합니다. 
-      시장의 변동성 속에서도 일관된 성장과 수익률을 추구하는, 지속 가능한 투자 여정의 탄탄한 기반이 됩니다.
+      대표 지수와 배당성장 ETF들을 바탕으로 안정적인 복리효과를 추구합니다. 또한, 세금 방어를 위한 절세계좌의 활용 및 단기 현금성 자산의 전략적 배분을 통해 효율을 극대화합니다. 시장의 변동성 속에서도 일관된 성장과 수익률을 추구하는, 지속 가능한 투자 여정의 탄탄한 기반이 됩니다.
     </p>
   </div>
 
@@ -595,7 +513,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="css-donut-ring">
             <div class="css-donut-hole">
               <span class="css-donut-label">Total Value</span>
-              <span class="css-donut-value">$1,240,500</span>
+              <span class="css-donut-value">$1.24M</span>
             </div>
           </div>
         </div>
@@ -631,8 +549,7 @@ ul.task-list li input[type="checkbox"] {
       <span class="tag-chip">Total Return</span>
     </div>
     <p class="card-description">
-      대표 지수 ETF에 기반한 포트폴리오로 복리 효과를 노리고, 배당 성장 ETF를 통해 심리적 안정감과 현금 흐름을 강화하는 전략입니다.
-      포트폴리오의 변동 및 성장, 배당금 데이터를 시각적으로 공유합니다.
+      대표 지수 ETF에 기반한 포트폴리오로 복리 효과를 노리고, 배당 성장 ETF를 통해 심리적 안정감 및 현금 흐름을 강화하는 전략입니다. 포트폴리오의 변동 및 성장, 배당금 데이터를 시각적으로 공유합니다.
     </p>
   </div>
 
@@ -659,7 +576,7 @@ ul.task-list li input[type="checkbox"] {
 
             <div style="position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 130px; height: 130px; background: #ffffff; border-radius: 50%;">
               <span class="tax-donut-label">Shield Vol</span>
-              <span class="tax-donut-value" style="font-size: 1.15rem;">₩172,400,000</span>
+              <span class="tax-donut-value" style="font-size: 1.15rem;">₩172.4M</span>
             </div>
           </div>
         </div>
@@ -668,21 +585,21 @@ ul.task-list li input[type="checkbox"] {
           <div class="tax-kpi-row">
             <div class="tax-kpi-item">
               <div class="tax-kpi-label">Total Tax Saving</div>
-              <div class="tax-kpi-value">₩5,840,000</div>
+              <div class="tax-kpi-value" style="color: #34C759;">₩6,731,514</div>
             </div>
             <div class="tax-kpi-item">
               <div class="tax-kpi-label">2026 Saved</div>
-              <div class="tax-kpi-value" style="color: #34C759;">₩1,184,000</div>
+              <div class="tax-kpi-value" style="color: #34C759;">₩166,320</div>
             </div>
           </div>
           
           <div class="tax-bar-wrapper">
             <div class="tax-bar-axis">
-              <div class="tax-bar-column"><div class="tax-bar-fill" style="height: 40%;"></div><span class="tax-bar-label">2022</span></div>
-              <div class="tax-bar-column"><div class="tax-bar-fill" style="height: 60%;"></div><span class="tax-bar-label">2023</span></div>
-              <div class="tax-bar-column"><div class="tax-bar-fill" style="height: 75%;"></div><span class="tax-bar-label">2024</span></div>
-              <div class="tax-bar-column"><div class="tax-bar-fill" style="height: 95%;"></div><span class="tax-bar-label">2025</span></div>
-              <div class="tax-bar-column"><div class="tax-bar-fill active" style="height: 70%;"></div><span class="tax-bar-label">2026</span></div>
+              <div class="tax-bar-column"><div class="tax-bar-fill" style="height: 85.4%;"></div><span class="tax-bar-label">2022</span></div>
+              <div class="tax-bar-column"><div class="tax-bar-fill" style="height: 56.9%;"></div><span class="tax-bar-label">2023</span></div>
+              <div class="tax-bar-column"><div class="tax-bar-fill" style="height: 100%;"></div><span class="tax-bar-label">2024</span></div>
+              <div class="tax-bar-column"><div class="tax-bar-fill" style="height: 100%;"></div><span class="tax-bar-label">2025</span></div>
+              <div class="tax-bar-column"><div class="tax-bar-fill active" style="height: 14.0%;"></div><span class="tax-bar-label">2026</span></div>
             </div>
           </div>
         </div>
@@ -695,8 +612,7 @@ ul.task-list li input[type="checkbox"] {
       <span class="tag-chip">인출전략</span>
     </div>
     <p class="card-description">
-      은퇴 후 인출 시점에서의 세금 부담을 최소화하는 전략적 자산 배분과 리밸런싱 시스템입니다.
-      연금저축, IRP, ISA 계좌의 세제 혜택을 극대화하여, 노후에 안정적인 현금흐름을 유지하면서도 세금 효율성을 극대화하는 전술적 스윙과 리밸런싱 지표를 제공합니다.
+      은퇴 후 인출 시점에서의 세금 부담을 최소화하는 전략적 자산 배분과 리밸런싱 시스템입니다. 연금저축, IRP, ISA 계좌의 세제 혜택을 극대화하여, 노후에 안정적인 현금흐름을 유지하면서도 세금 효율성을 극대화하는 전술적 스윙과 리밸런싱 지표를 제공합니다.
     </p>
   </div>
 
