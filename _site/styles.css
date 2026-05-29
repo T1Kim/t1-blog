@@ -1,0 +1,365 @@
+/* ==========================================================================
+   T1 Log - Master Unified Stylesheet (styles.css)
+   Aesthetics: Minimal, Ultra-High-Density, Apple-inspired Typography
+   Layout Constraint: Unified 850px Grid Geometry (Homepage Baseline)
+   ========================================================================== */
+
+/* 1. 글로벌 레이아웃 및 본문 배경색 전체 동기화 */
+body, 
+#quarto-content, 
+.page-columns, 
+main.content, 
+.quarto-container,
+.nav-footer {
+    background-color: #ffffff !important; /* 전체 배경 순백색 통일 */
+    color: #1d1d1f !important;            /* Apple 표준 텍스트 컬러 */
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;  /* 폰트 렌더링 최적화 */
+}
+
+/* [핵심 패치] 전역 가로 폭 및 그리드 밸런스 동기화 (Homepage 850px 기준 락인) */
+.page-columns .content,
+main.content,
+#quarto-document-content,
+.quarto-title-block,
+#title-block-header {
+    max-width: 850px !important;       /* 가로 상한선을 홈화면 규격으로 고정 */
+    width: 100% !important;
+    margin-left: auto !important;      /* 좌우 마진 자동 계산으로 정중앙 정렬 */
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+}
+
+/* 2. 타이포그래피 및 헤더 정렬 */
+h1, h2, h3, h4, h5, h6 {
+    color: #1d1d1f;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* 3. 리스트 영역 정렬 보정 (Site Map, Highlights 정밀 타격) */
+ul, ol {
+    text-align: left !important;
+    margin-left: 1.5rem !important;
+    padding-left: 0 !important;
+}
+
+li {
+    text-align: left !important;
+    margin-bottom: 0.6rem;
+    color: #424245; /* 가독성을 위한 부드러운 회색조 */
+    line-height: 1.5;
+}
+
+/* 4. 링크 및 글로벌 인터랙티브 스타일 */
+a {
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #007aff; /* Apple Blue로 피드백 통일 */
+}
+
+/* 5. 커스텀 컴포넌트: Apple 상단 타일 섹션 */
+.apple-tile-section {
+    background: #f5f5f7;
+    border-radius: 22px;
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    clear: both;
+}
+
+.apple-tile-section h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin: 0;
+    color: #1d1d1f;
+}
+
+/* 6. 대시보드 및 레이아웃 보호용 유틸리티 */
+.chart-container-wrapper,
+.chart-container-wrapper * {
+    box-sizing: border-box;
+}
+
+.clear-fix {
+    clear: both !important;
+}
+
+/* 7. Quarto 페이지 서브타이틀 (Subtitle) 은은한 회색조 적용 */
+.quarto-title-block .subtitle,
+.subtitle {
+    color: #86868b !important;       
+    font-weight: 400 !important;     
+    font-size: 1.15rem !important;   
+    letter-spacing: -0.01em;         
+    margin-top: 0.6rem !important;   
+    margin-bottom: 0 !important;
+    opacity: 0.95;
+}
+
+
+/* ==========================================================================
+   8. Blog Listing & High-Density Timeline Overrides
+   ========================================================================== */
+
+/* 개별 포스트 항목(Row) 자체 여백 극대화 압축 */
+.quarto-post {
+    padding-top: 0.5rem !important;    
+    padding-bottom: 0.5rem !important; 
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important; 
+    align-items: center !important;    
+}
+
+.quarto-post:last-of-type {
+    border-bottom: none !important; 
+}
+
+/* 연도 헤더 바로 다음에 오는 첫 번째 포스트의 상단 패딩을 강제 삭제하여 선에 밀착 */
+.custom-year-heading + .quarto-post {
+    padding-top: 0 !important;
+}
+
+/* 내부 텍스트 구성 요소들의 기본 상하 마진 완전 제거 */
+.quarto-post .title,
+.listing-title {
+    color: #1d1d1f !important;
+    font-weight: 600 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.15rem !important; 
+    line-height: 1.25 !important;
+}
+.quarto-post .title a:hover,
+.listing-title a:hover {
+    color: #007aff !important;
+}
+
+.quarto-post .subtitle,
+.listing-subtitle {
+    margin-top: 0 !important;
+    margin-bottom: 0.2rem !important;
+    line-height: 1.3 !important;
+}
+
+.quarto-post .listing-description {
+    margin-top: 0 !important;
+    margin-bottom: 0.3rem !important;
+    line-height: 1.35 !important;
+    font-size: 0.88rem !important;
+    color: #424245 !important;
+}
+
+.quarto-post .listing-categories,
+.listing-categories {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* 날짜 표시 영역 줄바꿈 및 여백 제어 */
+.listing-date {
+    line-height: 1.3 !important;
+    text-align: left !important;
+    font-family: "SF Pro Text", sans-serif;
+    color: #1d1d1f;
+    margin: 0 !important;
+}
+
+/* 연도별 대형 구분선 헤더 */
+.custom-year-heading {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin: 2.5rem 0 0 !important; 
+    border-bottom: 1px solid #1d1d1f; 
+    padding-bottom: 0.3rem;
+    font-family: "SF Pro Display", sans-serif;
+    letter-spacing: -0.01em;
+}
+
+/* 카테고리 태그 미니멀 칩셋 */
+.listing-categories .listing-category {
+    border: 1px solid #e8e8ed !important;
+    background-color: transparent !important;
+    color: #86868b !important;
+    border-radius: 4px !important;
+    font-size: 0.65rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.1rem 0.4rem !important;
+    margin-bottom: 0 !important;
+}
+
+
+/* ==========================================================================
+   9. Standardized Thumbnail Engine
+   ========================================================================== */
+
+.quarto-post .thumbnail img,
+.listing-img-toggle img {
+    width: 165px !important;       
+    height: 105px !important;      
+    object-fit: cover !important;  
+    object-position: center !important; 
+    border-radius: 12px !important; 
+    border: 1px solid rgba(0, 0, 0, 0.03) !important; 
+    background-color: #f5f5f7 !important; 
+    transition: transform 0.2s ease !important;
+}
+
+.quarto-post:hover .thumbnail img {
+    transform: scale(1.03); 
+}
+
+
+/* ==========================================================================
+   10. Right Sidebar Filter UI & Mobile Responsive Breakpoints
+   ========================================================================== */
+
+.custom-year-filter-wrapper {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e8e8ed;
+    padding-bottom: 1.5rem;
+}
+.filter-section-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.03em;
+}
+.year-filter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.year-link {
+    color: #86868b;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.year-link:hover, .year-link.active {
+    color: #007aff; 
+    font-weight: 600;
+    text-decoration: none;
+}
+
+
+/* ==========================================================================
+   11. Post Detail Page - Project Card Style Title Block (Isolated)
+   ========================================================================== */
+
+/* 실제 메타데이터 대문자 표기가 존재하는 상세 본문에서만 카드 레이아웃 작동 */
+#title-block-header.quarto-title-block:has(.quarto-title-meta-heading) {
+    background: #ffffff !important; 
+    border-radius: 28px !important; 
+    padding: 2.5rem !important;     
+    margin-top: 1rem !important;
+    margin-bottom: 3.5rem !important; 
+    border: 1px solid rgba(0, 0, 0, 0.04) !important; 
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02) !important; 
+}
+
+/* 본문 타이틀 디자인 */
+#title-block-header:has(.quarto-title-meta-heading) .title {
+    font-size: 2.2rem !important;
+    font-weight: 700 !important;
+    color: #1d1d1f !important;
+    letter-spacing: -0.03em !important;
+    line-height: 1.25 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.6rem !important;
+}
+
+/* 본문 서브타이틀 */
+#title-block-header:has(.quarto-title-meta-heading) .subtitle {
+    font-size: 1.15rem !important;
+    color: #86868b !important;
+    font-weight: 400 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    line-height: 1.4 !important;
+}
+
+/* 메타데이터 구역 */
+#title-block-header .quarto-title-meta {
+    border-top: 1px solid #e8e8ed !important;
+    padding-top: 1.5rem !important;
+    margin-top: 1.5rem !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 1.5rem 3rem !important; 
+}
+
+#title-block-header .quarto-title-meta-heading {
+    font-size: 0.72rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    color: #86868b !important;
+    font-weight: 700 !important;
+    margin-bottom: 0.3rem !important;
+}
+
+#title-block-header .quarto-title-meta-contents,
+#title-block-header .quarto-title-meta-contents a {
+    font-size: 0.9rem !important;
+    color: #424245 !important;
+}
+
+#title-block-header .quarto-categories {
+    display: flex !important;
+    gap: 0.4rem !important;
+    margin-top: 0.2rem !important;
+}
+
+#title-block-header .quarto-categories .quarto-category {
+    border: 1px solid #e8e8ed !important;
+    background-color: transparent !important;
+    color: #86868b !important;
+    border-radius: 4px !important;
+    font-size: 0.68rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.5rem !important;
+}
+
+
+/* ==========================================================================
+   12. Mobile Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 576px) {
+    .quarto-post .thumbnail img,
+    .listing-img-toggle img {
+        width: 100px !important; 
+        height: 65px !important;  
+        border-radius: 9px !important;
+    }
+    .custom-year-heading {
+        font-size: 1.5rem;
+        margin: 2.5rem 0 0.5rem 0 !important; 
+    }
+    .quarto-post {
+        padding-top: 0.4rem !important;
+        padding-bottom: 0.4rem !important;
+    }
+    /* 모바일 상세페이지 조건부 카드 압축 */
+    #title-block-header.quarto-title-block:has(.quarto-title-meta-heading) {
+        padding: 1.5rem !important;
+        border-radius: 20px !important;
+        margin-bottom: 2rem !important;
+    }
+    #title-block-header:has(.quarto-title-meta-heading) .title {
+        font-size: 1.6rem !important;
+    }
+}
