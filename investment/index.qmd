@@ -107,7 +107,7 @@ header-includes: |
   .css-bar-axis { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; height: 100%; border-bottom: 1px solid #e8e8ed; padding-bottom: 4px; box-sizing: border-box; }
   .css-bar-column { display: flex; flex-direction: column; align-items: center; width: 14%; height: 100%; justify-content: flex-end; }
   
-  /* 🌟 바 차트 물리 뼈대 height: 100% 교정선 완벽 안착 */
+  /* 바 차트 물리 뼈대 height: 100% 교정선 완벽 안착 */
   .css-bar-fill { 
     width: 100%; 
     height: 100%;
@@ -126,6 +126,7 @@ header-includes: |
     font-weight: 500; 
   }
   
+  /* 🌟 Matrix 02 & 03 공용 프리미엄 KPI 가로형 듀얼 캡슐 로우 */
   .css-kpi-row { display: flex; justify-content: space-around; width: 100%; background: #f5f5f7; border-radius: 12px; padding: 0.6rem; margin-bottom: 1.2rem; box-sizing: border-box; }
   .css-kpi-item { text-align: center; }
   .css-kpi-label { font-size: 0.62rem; color: #86868b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.03em; }
@@ -144,7 +145,7 @@ header-includes: |
   .tax-bar-axis { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; height: 100%; border-bottom: 1px solid #e8e8ed; padding-bottom: 4px; box-sizing: border-box; }
   .tax-bar-column { display: flex; flex-direction: column; align-items: center; width: 16%; height: 100%; justify-content: flex-end; }
   
-  /* 🌟 Matrix 03 바 차트 물리 뼈대 height: 100% 교정선 완벽 안착 */
+  /* Matrix 03 바 차트 물리 뼈대 height: 100% 교정선 완벽 안착 */
   .tax-bar-fill { 
     width: 100%; 
     height: 100%;
@@ -161,7 +162,7 @@ header-includes: |
     font-weight: 500; 
   }
 
-  /* 🌟 도넛 차트 정중앙 오버레이 레이아웃 유닛 (02, 03 카드 공용 오퍼레이팅) */
+  /* 도넛 차트 정중앙 수동 레이아웃 락인 패널 */
   .matrix-center-overlay {
     position: absolute;
     top: 50%;
@@ -400,7 +401,7 @@ header-includes: |
   </div>
 
   <!-- ==========================================================================
-       Matrix 03 . Shield & Harvest (🚀 Matrix 02와 일치화된 Plotly 도넛 링 이식 완공)
+       Matrix 03 . Shield & Harvest (🌟 KPI 디자인 패널을 Matrix 02형식으로 완전 동계화 수복)
        ========================================================================== */ -->
   <div class="large-project-card">
     <div class="card-subtitle">Matrix 03 . Shield & Harvest</div>
@@ -409,26 +410,25 @@ header-includes: |
     <div class="card-visual-zone" style="height: 420px; background: #ffffff; padding: 1.5rem; flex-direction: column;">
       <div class="css-chart-grid">
         
-        <!-- 좌측 패널: Matrix 02 포지션과 완벽 정렬된 절세 쉴드 Plotly 컨테이너 레이어 -->
         <div class="css-chart-box">
           <div id="taxShieldChart" style="width: 100%; height: 350px; position: relative;"></div>
-          <!-- 🌟 [매뉴얼 제어 단자] 박사님이 수동 지정 요청해주신 ₩172M 총자산 오버레이 탑재 -->
           <div class="matrix-center-overlay">
             <span class="matrix-center-label">Shield Vol</span>
-            <span class="matrix-center-value">₩104M</span>
+            <span class="matrix-center-value">₩172M</span>
           </div>
         </div>
         
-        <!-- 우측 패널: 기존 오리지널 KPI 수치 원장 및 연도별 바 차트 100% 철통 보존 -->
         <div class="css-chart-box">
-          <div class="tax-kpi-row">
-            <div class="tax-kpi-item">
-              <div class="tax-kpi-label">Total Tax Saving</div>
-              <div class="tax-kpi-value" style="color: #34C759;">₩4,649,000</div>
+          <!-- 🌟 [디자인 싱크 완공] Matrix 02와 완벽히 일치하는 가로형 듀얼 캡슐 그리드로 교체 수리 -->
+          <div class="css-kpi-row">
+            <div class="css-kpi-item">
+              <div class="css-kpi-label">Total Tax Saving</div>
+              <div class="css-kpi-value">₩4,649,000</div>
             </div>
-            <div class="tax-kpi-item">
-              <div class="tax-kpi-label">2026 Saved</div>
-              <div class="tax-kpi-value" style="color: #34C759;">₩1,184,000</div>
+            <div class="css-kpi-item">
+              <div class="css-kpi-label">2026 Saved</div>
+              <!-- 🌟 2026 Saved 고유 아이덴티티 유지를 위해 수치 컬러는 지정 그린 락인 -->
+              <div class="css-kpi-value" style="color: #34C759;">₩1,184,000</div>
             </div>
           </div>
           
@@ -463,14 +463,12 @@ header-includes: |
      ========================================================================== -->
 <script>
   (function() {
-    // 1. Matrix 02 자산 매핑 딕셔너리 정의
     const categoryMap = {
       'VOO': 'Growth', 'BRK.A': 'Growth', 'BRK.B': 'Growth', 'BRK-A': 'Growth', 'BRK-B': 'Growth', 'SCHG': 'Growth',
       'TQQQ': 'Leverage', 'QLD': 'Leverage',
       'SCHD': 'Dividend', 'JEPQ': 'Dividend', 'SPYI': 'Dividend'
     };
 
-    // 🌟 2. [Matrix 03 전술 기조] 박사님이 지정해주신 절세 포지션 및 71:0:25:4 수율 배치선
     const taxSource = {
       'Personal_1': 71,
       'Personal_2': 0,
@@ -489,7 +487,6 @@ header-includes: |
         const rawCache = localStorage.getItem('asset_cache');
         
         if (!rawCache) {
-          // Fail-safe 예비 배관 수동 동기화 
           const sheetID = "1ZgcJc8n-pC4crM3zqq4LPUJ9hTGbmhgpfV6XI87wr5A";
           const gid = "0";
           const fallbackUrl = '[https://docs.google.com/spreadsheets/d/](https://docs.google.com/spreadsheets/d/)' + sheetID + '/gviz/tq?tqx=out:csv&gid=' + gid;
@@ -519,14 +516,13 @@ header-includes: |
       }
 
       // ==========================================
-      // [PART B] Matrix 03 . Shield & Harvest 정밀 사출 (🌟 완전 동계화 수복)
+      // [PART B] Matrix 03 . Shield & Harvest 정밀 사출
       // ==========================================
       const container03 = document.getElementById('taxShieldChart');
       if (container03) {
         const taxLabels = [];
         const taxValues = [];
         
-        // 🌟 레이블 중첩 필터링 메커니즘: 비중이 0%인 항목(Personal_2)은 링 표면에서 제외 처리
         Object.keys(taxSource).forEach(key => {
           if (taxSource[key] > 0) {
             taxLabels.push(key);
@@ -534,7 +530,6 @@ header-includes: |
           }
         });
 
-        // Matrix 02의 무드와 대칭되는 고급 절세 컬러 세트 (주황, 퍼플, 스카이블루, 그레이 순)
         const taxColors = ["#FF9500", "#AF52DE", "#5AC8FA", "#E5E5EA"];
 
         Plotly.newPlot('taxShieldChart', [{
@@ -554,7 +549,6 @@ header-includes: |
       }
     }
 
-    // Matrix 02 핵심 그래픽 빌더
     function drawMatrix02(dom, sourceLabels, sourceValues) {
       const categoryTotals = { 'Growth': 0, 'Leverage': 0, 'Dividend': 0, 'Others': 0 };
       for (let i = 0; i < sourceLabels.length; i++) {
