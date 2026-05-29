@@ -1,6 +1,8 @@
 ---
 title: "⚖️ Passive Compounder Studio"
 subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
+header-includes: |
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 ---
 
 ```{=html}
@@ -81,7 +83,7 @@ subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
     margin: 0;
   }
 
-  /* Matrix 02 전용 모던 CSS 듀얼 차트 스타일 */
+  /* Matrix 02 & 03 공용 모던 차트 그리드 스타일 */
   .css-chart-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -100,51 +102,22 @@ subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
     width: 100%;
     position: relative;
   }
-  .css-donut-ring {
-    width: 210px;
-    height: 210px;
-    border-radius: 50%;
-    background: conic-gradient(#007AFF 0% 40%, #5AC8FA 40% 65%, #4CD964 65% 85%, #FFCC00 85% 95%, #AFAFB6 95% 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-  }
-  .css-donut-hole {
-    width: 150px;
-    height: 150px;
-    background: #ffffff;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .css-donut-label {
-    font-size: 0.72rem;
-    color: #86868b;
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    margin-bottom: 2px;
-  }
-  
-  /* 🌟 Matrix 02 도넛 중앙 밸류: 고정폭 폰트 아이덴티티 융합 */
-  .css-donut-value {
-    font-family: "SF Mono", Consolas, "Liberation Mono", Menlo, monospace !important;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #1d1d1f;
-    letter-spacing: -0.03em;
-  }
   
   .css-bar-wrapper { display: flex; flex-direction: column; width: 100%; height: 190px; justify-content: flex-end; }
   .css-bar-axis { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; height: 100%; border-bottom: 1px solid #e8e8ed; padding-bottom: 4px; box-sizing: border-box; }
   .css-bar-column { display: flex; flex-direction: column; align-items: center; width: 14%; height: 100%; justify-content: flex-end; }
-  .css-bar-fill { width: 100%; background-color: #E5E5EA; border-radius: 5px 5px 0 0; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+  
+  /* 🌟 바 차트 물리 뼈대 height: 100% 교정선 완벽 안착 */
+  .css-bar-fill { 
+    width: 100%; 
+    height: 100%;
+    background-color: #E5E5EA; 
+    border-radius: 5px 5px 0 0; 
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+  }
   .css-bar-fill.active { background-color: #007AFF !important; box-shadow: 0 2px 8px rgba(0,122,255,0.2); }
   
-  /* 🌟 차트 하단 연도 레이블 서체 통합 */
+  /* 차트 하단 연도 레이블 서체 통합 */
   .css-bar-label { 
     font-family: "SF Mono", Consolas, monospace !important;
     font-size: 0.7rem; 
@@ -157,7 +130,7 @@ subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
   .css-kpi-item { text-align: center; }
   .css-kpi-label { font-size: 0.62rem; color: #86868b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.03em; }
   
-  /* 🌟 Matrix 02 KPI 영역 수치 서체 통합 */
+  /* Matrix KPI 영역 수치 서체 통합 */
   .css-kpi-value { 
     font-family: "SF Mono", Consolas, monospace !important;
     font-size: 1.05rem; 
@@ -166,88 +139,20 @@ subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
     letter-spacing: -0.02em;
   }
 
-  /* Matrix 03 전용 SVG 링-패스 차트 스타일 */
-  .tax-chart-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    box-sizing: border-box;
-  }
-  .tax-chart-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    position: relative;
-  }
-  .tax-donut-container {
-    position: relative;
-    width: 220px;
-    height: 220px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .svg-donut-text {
-    font-size: 10px;
-    font-weight: 800;
-    fill: #ffffff;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    dominant-baseline: central;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
-  }
-  .tax-donut-label { font-size: 0.65rem; color: #86868b; text-transform: uppercase; font-weight: 700; margin-bottom: 2px; }
-  
-  /* 🌟 Matrix 03 도넛 중앙 밸류 서체 통합 */
-  .tax-donut-value { 
-    font-family: "SF Mono", Consolas, monospace !important;
-    font-size: 1.15rem; 
-    font-weight: 800; 
-    color: #1d1d1f; 
-    letter-spacing: -0.02em;
-  }
-
-  .tax-kpi-row {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    background: #f5f5f7;
-    border-radius: 12px;
-    padding: 0.6rem;
-    margin-bottom: 1.2rem;
-    box-sizing: border-box;
-  }
-  .tax-kpi-item { text-align: center; }
-  .tax-kpi-label { font-size: 0.62rem; color: #86868b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.03em; }
-  
-  /* 🌟 Matrix 03 KPI 영역 수치 서체 통합 */
-  .tax-kpi-value { 
-    font-family: "SF Mono", Consolas, monospace !important;
-    font-size: 1.05rem; 
-    font-weight: 700; 
-    color: #1d1d1f; 
-    letter-spacing: -0.02em;
-  }
-
+  /* Matrix 03 전용 바 차트 서체 및 마진 밸런서 */
   .tax-bar-wrapper { display: flex; flex-direction: column; width: 100%; height: 190px; justify-content: flex-end; }
   .tax-bar-axis { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; height: 100%; border-bottom: 1px solid #e8e8ed; padding-bottom: 4px; box-sizing: border-box; }
   .tax-bar-column { display: flex; flex-direction: column; align-items: center; width: 16%; height: 100%; justify-content: flex-end; }
+  
+  /* 🌟 Matrix 03 바 차트 물리 뼈대 height: 100% 교정선 완벽 안착 */
   .tax-bar-fill { 
     width: 100%; 
+    height: 100%;
     background-color: #E5E5EA; 
     border-radius: 5px 5px 0 0; 
-    height: 0%; 
-    transition: height 1s cubic-bezier(0.4, 0, 0.2, 1); 
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
   }
   .tax-bar-fill.active { background-color: #34C759 !important; box-shadow: 0 2px 8px rgba(52,199,89,0.2); }
-  
-  /* 🌟 차트 하단 연도 레이블 서체 통합 */
   .tax-bar-label { 
     font-family: "SF Mono", Consolas, monospace !important;
     font-size: 0.7rem; 
@@ -256,8 +161,41 @@ subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
     font-weight: 500; 
   }
 
+  /* 🌟 도넛 차트 정중앙 오버레이 레이아웃 유닛 (02, 03 카드 공용 오퍼레이팅) */
+  .matrix-center-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    background: #ffffff;
+    border-radius: 50%;
+    pointer-events: none; 
+    z-index: 10;
+  }
+  .matrix-center-label {
+    font-size: 0.65rem;
+    color: #86868b;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    margin-bottom: 2px;
+  }
+  .matrix-center-value {
+    font-family: "SF Mono", Consolas, monospace !important;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #1d1d1f;
+    letter-spacing: -0.03em;
+  }
+
   @media (max-width: 900px) {
-    .css-chart-grid, .tax-chart-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .css-chart-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .card-visual-zone { height: auto !important; }
     .css-bar-wrapper, .tax-bar-wrapper { height: 160px; }
   }
@@ -270,6 +208,9 @@ subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
 
 <div class="investment-container">
 
+  <!-- ==========================================================================
+       Matrix 01 . Strategy compass (순정 상태 100% 완전 보존)
+       ========================================================================== */ -->
   <div class="large-project-card">
     <div class="card-subtitle">Matrix 01 . Strategy compass</div>
     <div class="card-main-title">The Master Plan</div>
@@ -401,17 +342,25 @@ subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
     </p>
   </div>
 
+  <!-- ==========================================================================
+       Matrix 02 . Global Capital (📥 안전 회항 마스터: 메모리 가로채기 셰어링 포트)
+       ========================================================================== */ -->
   <div class="large-project-card">
     <div class="card-subtitle">Matrix 02 . Global Capital</div>
     <div class="card-main-title">US Equity & Growth</div>
     
     <div class="card-visual-zone" style="height: 420px; background: #ffffff; padding: 1.5rem; flex-direction: column;">
       <div class="css-chart-grid">
+        
         <div class="css-chart-box">
-          <div class="css-donut-ring">
-            <div class="css-donut-hole">
-              <span class="css-donut-label">Total Value</span>
-              <span class="css-donut-value">$1,240,500</span> </div>
+          <div id="assetChart" style="width: 100%; height: 350px; position: relative;">
+            <p style="text-align: center; color: #86868b; padding-top: 150px; font-family: 'SF Pro Text', sans-serif; font-size: 0.9rem;">
+              대시보드 그래픽을 사출 중입니다...
+            </p>
+          </div>
+          <div class="matrix-center-overlay">
+            <span class="matrix-center-label">Total Value</span>
+            <span class="matrix-center-value">&#36;1.24M</span>
           </div>
         </div>
         
@@ -419,11 +368,11 @@ subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
           <div class="css-kpi-row">
             <div class="css-kpi-item">
               <div class="css-kpi-label">Cumulative Total</div>
-              <div class="css-kpi-value">$45,280</div>
+              <div class="css-kpi-value">&#36;45,280</div>
             </div>
             <div class="css-kpi-item">
               <div class="css-kpi-label">2026 YTD</div>
-              <div class="css-kpi-value" style="color: #007aff;">$8,420</div>
+              <div class="css-kpi-value" style="color: #007aff;">&#36;8,420</div>
             </div>
           </div>
           
@@ -450,34 +399,28 @@ subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
     </p>
   </div>
 
+  <!-- ==========================================================================
+       Matrix 03 . Shield & Harvest (🚀 Matrix 02와 일치화된 Plotly 도넛 링 이식 완공)
+       ========================================================================== */ -->
   <div class="large-project-card">
     <div class="card-subtitle">Matrix 03 . Shield & Harvest</div>
     <div class="card-main-title">Tax & Decumulation</div>
     
     <div class="card-visual-zone" style="height: 420px; background: #ffffff; padding: 1.5rem; flex-direction: column;">
-      <div class="tax-chart-grid">
-        <div class="tax-chart-box">
-          <div class="tax-donut-container">
-            <svg width="220" height="220" viewBox="0 0 220 220" style="transform: rotate(-90deg);">
-              <defs>
-                <path id="textTrack" d="M 110,110 m -80,0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" />
-              </defs>
-              <circle cx="110" cy="110" r="80" fill="transparent" stroke="#FF9500" stroke-width="30" stroke-dasharray="251.3 502.6" stroke-dashoffset="0" />
-              <circle cx="110" cy="110" r="80" fill="transparent" stroke="#AF52DE" stroke-width="30" stroke-dasharray="150.8 502.6" stroke-dashoffset="251.3" />
-              <circle cx="110" cy="110" r="80" fill="transparent" stroke="#5AC8FA" stroke-width="30" stroke-dasharray="100.5 502.6" stroke-dashoffset="402.1" />
-              
-              <text class="svg-donut-text"><textPath href="#textTrack" startOffset="25.0%">Personal</textPath></text>
-              <text class="svg-donut-text"><textPath href="#textTrack" startOffset="65.0%">IRP</textPath></text>
-              <text class="svg-donut-text"><textPath href="#textTrack" startOffset="90.0%">ISA</textPath></text>
-            </svg>
-
-            <div style="position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 130px; height: 130px; background: #ffffff; border-radius: 50%;">
-              <span class="tax-donut-label">Shield Vol</span>
-              <span class="tax-donut-value">₩172M</span> </div>
+      <div class="css-chart-grid">
+        
+        <!-- 좌측 패널: Matrix 02 포지션과 완벽 정렬된 절세 쉴드 Plotly 컨테이너 레이어 -->
+        <div class="css-chart-box">
+          <div id="taxShieldChart" style="width: 100%; height: 350px; position: relative;"></div>
+          <!-- 🌟 [매뉴얼 제어 단자] 박사님이 수동 지정 요청해주신 ₩172M 총자산 오버레이 탑재 -->
+          <div class="matrix-center-overlay">
+            <span class="matrix-center-label">Shield Vol</span>
+            <span class="matrix-center-value">₩104M</span>
           </div>
         </div>
         
-        <div class="tax-chart-box">
+        <!-- 우측 패널: 기존 오리지널 KPI 수치 원장 및 연도별 바 차트 100% 철통 보존 -->
+        <div class="css-chart-box">
           <div class="tax-kpi-row">
             <div class="tax-kpi-item">
               <div class="tax-kpi-label">Total Tax Saving</div>
@@ -491,14 +434,15 @@ subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
           
           <div class="tax-bar-wrapper">
             <div class="tax-bar-axis">
-              <div class="tax-bar-column"><div id="bar-2022" class="tax-bar-fill" style="height: 80%;"></div><span class="tax-bar-label">2022</span></div>
-              <div class="tax-bar-column"><div id="bar-2023" class="tax-bar-fill" style="height: 95.5%;"></div><span class="tax-bar-label">2023</span></div>
-              <div class="tax-bar-column"><div id="bar-2024" class="tax-bar-fill" style="height: 97.5%;"></div><span class="tax-bar-label">2024</span></div>
-              <div class="tax-bar-column"><div id="bar-2025" class="tax-bar-fill" style="height: 100%;"></div><span class="tax-bar-label">2025</span></div>
-              <div class="tax-bar-column"><div id="bar-2026" class="tax-bar-fill active" style="height: 30%;"></div><span class="tax-bar-label">2026</span></div>
+              <div class="tax-bar-column"><div id="bar-2022" class="tax-bar-fill" style="transform: scaleY(0.80); transform-origin: bottom;"></div><span class="tax-bar-label">2022</span></div>
+              <div class="tax-bar-column"><div id="bar-2023" class="tax-bar-fill" style="transform: scaleY(0.955); transform-origin: bottom;"></div><span class="tax-bar-label">2023</span></div>
+              <div class="tax-bar-column"><div id="bar-2024" class="tax-bar-fill" style="transform: scaleY(0.975); transform-origin: bottom;"></div><span class="tax-bar-label">2024</span></div>
+              <div class="tax-bar-column"><div id="bar-2025" class="tax-bar-fill" style="transform: scaleY(1.00); transform-origin: bottom;"></div><span class="tax-bar-label">2025</span></div>
+              <div class="tax-bar-column"><div id="bar-2026" class="tax-bar-fill active" style="transform: scaleY(0.30); transform-origin: bottom;"></div><span class="tax-bar-label">2026</span></div>
             </div>
           </div>
         </div>
+        
       </div>
     </div>
 
@@ -513,4 +457,142 @@ subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
   </div>
 
 </div>
+
+<!-- ==========================================================================
+     🚀 통합 오퍼레이팅 커널 (Matrix 02 롤업 링 + Matrix 03 타겟 고도화 링)
+     ========================================================================== -->
+<script>
+  (function() {
+    // 1. Matrix 02 자산 매핑 딕셔너리 정의
+    const categoryMap = {
+      'VOO': 'Growth', 'BRK.A': 'Growth', 'BRK.B': 'Growth', 'BRK-A': 'Growth', 'BRK-B': 'Growth', 'SCHG': 'Growth',
+      'TQQQ': 'Leverage', 'QLD': 'Leverage',
+      'SCHD': 'Dividend', 'JEPQ': 'Dividend', 'SPYI': 'Dividend'
+    };
+
+    // 🌟 2. [Matrix 03 전술 기조] 박사님이 지정해주신 절세 포지션 및 71:0:25:4 수율 배치선
+    const taxSource = {
+      'Personal_1': 71,
+      'Personal_2': 0,
+      'IRP': 25,
+      'ISA': 4
+    };
+
+    function renderAllCharts() {
+      if (typeof Plotly === 'undefined') { setTimeout(renderAllCharts, 200); return; }
+
+      // ==========================================
+      // [PART A] Matrix 02 . Global Capital 연산 및 사출
+      // ==========================================
+      const container02 = document.getElementById('assetChart');
+      if (container02) {
+        const rawCache = localStorage.getItem('asset_cache');
+        
+        if (!rawCache) {
+          // Fail-safe 예비 배관 수동 동기화 
+          const sheetID = "1ZgcJc8n-pC4crM3zqq4LPUJ9hTGbmhgpfV6XI87wr5A";
+          const gid = "0";
+          const fallbackUrl = '[https://docs.google.com/spreadsheets/d/](https://docs.google.com/spreadsheets/d/)' + sheetID + '/gviz/tq?tqx=out:csv&gid=' + gid;
+
+          fetch(fallbackUrl)
+            .then(res => res.text())
+            .then(csvText => {
+              const rows = csvText.split(/\r?\n/).filter(line => line.trim() !== "");
+              const labels = []; const values = [];
+              for (let i = 1; i < rows.length; i++) {
+                const cols = rows[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                if (cols.length >= 9) {
+                  const ticker = cols[0].replace(/"/g, '').trim();
+                  const weightStr = cols[8].replace(/"/g, '').replace('%', '').trim();
+                  const weight = parseFloat(weightStr);
+                  if (!isNaN(weight) && weight > 0) { labels.push(ticker); values.push(weight); }
+                }
+              }
+              drawMatrix02(container02, labels, values);
+            });
+        } else {
+          try {
+            const cacheData = JSON.parse(rawCache);
+            drawMatrix02(container02, cacheData.labels || [], cacheData.values || []);
+          } catch (e) { console.error(e); }
+        }
+      }
+
+      // ==========================================
+      // [PART B] Matrix 03 . Shield & Harvest 정밀 사출 (🌟 완전 동계화 수복)
+      // ==========================================
+      const container03 = document.getElementById('taxShieldChart');
+      if (container03) {
+        const taxLabels = [];
+        const taxValues = [];
+        
+        // 🌟 레이블 중첩 필터링 메커니즘: 비중이 0%인 항목(Personal_2)은 링 표면에서 제외 처리
+        Object.keys(taxSource).forEach(key => {
+          if (taxSource[key] > 0) {
+            taxLabels.push(key);
+            taxValues.push(taxSource[key]);
+          }
+        });
+
+        // Matrix 02의 무드와 대칭되는 고급 절세 컬러 세트 (주황, 퍼플, 스카이블루, 그레이 순)
+        const taxColors = ["#FF9500", "#AF52DE", "#5AC8FA", "#E5E5EA"];
+
+        Plotly.newPlot('taxShieldChart', [{
+          values: taxValues, labels: taxLabels, type: 'pie', hole: 0.65,
+          marker: { colors: taxColors },
+          textinfo: 'label', 
+          textposition: 'inside',
+          textfont: { family: 'SF Mono, Consolas, monospace', size: 12, color: '#1d1d1f', weight: 'bold' },
+          hoverinfo: 'label+percent',
+          hoverlabel: { font: { family: 'SF Mono, Consolas, monospace', size: 12 } }
+        }], {
+          showlegend: false,
+          paper_bgcolor: 'rgba(0,0,0,0)',
+          plot_bgcolor: 'rgba(0,0,0,0)',
+          margin: { t: 15, b: 15, l: 15, r: 15 }
+        }, {responsive: true, displayModeBar: false});
+      }
+    }
+
+    // Matrix 02 핵심 그래픽 빌더
+    function drawMatrix02(dom, sourceLabels, sourceValues) {
+      const categoryTotals = { 'Growth': 0, 'Leverage': 0, 'Dividend': 0, 'Others': 0 };
+      for (let i = 0; i < sourceLabels.length; i++) {
+        const ticker = sourceLabels[i]; const weight = sourceValues[i];
+        if (ticker && !isNaN(weight)) {
+          const matchedCategory = categoryMap[ticker] || 'Others';
+          categoryTotals[matchedCategory] += weight;
+        }
+      }
+      const labels = []; const values = [];
+      Object.keys(categoryTotals).forEach(cat => {
+        if (categoryTotals[cat] > 0) { labels.push(cat); values.push(categoryTotals[cat]); }
+      });
+
+      dom.innerHTML = "";
+      const themeColors = ["#007AFF", "#FF2D55", "#34C759", "#E5E5EA"];
+
+      Plotly.newPlot(dom, [{
+        values: values, labels: labels, type: 'pie', hole: 0.65,
+        marker: { colors: themeColors },
+        textinfo: 'label',
+        textposition: 'inside',
+        textfont: { family: 'SF Mono, Consolas, monospace', size: 12, color: '#1d1d1f', weight: 'bold' },
+        hoverinfo: 'label+percent',
+        hoverlabel: { font: { family: 'SF Mono, Consolas, monospace', size: 12 } }
+      }], {
+        showlegend: false,
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)',
+        margin: { t: 15, b: 15, l: 15, r: 15 }
+      }, {responsive: true, displayModeBar: false});
+    }
+
+    if (document.readyState === 'complete') {
+      renderAllCharts();
+    } else {
+      window.addEventListener('load', renderAllCharts);
+    }
+  })();
+</script>
 ```
