@@ -232,6 +232,18 @@ ul.task-list li input[type="checkbox"] {
             // 하단 범례가 본문 텍스트와 겹치지 않도록 b(bottom) 마진을 100으로 대폭 확장
             margin: { t: 60, b: 100, l: 20, r: 20 } 
           }, {responsive: true, displayModeBar: false});
+
+          // ==========================================================================
+          // 🌟 [송신 배관 주입] 차트 사출 완료 직후 메모리 창고에 정밀 적재
+          // ==========================================================================
+          const cacheData = {
+            labels: labels,
+            values: values,
+            timestamp: Date.now()
+          };
+          localStorage.setItem('asset_cache', JSON.stringify(cacheData));
+          // ==========================================================================
+
         });
     }
     window.addEventListener('load', startApp);
