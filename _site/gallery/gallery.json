@@ -1,106 +1,34 @@
 [
   {
-    "title": "Stillness in Kyoto",
-    "image": "/assets/gallery/kyoto.jpg",
-    "period": "2021.05",
+    "title": "Ticket to Yesterday",
+    "image": "https://res.cloudinary.com/dvcppc9me/image/upload/v1780233551/L1020518-FHD_vivcst.jpg",
+    "period": "2017.08",
     "theme": "City",
-    "camera": "Leica",
-    "desc": "새벽 5시, 고요함 속에 깨어나는 교토의 골목길을 담다."
+    "camera": "Leica Q",
+    "desc": "도심을 조금만 벗어나도 마주할 수 있는 과거의 모습들"
   },
   {
-    "title": "Green Echoes",
-    "image": "/assets/gallery/forest.jpg",
-    "period": "2015.08",
-    "theme": "Nature",
-    "camera": "Nikon",
-    "desc": "원시림의 수면 위로 떨어지는 빛의 스펙트럼."
+    "title": "View-First City",
+    "image": "https://res.cloudinary.com/dvcppc9me/image/upload/v1780233551/L1020504-FHD_job6vk.jpg",
+    "period": "2017.08",
+    "theme": "City",
+    "camera": "Leica Q",
+    "desc": "다테야마를 필두로 한 풍경을 즐길 수 있는 전망대가 많은 도야마"
   },
   {
-    "title": "Vintage Memory",
-    "image": "/assets/gallery/vintage.jpg",
-    "period": "2008.12",
+    "title": "Tram and Station",
+    "image": "https://res.cloudinary.com/dvcppc9me/image/upload/v1780233551/L1020514-FHD_r7kchp.jpg",
+    "period": "2017.08",
+    "theme": "City",
+    "camera": "Leica Q",
+    "desc": "도야마의 상징이라고 할 수 있는 트램"
+  },
+  {
+    "title": "Self Portrait in Takaoka",
+    "image": "https://res.cloudinary.com/dvcppc9me/image/upload/v1779454916/L1020532-FHD_mboy7x.jpg",
+    "period": "2017.08",
     "theme": "Portrait",
-    "camera": "Film",
-    "desc": "필름 특유의 거친 입자와 따뜻한 색조의 기록."
-  },
-  {
-    "title": "Vintage Memory",
-    "image": "/assets/gallery/vintage.jpg",
-    "period": "2008.12",
-    "theme": "Portrait",
-    "camera": "Film",
-    "desc": "필름 특유의 거친 입자와 따뜻한 색조의 기록."
-  },
-  {
-    "title": "Green Echoes",
-    "image": "/assets/gallery/forest.jpg",
-    "period": "2015.08",
-    "theme": "Nature",
-    "camera": "Nikon",
-    "desc": "원시림의 수면 위로 떨어지는 빛의 스펙트럼."
-  },
-  {
-    "title": "Vintage Memory",
-    "image": "/assets/gallery/vintage.jpg",
-    "period": "2008.12",
-    "theme": "Portrait",
-    "camera": "Film",
-    "desc": "필름 특유의 거친 입자와 따뜻한 색조의 기록."
-  },
-  {
-    "title": "Vintage Memory",
-    "image": "/assets/gallery/vintage.jpg",
-    "period": "2008.12",
-    "theme": "Portrait",
-    "camera": "Film",
-    "desc": "필름 특유의 거친 입자와 따뜻한 색조의 기록."
-  },
-  {
-    "title": "Green Echoes",
-    "image": "/assets/gallery/forest.jpg",
-    "period": "2015.08",
-    "theme": "Nature",
-    "camera": "Nikon",
-    "desc": "원시림의 수면 위로 떨어지는 빛의 스펙트럼."
-  },
-  {
-    "title": "Vintage Memory",
-    "image": "/assets/gallery/vintage.jpg",
-    "period": "2008.12",
-    "theme": "Portrait",
-    "camera": "Film",
-    "desc": "필름 특유의 거친 입자와 따뜻한 색조의 기록."
-  },
-  {
-    "title": "Vintage Memory",
-    "image": "/assets/gallery/vintage.jpg",
-    "period": "2008.12",
-    "theme": "Portrait",
-    "camera": "Film",
-    "desc": "필름 특유의 거친 입자와 따뜻한 색조의 기록."
-  },
-  {
-    "title": "Green Echoes",
-    "image": "/assets/gallery/forest.jpg",
-    "period": "2015.08",
-    "theme": "Nature",
-    "camera": "Nikon",
-    "desc": "원시림의 수면 위로 떨어지는 빛의 스펙트럼."
-  },
-  {
-    "title": "Vintage Memory",
-    "image": "/assets/gallery/vintage.jpg",
-    "period": "2008.12",
-    "theme": "Portrait",
-    "camera": "Film",
-    "desc": "필름 특유의 거친 입자와 따뜻한 색조의 기록."
-  },
-  {
-    "title": "Vintage Memory",
-    "image": "/assets/gallery/vintage.jpg",
-    "period": "2008.12",
-    "theme": "Portrait",
-    "camera": "Film",
-    "desc": "필름 특유의 거친 입자와 따뜻한 색조의 기록."
+    "camera": "Leica Q",
+    "desc": "타카오카 사진전에서 촬영한 셀프 포트레이트"
   }
 ]
