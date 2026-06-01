@@ -1,0 +1,25 @@
+---
+title: "Conference in Boston, 2015"
+date: "2026-06-01"
+author: "T1"
+categories: [Travel, Photography, Boston, USA]
+description: "졸업 전 마지막 학회로 다녀왔던 미국 동부. 보스턴에서의 첫인상을 담은 사진들."
+image: "https://res.cloudinary.com/dvcppc9me/image/upload/v1780275021/_DSC1181-FHD_z5xel5.jpg"
+---
+
+안녕하세요. T1 입니다. </br>
+Gallery 기능 테스트 겸, 2015년 가을에 다녀온 보스턴 사진들을 공유하려고 합니다. </br></br>
+
+보스턴은 미국의 동부에 위치한 도시로, 명문대학들이 위치한 역사적인 도시입니다. </br>
+MRS 구두 발표 준비를 하느라 정신이 없던 와중에 남겼던 사진들 중 세 장을 골라보았습니다. </br></br>
+
+- 피자, 그리고 **Samuel Adams** </br>
+- 당시만 해도 한국에는 흔치 않았던 **테슬라**, 그때 살껄... </br>
+- 어댑터 문제로 급 방문했던 **애플**스토어, 그때 살껄2... </br>
+
+
+![Boston Adams @Boston, 2015-11](https://res.cloudinary.com/dvcppc9me/image/upload/v1780275021/_DSC1181-FHD_z5xel5.jpg)
+
+![이때살걸...#1 @Boston, 2015-11](https://res.cloudinary.com/dvcppc9me/image/upload/v1780275021/_DSC1185-FHD_qffjqm.jpg)
+
+![이때살걸...#2 @Boston, 2015-11](https://res.cloudinary.com/dvcppc9me/image/upload/v1780275021/_DSC1190-FHD_pimdcb.jpg)
