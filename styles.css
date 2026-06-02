@@ -17,7 +17,7 @@ main.content,
     -webkit-font-smoothing: antialiased;  /* 폰트 렌더링 최적화 */
 }
 
-/* [핵심 패치] 전역 가로 폭 및 그리드 밸런스 동기화 (Homepage 850px 기준 락인) */
+/* 전역 가로 폭 및 그리드 밸런스 동기화 (Homepage 850px 기준 락인) */
 .page-columns .content,
 main.content,
 #quarto-document-content,
@@ -279,7 +279,7 @@ a:hover {
     letter-spacing: -0.03em !important;
     line-height: 1.25 !important;
     margin-top: 0 !important;
-    margin-bottom: 0.6rem !important;
+    margin-bottom: 1.2rem !important;
 }
 
 /* 본문 서브타이틀 */
@@ -362,4 +362,44 @@ a:hover {
     #title-block-header:has(.quarto-title-meta-heading) .title {
         font-size: 1.6rem !important;
     }
+}
+
+
+/* ==========================================================================
+   13. Auto Full-Width Image-less Engine (🚨 좌측 라인 동결 & 우측 전폭 확장 완공)
+   ========================================================================== */
+
+/* [1단계] 대표 이미지가 없는 행의 빈 썸네일 박스만 물리적으로 완벽 소각 */
+.quarto-post.image-none .thumbnail,
+.quarto-post:not(.has-image) .thumbnail {
+    display: none !important; 
+}
+
+/* [2단계] 좌측 날짜 영역의 고유 밥그릇(정렬선)은 완벽히 동결하고, 오직 우측으로만 확장 */
+.quarto-post.image-none .body,
+.quarto-post:not(.has-image) .body {
+    /* 기존 정렬선 유지를 위해 width나 max-width를 강제하지 않고, 
+       Quarto 기본 레이아웃의 flex 분할 메커니즘을 상속받아 우측 남은 여백만 흡수합니다. */
+    flex: 1 1 auto !important; 
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* [3단계] 타이포그래피의 가로 텍스트 흐름(와이드 바운더리) 전면 개방 */
+.quarto-post.image-none .listing-title,
+.quarto-post:not(.has-image) .listing-title,
+.quarto-post.image-none .listing-description,
+.quarto-post:not(.has-image) .listing-description {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* [4단계] 대표 이미지가 '있는' 기존 포스트들의 850px 표준 분할 포메이션 복원 및 락인 */
+.quarto-post.has-image .thumbnail,
+.quarto-post:not(.image-none) .thumbnail {
+    display: block !important;
+}
+.quarto-post.has-image .body,
+.quarto-post:not(.image-none) .body {
+    flex: 0 1 calc(100% - 195px) !important; /* 기존 썸네일 동거 포메이션 수율 복구 */
 }
