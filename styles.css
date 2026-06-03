@@ -336,57 +336,64 @@ a:hover {
 
 
 /* ==========================================================================
-   12. Mobile Responsive Breakpoints (📱 모바일 중첩 완벽 소각 및 1줄 정렬)
+   12. Mobile Responsive Breakpoints (📱 실서버-로컬 격차 완전 정렬 및 1줄 결착)
    ========================================================================== */
 @media (max-width: 768px) {
     
-    /* 1) 🚨 중요: 2중으로 복제되는 하단 유령 썸네일 영역을 물리적으로 전면 소각 */
+    /* 1) [🚨 핵심 저격] 2중 복제되어 흘러나오는 모든 유령 썸네일 레이어를 원천 소각
+          (계층 구조와 상관없이 한 행에 썸네일이 두 개 이상 감지되면 하단 자재를 무조건 멸균) */
     .quarto-post > .thumbnail,
     .quarto-post-toggle > .thumbnail,
-    .quarto-listing-container-default .quarto-post > .g-col-md-3 {
+    .quarto-post .metadata + .thumbnail,
+    .quarto-listing-container-default .quarto-post .thumbnail:nth-of-type(2) {
         display: none !important;
     }
 
-    /* 2) 실제 텍스트와 썸네일이 동거하는 핵심 토글 배관만 가로 1줄(Row)로 강제 정렬 */
-    .quarto-post .quarto-post-toggle {
+    /* 2) 수직으로 떨어지던 원고 정렬선을 강제로 수평 1줄(Row) 파이프라인으로 일치화 */
+    .quarto-post,
+    .quarto-post .quarto-post-toggle,
+    .quarto-post-grid-item {
         display: flex !important;
-        flex-direction: row !important; /* 가로 정렬 락인 */
-        align-items: center !important; /* 상하 정중앙 정렬 */
+        flex-direction: row !important; /* 가로 나란히 배치 락인 */
+        align-items: center !important; /* 상하 정중앙 칼정렬 */
         justify-content: flex-start !important;
         width: 100% !important;
-        gap: 12px !important;           /* 썸네일과 본문 사이 최적의 마찰 여백 */
+        gap: 14px !important;           /* 썸네일과 서사 사이의 프리미엄 여백 */
     }
 
-    /* 3) 토글 배관 '내부'에 살아남은 진짜 모바일 썸네일만 생존권 허용 및 스케일 락인 */
+    /* 3) 가로 정렬 선상에서 살아남은 '진짜' 썸네일의 스케일을 미니멀 콤팩트 락인 */
+    .quarto-post .thumbnail,
     .quarto-post .quarto-post-toggle .thumbnail {
-        display: block !important;      /* 생존 허용 */
-        flex: 0 0 95px !important;      /* 가로 폭 95px 고정 */
+        display: block !important;      /* 노출 허용 */
+        flex: 0 0 95px !important;      /* 모바일 화면 가로폭 95px 절대 고정 */
         width: 95px !important;
-        height: 65px !important;        /* 4:3 미니멀 레이아웃 */
+        height: 65px !important;        /* 4:3 감성의 정갈한 비율 */
         margin: 0 !important;
     }
 
+    .quarto-post .thumbnail img,
     .quarto-post .quarto-post-toggle .thumbnail img {
         width: 95px !important;
         height: 65px !important;
-        border-radius: 8px !important;
+        border-radius: 8px !important;  /* Apple 스튜디오 감성의 라운딩 보정 */
         object-fit: cover !important;
     }
 
-    /* 4) 우측 글귀 블록(Body)이 남은 여백 영역을 100% 흡수하도록 가로 가변 동화 */
+    /* 4) 우측 글귀 블록(Body)이 남은 가로 유체 공간을 100% 흡수하도록 동화 */
+    .quarto-post .body,
     .quarto-post .quarto-post-toggle .body,
-    .quarto-post .quarto-post-toggle .g-col-md-9 {
-        flex: 1 1 calc(100% - 110px) !important;
+    .quarto-post .g-col-md-9 {
+        flex: 1 1 calc(100% - 115px) !important; /* 전체 폭에서 썸네일 점유율을 제외한 전량 획득 */
         width: auto !important;
         max-width: 100% !important;
         display: flex !important;
-        flex-direction: column !important; /* 글자들은 위에서 아래로 정렬 */
+        flex-direction: column !important; /* 텍스트는 위에서 아래로 정렬 */
         text-align: left !important;
         padding: 0 !important;
         margin: 0 !important;
     }
 
-    /* 5) 초소형 화면 가독성 보호를 위한 고밀도 타이포그래피 압축 */
+    /* 5) 고밀도 모바일 뷰포트 최적화 타이포그래피 압축 */
     .quarto-post .listing-title,
     .quarto-post .title {
         font-size: 0.95rem !important;
@@ -399,25 +406,9 @@ a:hover {
         line-height: 1.35 !important;
         margin-bottom: 0 !important;
         display: -webkit-box !important;
-        -webkit-line-clamp: 2 !important; /* 설명글 2줄 제한 후 말줄임표 처리 */
+        -webkit-line-clamp: 2 !important; /* 설명글 2줄 초과 시 자동 말줄임표(...) */
         -webkit-box-orient: vertical !important;
         overflow: hidden !important;
-    }
-}
-
-@media (max-width: 576px) {
-    /* 스마트폰 초미니 해상도 대응 인프라 */
-    .quarto-post .quarto-post-toggle {
-        gap: 10px !important;
-    }
-    .quarto-post .quarto-post-toggle .thumbnail {
-        flex: 0 0 85px !important;
-        width: 85px !important;
-        height: 58px !important;
-    }
-    .quarto-post .quarto-post-toggle .thumbnail img {
-        width: 85px !important;
-        height: 58px !important;
     }
 }
 
