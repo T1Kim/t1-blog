@@ -336,31 +336,88 @@ a:hover {
 
 
 /* ==========================================================================
-   12. Mobile Responsive Breakpoints
+   12. Mobile Responsive Breakpoints (📱 모바일 중첩 완벽 소각 및 1줄 정렬)
    ========================================================================== */
+@media (max-width: 768px) {
+    
+    /* 1) 🚨 중요: 2중으로 복제되는 하단 유령 썸네일 영역을 물리적으로 전면 소각 */
+    .quarto-post > .thumbnail,
+    .quarto-post-toggle > .thumbnail,
+    .quarto-listing-container-default .quarto-post > .g-col-md-3 {
+        display: none !important;
+    }
+
+    /* 2) 실제 텍스트와 썸네일이 동거하는 핵심 토글 배관만 가로 1줄(Row)로 강제 정렬 */
+    .quarto-post .quarto-post-toggle {
+        display: flex !important;
+        flex-direction: row !important; /* 가로 정렬 락인 */
+        align-items: center !important; /* 상하 정중앙 정렬 */
+        justify-content: flex-start !important;
+        width: 100% !important;
+        gap: 12px !important;           /* 썸네일과 본문 사이 최적의 마찰 여백 */
+    }
+
+    /* 3) 토글 배관 '내부'에 살아남은 진짜 모바일 썸네일만 생존권 허용 및 스케일 락인 */
+    .quarto-post .quarto-post-toggle .thumbnail {
+        display: block !important;      /* 생존 허용 */
+        flex: 0 0 95px !important;      /* 가로 폭 95px 고정 */
+        width: 95px !important;
+        height: 65px !important;        /* 4:3 미니멀 레이아웃 */
+        margin: 0 !important;
+    }
+
+    .quarto-post .quarto-post-toggle .thumbnail img {
+        width: 95px !important;
+        height: 65px !important;
+        border-radius: 8px !important;
+        object-fit: cover !important;
+    }
+
+    /* 4) 우측 글귀 블록(Body)이 남은 여백 영역을 100% 흡수하도록 가로 가변 동화 */
+    .quarto-post .quarto-post-toggle .body,
+    .quarto-post .quarto-post-toggle .g-col-md-9 {
+        flex: 1 1 calc(100% - 110px) !important;
+        width: auto !important;
+        max-width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important; /* 글자들은 위에서 아래로 정렬 */
+        text-align: left !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* 5) 초소형 화면 가독성 보호를 위한 고밀도 타이포그래피 압축 */
+    .quarto-post .listing-title,
+    .quarto-post .title {
+        font-size: 0.95rem !important;
+        line-height: 1.25 !important;
+        margin-bottom: 0.2rem !important;
+    }
+
+    .quarto-post .listing-description {
+        font-size: 0.78rem !important;
+        line-height: 1.35 !important;
+        margin-bottom: 0 !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important; /* 설명글 2줄 제한 후 말줄임표 처리 */
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+}
+
 @media (max-width: 576px) {
-    .quarto-post .thumbnail img,
-    .listing-img-toggle img {
-        width: 100px !important; 
-        height: 65px !important;  
-        border-radius: 9px !important;
+    /* 스마트폰 초미니 해상도 대응 인프라 */
+    .quarto-post .quarto-post-toggle {
+        gap: 10px !important;
     }
-    .custom-year-heading {
-        font-size: 1.5rem;
-        margin: 2.5rem 0 0.5rem 0 !important; 
+    .quarto-post .quarto-post-toggle .thumbnail {
+        flex: 0 0 85px !important;
+        width: 85px !important;
+        height: 58px !important;
     }
-    .quarto-post {
-        padding-top: 0.4rem !important;
-        padding-bottom: 0.4rem !important;
-    }
-    /* 모바일 상세페이지 조건부 카드 압축 */
-    #title-block-header.quarto-title-block:has(.quarto-title-meta-heading) {
-        padding: 1.5rem !important;
-        border-radius: 20px !important;
-        margin-bottom: 2rem !important;
-    }
-    #title-block-header:has(.quarto-title-meta-heading) .title {
-        font-size: 1.6rem !important;
+    .quarto-post .quarto-post-toggle .thumbnail img {
+        width: 85px !important;
+        height: 58px !important;
     }
 }
 
