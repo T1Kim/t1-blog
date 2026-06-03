@@ -336,40 +336,70 @@ a:hover {
 
 
 /* ==========================================================================
-   12. Mobile Responsive Breakpoints (📱 실물 스마트폰 변종 배관 완전 소각)
+   12. Mobile Responsive Breakpoints (📱 태그 가로 정렬 수복 및 수평 안착)
    ========================================================================== */
 @media (max-width: 768px) {
     
-    /* 1) [🚨 전역 차단] 계층 구조나 클래스명을 불문하고, 한 포스트 내에 썸네일이 
-          두 개 이상 생성되면 하부/상부에 숨은 모든 유령 썸네일 구조를 무조건 멸균 */
-    .quarto-post .thumbnail:nth-of-type(n+2),
-    .quarto-post-toggle + .thumbnail,
-    .metadata + .thumbnail,
-    .g-col-xs-12.g-col-md-3 {
+    /* 1) 🚨 중첩 유령 썸네일 노드 완벽 멸균 */
+    .quarto-post > .thumbnail,
+    .quarto-post-toggle > .thumbnail,
+    .quarto-listing-container-default .quarto-post .thumbnail:nth-of-type(n+2) {
         display: none !important;
     }
 
-    /* 2) Quarto 모바일 엔진이 실물 기기에서 뿜어내는 수직 그리드 배관(.g-col-*) 자체를 
-          강제로 풀고, 1줄 수평(Flex-Row) 파이프라인으로 물리적 재조립 */
-    .quarto-post,
-    .quarto-post .quarto-post-toggle,
-    .quarto-listing-container-default .quarto-post,
-    .quarto-post-grid-item {
-        display: flex !important;
-        flex-direction: row !important; /* 무조건 가로 나란히 배치 */
-        align-items: center !important; /* 상하 정중앙 칼정렬 */
-        justify-content: flex-start !important;
+    /* 2) 타이틀(Title)은 시원하게 전폭(100%) 배치 */
+    .quarto-post .listing-title,
+    .quarto-post .title {
+        display: block !important;
         width: 100% !important;
-        gap: 14px !important;           /* 썸네일과 본문 사이의 최적 여백 */
+        max-width: 100% !important;
+        font-size: 1.05rem !important;
+        line-height: 1.3 !important;
+        margin-top: 0.3rem !important;
+        margin-bottom: 0.4rem !important;
+        font-weight: 600 !important;
     }
 
-    /* 3) 가로 정렬 선상에서 살아남은 단 하나의 진짜 '모바일 썸네일' 레이아웃 락인 */
+    /* 3) [🚨 태그 세로 적층 버그 전면 수리] 
+          태그 박스 자체는 전폭을 쓰되, 내부 칩셋들은 가로로 나란히 흐르도록 배관 전환 */
+    .quarto-post .listing-categories {
+        display: flex !important;
+        flex-direction: row !important; /* 무조건 가로 정렬 */
+        flex-wrap: wrap !important;     /* 화면폭을 넘어가면 부드럽게 다음줄로 래핑 */
+        gap: 6px 4px !important;        /* 태그 칩셋 간 상하(6px) 좌우(4px) 미학적 여백 */
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 0.6rem !important;
+        padding: 0 !important;
+    }
+
+    /* 개별 태그 칩셋의 한 줄 독점(Block) 성질을 완전히 소각하고 미니멀 칩셋으로 환원 */
+    .quarto-post .listing-categories .listing-category,
+    .quarto-post .listing-category {
+        display: inline-flex !important; /* 가로로 나열되면서 내부에 패딩 수용 */
+        width: auto !important;          /* 텍스트 길이에 맞게 폭 가변화 */
+        max-width: max-content !important;
+        white-space: nowrap !important;  /* 칩셋 내부에서 글자가 쪼개져 줄바꿈되는 현상 차단 */
+    }
+
+    /* 4) [썸네일 이미지 + Description] 영역 수평(Row) 배관 유지 */
+    .quarto-post-toggle,
+    .quarto-post .body {
+        display: flex !important;
+        flex-direction: row !important; 
+        align-items: flex-start !important; 
+        justify-content: flex-start !important;
+        width: 100% !important;
+        gap: 14px !important; 
+    }
+
+    /* 5) 모바일 썸네일 기하학적 규격 락인 (95px) */
     .quarto-post .thumbnail,
     .quarto-post-toggle .thumbnail {
-        display: block !important;      /* 무조건 노출 */
-        flex: 0 0 95px !important;      /* 실물 폰 가로폭 95px 절대 고정 */
+        display: block !important;
+        flex: 0 0 95px !important; 
         width: 95px !important;
-        height: 65px !important;        /* 4:3 황금 비율 */
+        height: 65px !important;
         margin: 0 !important;
     }
 
@@ -377,40 +407,39 @@ a:hover {
     .quarto-post-toggle .thumbnail img {
         width: 95px !important;
         height: 65px !important;
-        border-radius: 8px !important;  /* Apple 감성의 정갈한 라운딩 */
+        border-radius: 8px !important;
         object-fit: cover !important;
     }
 
-    /* 4) 우측 글귀 블록(Body)이 수평선상에서 남은 가로 유체 공간을 100% 흡수하도록 가변 동화 */
-    .quarto-post .body,
-    .quarto-post .quarto-post-toggle .body,
-    .quarto-post [class*="g-col-"] {
-        flex: 1 1 calc(100% - 115px) !important; /* 전체 폭에서 썸네일을 제외한 전량 획득 */
+    /* 6) 우측 설명글(Description) 대역폭 및 가독성 락인 */
+    .quarto-post .listing-description {
+        flex: 1 1 calc(100% - 110px) !important;
         width: auto !important;
         max-width: 100% !important;
-        display: flex !important;
-        flex-direction: column !important; /* 텍스트는 위에서 아래로 정렬 */
-        text-align: left !important;
-        padding: 0 !important;
+        font-size: 0.8rem !important;
+        line-height: 1.4 !important;
+        color: #424245 !important;
         margin: 0 !important;
-    }
-
-    /* 5) 실물 폰 화면 최적화 타이포그래피 압축 */
-    .quarto-post .listing-title,
-    .quarto-post .title {
-        font-size: 0.95rem !important;
-        line-height: 1.25 !important;
-        margin-bottom: 0.2rem !important;
-    }
-
-    .quarto-post .listing-description {
-        font-size: 0.78rem !important;
-        line-height: 1.35 !important;
-        margin-bottom: 0 !important;
         display: -webkit-box !important;
-        -webkit-line-clamp: 2 !important; /* 2줄 초과 시 자동 말줄임표(...) */
+        -webkit-line-clamp: 2 !important; /* 설명글 2줄 제한 */
         -webkit-box-orient: vertical !important;
         overflow: hidden !important;
+    }
+}
+
+@media (max-width: 576px) {
+    /* 초미니 뷰포트 스케일 보정 */
+    .quarto-post-toggle, .quarto-post .body {
+        gap: 10px !important;
+    }
+    .quarto-post .thumbnail, .quarto-post-toggle .thumbnail {
+        flex: 0 0 85px !important;
+        width: 85px !important;
+        height: 58px !important;
+    }
+    .quarto-post .thumbnail img {
+        width: 85px !important;
+        height: 58px !important;
     }
 }
 
