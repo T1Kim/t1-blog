@@ -6,7 +6,7 @@ project:
     - assets/gallery/
 
 website:
-  title: "T1 Log"
+  title: "Invest For Me"
   site-url: "https://T1Kim.github.io/t1-blog/"
   navbar:
     background: "#1d1d1f" # Apple 다크 그레이
