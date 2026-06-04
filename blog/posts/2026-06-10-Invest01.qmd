@@ -2,7 +2,7 @@
 title: "마음 편한 장기투자, S&P 500 ETF"
 date: "2026-06-010"
 author: "T1"
-categories: [Investment, S&P500]
+categories: [Investment, S&P500, Portfolio]
 description: "장기 복리 투자의 Core 로 S&P500 ETF 를 고른 이유."
 header-includes: |
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
