@@ -227,6 +227,7 @@ window.Quarto = {
 <section id="해외-고배당-etf-직접-투자-배당-10-사출" class="level4">
 <h4 class="anchored" data-anchor-id="해외-고배당-etf-직접-투자-배당-10-사출">1. 해외 고배당 ETF 직접 투자 (배당 10% 사출)</h4>
 <p>배당소득은 받는 즉시 15.4% 원천징수되며, 연 1,000만 원이 초과되는 순간, 금융소득 전체에 대해 지역 건보료율(약 7%)이 적용됩니다. 아파트 재산 건보료는 소득과 상관없이 고정 패널티로 연 ₩1,900,000이 추가됩니다.</p>
+<div style="font-size: 0.92rem; margin: 1rem 0;">
 <p><span class="math display">\[
 \begin{aligned}
 \text{실질 세후 수입} &amp;= \text{세전 배당금} - \text{배당소득세(15.4\%)} - \text{금융소득 지역건보료(약 7\%)} - \text{아파트 재산 건보료} \\
@@ -235,6 +236,7 @@ window.Quarto = {
 &amp;= \mathbf{\₩21,380,000}
 \end{aligned}
 \]</span></p>
+</div>
 <ul>
 <li><strong>실질 비용률</strong>: <strong>28.7%</strong> (세전 3,000만 원 중 무려 862만 원이 시스템 마찰로 증발)</li>
 </ul>
@@ -242,6 +244,7 @@ window.Quarto = {
 <section id="voo-지수형-etf-10-분할-매도-수익률-10-가정" class="level4">
 <h4 class="anchored" data-anchor-id="voo-지수형-etf-10-분할-매도-수익률-10-가정">2. VOO 지수형 ETF 10% 분할 매도 (수익률 10% 가정) 🌟</h4>
 <p>수익률이 10%일 때 3,000만 원어치를 매도하면, 원금 회수액은 약 2,727만 원이며 순수 과세 대상인 양도차익은 <strong>약 273만 원</strong>(<span class="math inline">\(30,000,000 \times \frac{10}{110}\)</span>)이 됩니다. 인당 연간 250만 원의 기본공제를 차감하면 과세 표준이 단 23만 원이므로, 실제 양도세는 단 5만 원 수준입니다.</p>
+<div style="font-size: 0.92rem; margin: 1rem 0;">
 <p><span class="math display">\[
 \begin{aligned}
 \text{양도차익} &amp;= 30,000,000 \times \frac{10}{110} \approx 2,727,273 \\
@@ -253,6 +256,7 @@ window.Quarto = {
 &amp;= \mathbf{\₩28,050,000}
 \end{aligned}
 \]</span></p>
+</div>
 <ul>
 <li><strong>실질 비용률</strong>: <strong>6.5%</strong> (배당 투자 대비 매년 무려 <strong>₩6,670,000</strong>의 현금을 추가 독점)</li>
 </ul>
@@ -374,25 +378,69 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="수익률-증가로-양도세가-증가한다면">수익률 증가로 양도세가 증가한다면?</h3>
 <p>앞선 계산들에 대해 한가지 의문이 생길 수 있습니다. “만약 VOO의 수익률이 10%보다 더 높아진다면, 양도차익이 늘어나면서 양도세 부담도 커지는 것 아닌가요?” 라는 질문입니다. 그래서 이번에는 수익률이 10%에서 50%, 100%로 증가할 때 양도세 부담이 어떻게 변화하는지를 시뮬레이션 해보았습니다.</p>
 <p>VOO의 수익률이 증가할 수록 실질 수입 격차가 줄어드는 것은 맞지만, 수익률이 100%인 경우에 대해서도 고배당 ETF 대비 실질 수입이 높으며, 투자 자산 규모가 커질수록 그 격차는 더욱 커지는 것을 확인할 수 있습니다. 이는 양도세가 수익률이 높아질수록 증가하지만, 여전히 배당 투자에서 발생하는 세금과 건보료 패널티에 비하면 매우 낮은 수준으로 유지되기 때문입니다.</p>
-<div class="columns">
-<div class="column" style="width:49%;">
-<div class="tax-sim-container">
-  <div class="tax-sim-card" style="padding: 1.2rem; border-radius: 20px;">
-    <div class="tax-sim-title" style="font-size: 1.1rem; margin-bottom: 1rem; font-weight:600; color:#1d1d1f;">인출 규모별 세금 및 건보료 총비용 (단위: 만원)</div>
+<p>&nbsp;</p>
+<style>
+  /* 🌟 모바일 대형 화면 분리용 프리미엄 웹 표준 복합 Flex 그리드 배관 */
+  .flex-dashboard-pipe {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+    margin: 1.5rem 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+  }
+  .flex-dashboard-panel {
+    flex: 1;
+    min-width: 0; /* Flexbox 내부 차트 찌그러짐 차단 */
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 1.2rem;
+    border: 1px solid rgba(0,0,0,0.04);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.01);
+  }
+  .tax-sim-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    color: #1d1d1f;
+  }
+
+  /* 📱 [모바일 브레이크포인트] 768px 이하 진입 시 수직 2줄 배열 자동 집행 */
+  @media (max-width: 768px) {
+    .flex-dashboard-pipe {
+      flex-direction: column !important;
+      gap: 24px !important;
+    }
+  }
+</style>
+
+<div class="flex-dashboard-pipe">
+  
+  <!-- PANEL 1: 좌측 바 차트 패널 -->
+  <div class="flex-dashboard-panel">
+    <div class="tax-sim-title">인출 규모별 세금 및 건보료 총비용 (단위: 만원)</div>
     <div id="leftPureBarChart" style="width: 100%; height: 350px;"></div>
   </div>
+
+  <!-- PANEL 2: 우측 라인 차트 패널 -->
+  <div class="flex-dashboard-panel">
+    <div class="tax-sim-title">VOO 선택 시 절세 이득액 폭 추이 (단위: 만원)</div>
+    <div id="rightLineDashChart" style="width: 100%; height: 350px;"></div>
+  </div>
+
 </div>
 
 <script>
   (function() {
+    // 1. LEFT PANEL: 바 차트 렌더링 배관 가동
     function renderLeftChart() {
       const container = document.getElementById('leftPureBarChart');
       if (!container) return;
       if (typeof Plotly === 'undefined') { setTimeout(renderLeftChart, 100); return; }
 
       const xData = ['1천만원', '3천만원', '5천만원', '1억원'];
-      
-      // 🚨 총비용 명세 완벽 정합성 락인
       const dividendCost = [344, 862, 1310, 2637];
       const vooCost10 = [190, 195, 235, 335];
 
@@ -413,11 +461,9 @@ window.Quarto = {
       const layout = {
         paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)',
         margin: { t: 20, b: 30, l: 45, r: 10 }, barmode: 'group', bargap: 0.25,
-        legend: { x: 0, y: 1.12, orientation: 'h', font: { size: 10 } },
+        legend: { x: 0, y: 1.15, orientation: 'h', font: { size: 10 } },
         xaxis: { tickfont: { size: 11, color: '#1d1d1f' }, gridcolor: 'rgba(0,0,0,0)' },
         yaxis: { 
-          title: '연간 총 패널티 비용 (만원)',
-          titlefont: { size: 11, color: '#86868b' },
           tickfont: { family: 'SF Mono', size: 10 }, 
           range: [0, 3100], gridcolor: '#f5f5f7' 
         }
@@ -426,30 +472,14 @@ window.Quarto = {
       container.innerHTML = "";
       Plotly.newPlot('leftPureBarChart', [trace1, trace2], layout, { responsive: true, displayModeBar: false });
     }
-    if (document.readyState === 'complete') { renderLeftChart(); }
-    else { window.addEventListener('load', renderLeftChart); }
-  })();
-</script>
-</div><div class="column" style="width:2%;">
 
-</div><div class="column" style="width:49%;">
-<div class="tax-sim-container">
-  <div class="tax-sim-card" style="padding: 1.2rem; border-radius: 20px;">
-    <div class="tax-sim-title" style="font-size: 1.1rem; margin-bottom: 1rem; font-weight:600; color:#1d1d1f;">VOO 수익률 별 절세 이득액 추이 (단위: 만원)</div>
-    <div id="rightLineDashChart" style="width: 100%; height: 350px;"></div>
-  </div>
-</div>
-
-<script>
-  (function() {
+    // 2. RIGHT PANEL: 라인 차트 렌더링 배관 가동
     function renderRightChart() {
       const container = document.getElementById('rightLineDashChart');
       if (!container) return;
       if (typeof Plotly === 'undefined') { setTimeout(renderRightChart, 100); return; }
 
       const xData = ['1천만', '3천만', '5천만', '1억'];
-      
-      // 🚨 누진 양도세 비선형 마찰 계수 전량 1원 단위 정밀 동기화
       const gap10 = [154, 667, 1075, 2302];  
       const gap50 = [136, 507, 808, 1769];    
       const gap100 = [99, 397, 625, 1402];   
@@ -477,11 +507,9 @@ window.Quarto = {
       const layout = {
         paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)',
         margin: { t: 20, b: 30, l: 40, r: 20 },
-        legend: { x: 0, y: 1.12, orientation: 'h', font: { size: 10 } },
+        legend: { x: 0, y: 1.15, orientation: 'h', font: { size: 10 } },
         xaxis: { tickfont: { size: 11, color: '#1d1d1f' }, gridcolor: 'rgba(0,0,0,0)' },
         yaxis: { 
-          title: 'VOO 선택 시 절감되는 비용 폭 (만원)',
-          titlefont: { size: 11, color: '#86868b' },
           tickfont: { family: 'SF Mono', size: 10 }, 
           range: [0, 2500], gridcolor: '#f5f5f7' 
         }
@@ -490,13 +518,14 @@ window.Quarto = {
       container.innerHTML = "";
       Plotly.newPlot('rightLineDashChart', [traceLine1, traceLine2, traceLine3], layout, { responsive: true, displayModeBar: false });
     }
-    if (document.readyState === 'complete') { renderRightChart(); }
-    else { window.addEventListener('load', renderRightChart); }
+
+    // 초기 실행 파이프라인 결착
+    if (document.readyState === 'complete') { renderLeftChart(); renderRightChart(); }
+    else { window.addEventListener('load', () => { renderLeftChart(); renderRightChart(); }); }
   })();
 </script>
-</div>
-</div>
 <p>&nbsp;</p>
+<hr>
 </section>
 <section id="결론" class="level3">
 <h3 class="anchored" data-anchor-id="결론">💡 결론</h3>
@@ -505,11 +534,10 @@ window.Quarto = {
 <ul>
 <li>고배당 ETF 의 주가 및 주당 배당금이 동시에 오르는 경우는? <em>(배당성장)</em></li>
 <li>VOO 등 지수형 ETF 의 수익률이 년 평균 10% 이상을 안정적으로 유지할지? <em>(하락장 리스크)</em></li>
-<li>숫자를 넘어서는 안정감และ 투자의 재미 <em>(심리적 효과)</em></li>
+<li>숫자를 넘어서는 안정감과 투자의 재미 <em>(심리적 효과)</em></li>
 </ul>
 <p>저는 첫 번째 항목을 고려하더라도 지수 상승률이 더 높고, 두 번째 항목은 장기적으로 참이라고 생각하며, 세 번째 심리적 효과의 경우 무시할 수 없다고 생각해서 <strong>배당 ETF 투자를 최소한으로 하기로 결정</strong>했습니다. 여기서 최소한이라는 뜻은 장기적으로 분할구매를 하면서, 연간 세전 총 배당금이 1,000만 원을 넘지 않도록 조절하겠다는 의미입니다.</p>
-<p>다음 포스팅에서는 그럼에도 불구하고 현금흐름이 절실한 은퇴 자산가들을 위한 <strong>[세금 누수를 최소화하는 국내 커버드콜 ETF]</strong> 에 대한 소개를 드리려고 합니다.<br>
-```</p>
+<p>다음 포스팅에서는 그럼에도 불구하고 현금흐름이 절실한 은퇴 자산가들을 위한 <strong>[세금 누수를 최소화하는 국내 커버드콜 ETF]</strong> 에 대한 소개를 드리려고 합니다.</p>
 
 
 </section>
