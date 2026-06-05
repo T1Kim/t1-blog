@@ -1,0 +1,2385 @@
+# QUARTO BLOG GLOBAL ARCHITECTURE BLUEPRINT
+⚠️ WARNING: 이 문서는 AI 컨텍스트 주입용 동기화 원장입니다. 각 파일의 경로 식별자를 확인하여 해석하십시오.
+
+
+
+=========================================
+📂 [FILE NODE PATH]: /_quarto.yml
+=========================================
+
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - gallery/gallery.json  # 위치를 gallery 폴더 내부로 갱신
+    - assets/gallery/
+
+website:
+  title: "Invest For Me"
+  site-url: "https://T1Kim.github.io/t1-blog/"
+  navbar:
+    background: "#1d1d1f" # Apple 다크 그레이
+    search: true
+    left:
+      - href: index.qmd
+        text: Home
+      - href: investment/index.qmd
+        text: Investment
+      - href: hobbies/index.qmd
+        text: Hobbies
+      - href: gallery/index.qmd
+        text: Gallery
+      - href: blog/index.qmd
+        text: Blog
+
+format:
+  html:
+    theme: cosmo # 'none' 대신 표준 테마인 'cosmo'를 기반으로 삼습니다.
+    css: styles.css # 그 위에 T1의 Apple 디자인(styles.css)을 덮어씌웁니다.
+    toc: true                # TOC 활성화
+    toc-depth: 3             # ###(h3)까지만 표시하여 깔끔함 유지
+    toc-location: right      # Apple 공식 문서처럼 우측 배치를 추천
+    toc-title: "On this page" # 제목을 담백하게 설정 (또는 "Contents")
+    toc-expand: true         # 모든 목차를 처음부터 펼쳐서 보여줄지 여부
+    page-layout: article
+
+/* END OF NODE: /_quarto.yml */
+
+
+=========================================
+📂 [FILE NODE PATH]: /styles.css
+=========================================
+
+/* ==========================================================================
+   T1 Log - Master Unified Stylesheet (styles.css)
+   Aesthetics: Minimal, Ultra-High-Density, Apple-inspired Typography
+   Layout Constraint: Unified 850px Grid Geometry (Homepage Baseline)
+   ========================================================================== */
+
+/* 1. 글로벌 레이아웃 및 본문 배경색 전체 동기화 */
+body, 
+#quarto-content, 
+.page-columns, 
+main.content, 
+.quarto-container,
+.nav-footer {
+    background-color: #ffffff !important; /* 전체 배경 순백색 통일 */
+    color: #1d1d1f !important;            /* Apple 표준 텍스트 컬러 */
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;  /* 폰트 렌더링 최적화 */
+}
+
+/* 전역 가로 폭 및 그리드 밸런스 동기화 (Homepage 850px 기준 락인) */
+.page-columns .content,
+main.content,
+#quarto-document-content,
+.quarto-title-block,
+#title-block-header {
+    max-width: 850px !important;       /* 가로 상한선을 홈화면 규격으로 고정 */
+    width: 100% !important;
+    margin-left: auto !important;      /* 좌우 마진 자동 계산으로 정중앙 정렬 */
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+}
+
+/* 2. 타이포그래피 및 헤더 정렬 */
+h1, h2, h3, h4, h5, h6 {
+    color: #1d1d1f;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* 3. 리스트 영역 정렬 보정 (Site Map, Highlights 정밀 타격) */
+ul, ol {
+    text-align: left !important;
+    margin-left: 1.5rem !important;
+    padding-left: 0 !important;
+}
+
+li {
+    text-align: left !important;
+    margin-bottom: 0.6rem;
+    color: #424245; /* 가독성을 위한 부드러운 회색조 */
+    line-height: 1.5;
+}
+
+/* 4. 링크 및 글로벌 인터랙티브 스타일 */
+a {
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #007aff; /* Apple Blue로 피드백 통일 */
+}
+
+/* 5. 커스텀 컴포넌트: Apple 상단 타일 섹션 */
+.apple-tile-section {
+    background: #f5f5f7;
+    border-radius: 22px;
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    clear: both;
+}
+
+.apple-tile-section h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin: 0;
+    color: #1d1d1f;
+}
+
+/* 6. 대시보드 및 레이아웃 보호용 유틸리티 */
+.chart-container-wrapper,
+.chart-container-wrapper * {
+    box-sizing: border-box;
+}
+
+.clear-fix {
+    clear: both !important;
+}
+
+/* 7. Quarto 페이지 서브타이틀 (Subtitle) 은은한 회색조 적용 */
+.quarto-title-block .subtitle,
+.subtitle {
+    color: #86868b !important;       
+    font-weight: 400 !important;     
+    font-size: 1.15rem !important;   
+    letter-spacing: -0.01em;         
+    margin-top: 0.6rem !important;   
+    margin-bottom: 0 !important;
+    opacity: 0.95;
+}
+
+
+/* ==========================================================================
+   8. Blog Listing & High-Density Timeline Overrides
+   ========================================================================== */
+
+/* 개별 포스트 항목(Row) 자체 여백 극대화 압축 */
+.quarto-post {
+    padding-top: 0.5rem !important;    
+    padding-bottom: 0.5rem !important; 
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important; 
+    align-items: center !important;    
+}
+
+.quarto-post:last-of-type {
+    border-bottom: none !important; 
+}
+
+/* 연도 헤더 바로 다음에 오는 첫 번째 포스트의 상단 패딩을 강제 삭제하여 선에 밀착 */
+.custom-year-heading + .quarto-post {
+    padding-top: 0 !important;
+}
+
+/* 내부 텍스트 구성 요소들의 기본 상하 마진 완전 제거 */
+.quarto-post .title,
+.listing-title {
+    color: #1d1d1f !important;
+    font-weight: 600 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.15rem !important; 
+    line-height: 1.25 !important;
+}
+.quarto-post .title a:hover,
+.listing-title a:hover {
+    color: #007aff !important;
+}
+
+.quarto-post .subtitle,
+.listing-subtitle {
+    margin-top: 0 !important;
+    margin-bottom: 0.2rem !important;
+    line-height: 1.3 !important;
+}
+
+.quarto-post .listing-description {
+    margin-top: 0 !important;
+    margin-bottom: 0.3rem !important;
+    line-height: 1.35 !important;
+    font-size: 0.88rem !important;
+    color: #424245 !important;
+}
+
+.quarto-post .listing-categories,
+.listing-categories {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* 날짜 표시 영역 줄바꿈 및 여백 제어 */
+.listing-date {
+    line-height: 1.3 !important;
+    text-align: left !important;
+    font-family: "SF Pro Text", sans-serif;
+    color: #1d1d1f;
+    margin: 0 !important;
+}
+
+/* 연도별 대형 구분선 헤더 */
+.custom-year-heading {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin: 2.5rem 0 0 !important; 
+    border-bottom: 1px solid #1d1d1f; 
+    padding-bottom: 0.3rem;
+    font-family: "SF Pro Display", sans-serif;
+    letter-spacing: -0.01em;
+}
+
+/* 카테고리 태그 미니멀 칩셋 */
+.listing-categories .listing-category {
+    border: 1px solid #e8e8ed !important;
+    background-color: transparent !important;
+    color: #86868b !important;
+    border-radius: 4px !important;
+    font-size: 0.65rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.1rem 0.4rem !important;
+    margin-bottom: 0 !important;
+}
+
+
+/* ==========================================================================
+   9. Standardized Thumbnail Engine
+   ========================================================================== */
+
+.quarto-post .thumbnail img,
+.listing-img-toggle img {
+    width: 165px !important;       
+    height: 105px !important;      
+    object-fit: cover !important;  
+    object-position: center !important; 
+    border-radius: 12px !important; 
+    border: 1px solid rgba(0, 0, 0, 0.03) !important; 
+    background-color: #f5f5f7 !important; 
+    transition: transform 0.2s ease !important;
+}
+
+.quarto-post:hover .thumbnail img {
+    transform: scale(1.03); 
+}
+
+
+/* ==========================================================================
+   10. Right Sidebar Filter UI & Mobile Responsive Breakpoints
+   ========================================================================== */
+
+.custom-year-filter-wrapper {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e8e8ed;
+    padding-bottom: 1.5rem;
+}
+.filter-section-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.03em;
+}
+.year-filter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.year-link {
+    color: #86868b;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.year-link:hover, .year-link.active {
+    color: #007aff; 
+    font-weight: 600;
+    text-decoration: none;
+}
+
+
+/* ==========================================================================
+   11. Post Detail Page - Project Card Style Title Block (Isolated)
+   ========================================================================== */
+
+/* 실제 메타데이터 대문자 표기가 존재하는 상세 본문에서만 카드 레이아웃 작동 */
+#title-block-header.quarto-title-block:has(.quarto-title-meta-heading) {
+    background: #ffffff !important; 
+    border-radius: 28px !important; 
+    padding: 2.5rem !important;     
+    margin-top: 1rem !important;
+    margin-bottom: 3.5rem !important; 
+    border: 1px solid rgba(0, 0, 0, 0.04) !important; 
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02) !important; 
+}
+
+/* 본문 타이틀 디자인 */
+#title-block-header:has(.quarto-title-meta-heading) .title {
+    font-size: 2.2rem !important;
+    font-weight: 700 !important;
+    color: #1d1d1f !important;
+    letter-spacing: -0.03em !important;
+    line-height: 1.25 !important;
+    margin-top: 0 !important;
+    margin-bottom: 1.2rem !important;
+}
+
+/* 본문 서브타이틀 */
+#title-block-header:has(.quarto-title-meta-heading) .subtitle {
+    font-size: 1.15rem !important;
+    color: #86868b !important;
+    font-weight: 400 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    line-height: 1.4 !important;
+}
+
+/* 메타데이터 구역 */
+#title-block-header .quarto-title-meta {
+    border-top: 1px solid #e8e8ed !important;
+    padding-top: 1.5rem !important;
+    margin-top: 1.5rem !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 1.5rem 3rem !important; 
+}
+
+#title-block-header .quarto-title-meta-heading {
+    font-size: 0.72rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    color: #86868b !important;
+    font-weight: 700 !important;
+    margin-bottom: 0.3rem !important;
+}
+
+#title-block-header .quarto-title-meta-contents,
+#title-block-header .quarto-title-meta-contents a {
+    font-size: 0.9rem !important;
+    color: #424245 !important;
+}
+
+#title-block-header .quarto-categories {
+    display: flex !important;
+    gap: 0.4rem !important;
+    margin-top: 0.2rem !important;
+}
+
+#title-block-header .quarto-categories .quarto-category {
+    border: 1px solid #e8e8ed !important;
+    background-color: transparent !important;
+    color: #86868b !important;
+    border-radius: 4px !important;
+    font-size: 0.68rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.5rem !important;
+}
+
+
+/* ==========================================================================
+   12. Mobile Responsive Breakpoints (📱 태그 가로 정렬 수복 및 수평 안착)
+   ========================================================================== */
+@media (max-width: 768px) {
+    
+    /* 1) 🚨 중첩 유령 썸네일 노드 완벽 멸균 */
+    .quarto-post > .thumbnail,
+    .quarto-post-toggle > .thumbnail,
+    .quarto-listing-container-default .quarto-post .thumbnail:nth-of-type(n+2) {
+        display: none !important;
+    }
+
+    /* 2) 타이틀(Title)은 시원하게 전폭(100%) 배치 */
+    .quarto-post .listing-title,
+    .quarto-post .title {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        font-size: 1.05rem !important;
+        line-height: 1.3 !important;
+        margin-top: 0.3rem !important;
+        margin-bottom: 0.4rem !important;
+        font-weight: 600 !important;
+    }
+
+    /* 3) [🚨 태그 세로 적층 버그 전면 수리] 
+          태그 박스 자체는 전폭을 쓰되, 내부 칩셋들은 가로로 나란히 흐르도록 배관 전환 */
+    .quarto-post .listing-categories {
+        display: flex !important;
+        flex-direction: row !important; /* 무조건 가로 정렬 */
+        flex-wrap: wrap !important;     /* 화면폭을 넘어가면 부드럽게 다음줄로 래핑 */
+        gap: 6px 4px !important;        /* 태그 칩셋 간 상하(6px) 좌우(4px) 미학적 여백 */
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 0.6rem !important;
+        padding: 0 !important;
+    }
+
+    /* 개별 태그 칩셋의 한 줄 독점(Block) 성질을 완전히 소각하고 미니멀 칩셋으로 환원 */
+    .quarto-post .listing-categories .listing-category,
+    .quarto-post .listing-category {
+        display: inline-flex !important; /* 가로로 나열되면서 내부에 패딩 수용 */
+        width: auto !important;          /* 텍스트 길이에 맞게 폭 가변화 */
+        max-width: max-content !important;
+        white-space: nowrap !important;  /* 칩셋 내부에서 글자가 쪼개져 줄바꿈되는 현상 차단 */
+    }
+
+    /* 4) [썸네일 이미지 + Description] 영역 수평(Row) 배관 유지 */
+    .quarto-post-toggle,
+    .quarto-post .body {
+        display: flex !important;
+        flex-direction: row !important; 
+        align-items: flex-start !important; 
+        justify-content: flex-start !important;
+        width: 100% !important;
+        gap: 14px !important; 
+    }
+
+    /* 5) 모바일 썸네일 기하학적 규격 락인 (95px) */
+    .quarto-post .thumbnail,
+    .quarto-post-toggle .thumbnail {
+        display: block !important;
+        flex: 0 0 95px !important; 
+        width: 95px !important;
+        height: 65px !important;
+        margin: 0 !important;
+    }
+
+    .quarto-post .thumbnail img,
+    .quarto-post-toggle .thumbnail img {
+        width: 95px !important;
+        height: 65px !important;
+        border-radius: 8px !important;
+        object-fit: cover !important;
+    }
+
+    /* 6) 우측 설명글(Description) 대역폭 및 가독성 락인 */
+    .quarto-post .listing-description {
+        flex: 1 1 calc(100% - 110px) !important;
+        width: auto !important;
+        max-width: 100% !important;
+        font-size: 0.8rem !important;
+        line-height: 1.4 !important;
+        color: #424245 !important;
+        margin: 0 !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important; /* 설명글 2줄 제한 */
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+}
+
+@media (max-width: 576px) {
+    /* 초미니 뷰포트 스케일 보정 */
+    .quarto-post-toggle, .quarto-post .body {
+        gap: 10px !important;
+    }
+    .quarto-post .thumbnail, .quarto-post-toggle .thumbnail {
+        flex: 0 0 85px !important;
+        width: 85px !important;
+        height: 58px !important;
+    }
+    .quarto-post .thumbnail img {
+        width: 85px !important;
+        height: 58px !important;
+    }
+}
+
+
+/* ==========================================================================
+   13. Auto Full-Width Image-less Engine (🚨 좌측 라인 동결 & 우측 전폭 확장 완공)
+   ========================================================================== */
+
+/* [1단계] 대표 이미지가 없는 행의 빈 썸네일 박스만 물리적으로 완벽 소각 */
+.quarto-post.image-none .thumbnail,
+.quarto-post:not(.has-image) .thumbnail {
+    display: none !important; 
+}
+
+/* [2단계] 좌측 날짜 영역의 고유 밥그릇(정렬선)은 완벽히 동결하고, 오직 우측으로만 확장 */
+.quarto-post.image-none .body,
+.quarto-post:not(.has-image) .body {
+    /* 기존 정렬선 유지를 위해 width나 max-width를 강제하지 않고, 
+       Quarto 기본 레이아웃의 flex 분할 메커니즘을 상속받아 우측 남은 여백만 흡수합니다. */
+    flex: 1 1 auto !important; 
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* [3단계] 타이포그래피의 가로 텍스트 흐름(와이드 바운더리) 전면 개방 */
+.quarto-post.image-none .listing-title,
+.quarto-post:not(.has-image) .listing-title,
+.quarto-post.image-none .listing-description,
+.quarto-post:not(.has-image) .listing-description {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* [4단계] 대표 이미지가 '있는' 기존 포스트들의 850px 표준 분할 포메이션 복원 및 락인 */
+.quarto-post.has-image .thumbnail,
+.quarto-post:not(.image-none) .thumbnail {
+    display: block !important;
+}
+.quarto-post.has-image .body,
+.quarto-post:not(.image-none) .body {
+    flex: 0 1 calc(100% - 195px) !important; /* 기존 썸네일 동거 포메이션 수율 복구 */
+}
+
+/* END OF NODE: /styles.css */
+
+
+=========================================
+📂 [FILE NODE PATH]: /index.qmd
+=========================================
+
+---
+title: "T1 Kim"
+subtitle: "Passive Compounder / Light Preserver / Running Learner / Vibe Coder"
+toc: true
+toc-location: right
+page-layout: article
+header-includes: |
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+---
+
+::: {.apple-tile-section}
+# The Stillness of Growth {.mb-5}
+
+
+자산의 성장만큼이나 일상의 수율을 높이는 정교한 시스템에 집중합니다. 지속 가능한 투자를 설계하고, 찰나의 빛을 기록하며, 매일의 러닝과 코딩으로 삶의 밀도를 채워갑니다. 공학자의 시선으로 세상을 관측하며 얻은 이 기록들이, 각자의 목표를 향해 달리는 당신의 여정에도 든든한 전략적 페이스메이커가 되기를 바랍니다.
+
+```{=html}
+<div class="chart-container-wrapper" style="display: block; width: 100%; clear: both; margin: 3rem 0; padding: 1rem 0;">
+  <div id="assetChart" style="width: 100%; max-width: 850px; height: 550px; margin: 0 auto; position: relative;">
+    <p id="statusMsg" style="text-align: center; color: #86868b; padding-top: 220px; font-family: 'SF Pro Text', sans-serif;">
+      데이터를 불러오는 중입니다...
+    </p>
+  </div>
+</div>
+
+<div style="clear: both;"></div> <script>
+  (function() {
+    const sheetID = "1ZgcJc8n-pC4crM3zqq4LPUJ9hTGbmhgpfV6XI87wr5A";
+    const gid = "0"; 
+    const finalUrl = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:csv&gid=${gid}`;
+
+    function startApp() {
+      const container = document.getElementById('assetChart');
+      if (typeof Plotly === 'undefined') { setTimeout(startApp, 200); return; }
+
+      fetch(finalUrl)
+        .then(res => res.text())
+        .then(csvText => {
+          container.innerHTML = "";
+          
+          const rows = csvText.split(/\r?\n/).filter(line => line.trim() !== "");
+          const labels = [];
+          const values = [];
+
+          for (let i = 1; i < rows.length; i++) {
+            const cols = rows[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+            // [데이터 무결성 복구] I열(Index 8)의 Portfolio Weight를 정확히 조준합니다.
+            if (cols.length >= 9) {
+              const ticker = cols[0].replace(/"/g, '').trim();
+              const weightStr = cols[8].replace(/"/g, '').replace('%', '').trim();
+              const weight = parseFloat(weightStr);
+              
+              if (!isNaN(weight) && weight > 0) {
+                labels.push(ticker);
+                values.push(weight);
+              }
+            }
+          }
+
+          // Plotly 도넛 차트 렌더링
+          Plotly.newPlot('assetChart', [{
+            values: values, labels: labels, type: 'pie', hole: 0.6,
+            marker: { colors: ["#007AFF", "#5AC8FA", "#4CD964", "#FFCC00", "#FF9500", "#FF2D55", "#5856D6"] },
+            textinfo: 'label+percent',
+            textfont: { family: 'SF Pro Text', size: 13 }
+          }], {
+            title: { 
+              text: 'Current Asset Allocation', 
+              font: { size: 22, family: 'SF Pro Display', color: '#1d1d1f' },
+              pad: { b: 20 }
+            },
+            showlegend: true,
+            // [구조 최적화] 범례를 아래쪽(하단) 중앙 가로 배열로 배치합니다.
+            legend: { 
+              orientation: 'h',      /* 가로 배열 설정 */
+              x: 0.5,                /* 정중앙 정렬 */
+              xanchor: 'center',
+              y: -0.15,              /* 차트 영역 아래로 이동 */
+              yanchor: 'top',
+              font: { family: 'SF Pro Text', size: 12 } 
+            },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            // 하단 범례가 본문 텍스트와 겹치지 않도록 b(bottom) 마진을 100으로 대폭 확장
+            margin: { t: 60, b: 100, l: 20, r: 20 } 
+          }, {responsive: true, displayModeBar: false});
+
+          // ==========================================================================
+          // 🌟 [송신 배관 주입] 차트 사출 완료 직후 메모리 창고에 정밀 적재
+          // ==========================================================================
+          const cacheData = {
+            labels: labels,
+            values: values,
+            timestamp: Date.now()
+          };
+          localStorage.setItem('asset_cache', JSON.stringify(cacheData));
+          // ==========================================================================
+
+        });
+    }
+    window.addEventListener('load', startApp);
+    startApp();
+  })();
+</script>
+```
+
+## Site Map
+- **Investment**: 투자 전략과 현황, 그리고 백테스트 결과를 공유합니다.  
+- **Hobbies**: 러닝, 여행, 코딩 등 일상과 취미를 기록하는 공간입니다. 
+- **Gallery**: 디지털과 아날로그 사진 갤러리입니다.  
+- **Blog**: 모든 블로그 포스팅이 모이는 공간입니다.
+
+## Highlights
+
+- **2026-06-01**: T1 Log 블로그 런칭!
+- **2026-04-05**: 2026 The Race Seoul Half Course 완주 (02:01:59)
+- **2026-03-01**: Vibe Coding 입문
+- **2026-02-21**: 2026 Osaka Marathon Full Course 완주 (4:55:56)
+
+:::
+
+/* END OF NODE: /index.qmd */
+
+
+=========================================
+📂 [FILE NODE PATH]: /investment/index.qmd
+=========================================
+
+---
+title: "⚖️ Passive Compounder Studio"
+subtitle: "STRATEGIC ASSET ALLOCATION & YIELD MANAGEMENT"
+header-includes: |
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+---
+
+```{=html}
+<style>
+  /* ==========================================================================
+     1. 전역 레이아웃 및 카드 프레임 인프라 (원본 상태 100% 복원)
+     ========================================================================== */
+  .investment-container {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+    color: #1d1d1f;
+    margin: 2rem 0;
+  }
+
+  .large-project-card {
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    border: 1px solid rgba(0,0,0,0.04);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .large-project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04);
+  }
+
+  .card-subtitle {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #86868b;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+  .large-project-card .card-main-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+    color: #1d1d1f !important;
+  }
+
+  .card-visual-zone {
+    width: 100%;
+    background: #f5f5f7;
+    border-radius: 18px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .card-tags-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .tag-chip {
+    background: #e8e8ed;
+    color: #424245;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.3rem 0.7rem;
+    border-radius: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .card-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #424245;
+    margin: 0;
+  }
+
+  /* Matrix 02 & 03 공용 모던 차트 그리드 스타일 */
+  .css-chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  .css-chart-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
+  
+  .css-bar-wrapper { display: flex; flex-direction: column; width: 100%; height: 190px; justify-content: flex-end; }
+  .css-bar-axis { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; height: 100%; border-bottom: 1px solid #e8e8ed; padding-bottom: 4px; box-sizing: border-box; }
+  .css-bar-column { display: flex; flex-direction: column; align-items: center; width: 14%; height: 100%; justify-content: flex-end; }
+  
+  /* 바 차트 물리 뼈대 height: 100% 교정선 완벽 안착 */
+  .css-bar-fill { 
+    width: 100%; 
+    height: 100%;
+    background-color: #E5E5EA; 
+    border-radius: 5px 5px 0 0; 
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+  }
+  .css-bar-fill.active { background-color: #007AFF !important; box-shadow: 0 2px 8px rgba(0,122,255,0.2); }
+  
+  /* 차트 하단 연도 레이블 서체 통합 */
+  .css-bar-label { 
+    font-family: "SF Mono", Consolas, monospace !important;
+    font-size: 0.7rem; 
+    color: #86868b; 
+    margin-top: 8px; 
+    font-weight: 500; 
+  }
+  
+  /* 🌟 Matrix 02 & 03 공용 프리미엄 KPI 가로형 듀얼 캡슐 로우 */
+  .css-kpi-row { display: flex; justify-content: space-around; width: 100%; background: #f5f5f7; border-radius: 12px; padding: 0.6rem; margin-bottom: 1.2rem; box-sizing: border-box; }
+  .css-kpi-item { text-align: center; }
+  .css-kpi-label { font-size: 0.62rem; color: #86868b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.03em; }
+  
+  /* Matrix KPI 영역 수치 서체 통합 */
+  .css-kpi-value { 
+    font-family: "SF Mono", Consolas, monospace !important;
+    font-size: 1.05rem; 
+    font-weight: 700; 
+    color: #1d1d1f; 
+    letter-spacing: -0.02em;
+  }
+
+  /* Matrix 03 전용 바 차트 서체 및 마진 밸런서 */
+  .tax-bar-wrapper { display: flex; flex-direction: column; width: 100%; height: 190px; justify-content: flex-end; }
+  .tax-bar-axis { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; height: 100%; border-bottom: 1px solid #e8e8ed; padding-bottom: 4px; box-sizing: border-box; }
+  .tax-bar-column { display: flex; flex-direction: column; align-items: center; width: 16%; height: 100%; justify-content: flex-end; }
+  
+  /* Matrix 03 바 차트 물리 뼈대 height: 100% 교정선 완벽 안착 */
+  .tax-bar-fill { 
+    width: 100%; 
+    height: 100%;
+    background-color: #E5E5EA; 
+    border-radius: 5px 5px 0 0; 
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+  }
+  .tax-bar-fill.active { background-color: #34C759 !important; box-shadow: 0 2px 8px rgba(52,199,89,0.2); }
+  .tax-bar-label { 
+    font-family: "SF Mono", Consolas, monospace !important;
+    font-size: 0.7rem; 
+    color: #86868b; 
+    margin-top: 8px; 
+    font-weight: 500; 
+  }
+
+  /* 도넛 차트 정중앙 수동 레이아웃 락인 패널 */
+  .matrix-center-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    background: #ffffff;
+    border-radius: 50%;
+    pointer-events: none; 
+    z-index: 10;
+  }
+  .matrix-center-label {
+    font-size: 0.65rem;
+    color: #86868b;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    margin-bottom: 2px;
+  }
+  .matrix-center-value {
+    font-family: "SF Mono", Consolas, monospace !important;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #1d1d1f;
+    letter-spacing: -0.03em;
+  }
+
+  @media (max-width: 900px) {
+    .css-chart-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .card-visual-zone { height: auto !important; }
+    .css-bar-wrapper, .tax-bar-wrapper { height: 160px; }
+  }
+
+  @media (max-width: 768px) {
+    .large-project-card { padding: 1.5rem; border-radius: 20px; }
+    .card-main-title { font-size: 1.4rem; }
+  }
+</style>
+
+<div class="investment-container">
+
+  <!-- ==========================================================================
+       Matrix 01 . Strategy compass (순정 상태 100% 완전 보존)
+       ========================================================================== */ -->
+  <div class="large-project-card">
+    <div class="card-subtitle">Matrix 01 . Strategy compass</div>
+    <div class="card-main-title">The Master Plan</div>
+    
+    <div class="t1-embedded-wealth-engine">
+      <style>
+        .t1-embedded-wealth-engine {
+          width: 100% !important;
+          background-color: #060a13 !important;
+          padding: 24px !important;
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 12px !important;
+          position: relative !important;
+          font-family: -apple-system, BlinkMacSystemFont, sans-serif !important;
+          overflow: hidden !important;
+          color: #f3f4f6 !important;
+          border-radius: 16px !important;
+          border: 1px solid #1e293b !important;
+          box-shadow: inset 0 4px 24px rgba(0, 0, 0, 0.5) !important;
+          box-sizing: border-box !important;
+          margin-bottom: 32px !important;
+        }
+        .t1-embedded-wealth-engine::before {
+          content: '' !important;
+          position: absolute !important;
+          top: 0; left: 0; width: 100%; height: 100%;
+          background-image: 
+              radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.06) 0%, transparent 40%),
+              radial-gradient(circle at 90% 90%, rgba(139, 92, 246, 0.06) 0%, transparent 50%),
+              linear-gradient(135deg, rgba(8, 13, 26, 0.99) 0%, rgba(4, 7, 12, 0.97) 100%) !important;
+          z-index: 0 !important;
+          pointer-events: none !important;
+        }
+        .t1-embedded-wealth-engine > * { position: relative !important; z-index: 1 !important; box-sizing: border-box !important; }
+        .t1-embedded-wealth-engine .widget-header { display: flex !important; justify-content: space-between !important; align-items: center !important; border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important; padding-bottom: 10px !important; margin-bottom: 4px !important; }
+        .t1-embedded-wealth-engine .widget-title { font-size: 14px !important; font-weight: 800 !important; letter-spacing: 0.05em !important; color: #ffffff !important; text-transform: uppercase !important; margin: 0 !important; }
+        .t1-embedded-wealth-engine .widget-title span { color: #38bdf8; font-weight: 500; }
+        .t1-embedded-wealth-engine .widget-status { display: flex !important; align-items: center !important; gap: 6px !important; font-size: 10px !important; font-family: monospace !important; color: #86868b !important; }
+        .t1-embedded-wealth-engine .widget-dot { width: 6px; height: 6px; background-color: #34d399; border-radius: 50%; box-shadow: 0 0 6px #34d399; }
+        .t1-embedded-wealth-engine .widget-list { display: flex !important; flex-direction: column !important; gap: 8px !important; }
+        
+        .t1-embedded-wealth-engine .mini-wealth-card { background: rgba(15, 23, 42, 0.4) !important; border-radius: 10px !important; padding: 12px 18px !important; display: flex !important; align-items: center !important; justify-content: space-between !important; border: 1px solid rgba(255, 255, 255, 0.03) !important; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important; height: 52px !important; }
+        .t1-embedded-wealth-engine .mini-wealth-card:hover { transform: translateX(2px) !important; background: rgba(15, 23, 42, 0.7) !important; border-color: rgba(255, 255, 255, 0.08) !important; }
+        .t1-embedded-wealth-engine .card-core { display: flex !important; align-items: center !important; gap: 14px !important; }
+        .t1-embedded-wealth-engine .mini-icon-box { width: 32px; height: 32px; border-radius: 8px; display: flex !important; justify-content: center !important; align-items: center !important; flex-shrink: 0 !important; }
+        .t1-embedded-wealth-engine .mini-title { font-size: 13.5px !important; font-weight: 700 !important; color: #ffffff !important; margin: 0 !important; }
+        .t1-embedded-wealth-engine .mini-tickers { font-family: monospace !important; font-size: 11.5px !important; font-weight: 700 !important; padding: 4px 10px !important; border-radius: 6px !important; white-space: nowrap !important; }
+
+        .t1-embedded-wealth-engine .gold-chip .mini-icon-box { background: rgba(245, 158, 11, 0.1); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.2); }
+        .t1-embedded-wealth-engine .gold-chip { border-left: 3px solid #fbbf24 !important; }
+        .t1-embedded-wealth-engine .gold-chip .mini-tickers { color: #fbbf24; background: rgba(245, 158, 11, 0.05); }
+        .t1-embedded-wealth-engine .emerald-chip .mini-icon-box { background: rgba(16, 185, 129, 0.1); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.2); }
+        .t1-embedded-wealth-engine .emerald-chip { border-left: 3px solid #34d399 !important; }
+        .t1-embedded-wealth-engine .emerald-chip .mini-tickers { color: #34d399; background: rgba(16, 185, 129, 0.05); }
+        .t1-embedded-wealth-engine .violet-chip .mini-icon-box { background: rgba(139, 92, 246, 0.1); color: #a78bfa; border: 1px solid rgba(139, 92, 246, 0.2); }
+        .t1-embedded-wealth-engine .violet-chip { border-left: 3px solid #a78bfa !important; }
+        .t1-embedded-wealth-engine .violet-chip .mini-tickers { color: #a78bfa; background: rgba(139, 92, 246, 0.05); }
+        .t1-embedded-wealth-engine .cyan-chip .mini-icon-box { background: rgba(6, 182, 212, 0.1); color: #22d3ee; border: 1px solid rgba(6, 182, 212, 0.2); }
+        .t1-embedded-wealth-engine .cyan-chip { border-left: 3px solid #22d3ee !important; }
+        .t1-embedded-wealth-engine .cyan-chip .mini-tickers { color: #22d3ee; background: rgba(6, 182, 212, 0.05); }
+
+        @media (max-width: 768px) {
+          .t1-embedded-wealth-engine { padding: 16px !important; }
+          .t1-embedded-wealth-engine .mini-wealth-card { flex-direction: column !important; align-items: flex-start !important; height: auto !important; padding: 12px !important; gap: 10px !important; }
+          .t1-embedded-wealth-engine .mini-tickers { align-self: flex-end !important; font-size: 10.5px !important; }
+        }
+      </style>
+
+      <div class="widget-header">
+        <h4 class="widget-title">Strategic Wealth Engine <span>// Pillars</span></h4>
+        <div class="widget-status">
+          <span class="widget-dot"></span>
+          <span>SYSTEM ACTIVE</span>
+        </div>
+      </div>
+
+      <div class="widget-list">
+        <div class="mini-wealth-card gold-chip">
+          <div class="card-core">
+            <div class="mini-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:18px; height:18px;"><path d="M3 3v18h18"></path><path d="m18.7 8-5.1 5.2-2.8-2.7L7 14.3"></path></svg>
+            </div>
+            <h5 class="mini-title">Compounding Growth</h5>
+          </div>
+          <span class="mini-tickers">VOO / BRK-A / TQQQ</span>
+        </div>
+
+        <div class="mini-wealth-card emerald-chip">
+          <div class="card-core">
+            <div class="mini-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:18px; height:18px;"><path d="M23 6l-9.5 9.5-5-5L1 18"></path><polyline points="17 6 23 6 23 12"></polyline></svg>
+            </div>
+            <h5 class="mini-title">Stable Income</h5>
+          </div>
+          <span class="mini-tickers">SCHD / SPYI / JEPQ</span>
+        </div>
+
+        <div class="mini-wealth-card violet-chip">
+          <div class="card-core">
+            <div class="mini-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:18px; height:18px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h5 class="mini-title">Tax Shield Defense</h5>
+          </div>
+          <span class="mini-tickers">Pension / IRP / ISA</span>
+        </div>
+
+        <div class="mini-wealth-card cyan-chip">
+          <div class="card-core">
+            <div class="mini-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:18px; height:18px;"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v12M15 9H10.5a2.5 2.5 0 0 0 0 5h3a2.5 2.5 0 0 1 0 5H9"></path></svg>
+            </div>
+            <h5 class="mini-title">USD Cash Runway</h5>
+          </div>
+          <span class="mini-tickers">SGOV Treasury</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-tags-group">
+      <span class="tag-chip">자산배분</span>
+      <span class="tag-chip">복리효과</span>
+      <span class="tag-chip">절세전략</span>
+      <span class="tag-chip">노후대비</span>
+    </div>
+    <p class="card-description">
+      대표 지수와 배당성장 ETF들을 바탕으로 안정적인 복리효과를 추구합니다. 또한, 세금 방어를 위한 절세계좌의 활용 및 단기 현금성 자산의 전략적 배분을 통해 효율을 극대화합니다. 시장의 변동성 속에서도 일관된 성장과 수익률을 추구하는, 지속 가능한 투자 여정의 탄탄한 기반이 됩니다.
+    </p>
+  </div>
+
+  <!-- ==========================================================================
+       Matrix 02 . Global Capital (📥 안전 회항 마스터: 메모리 가로채기 셰어링 포트)
+       ========================================================================== */ -->
+  <div class="large-project-card">
+    <div class="card-subtitle">Matrix 02 . Global Capital</div>
+    <div class="card-main-title">US Equity & Growth</div>
+    
+    <div class="card-visual-zone" style="height: 420px; background: #ffffff; padding: 1.5rem; flex-direction: column;">
+      <div class="css-chart-grid">
+        
+        <div class="css-chart-box">
+          <div id="assetChart" style="width: 100%; height: 350px; position: relative;">
+            <p style="text-align: center; color: #86868b; padding-top: 150px; font-family: 'SF Pro Text', sans-serif; font-size: 0.9rem;">
+              대시보드 그래픽을 사출 중입니다...
+            </p>
+          </div>
+          <div class="matrix-center-overlay">
+            <span class="matrix-center-label">Total Value</span>
+            <span class="matrix-center-value">&#36;45,135</span>
+          </div>
+        </div>
+        
+        <div class="css-chart-box">
+          <div class="css-kpi-row">
+            <div class="css-kpi-item">
+              <div class="css-kpi-label">Cumulative Total</div>
+              <div class="css-kpi-value">&#36;Calculating...</div>
+            </div>
+            <div class="css-kpi-item">
+              <div class="css-kpi-label">2026 YTD</div>
+              <div class="css-kpi-value" style="color: #007aff;">&#36;291</div>
+            </div>
+          </div>
+          
+          <div class="css-bar-wrapper">
+            <div class="css-bar-axis">
+              <div class="css-bar-column"><div class="css-bar-fill" style="transform: scaleY(0.55); transform-origin: bottom;"></div><span class="css-bar-label">2022</span></div>
+              <div class="css-bar-column"><div class="css-bar-fill" style="transform: scaleY(0.70); transform-origin: bottom;"></div><span class="css-bar-label">2023</span></div>
+              <div class="css-bar-column"><div class="css-bar-fill" style="transform: scaleY(0.85); transform-origin: bottom;"></div><span class="css-bar-label">2024</span></div>
+              <div class="css-bar-column"><div class="css-bar-fill" style="transform: scaleY(1.00); transform-origin: bottom;"></div><span class="css-bar-label">2025</span></div>
+              <div class="css-bar-column"><div class="css-bar-fill active" style="transform: scaleY(0.30); transform-origin: bottom;"></div><span class="css-bar-label">2026</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-tags-group">
+      <span class="tag-chip">Portfolio Management</span>
+      <span class="tag-chip">Dividend Growth</span>
+      <span class="tag-chip">Total Return</span>
+    </div>
+    <p class="card-description">
+      대표 지수 ETF에 기반한 포트폴리오로 복리 효과를 노리고, 배당 성장 ETF를 통해 심리적 안정감 및 현금 흐름을 강화하는 전략입니다. 포트폴리오의 변동 및 성장, 배당금 데이터를 시각적으로 공유합니다.
+    </p>
+  </div>
+
+  <!-- ==========================================================================
+       Matrix 03 . Shield & Harvest (🌟 KPI 디자인 패널을 Matrix 02형식으로 완전 동계화 수복)
+       ========================================================================== */ -->
+  <div class="large-project-card">
+    <div class="card-subtitle">Matrix 03 . Shield & Harvest</div>
+    <div class="card-main-title">Tax & Decumulation</div>
+    
+    <div class="card-visual-zone" style="height: 420px; background: #ffffff; padding: 1.5rem; flex-direction: column;">
+      <div class="css-chart-grid">
+        
+        <div class="css-chart-box">
+          <div id="taxShieldChart" style="width: 100%; height: 350px; position: relative;"></div>
+          <div class="matrix-center-overlay">
+            <span class="matrix-center-label">Shield Vol</span>
+            <span class="matrix-center-value">₩104M</span>
+          </div>
+        </div>
+        
+        <div class="css-chart-box">
+          <!-- 🌟 [디자인 싱크 완공] Matrix 02와 완벽히 일치하는 가로형 듀얼 캡슐 그리드로 교체 수리 -->
+          <div class="css-kpi-row">
+            <div class="css-kpi-item">
+              <div class="css-kpi-label">Total Tax Saving</div>
+              <div class="css-kpi-value">₩4,649,000</div>
+            </div>
+            <div class="css-kpi-item">
+              <div class="css-kpi-label">2026 Saved</div>
+              <!-- 🌟 2026 Saved 고유 아이덴티티 유지를 위해 수치 컬러는 지정 그린 락인 -->
+              <div class="css-kpi-value" style="color: #34C759;">₩1,184,000</div>
+            </div>
+          </div>
+          
+          <div class="tax-bar-wrapper">
+            <div class="tax-bar-axis">
+              <div class="tax-bar-column"><div id="bar-2022" class="tax-bar-fill" style="transform: scaleY(0.80); transform-origin: bottom;"></div><span class="tax-bar-label">2022</span></div>
+              <div class="tax-bar-column"><div id="bar-2023" class="tax-bar-fill" style="transform: scaleY(0.955); transform-origin: bottom;"></div><span class="tax-bar-label">2023</span></div>
+              <div class="tax-bar-column"><div id="bar-2024" class="tax-bar-fill" style="transform: scaleY(0.975); transform-origin: bottom;"></div><span class="tax-bar-label">2024</span></div>
+              <div class="tax-bar-column"><div id="bar-2025" class="tax-bar-fill" style="transform: scaleY(1.00); transform-origin: bottom;"></div><span class="tax-bar-label">2025</span></div>
+              <div class="tax-bar-column"><div id="bar-2026" class="tax-bar-fill active" style="transform: scaleY(0.30); transform-origin: bottom;"></div><span class="tax-bar-label">2026</span></div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="card-tags-group" style="margin-top: 1.5rem;">
+      <span class="tag-chip">연금저축</span>
+      <span class="tag-chip">세금혜택</span>
+      <span class="tag-chip">인출전략</span>
+    </div>
+    <p class="card-description">
+      은퇴 후 인출 시점에서의 세금 부담을 최소화하는 전략적 자산 배분과 리밸런싱 시스템입니다. 연금저축, IRP, ISA 계좌의 세제 혜택을 극대화하여, 노후에 안정적인 현금흐름을 유지하면서도 세금 효율성을 극대화하는 전술적 스윙과 리밸런싱 지표를 제공합니다.
+    </p>
+  </div>
+
+</div>
+
+<!-- ==========================================================================
+     🚀 통합 오퍼레이팅 커널 (Matrix 02 롤업 링 + Matrix 03 타겟 고도화 링)
+     ========================================================================== -->
+<script>
+  (function() {
+    const categoryMap = {
+      'VOO': 'Growth', 'BRK.A': 'Growth', 'BRK.B': 'Growth', 'BRK-A': 'Growth', 'BRK-B': 'Growth', 'SCHG': 'Growth',
+      'TQQQ': 'Leverage', 'QLD': 'Leverage',
+      'SCHD': 'Dividend', 'JEPQ': 'Dividend', 'SPYI': 'Dividend'
+    };
+
+    const taxSource = {
+      'Personal_1': 71,
+      'Personal_2': 0,
+      'IRP': 25,
+      'ISA': 4
+    };
+
+    function renderAllCharts() {
+      if (typeof Plotly === 'undefined') { setTimeout(renderAllCharts, 200); return; }
+
+      // ==========================================
+      // [PART A] Matrix 02 . Global Capital 연산 및 사출
+      // ==========================================
+      const container02 = document.getElementById('assetChart');
+      if (container02) {
+        const rawCache = localStorage.getItem('asset_cache');
+        
+        if (!rawCache) {
+          const sheetID = "1ZgcJc8n-pC4crM3zqq4LPUJ9hTGbmhgpfV6XI87wr5A";
+          const gid = "0";
+          const fallbackUrl = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:csv&gid=${gid}`;
+          
+          fetch(fallbackUrl)
+            .then(res => res.text())
+            .then(csvText => {
+              const rows = csvText.split(/\r?\n/).filter(line => line.trim() !== "");
+              const labels = []; const values = [];
+              for (let i = 1; i < rows.length; i++) {
+                const cols = rows[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                if (cols.length >= 9) {
+                  const ticker = cols[0].replace(/"/g, '').trim();
+                  const weightStr = cols[8].replace(/"/g, '').replace('%', '').trim();
+                  const weight = parseFloat(weightStr);
+                  if (!isNaN(weight) && weight > 0) { labels.push(ticker); values.push(weight); }
+                }
+              }
+              drawMatrix02(container02, labels, values);
+            });
+        } else {
+          try {
+            const cacheData = JSON.parse(rawCache);
+            drawMatrix02(container02, cacheData.labels || [], cacheData.values || []);
+          } catch (e) { console.error(e); }
+        }
+      }
+
+      // ==========================================
+      // [PART B] Matrix 03 . Shield & Harvest 정밀 사출
+      // ==========================================
+      const container03 = document.getElementById('taxShieldChart');
+      if (container03) {
+        const taxLabels = [];
+        const taxValues = [];
+        
+        Object.keys(taxSource).forEach(key => {
+          if (taxSource[key] > 0) {
+            taxLabels.push(key);
+            taxValues.push(taxSource[key]);
+          }
+        });
+
+        const taxColors = ["#FF9500", "#AF52DE", "#5AC8FA", "#E5E5EA"];
+
+        Plotly.newPlot('taxShieldChart', [{
+          values: taxValues, labels: taxLabels, type: 'pie', hole: 0.65,
+          marker: { colors: taxColors },
+          textinfo: 'label', 
+          textposition: 'inside',
+          textfont: { family: 'SF Mono, Consolas, monospace', size: 12, color: '#1d1d1f', weight: 'bold' },
+          hoverinfo: 'label+percent',
+          hoverlabel: { font: { family: 'SF Mono, Consolas, monospace', size: 12 } }
+        }], {
+          showlegend: false,
+          paper_bgcolor: 'rgba(0,0,0,0)',
+          plot_bgcolor: 'rgba(0,0,0,0)',
+          margin: { t: 15, b: 15, l: 15, r: 15 }
+        }, {responsive: true, displayModeBar: false});
+      }
+    }
+
+    function drawMatrix02(dom, sourceLabels, sourceValues) {
+      const categoryTotals = { 'Growth': 0, 'Leverage': 0, 'Dividend': 0, 'Others': 0 };
+      for (let i = 0; i < sourceLabels.length; i++) {
+        const ticker = sourceLabels[i]; const weight = sourceValues[i];
+        if (ticker && !isNaN(weight)) {
+          const matchedCategory = categoryMap[ticker] || 'Others';
+          categoryTotals[matchedCategory] += weight;
+        }
+      }
+      const labels = []; const values = [];
+      Object.keys(categoryTotals).forEach(cat => {
+        if (categoryTotals[cat] > 0) { labels.push(cat); values.push(categoryTotals[cat]); }
+      });
+
+      dom.innerHTML = "";
+      const themeColors = ["#007AFF", "#FF2D55", "#34C759", "#E5E5EA"];
+
+      Plotly.newPlot(dom, [{
+        values: values, labels: labels, type: 'pie', hole: 0.65,
+        marker: { colors: themeColors },
+        textinfo: 'label',
+        textposition: 'inside',
+        textfont: { family: 'SF Mono, Consolas, monospace', size: 12, color: '#1d1d1f', weight: 'bold' },
+        hoverinfo: 'label+percent',
+        hoverlabel: { font: { family: 'SF Mono, Consolas, monospace', size: 12 } }
+      }], {
+        showlegend: false,
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)',
+        margin: { t: 15, b: 15, l: 15, r: 15 }
+      }, {responsive: true, displayModeBar: false});
+    }
+
+    if (document.readyState === 'complete') {
+      renderAllCharts();
+    } else {
+      window.addEventListener('load', renderAllCharts);
+    }
+  })();
+</script>
+```
+
+/* END OF NODE: /investment/index.qmd */
+
+
+=========================================
+📂 [FILE NODE PATH]: /hobbies/index.qmd
+=========================================
+
+---
+title: "🎨 Life Beyond Numbers"
+subtitle: "ENDURANCE, CREATIVITY, AND CONTINUOUS GROWTH"
+---
+
+```{=html}
+<style>
+  /* ==========================================================================
+     1. 전역 레이아웃 및 카드 프레임 (Investment 페이지와 100% 동치)
+     ========================================================================== */
+  .hobbies-container {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+    color: #1d1d1f;
+    margin: 2rem 0;
+  }
+
+  .large-project-card {
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    border: 1px solid rgba(0,0,0,0.04);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .large-project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04);
+  }
+
+  .card-subtitle {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #86868b;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+  .large-project-card .card-main-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+    color: #1d1d1f !important;
+  }
+
+  .card-visual-zone {
+    width: 100%;
+    background: #f5f5f7;
+    border-radius: 18px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .card-tags-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .tag-chip {
+    background: #e8e8ed;
+    color: #424245;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.3rem 0.7rem;
+    border-radius: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .card-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #424245;
+    margin: 0;
+  }
+
+  /* ==========================================================================
+     2. Matrix 01 . Endurance Lab 전용 모던 CSS 바 차트 및 타이포그래피 튜닝
+     ========================================================================== */
+  .run-chart-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 2.5rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .run-chart-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+  }
+
+  /* 🌟 막대그래프 축선 제어: 중앙 정렬 및 여백(gap) 인프라 주입 */
+  .run-bar-axis {
+    display: flex;
+    justify-content: center;
+    gap: 1.1rem; /* 막대 사이의 세련된 공기감 부여 */
+    align-items: flex-end;
+    width: 100%;
+    height: 190px;
+    border-bottom: 1px solid #e8e8ed;
+    padding-bottom: 4px;
+    box-sizing: border-box;
+  }
+  .run-bar-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 11%; /* 기둥 두께를 날씬하게 깎아 여백 수율 극대화 */
+    height: 100%;
+    justify-content: flex-end;
+  }
+  
+  /* 🌟 직관적인 height 기반 무결성 채우기 */
+  .run-bar-fill {
+    width: 100%;
+    background-color: #E5E5EA;
+    border-radius: 5px 5px 0 0;
+    transition: height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .run-bar-fill.active {
+    background-color: #FF2D55 !important; /* 러닝 테마의 열정적인 핑크-레드 액센트 */
+    box-shadow: 0 2px 8px rgba(255,45,85,0.2);
+  }
+  .run-bar-label {
+    font-size: 0.7rem;
+    color: #86868b;
+    margin-top: 8px;
+    font-weight: 500;
+  }
+
+  /* 🌟 메인 피규어 폰트 아이덴티티 락인 (SF Mono 동치) */
+  .run-pb-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 100%;
+  }
+  .run-pb-card {
+    background: #f5f5f7;
+    border-radius: 14px;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  .run-pb-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #86868b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+  }
+  .run-pb-value {
+    font-family: "SF Mono", Consolas, "Liberation Mono", Menlo, monospace !important; /* 🌟 메인 페이지의 정밀 무드 이식 */
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1d1d1f;
+    letter-spacing: -0.03em;
+  }
+
+  /* ==========================================================================
+     3. Matrix 02 . Travel & Photography 전용 스쿼드 스타일 (순정 복원)
+     ========================================================================== */
+  .squad-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .squad-master-kpi {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    color: #1d1d1f;
+  }
+  .squad-master-kpi span {
+    font-family: "SF Mono", Consolas, monospace !important; /* 🌟 숫자 고정폭 통합 */
+    font-weight: 700;
+  }
+  .squad-matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+  }
+  .squad-country-block {
+    background: #f5f5f7;
+    border-radius: 16px;
+    padding: 1.25rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .squad-header-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #1d1d1f;
+  }
+  .squad-embedded-flag {
+    width: 20px;
+    height: auto;
+    border-radius: 2px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .squad-indent-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .squad-indent-item {
+    font-size: 0.8rem;
+    color: #515154;
+    padding-left: 0.5rem;
+    border-left: 1.5px solid #d2d2d7;
+  }
+
+  /* ==========================================================================
+     4. Matrix 03 . Squad Command 전용 고정폭 타이포 및 아키텍처 튜닝 (순정 복원)
+     ========================================================================== */
+  .squad-board-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .squad-command-kpi {
+    background: #0f172a;
+    border-radius: 14px;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .squad-kpi-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .squad-kpi-value {
+    font-family: "SF Mono", Consolas, monospace !important; /* 🌟 가동 시간 서체 통합 */
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #38bdf8;
+    letter-spacing: -0.02em;
+  }
+  .squad-grid-system {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    width: 100%;
+  }
+  .squad-command-block {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+  }
+  .squad-command-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .squad-command-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .squad-command-item {
+    font-size: 0.88rem;
+    color: #475569;
+    padding-left: 0.8rem;
+    border-left: 2px solid #cbd5e1;
+    font-weight: 500;
+  }
+
+  /* ==========================================================================
+     5. 미디어 쿼리 반응형 제어선 (안정성 확보)
+     ========================================================================== */
+  @media (max-width: 900px) {
+    .run-chart-grid, .squad-grid-system { grid-template-columns: 1fr; gap: 2rem; }
+    .card-visual-zone { height: auto !important; }
+  }
+
+  @media (max-width: 768px) {
+    .large-project-card { padding: 1.5rem; border-radius: 20px; }
+    .card-main-title { font-size: 1.4rem; }
+  }
+</style>
+
+<div class="hobbies-container">
+
+  <div class="large-project-card">
+    <div class="card-subtitle">Matrix 01 . Endurance Lab</div>
+    <div class="card-main-title">Running & Well-being</div>
+    
+    <div class="card-visual-zone" style="height: auto; background: #ffffff; padding: 1.5rem; flex-direction: column;">
+      <div class="run-chart-grid">
+        
+        <div class="run-chart-box">
+          <div class="run-bar-axis">
+            <div class="run-bar-column"><div class="run-bar-fill" style="height: 98%;"></div><span class="run-bar-label">01</span></div>
+            <div class="run-bar-column"><div class="run-bar-fill" style="height: 70%;"></div><span class="run-bar-label">02</span></div>
+            <div class="run-bar-column"><div class="run-bar-fill" style="height: 30%;"></div><span class="run-bar-label">03</span></div>
+            <div class="run-bar-column"><div class="run-bar-fill" style="height: 100%;"></div><span class="run-bar-label">04</span></div>
+            <div class="run-bar-column"><div class="run-bar-fill active" style="height: 90%;"></div><span class="run-bar-label">05</span></div>
+            <div class="run-bar-column"><div class="run-bar-fill" style="height: 0%;"></div><span class="run-bar-label">06</span></div>
+          </div>
+        </div>
+        
+        <div class="run-chart-box" style="gap: 1rem;">
+          <div class="run-pb-grid">
+            <div class="run-pb-card">
+              <div class="run-pb-label">Full PB</div>
+              <div class="run-pb-value">4:55:56</div>
+            </div>
+            <div class="run-pb-card">
+              <div class="run-pb-label">Half PB</div>
+              <div class="run-pb-value">1:57:45</div>
+            </div>
+          </div>
+          <div class="run-pb-grid">
+            <div class="run-pb-card" style="background: rgba(255,45,85,0.05);">
+              <div class="run-pb-label" style="color: #FF2D55;">Monthly Target</div>
+              <div class="run-pb-value" style="color: #FF2D55;">120 km</div>
+            </div>
+            <div class="run-pb-card">
+              <div class="run-pb-label">10K PB</div>
+              <div class="run-pb-value">50:53</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card-tags-group">
+      <span class="tag-chip">Full Marathon</span>
+      <span class="tag-chip">Sub-4 Runner</span>
+      <span class="tag-chip">VO2Max 관제</span>
+      <span class="tag-chip">한계 돌파</span>
+    </div>
+    <p class="card-description">
+      체계적인 페이스 배분과 임계점 훈련을 통해 신체적 한계를 확장합니다. 풀코스 서브-4 달성 및 10km 40분대 진입 기록을 정밀 기록하며, 월간 마일리지 추이와 심폐 지구력 지표를 실시간 모니터링하여 지속 가능한 러닝 성장을 정량화합니다.
+    </p>
+  </div>
+
+  <div class="large-project-card">
+    <div class="card-subtitle">Hobby 02 . Inspiration & Perspective</div>
+    <div class="card-main-title">Travel & Photography</div>
+    
+    <div class="card-visual-zone" style="height: auto; min-height: 380px; background: #ffffff; align-items: flex-start;">
+      <div class="squad-container">
+        
+        <div class="squad-master-kpi">
+          <div style="font-size: 1.1rem; font-weight: 700; margin-left: 2px;">
+            <span>18</span> Countries, <span>57</span> Cities
+          </div>
+        </div>
+        
+        <div class="squad-matrix-grid">
+          
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 741 390"><rect width="741" height="390" fill="#b31942"/><path d="M0 30h741M0 90h741M0 150h741M0 210h741M0 270h741M0 330h741" stroke="#fff" stroke-width="30"/><rect width="296" height="210" fill="#0a3161"/><circle cx="148" cy="105" r="50" fill="#fff"/></svg>
+              United States
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Boston</div>
+              <div class="squad-indent-item">New York</div>
+              <div class="squad-indent-item">Washington D.C.</div>
+              <div class="squad-indent-item">Philadelphia</div>
+              <div class="squad-indent-item">Pittsburgh</div>
+              <div class="squad-indent-item">Hawaii</div>
+              <div class="squad-indent-item">Los Angeles</div>
+              <div class="squad-indent-item">San Francisco</div>
+              <div class="squad-indent-item">Las Vegas</div>
+            </div>
+          </div>
+          
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 3 2"><rect width="3" height="2" fill="#c60b1e"/><rect y="0.5" width="3" height="1" fill="#ffc600"/></svg>
+              Spain
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Barcelona</div>
+              <div class="squad-indent-item">Nerja</div>
+              <div class="squad-indent-item">Ronda</div>
+              <div class="squad-indent-item">Granada</div>
+              <div class="squad-indent-item">Sevilla</div>
+              <div class="squad-indent-item">San Sebastian</div>
+              <div class="squad-indent-item">Bilbao</div>
+              <div class="squad-indent-item">Madrid</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 3 2" style="background:#fff; border:1px solid rgba(0,0,0,0.03);"><circle cx="1.5" cy="1" r="0.6" fill="#bc002d"/></svg>
+              Japan
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Sapporo</div>
+              <div class="squad-indent-item">Otaru</div>
+              <div class="squad-indent-item">Hakodate</div>
+              <div class="squad-indent-item">Tokyo</div>
+              <div class="squad-indent-item">Osaka</div>
+              <div class="squad-indent-item">Fukuoka</div>
+              <div class="squad-indent-item">Okinawa</div>
+              <div class="squad-indent-item">Kyoto</div>
+              <div class="squad-indent-item">Toyama</div>
+              <div class="squad-indent-item">Kanazawa</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 2 1" fill="#00247d"><path d="M0 0h2v1H0z"/><path d="M0 0l2 1M2 0L0 1" stroke="#fff" stroke-width="0.2"/><path d="M0 0l2 1M2 0L0 1" stroke="#cf142b" stroke-width="0.12"/><path d="M1 0v1M0 0.5h2" stroke="#fff" stroke-width="0.3"/><path d="M1 0v1M0 0.5h2" stroke="#cf142b" stroke-width="0.18"/></svg>
+              United Kingdom
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">London</div>
+              <div class="squad-indent-item">Oxford</div>
+              <div class="squad-indent-item">Cambridge</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 2 1" fill="#00247d"><path d="M0 0h2v1H0z"/><path d="M0 0l2 1M2 0L0 1" stroke="#fff" stroke-width="0.2"/><path d="M0 0l2 1M2 0L0 1" stroke="#cf142b" stroke-width="0.12"/><path d="M1 0v1M0 0.5h2" stroke="#fff" stroke-width="0.3"/><path d="M1 0v1M0 0.5h2" stroke="#cf142b" stroke-width="0.18"/></svg>
+              New Zealand
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Auckland</div>
+              <div class="squad-indent-item">Taupo</div>
+              <div class="squad-indent-item">Rotorua</div>
+              <div class="squad-indent-item">Queensland</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 5 3"><rect width="5" height="1" fill="#000"/><rect y="1" width="5" height="1" fill="#D00"/><rect y="2" width="5" height="1" fill="#FFCE00"/></svg>
+              Germany
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Munich</div>
+              <div class="squad-indent-item">Frankfurt</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 3 2"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg>
+              France
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Paris</div>
+              <div class="squad-indent-item">Strasbourg</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 1 1" fill="#d52b1e"><rect width="1" height="1"/><path d="M0.2 0.45h0.6v0.1h-0.6zM0.45 0.2h0.1v0.6h-0.1z" fill="#fff"/></svg>
+              Switzerland
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Interlaken</div>
+              <div class="squad-indent-item">Lucerne</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 3 2"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ce2b37"/></svg>
+              Italy
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Rome</div>
+              <div class="squad-indent-item">Firenze</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 2 1"><rect width="2" height="1" fill="#fff"/><rect width="2" height="0.5" fill="#c60b1e"/><rect width="1" height="0.57" fill="#00247d"/><path d="M0.3 0.28 L0.45 0.35 L0.35 0.45 Z" fill="#ffc600"/></svg>
+              Malaysia
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Ipoh</div>
+              <div class="squad-indent-item">Langkawi</div>
+              <div class="squad-indent-item">Kota Kinabalu</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 3 2" fill="#da251d"><rect width="3" height="2"/><path d="M1.5 0.65 L1.62 1.02 L2.0 1.02 L1.69 1.24 L1.81 1.62 L1.5 1.39 L1.19 1.62 L1.31 1.24 L1.0 1.02 L1.38 1.02 Z" fill="#ffff00"/></svg>
+              Vietnam
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Da Nang</div>
+              <div class="squad-indent-item">Phu Quoc</div>
+              <div class="squad-indent-item">Nha Trang</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 3 2" fill="#de2110"><rect width="3" height="2"/><circle cx="0.5" cy="0.5" r="0.15" fill="#ffde00"/></svg>
+              China
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Shanghai</div>
+              <div class="squad-indent-item">Beijing</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 2 1"><rect width="2" height="0.5" fill="#0038a8"/><rect y="0.5" width="2" height="0.5" fill="#ce1126"/><polygon points="0,0 0,1 0.57,0.5" fill="#fff"/><circle cx="0.2" cy="0.5" r="0.08" fill="#fcd116"/></svg>
+              Philippines
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Manila</div>
+              <div class="squad-indent-item">El Nido</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 3 2"><rect width="3" height="0.67" fill="#AE1C28"/><rect y="0.67" width="3" height="0.67" fill="#FFF"/><rect y="1.34" width="3" height="0.67" fill="#21468B"/></svg>
+              Netherlands
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Amsterdam</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 15 13"><rect width="5" height="13" fill="#000"/><rect x="5" width="5" height="13" fill="#ffd100"/><rect x="10" width="5" height="13" fill="#ff0000"/></svg>
+              Belgium
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Bruxelles</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 5 3"><rect width="5" height="1" fill="#EA161E"/><rect y="1" width="5" height="1" fill="#FFF"/><rect y="2" width="5" height="1" fill="#00A3E0"/></svg>
+              Luxembourg
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Luxembourg</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 3 2"><rect width="1.2" height="2" fill="#006600"/><rect x="1.2" width="1.8" height="2" fill="#ff0000"/><circle cx="1.2" cy="1" r="0.2" fill="#ffcc00"/></svg>
+              Portugal
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Lisbon</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <svg class="squad-embedded-flag" viewBox="0 0 3 2" fill="#de2110"><rect width="3" height="2"/><circle cx="1.5" cy="1" r="0.4" fill="#fff"/><circle cx="1.5" cy="1" r="0.32" fill="#de2110"/></svg>
+              Hong Kong
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Hong Kong</div>
+            </div>
+          </div>
+
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="card-tags-group">
+      <span class="tag-chip">Global Nomad</span>
+      <span class="tag-chip">Insight Hunting</span>
+      <span class="tag-chip">Photography</span>
+      <span class="tag-chip">Family Trip</span>
+    </div>
+    <p class="card-description">
+      새로운 공간에 발을 딛는 것은 일상의 관성을 깨고 생각의 지평을 넓히는 가장 직관적인 자극입니다. 세계 각국을 여행하며 다양한 추억을 남기고, 새로운 인사이트와 영감을 얻는 것을 즐깁니다.
+    </p>
+  </div>
+
+  <div class="large-project-card">
+    <div class="card-subtitle">Hobby 03 . Synergy with AI Agents</div>
+    <div class="card-main-title">Vibe Coding & Automation</div>
+    
+    <div class="card-visual-zone" style="height: auto; min-height: 380px; background: #ffffff; align-items: flex-start;">
+      <div class="squad-container">
+        
+        <div class="squad-master-kpi">
+          🤖 <span>AI-Assisted</span> Production Lineup
+        </div>
+        
+        <div class="squad-matrix-grid">
+          
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <span style="font-size: 1.15rem; vertical-align: middle; line-height: 1;">⚖️</span>
+              Finance
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Asset Dashboard</div>
+              <div class="squad-indent-item">Fire & Tax Calculator</div>
+              <div class="squad-indent-item">Dividend Tracker</div>
+            </div>
+          </div>
+          
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <span style="font-size: 1.15rem; vertical-align: middle; line-height: 1;">🔬</span>
+              Research
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">asdfasdf</div>
+              <div class="squad-indent-item">qwerqwer</div>
+              <div class="squad-indent-item">zxcvzxcv</div>
+            </div>
+          </div>
+
+          <div class="squad-country-block">
+            <div class="squad-header-title">
+              <span style="font-size: 1.15rem; vertical-align: middle; line-height: 1;">🏃‍♂️</span>
+              Life
+            </div>
+            <div class="squad-indent-list">
+              <div class="squad-indent-item">Quarto Blog Building</div>
+              <div class="squad-indent-item">Personal AI Assistant</div>
+              <div class="squad-indent-item">Personal AI Tutor</div>
+            </div>
+          </div>
+
+        </div> 
+      </div>
+    </div>
+
+    <div class="card-tags-group">
+      <span class="tag-chip">Vibe Coding</span>
+      <span class="tag-chip">LLM Orchestration</span>
+      <span class="tag-chip">Rapid Prototyping</span>
+      <span class="tag-chip">Python Blueprint</span>
+    </div>
+    <p class="card-description">
+      코알못의 바이브 코딩을 활용한 프로젝트들을 소개합니다. AI 에이전트를 활용해 개인 생산성 도구부터 딥테크 연구 보조까지 다양한 영역에서 시너지를 창출하는 것을 즐깁니다.
+    </p>
+  </div>
+
+</div>
+```
+
+/* END OF NODE: /hobbies/index.qmd */
+
+
+=========================================
+📂 [FILE NODE PATH]: /gallery/index.qmd
+=========================================
+
+---
+title: "📷 Light Preserver Archive"
+subtitle: "DIGITAL & ANALOG PHOTOGRAPH GALLERY"
+page-layout: full
+---
+
+```{=html}
+<style>
+.page-columns .content, 
+main.content, 
+#quarto-document-content, 
+.quarto-title-block, 
+#title-block-header {
+  max-width: 1400px !important; 
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* 상단 수평 제어 필터 허브 */
+.gallery-filter-hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 2rem auto 3rem auto;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e8e8ed;
+  max-width: 850px; 
+  width: 100%;
+}
+
+.gallery-filter-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.gallery-filter-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  min-width: 70px;
+  text-align: right;
+}
+
+.gallery-filter-chips-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.gallery-filter-link {
+  display: inline-block;
+  color: #86868b;
+  font-size: 0.85rem;
+  text-decoration: none;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+.gallery-filter-link:hover {
+  color: #1d1d1f;
+}
+.gallery-filter-link.active {
+  color: #007aff !important; 
+  background-color: #f5f5f7;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* 🌟 [정밀 보정] 이미지 최소 폭을 기존 320px에서 2/3 수준인 215px로 전면 축소 */
+.gallery-grid-zone {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); 
+  gap: 1.2rem; /* 카드가 작아진 만큼 격자 간격도 1.5rem에서 1.2rem으로 슬림화 */
+  width: 100%;
+  align-content: start;
+}
+
+/* 하마다 히데아키 스타일 프리미엄 이미지 마스크 */
+.gallery-photo-card {
+  position: relative;
+  background: #f5f5f7;
+  border-radius: 12px; /* 카드 크기에 맞춰 둥근 모서리 곡률도 미세하게 상향 조정 */
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 3 / 2;
+  border: 1px solid rgba(0,0,0,0.02);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.01);
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.gallery-photo-card:hover {
+  transform: scale(1.02); /* 작아진 카드 피드백 강도를 위해 스케일 핏 미세 조정 */
+}
+
+.gallery-card-img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center;
+}
+
+/* 마우스 오버 시 페이드인 오버레이 */
+.gallery-hover-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.gallery-photo-card:hover .gallery-hover-overlay {
+  opacity: 1;
+}
+
+.gallery-hover-title {
+  color: #ffffff; font-size: 0.95rem; font-weight: 500; margin: auto 0 0 0;
+  letter-spacing: -0.01em; text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+/* 라이트박스 확장 시네마 스튜디오 */
+.lightbox-modal {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  z-index: 9999; display: none; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box;
+}
+
+.lightbox-content-wrapper {
+  max-width: 850px; width: 100%; height: 90vh;
+  display: flex; flex-direction: column; justify-content: space-between; padding: 1rem; box-sizing: border-box; position: relative;
+}
+
+.lightbox-close-btn {
+  position: absolute; top: 0.5rem; right: 1rem; font-size: 1.8rem; font-weight: 300; color: #1d1d1f; cursor: pointer; z-index: 10001; transition: transform 0.2s;
+}
+.lightbox-close-btn:hover { transform: scale(1.1); color: #ff3b30; }
+
+.lightbox-main-stage { flex: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; max-height: 55vh; }
+.lightbox-expanded-img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; }
+
+.lightbox-meta-panel { text-align: left; margin-top: 1.5rem; border-top: 1px solid #e8e8ed; padding-top: 1.2rem; }
+.lightbox-meta-date { font-size: 0.8rem; color: #86868b; margin-bottom: 0.2rem; }
+.lightbox-meta-title { font-size: 1.5rem; font-weight: 600; color: #1d1d1f; margin: 0 0 0.5rem 0; }
+.lightbox-meta-desc { font-size: 0.95rem; color: #424245; line-height: 1.5; margin: 0 0 1rem 0; }
+
+.lightbox-tag-chip {
+  display: inline-block; border: 1px solid #e8e8ed; color: #86868b; border-radius: 4px; font-size: 0.7rem; text-transform: uppercase; padding: 0.15rem 0.5rem; margin-right: 0.4rem;
+}
+
+.lightbox-thumb-rail {
+  display: flex; gap: 0.6rem; overflow-x: auto; padding: 0.8rem 0; margin-top: 1rem; border-top: 1px solid #f5f5f7; width: 100%;
+}
+.lightbox-thumb-rail::-webkit-scrollbar { height: 4px; }
+.lightbox-thumb-rail::-webkit-scrollbar-thumb { background: #e8e8ed; border-radius: 2px; }
+
+.rail-thumb-node {
+  width: 68px; height: 46px; object-fit: cover; border-radius: 6px; cursor: pointer; opacity: 0.4; transition: opacity 0.2s, border-color 0.2s; border: 2px solid transparent; flex-shrink: 0;
+}
+.rail-thumb-node:hover, .rail-thumb-node.active { opacity: 1; border-color: #007aff; }
+
+@media (max-width: 768px) {
+  .gallery-filter-row { flex-direction: column; align-items: flex-start; gap: 0.2rem; }
+  .gallery-filter-title { text-align: left; min-width: auto; }
+  .lightbox-content-wrapper { height: 95vh; }
+  .lightbox-main-stage { max-height: 40vh; }
+  .lightbox-meta-title { font-size: 1.2rem; }
+}
+</style>
+
+<div class="gallery-filter-hero-container" id="gallerySidebar"></div>
+
+<div class="gallery-grid-zone" id="galleryGrid">
+  <p style="color: #86868b; text-align: center;">JSON 데이터 허브 결합 중...</p>
+</div>
+
+<div class="lightbox-modal" id="lightboxModal">
+<div class="lightbox-content-wrapper">
+<div class="lightbox-close-btn" id="lightboxClose">&times;</div>
+<div class="lightbox-main-stage">
+<img src="" class="lightbox-expanded-img" id="lightboxTargetImg" alt="Expanded Asset">
+</div>
+<div class="lightbox-meta-panel">
+<div class="lightbox-meta-date" id="lightboxTargetDate"></div>
+<h3 class="lightbox-meta-title" id="lightboxTargetTitle"></h3>
+<p class="lightbox-meta-desc" id="lightboxTargetDesc"></p>
+<div id="lightboxTargetTags"></div>
+</div>
+<div class="lightbox-thumb-rail" id="lightboxThumbRail"></div>
+</div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const gridZone = document.getElementById('galleryGrid');
+  const sidebarZone = document.getElementById('gallerySidebar');
+  
+  const modal = document.getElementById('lightboxModal');
+  const closeBtn = document.getElementById('lightboxClose');
+  const targetImg = document.getElementById('lightboxTargetImg');
+  const targetTitle = document.getElementById('lightboxTargetTitle');
+  const targetDate = document.getElementById('lightboxTargetDate');
+  const targetDesc = document.getElementById('lightboxTargetDesc');
+  const targetTags = document.getElementById('lightboxTargetTags');
+  const thumbRail = document.getElementById('lightboxThumbRail');
+  
+  const activeFilters = { period: 'all', theme: 'all', camera: 'all' };
+  let globalPhotoData = [];
+  let currentRenderedData = [];
+  let activeIndex = 0;
+
+  fetch('gallery.json')
+    .then(res => {
+      if(!res.ok) throw new Error("데이터 파이프라인 결합 에러");
+      return res.json();
+    })
+    .then(data => {
+      globalPhotoData = data;
+      buildEngine();
+    })
+    .catch(err => {
+      gridZone.innerHTML = `<p style="color: #ff3b30; text-align: center;">자산 인입 오염: ${err.message}</p>`;
+    });
+
+  function buildEngine() {
+    const periods = new Set();
+    const themes = new Set();
+    const cameras = new Set();
+
+    globalPhotoData.forEach(item => {
+      const yearStr = item.period ? item.period.substring(0, 4) : "Unknown";
+      const yearVal = parseInt(yearStr);
+      let decadeStr = "Unknown";
+      
+      if (!isNaN(yearVal)) {
+        const decadeVal = Math.floor(yearVal / 10) * 10;
+        decadeStr = decadeVal + "s";
+        periods.add(decadeStr);
+      } else {
+        periods.add("Unknown");
+      }
+
+      const themeTheme = item.theme || "Unknown";
+      const cameraCamera = item.camera || "Unknown";
+
+      themes.add(themeTheme);
+      cameras.add(cameraCamera);
+
+      item.computed = { period: decadeStr, theme: themeTheme, camera: cameraCamera, rawPeriod: item.period || "Unknown" };
+    });
+
+    renderFilterBlock('Period', periods, 'period');
+    renderFilterBlock('Theme', themes, 'theme');
+    renderFilterBlock('Camera', cameras, 'camera');
+
+    executeCrossFilter();
+  }
+
+  function renderFilterBlock(title, dataSet, filterKey) {
+    const sorted = Array.from(dataSet).sort();
+    if(filterKey === 'period') {
+      sorted.sort((a, b) => b.localeCompare(a));
+    }
+
+    const rowBlock = document.createElement('div');
+    rowBlock.className = 'gallery-filter-row';
+    
+    let html = `<div class="gallery-filter-title">${title}</div>`;
+    html += `<div class="gallery-filter-chips-group">`;
+    html += `<a href="#" class="gallery-filter-link active" data-key="${filterKey}" data-val="all">All</a>`;
+    sorted.forEach(val => {
+      html += `<a href="#" class="gallery-filter-link" data-key="${filterKey}" data-val="${val}">${val}</a>`;
+    });
+    html += `</div>`;
+    
+    rowBlock.innerHTML = html;
+    sidebarZone.appendChild(rowBlock);
+
+    rowBlock.querySelectorAll('.gallery-filter-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        rowBlock.querySelectorAll('.gallery-filter-link').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+
+        activeFilters[filterKey] = this.getAttribute('data-val');
+        executeCrossFilter();
+      });
+    });
+  }
+
+  function executeCrossFilter() {
+    gridZone.innerHTML = '';
+    
+    currentRenderedData = globalPhotoData.filter(item => {
+      const matchPeriod = (activeFilters.period === 'all') || (item.computed.period === activeFilters.period);
+      const matchTheme = (activeFilters.theme === 'all') || (item.computed.theme === activeFilters.theme);
+      const matchCamera = (activeFilters.camera === 'all') || (item.computed.camera === activeFilters.camera);
+      return matchPeriod && matchTheme && matchCamera;
+    });
+
+    if(currentRenderedData.length === 0) {
+      gridZone.innerHTML = `<p style="grid-column: span 3; color: #86868b; text-align: center; padding: 4rem 0;">조건에 매칭되는 사진 자산이 없습니다.</p>`;
+      return;
+    }
+
+    currentRenderedData.forEach((item, index) => {
+      const card = document.createElement('div');
+      card.className = 'gallery-photo-card';
+      
+      card.innerHTML = `
+        <img src="${item.image}" class="gallery-card-img" alt="${item.title}" loading="lazy">
+        <div class="gallery-hover-overlay">
+          <div class="gallery-hover-title">${item.title}</div>
+        </div>
+      `;
+      
+      card.addEventListener('click', () => {
+        openLightbox(index);
+      });
+
+      gridZone.appendChild(card);
+    });
+  }
+
+  function openLightbox(index) {
+    activeIndex = index;
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    
+    updateLightboxStage();
+    buildThumbnailRail();
+  }
+
+  function updateLightboxStage() {
+    const activeData = currentRenderedData[activeIndex];
+    
+    targetImg.src = activeData.image;
+    targetTitle.innerText = activeData.title;
+    targetDate.innerText = activeData.computed.rawPeriod;
+    targetDesc.innerText = activeData.desc || '';
+    
+    targetTags.innerHTML = '';
+    const chips = [activeData.computed.rawPeriod, activeData.computed.theme, activeData.computed.camera].filter(Boolean);
+    chips.forEach(chip => {
+      const span = document.createElement('span');
+      span.className = 'lightbox-tag-chip';
+      span.innerText = chip;
+      targetTags.appendChild(span);
+    });
+
+    const thumbNodes = thumbRail.querySelectorAll('.rail-thumb-node');
+    thumbNodes.forEach((node, idx) => {
+      if(idx === activeIndex) {
+        node.classList.add('active');
+        node.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      } else {
+        node.classList.remove('active');
+      }
+    });
+  }
+
+  function buildThumbnailRail() {
+    thumbRail.innerHTML = '';
+    
+    currentRenderedData.forEach((item, idx) => {
+      const imgNode = document.createElement('img');
+      imgNode.src = item.image;
+      imgNode.className = 'rail-thumb-node';
+      if(idx === activeIndex) imgNode.classList.add('active');
+      
+      imgNode.addEventListener('click', () => {
+        activeIndex = idx;
+        updateLightboxStage();
+      });
+      
+      thumbRail.appendChild(imgNode);
+    });
+  }
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  });
+
+  modal.addEventListener('click', (e) => {
+    if(e.target === modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (modal.style.display === 'flex') {
+      if (e.key === 'Escape') {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      } else if (e.key === 'ArrowRight') {
+        if (activeIndex < currentRenderedData.length - 1) {
+          activeIndex++;
+          updateLightboxStage();
+        }
+      } else if (e.key === 'ArrowLeft') {
+        if (activeIndex > 0) {
+          activeIndex--;
+          updateLightboxStage();
+        }
+      }
+    }
+  });
+});
+</script>
+```
+
+/* END OF NODE: /gallery/index.qmd */
