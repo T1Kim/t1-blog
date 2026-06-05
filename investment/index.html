@@ -633,8 +633,8 @@ ul.task-list li input[type="checkbox"] {
         if (!rawCache) {
           const sheetID = "1ZgcJc8n-pC4crM3zqq4LPUJ9hTGbmhgpfV6XI87wr5A";
           const gid = "0";
-          const fallbackUrl = '[https://docs.google.com/spreadsheets/d/](https://docs.google.com/spreadsheets/d/)' + sheetID + '/gviz/tq?tqx=out:csv&gid=' + gid;
-
+          const fallbackUrl = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:csv&gid=${gid}`;
+          
           fetch(fallbackUrl)
             .then(res => res.text())
             .then(csvText => {
