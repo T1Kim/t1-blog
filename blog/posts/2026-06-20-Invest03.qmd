@@ -2,6 +2,7 @@
 title: "세금 방어를 위한 국내 커버드콜 ETF 투자"
 date: "2026-06-20"
 categories: [Investment, Dividend, Portfolio]
+description: "과도한 세금지출 없이 안정적인 현금흐름을 워하는 분들을 위한 국내 커버드콜 ETF를 소개합니다."
 from: markdown+hard_line_breaks
 toc: true
 toc-location: right
