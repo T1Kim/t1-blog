@@ -446,38 +446,60 @@ a:hover {
 }
 
 /* ==========================================================================
-   13. Auto Full-Width Image-less Engine (🚨 좌측 라인 동결 & 우측 전폭 확장 완공)
+   13. Auto Full-Width Image-less Engine (🚨 데스크톱 전용 격리 밸브 완공)
    ========================================================================== */
 
-/* [1단계] 대표 이미지가 없는 행의 빈 썸네일 박스만 물리적으로 완벽 소각 */
-.quarto-post.image-none .thumbnail,
-.quarto-post:not(.has-image) .thumbnail {
-    display: none !important;
+/* 769px 이상의 넓은 화면(PC)에서만 작동하도록 울타리를 칩니다 */
+@media (min-width: 769px) {
+
+    /* [1단계] 대표 이미지가 없는 행의 빈 썸네일 박스만 물리적으로 완벽 소각 */
+    .quarto-post.image-none .thumbnail,
+    .quarto-post:not(.has-image) .thumbnail {
+        display: none !important;
+    }
+
+    /* [2단계] 좌측 날짜 영역의 고유 정렬선 동결 후 우측 여백 흡수 */
+    .quarto-post.image-none .body,
+    .quarto-post:not(.has-image) .body {
+        flex: 1 1 auto !important;
+        padding-right: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* [3단계] 타이포그래피 와이드 바운더리 전면 개방 */
+    .quarto-post.image-none .listing-title,
+    .quarto-post:not(.has-image) .listing-title,
+    .quarto-post.image-none .listing-description,
+    .quarto-post:not(.has-image) .listing-description {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* [4단계] 대표 이미지가 '있는' 기존 포스트들의 850px 표준 분할 포메이션 복원 및 락인 */
+    .quarto-post.has-image .thumbnail,
+    .quarto-post:not(.image-none) .thumbnail {
+        display: block !important;
+    }
+    .quarto-post.has-image .body,
+    .quarto-post:not(.image-none) .body {
+        flex: 0 1 calc(100% - 195px) !important;
+    }
 }
 
-/* [2단계] 좌측 날짜 영역의 고유 정렬선 동결 후 우측 여백 흡수 */
-.quarto-post.image-none .body,
-.quarto-post:not(.has-image) .body {
-    flex: 1 1 auto !important; 
-    padding-right: 0 !important;
-    margin-right: 0 !important;
-}
-
-/* [3단계] 타이포그래피 와이드 바운더리 전면 개방 */
-.quarto-post.image-none .listing-title,
-.quarto-post:not(.has-image) .listing-title,
-.quarto-post.image-none .listing-description,
-.quarto-post:not(.has-image) .listing-description {
-    width: 100% !important;
-    max-width: 100% !important;
-}
-
-/* [4단계] 대표 이미지가 '있는' 기존 포스트들의 850px 표준 분할 포메이션 복원 및 락인 */
-.quarto-post.has-image .thumbnail,
-.quarto-post:not(.image-none) .thumbnail {
-    display: block !important;
-}
-.quarto-post.has-image .body,
-.quarto-post:not(.image-none) .body {
-    flex: 0 1 calc(100% - 195px) !important;
+/* ==========================================================================
+   14. Desktop Surgical Thumbnail Fix (데스크톱 중복 사출 차단 및 메인 스트림 수복)
+   ========================================================================== */
+@media (min-width: 769px) {
+    /* 1) 본문(body) 및 설명글 레이어 내부로 유출된 중복 썸네일 배관만 타깃 소각 */
+    .quarto-post .body .thumbnail,
+    .quarto-post .quarto-post-toggle .thumbnail,
+    .quarto-post .listing-description .thumbnail {
+        display: none !important;
+    }
+    
+    /* 2) 데스크톱 정규 그리드 라인의 메인 썸네일(직속 자식) 유량은 정상 방출 */
+    body .quarto-post > .thumbnail,
+    body .quarto-listing-container-default .quarto-post > .thumbnail {
+        display: block !important;
+    }
 }
