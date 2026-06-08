@@ -392,11 +392,12 @@ a:hover {
    ========================================================================== */
 @media (max-width: 768px) {
     
-    /* 1) 🚨 중첩 유령 썸네일 노드 완벽 멸균 */
+    /* 1) 🚨 [버그 1&2 전면 수리] 직속 자식 유령 썸네일 차단 및 빈 박스 공간 완전 소각 */
     .quarto-post > .thumbnail,
-    .quarto-post-toggle > .thumbnail,
-    .quarto-listing-container-default .quarto-post .thumbnail:nth-of-type(n+2) {
-        display: none !important;
+    .quarto-listing-container-default .quarto-post > .thumbnail,
+    .quarto-post.image-none .thumbnail,
+    .quarto-post:not(.has-image) .thumbnail {
+        display: none !important; /* 하단 중복 출력 및 유령 공간 원천 박멸 실드 */
     }
 
     /* 2) 타이틀(Title)은 시원하게 전폭(100%) 배치 */
@@ -412,26 +413,25 @@ a:hover {
         font-weight: 600 !important;
     }
 
-    /* 3) [🚨 태그 세로 적층 버그 전면 수리] 
-          태그 박스 자체는 전폭을 쓰되, 내부 칩셋들은 가로로 나란히 흐르도록 배관 전환 */
+    /* 3) [🚨 태그 세로 적층 버그 전면 수리] */
     .quarto-post .listing-categories {
         display: flex !important;
         flex-direction: row !important; /* 무조건 가로 정렬 */
-        flex-wrap: wrap !important;     /* 화면폭을 넘어가면 부드럽게 다음줄로 래핑 */
-        gap: 6px 4px !important;        /* 태그 칩셋 간 상하(6px) 좌우(4px) 미학적 여백 */
+        flex-wrap: wrap !important;     /* 화면폭 넘어가면 부드럽게 래핑 */
+        gap: 6px 4px !important;        /* 칩셋 간 상하 좌우 여백 */
         width: 100% !important;
         max-width: 100% !important;
         margin-bottom: 0.6rem !important;
         padding: 0 !important;
     }
 
-    /* 개별 태그 칩셋의 한 줄 독점(Block) 성질을 완전히 소각하고 미니멀 칩셋으로 환원 */
+    /* 개별 태그 칩셋 가로 가변 폭 환원 */
     .quarto-post .listing-categories .listing-category,
     .quarto-post .listing-category {
-        display: inline-flex !important; /* 가로로 나열되면서 내부에 패딩 수용 */
-        width: auto !important;          /* 텍스트 길이에 맞게 폭 가변화 */
+        display: inline-flex !important;
+        width: auto !important;
         max-width: max-content !important;
-        white-space: nowrap !important;  /* 칩셋 내부에서 글자가 쪼개져 줄바꿈되는 현상 차단 */
+        white-space: nowrap !important;
     }
 
     /* 4) [썸네일 이미지 + Description] 영역 수평(Row) 배관 유지 */
@@ -442,12 +442,12 @@ a:hover {
         align-items: flex-start !important; 
         justify-content: flex-start !important;
         width: 100% !important;
-        gap: 14px !important; 
+        gap: 14px !important;
     }
 
-    /* 5) 모바일 썸네일 기하학적 규격 락인 (95px) */
-    .quarto-post .thumbnail,
-    .quarto-post-toggle .thumbnail {
+    /* 5) 🚨 [정밀 타격] 이미지가 존재하는 포스트 내부의 수평 정렬용 썸네일만 규격 락인 (95px) */
+    .quarto-post:not(.image-none) .quarto-post-toggle .thumbnail,
+    .quarto-post:not(.image-none) .body .thumbnail {
         display: block !important;
         flex: 0 0 95px !important; 
         width: 95px !important;
@@ -455,8 +455,8 @@ a:hover {
         margin: 0 !important;
     }
 
-    .quarto-post .thumbnail img,
-    .quarto-post-toggle .thumbnail img {
+    .quarto-post:not(.image-none) .quarto-post-toggle .thumbnail img,
+    .quarto-post:not(.image-none) .body .thumbnail img {
         width: 95px !important;
         height: 65px !important;
         border-radius: 8px !important;
@@ -480,21 +480,22 @@ a:hover {
 }
 
 @media (max-width: 576px) {
-    /* 초미니 뷰포트 스케일 보정 */
+    /* 초미니 뷰포트 스케일 보정 싱크 동기화 */
     .quarto-post-toggle, .quarto-post .body {
         gap: 10px !important;
     }
-    .quarto-post .thumbnail, .quarto-post-toggle .thumbnail {
+    .quarto-post:not(.image-none) .quarto-post-toggle .thumbnail,
+    .quarto-post:not(.image-none) .body .thumbnail {
         flex: 0 0 85px !important;
         width: 85px !important;
         height: 58px !important;
     }
-    .quarto-post .thumbnail img {
+    .quarto-post:not(.image-none) .quarto-post-toggle .thumbnail img,
+    .quarto-post:not(.image-none) .body .thumbnail img {
         width: 85px !important;
         height: 58px !important;
     }
 }
-
 
 /* ==========================================================================
    13. Auto Full-Width Image-less Engine (🚨 좌측 라인 동결 & 우측 전폭 확장 완공)
@@ -503,20 +504,18 @@ a:hover {
 /* [1단계] 대표 이미지가 없는 행의 빈 썸네일 박스만 물리적으로 완벽 소각 */
 .quarto-post.image-none .thumbnail,
 .quarto-post:not(.has-image) .thumbnail {
-    display: none !important; 
+    display: none !important;
 }
 
-/* [2단계] 좌측 날짜 영역의 고유 밥그릇(정렬선)은 완벽히 동결하고, 오직 우측으로만 확장 */
+/* [2단계] 좌측 날짜 영역의 고유 정렬선 동결 후 우측 여백 흡수 */
 .quarto-post.image-none .body,
 .quarto-post:not(.has-image) .body {
-    /* 기존 정렬선 유지를 위해 width나 max-width를 강제하지 않고, 
-       Quarto 기본 레이아웃의 flex 분할 메커니즘을 상속받아 우측 남은 여백만 흡수합니다. */
     flex: 1 1 auto !important; 
     padding-right: 0 !important;
     margin-right: 0 !important;
 }
 
-/* [3단계] 타이포그래피의 가로 텍스트 흐름(와이드 바운더리) 전면 개방 */
+/* [3단계] 타이포그래피 와이드 바운더리 전면 개방 */
 .quarto-post.image-none .listing-title,
 .quarto-post:not(.has-image) .listing-title,
 .quarto-post.image-none .listing-description,
@@ -532,7 +531,7 @@ a:hover {
 }
 .quarto-post.has-image .body,
 .quarto-post:not(.image-none) .body {
-    flex: 0 1 calc(100% - 195px) !important; /* 기존 썸네일 동거 포메이션 수율 복구 */
+    flex: 0 1 calc(100% - 195px) !important;
 }
 
 /* END OF NODE: /styles.css */
