@@ -1,5 +1,5 @@
 ---
-title: "은퇴 후 자산 인출률과 자산 수명 시뮬레이션"
+title: "자산 인출 시뮬레이터: 해외 주식 직투 기준"
 date: "2026-06-25"
 categories: [Investment, Retirment, Simulation]
 description: "은퇴 후 인출 전략을 위한 시뮬레이션 도구입니다."
