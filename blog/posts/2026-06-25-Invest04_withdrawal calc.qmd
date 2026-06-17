@@ -1,6 +1,7 @@
 ---
 title: "자산 인출 시뮬레이터: 해외 주식 직투 기준"
 date: "2026-06-25"
+author: "T1"
 categories: [Investment, Retirment, Simulation]
 description: "은퇴 후 인출 전략을 위한 시뮬레이션 도구입니다."
 from: markdown+hard_line_breaks
@@ -24,11 +25,11 @@ header-includes: |
     </div>
     <div>
       <label style="display:block; font-size:0.8rem; color:#86868b; font-weight:600; margin-bottom:4px;">현재 누적 수익률 (%)</label>
-      <input type="number" id="inputCurrentReturn" value="50" step="5" style="width:100%; padding:6px 10px; border:1px solid #d2d2d7; border-radius:8px;">
+      <input type="number" id="inputCurrentReturn" value="100" step="5" style="width:100%; padding:6px 10px; border:1px solid #d2d2d7; border-radius:8px;">
     </div>
     <div>
       <label style="display:block; font-size:0.8rem; color:#86868b; font-weight:600; margin-bottom:4px;">예상(기대) 수익률 (%)</label>
-      <input type="number" id="inputExpectedReturn" value="7" step="0.5" style="width:100%; padding:6px 10px; border:1px solid #d2d2d7; border-radius:8px;">
+      <input type="number" id="inputExpectedReturn" value="8" step="0.5" style="width:100%; padding:6px 10px; border:1px solid #d2d2d7; border-radius:8px;">
     </div>
     <div>
       <label style="display:block; font-size:0.8rem; color:#86868b; font-weight:600; margin-bottom:4px;">연간 인출률 (%)</label>
@@ -42,9 +43,9 @@ header-includes: |
       <label style="display:block; font-size:0.8rem; color:#86868b; font-weight:600; margin-bottom:4px;">시뮬레이션 기간</label>
       <select id="selectPeriod" style="width:100%; padding:6px 10px; border:1px solid #d2d2d7; border-radius:8px; background:white;">
         <option value="5">5년</option>
-        <option value="10">10년</option>
+        <option value="10" selected>10년</option>
         <option value="20">20년</option>
-        <option value="30" selected>30년</option>
+        <option value="30">30년</option>
       </select>
     </div>
   </div>
@@ -74,19 +75,25 @@ header-includes: |
   </div>
 </div>
 
-<div style="overflow-x: auto; margin: 2.5rem 0;">
-  <table class="table" style="width: 100%; min-width: 650px; font-size: 0.88rem; text-align: center; border-collapse: collapse;">
-    <thead>
-      <tr style="border-bottom: 2px solid #1d1d1f; font-weight: 600;">
-        <th style="padding: 10px 4px; width: 15%;">연차</th>
-        <th style="padding: 10px 4px; width: 45%;">현금흐름 (세전 / 세금 / 세후)</th>
-        <th style="padding: 10px 4px; width: 40%;">잔액 (물가 반영 전 / 실질 가치)</th>
-      </tr>
-    </thead>
-    <tbody id="simulationTableBody">
-      </tbody>
-  </table>
-</div>
+<details style="margin: 2.5rem auto; max-width: 850px; font-family: -apple-system, sans-serif;">
+  <summary style="cursor: pointer; font-size: 0.95rem; font-weight: 600; color: #1d1d1f; padding: 12px 16px; background: #f5f5f7; border-radius: 10px; list-style: none; display: flex; align-items: center; justify-content: space-between; user-select: none; border: 1px solid rgba(0,0,0,0.02);">
+    <span>📋 연차별 정밀 정산 내역 디스플레이</span>
+    <span style="font-size: 0.8rem; color: #86868b; font-weight: 400;">클릭하여 펼치기 ▾</span>
+  </summary>
+  <div style="overflow-x: auto; margin-top: 1rem; border-radius: 10px; border: 1px solid #e8e8ed;">
+    <table class="table" style="width: 100%; min-width: 650px; font-size: 0.88rem; text-align: center; border-collapse: collapse; margin: 0;">
+      <thead>
+        <tr style="background: #fafafa; border-bottom: 2px solid #1d1d1f; font-weight: 600;">
+          <th style="padding: 12px 4px; width: 15%;">연차</th>
+          <th style="padding: 12px 4px; width: 45%;">현금흐름 (세전 / 세금 / 세후)</th>
+          <th style="padding: 12px 4px; width: 40%;">잔액 (물가 반영 전 / 실질 가치)</th>
+        </tr>
+      </thead>
+      <tbody id="simulationTableBody">
+        </tbody>
+    </table>
+  </div>
+</details>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
@@ -113,7 +120,6 @@ header-includes: |
       let yReal = [];
       let tableHtml = "";
 
-      // 변동률 및 고정 지표 연산용 메모리 세팅
       let sumCashFlowChange = 0;
       let countCashFlowChange = 0;
       let prevNetCashFlowReal = null;
@@ -147,7 +153,6 @@ header-includes: |
         let inflationFactor = Math.pow(1 + (inflationRate / 100), i);
         let netCashFlowReal = netCashFlow / inflationFactor;
 
-        // 1년차 실질 세후 현금흐름 선제 포집
         if (i === 1) {
           year1CashFlowReal = netCashFlowReal;
         }
@@ -171,7 +176,6 @@ header-includes: |
         currentR = principal > 0 ? ((gains / principal) * 100) : 0;
         let realAssetValue = nominalBeforeInflation / inflationFactor;
 
-        // 1년차 실질 자산 가치 선제 포집
         if (i === 1) {
           year1AssetReal = realAssetValue;
         }
@@ -183,8 +187,8 @@ header-includes: |
         prevRealAssetValue = realAssetValue;
 
         xYears.push(`${i}년`);
-        yNominal.push(Math.round(nominalBeforeInflation));
-        yReal.push(Math.round(realAssetValue));
+        yNominal.push(Math.round(nominalBeforeInflation / 1000000) / 100);
+        yReal.push(Math.round(realAssetValue / 1000000) / 100);
 
         tableHtml += `
           <tr style="border-bottom: 1px solid #e8e8ed;">
@@ -207,7 +211,6 @@ header-includes: |
 
       document.getElementById('simulationTableBody').innerHTML = tableHtml;
 
-      // 4구 KPI 대시보드 락인 연산 및 데이터 매핑
       document.getElementById('kpiYear1CashFlow').innerText = '₩' + Math.round(year1CashFlowReal).toLocaleString();
       document.getElementById('kpiYear1Asset').innerText = '₩' + Math.round(year1AssetReal).toLocaleString();
 
@@ -222,21 +225,27 @@ header-includes: |
       kpiAs.innerText = (avgAssetChange >= 0 ? '+' : '') + avgAssetChange.toFixed(2) + '%';
       kpiAs.style.color = avgAssetChange >= 0 ? '#34c759' : '#ff2d55';
 
-      // Plotly 시각화 업데이트
       let traceNominal = {
         x: xYears, y: yNominal, name: '자산 가치 (물가 미반영)', type: 'scatter', mode: 'lines+markers',
-        line: { color: '#8e8e93', width: 2 }, marker: { size: 4 }
+        line: { color: '#8e8e93', width: 2 }, marker: { size: 4 },
+        hovertemplate: '<b>%{x}</b><br>물가 미반영: %{y}억 원<br><extra></extra>'
       };
       let traceReal = {
         x: xYears, y: yReal, name: '실질 구매력 (물가 반영 후)', type: 'scatter', mode: 'lines+markers',
-        line: { color: '#34c759', width: 3 }, marker: { size: 5 }
+        line: { color: '#34c759', width: 3 }, marker: { size: 5 },
+        hovertemplate: '<b>%{x}</b><br>실질 구매력: %{y}억 원<br><extra></extra>'
       };
 
       let layout = {
         title: { text: '<b>연차별 포트폴리오 가치 추이 시뮬레이션</b>', font: { size: 15, family: '-apple-system, sans-serif' } },
         plot_bgcolor: '#f5f5f7', paper_bgcolor: 'rgba(0,0,0,0)',
         xaxis: { tickfont: { size: 10 }, gridcolor: '#e8e8ed' },
-        yaxis: { title: '자산 평가액 (원)', tickfont: { size: 11 }, gridcolor: '#e8e8ed' },
+        yaxis: { 
+          title: '자산 평가액 (억 원)', 
+          tickfont: { size: 11 }, 
+          gridcolor: '#e8e8ed',
+          ticksuffix: '억'
+        },
         legend: { orientation: 'h', x: 0.5, xanchor: 'center', y: -0.18 },
         margin: { t: 50, b: 80, l: 65, r: 20 }
       };
@@ -250,4 +259,40 @@ header-includes: |
     runSimulation();
   });
 </script>
+
+<div class="simulation-docs-callout" style="background: #f5f5f7; border-radius: 14px; padding: 1.5rem; margin: 3rem auto 2rem auto; max-width: 850px; border: 1px solid rgba(0,0,0,0.03); font-family: -apple-system, sans-serif;">
+  
+  <h4 style="margin-top: 0; margin-bottom: 1.2rem; font-size: 1.05rem; font-weight: 700; color: #1d1d1f; display: flex; align-items: center; gap: 6px;">
+    <span>📌</span> 시뮬레이션 연산 메커니즘 가이드
+  </h4>
+  
+  <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1rem;">
+    
+    <li style="margin: 0; padding-left: 0;">
+      <strong style="color: #1d1d1f; font-size: 0.9rem; display: block; margin-bottom: 2px;">1. 연초 인출 및 실질 양도소득세 정산</strong>
+      <span style="font-size: 0.85rem; color: #424245; line-height: 1.5;">매년 초 설정된 <strong>연간 인출률</strong>만큼 자산을 매도합니다. 이때 인출액 전체가 아닌 <strong>실질 양도차익 분</strong>만 추적 포집하여 기본공제액(250만 원) 차감 후 <strong>22%의 단일 세율</strong>로 세금을 정산합니다.</span>
+    </li>
+    
+    <li style="margin: 0; padding-left: 0;">
+      <strong style="color: #1d1d1f; font-size: 0.9rem; display: block; margin-bottom: 2px;">2. 연말 자산 성장 및 계좌 수익률 복리 보정</strong>
+      <span style="font-size: 0.85rem; color: #424245; line-height: 1.5;">인출 후 남은 잔여 자산은 1년 동안 <strong>예상(기대) 수익률</strong>만큼 성장합니다. 이때 발생한 자산 성장분은 전액 수익 계정으로 누적되므로, 계좌의 누적 수익률 구조는 매년 복리로 자동 업데이트됩니다.</span>
+    </li>
+    
+    <li style="margin: 0; padding-left: 0;">
+      <strong style="color: #1d1d1f; font-size: 0.9rem; display: block; margin-bottom: 2px;">3. 누적 물가상승률(실질 구매력) 디스카운트 반영</strong>
+      <span style="font-size: 0.85rem; color: #424245; line-height: 1.5;">연말에 정산된 명목 자산 잔액과 연초에 사용한 세후 현금흐름에 <strong>물가상승률</strong>을 누적 복리 디스카운트 팩터로 적용하여 화폐가치 하락이 반영된 <strong>실질 구매력 기준의 최종 지표</strong>를 사출합니다.</span>
+    </li>
+    
+  </ul>
+
+  <div style="margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid rgba(0,0,0,0.06); font-size: 0.82rem; line-height: 1.6;">
+    <strong style="color: #1d1d1f; display: block; margin-bottom: 8px;">📊 테이블 항목 범례</strong>
+    <div style="display: flex; flex-direction: column; gap: 4px;">
+      <div><strong style="color: #86868b;">• 세후 (명목):</strong> <span style="color: #424245;">물가 상승률이 반영되지 않은 실제 획득 금액</span></div>
+      <div><strong style="color: #007aff;">• 세후 (실질):</strong> <span style="color: #424245;">물가 상승률이 반영된 구매력</span></div>
+      <div><strong style="color: #34c759;">• 실질 (잔액):</strong> <span style="color: #424245;">물가상승률을 반영한 현 시점 기준의 자산 가치</span></div>
+    </div>
+  </div>
+
+</div>
 ```
