@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="T1">
+<meta name="dcterms.date" content="2026-07-10">
+<meta name="description" content="ISA 계좌의 절세 효과는 실제로 얼마나 큰가?">
+
+<title>ISA 절세 시뮬레이션: 미국 직투 양도세 매년 기본공제 스왑 대비 실질 이득 – Invest For Me</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-7b4ebf61bc5da800f0adb73230d1d875.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Invest For Me</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../investment/index.html"> 
+<span class="menu-text">Investment</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../hobbies/index.html"> 
+<span class="menu-text">Hobbies</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../gallery/index.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#계좌-아키텍처가-바꾸는-자산의-최종-수율" id="toc-계좌-아키텍처가-바꾸는-자산의-최종-수율" class="nav-link active" data-scroll-target="#계좌-아키텍처가-바꾸는-자산의-최종-수율">계좌 아키텍처가 바꾸는 자산의 최종 수율</a></li>
+  <li><a href="#년-단기-만기-해지-시-절세-수율-비교" id="toc-년-단기-만기-해지-시-절세-수율-비교" class="nav-link" data-scroll-target="#년-단기-만기-해지-시-절세-수율-비교">1. 3년 단기 만기 해지 시 절세 수율 비교</a></li>
+  <li><a href="#개년isa-3회독-진입-전략별-자금-흐름-모식도" id="toc-개년isa-3회독-진입-전략별-자금-흐름-모식도" class="nav-link" data-scroll-target="#개년isa-3회독-진입-전략별-자금-흐름-모식도">2. 7개년(ISA 3회독 진입) 전략별 자금 흐름 모식도</a></li>
+  <li><a href="#개년-장기-경로-시뮬레이션-그래프" id="toc-개년-장기-경로-시뮬레이션-그래프" class="nav-link" data-scroll-target="#개년-장기-경로-시뮬레이션-그래프">3. 20개년 장기 경로 시뮬레이션 그래프</a></li>
+  <li><a href="#장기-20개년-전략별-계좌-상세-잔고-내역" id="toc-장기-20개년-전략별-계좌-상세-잔고-내역" class="nav-link" data-scroll-target="#장기-20개년-전략별-계좌-상세-잔고-내역">4. 장기 20개년 전략별 계좌 상세 잔고 내역</a></li>
+  <li><a href="#핵심-전략-파이프라인-장단점-및-절세-시너지-분석" id="toc-핵심-전략-파이프라인-장단점-및-절세-시너지-분석" class="nav-link" data-scroll-target="#핵심-전략-파이프라인-장단점-및-절세-시너지-분석">5. 핵심 전략 파이프라인 장단점 및 절세 시너지 분석</a></li>
+  <li><a href="#결론-연금-총액-극대화를-위한-필수-계좌-isa" id="toc-결론-연금-총액-극대화를-위한-필수-계좌-isa" class="nav-link" data-scroll-target="#결론-연금-총액-극대화를-위한-필수-계좌-isa">결론: 연금 총액 극대화를 위한 필수 계좌, ISA</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ISA 절세 시뮬레이션: 미국 직투 양도세 매년 기본공제 스왑 대비 실질 이득</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Investment</div>
+    <div class="quarto-category">Tax</div>
+    <div class="quarto-category">ISA</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    ISA 계좌의 절세 효과는 실제로 얼마나 큰가?
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>T1 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 10, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="계좌-아키텍처가-바꾸는-자산의-최종-수율" class="level3">
+<h3 class="anchored" data-anchor-id="계좌-아키텍처가-바꾸는-자산의-최종-수율">계좌 아키텍처가 바꾸는 자산의 최종 수율</h3>
+<p>매년 2,000만 원(월 166.6만 원 선제 적립)을 납입하고, 연 평균 수익률 <strong>10%</strong>가 발생할 때 일반 미국 주식 직투 계좌와 ISA(개인종합자산관리계좌) 연계 전략의 실질 수율을 정밀 비교합니다.</p>
+<p>특히 모든 미국 직투 파이프라인은 <strong>‘매년 이득이 250만 원 한도까지 주식을 팔았다가 바로 재매수하여 평단가를 합법적으로 올려두는 절세 전략(Tax Harvesting)’</strong>을 매년 무결하게 집행한다고 가정하여 시뮬레이션의 변별력을 극대화했습니다.</p>
+<hr>
+</section>
+<section id="년-단기-만기-해지-시-절세-수율-비교" class="level3">
+<h3 class="anchored" data-anchor-id="년-단기-만기-해지-시-절세-수율-비교">1. 3년 단기 만기 해지 시 절세 수율 비교</h3>
+<p>총 6,000만 원의 원금이 투입된 3년 차 만기 시점의 확정 정산 비교입니다. 3년 뒤 명목 자산 총액은 <strong>6,973만 원</strong>(순수익 <strong>973만 원</strong>)으로 동일하게 출발합니다.</p>
+<section id="일반-미국-직접투자-계좌-매년-250만-원-기본공제-활용-가능-시" class="level4">
+<h4 class="anchored" data-anchor-id="일반-미국-직접투자-계좌-매년-250만-원-기본공제-활용-가능-시">① 1-1) 일반 미국 직접투자 계좌 (매년 250만 원 기본공제 활용 가능 시)</h4>
+<ul>
+<li>적립식 투자 초기 가동(Start-up) 구간의 평잔 효과로 인해, 1년 차 말 실제 이익은 약 109만 원에 불과합니다. 따라서 첫해에는 250만 원 한도를 다 채우지 못하고 109만 원만 공제된 채 나머지 한도가 소멸(Waste)됩니다.</li>
+<li>2년 차(이익 약 328만 원), 3년 차(이익 약 536만 원)에는 250만 원씩 정상 공제됩니다. 3개년 누적 실질 공제액은 <strong>약 687만 원</strong>으로 축소됩니다.</li>
+<li><strong>최종 과세 대상 수익</strong>: <span class="math inline">\(9,733,627 - 6,870,000 = 2,863,627\text{원}\)</span></li>
+<li><strong>부과 양도소득세 (<span class="math inline">\(22\%\)</span>)</strong>: <strong>630,000원</strong></li>
+<li><strong>3년 차 최종 세후 잔고</strong>: <strong>69,103,627원</strong></li>
+</ul>
+</section>
+<section id="일반-미국-직접투자-계좌-이미-미국-주식-자산이-많아-기본공제가-소각된-경우" class="level4">
+<h4 class="anchored" data-anchor-id="일반-미국-직접투자-계좌-이미-미국-주식-자산이-많아-기본공제가-소각된-경우">② 1-2) 일반 미국 직접투자 계좌 (★이미 미국 주식 자산이 많아 기본공제가 소각된 경우)</h4>
+<ul>
+<li>이미 기존 포트폴리오의 대규모 운용이나 익절로 인해 매년 제공되는 250만 원 비과세 실드가 타 자산에서 이미 100% 전액 소각(Exhausted)되고 있는 케이스입니다.</li>
+<li>이 경우 새로 투입되는 6,000만 원 라인에서 발생하는 수익 973만 원은 <strong>첫 1원부터 어떠한 기본공제 혜택도 없이 전액 22% 중과세 영역에 노출</strong>됩니다.</li>
+<li><strong>최종 과세 대상 수익</strong>: <span class="math inline">\(9,733,627\text{원}\)</span> (공제 0원)</li>
+<li><strong>부과 양도소득세 (<span class="math inline">\(22\%\)</span>)</strong>: <span class="math inline">\(9,733,627 \times 0.22 = \mathbf{2,141,398\text{원}}\)</span></li>
+<li><strong>3년 차 최종 세후 잔고</strong>: <strong>67,592,229원</strong></li>
+</ul>
+</section>
+<section id="isa-개인종합자산관리계좌-일반형-만기-해지" class="level4">
+<h4 class="anchored" data-anchor-id="isa-개인종합자산관리계좌-일반형-만기-해지">③ ISA 개인종합자산관리계좌 (일반형 만기 해지)</h4>
+<ul>
+<li>매년 정산하지 않고 3년 만기 시점에 그동안 쌓인 3개년 치 수익을 한 번에 통산(Netting)정산하므로 초기 년차의 수익 과소 구간까지 전부 흡수합니다. 타 자산의 양도세 발생 여부와 관계없이 완전히 독립된 절세 실드가 유지됩니다.</li>
+<li>만기 해지 시 순수익 973만 원 중 200만 원 기본 비과세 혜택을 적용받습니다.</li>
+<li><strong>최종 과세 대상 수익</strong>: <span class="math inline">\(9,733,627 - 2,000,000 = 7,733,627\text{원}\)</span></li>
+<li><strong>부과 분리과세 (<span class="math inline">\(9.9\%\)</span>)</strong>: <span class="math inline">\(7,733,627 \times 0.099 = \mathbf{765,629\text{원}}\)</span></li>
+<li><strong>3년 차 최종 세후 잔고</strong>: <strong>68,967,998원</strong></li>
+</ul>
+<blockquote class="blockquote">
+<p>📊 <strong>단기 3년 정산 결론</strong><br>
+기본공제를 매년 고스란히 새로 쓸 수 있는 자산 형성기 초반(케이스 1-1)에는 미국 직투가 ISA보다 약 13.5만 원 미세하게 우세합니다.<br>
+하지만 <strong>이미 미국 주식 자산이 충분하여 기본공제 실드가 소각된 고자산가 사령탑(케이스 1-2)의 경우, 단기 3년 레이스에서도 ISA가 미국 직투를 세후 잔고 기준 무려 약 137만 원 격차로 완전히 압도</strong>합니다. 신규 자금이 22% 중세율에 직면하는 것을 분리과세 쉴드로 완벽히 방어해내기 때문입니다.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="개년isa-3회독-진입-전략별-자금-흐름-모식도" class="level3">
+<h3 class="anchored" data-anchor-id="개년isa-3회독-진입-전략별-자금-흐름-모식도">2. 7개년(ISA 3회독 진입) 전략별 자금 흐름 모식도</h3>
+<p>많은 투자자가 ‘3년 만기’ 계좌를 단순 선형적 타임라인으로 오인합니다. 하지만 실제로는 만기 도달 즉시 당일 해지 후 당일 재개설(스왑)이 가능하므로, 7년 차 진입 시점에 이미 3회독 계좌의 비과세 쉴드가 가동되는 고속 회전 배관이 완성됩니다.</p>
+<div class="strategy-flow-container" style="margin: 2rem auto; max-width: 850px; font-family: -apple-system, sans-serif;">
+  <div style="background: #f5f5f7; border-radius: 14px; padding: 1.2rem; margin-bottom: 1rem; border: 1px solid rgba(0,0,0,0.02);">
+    <strong style="color: #86868b; font-size: 0.85rem; display: block; margin-bottom: 8px;">1) 일반 미국 직투 올인</strong>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 0.82rem;">
+      <span style="background:#ffffff; padding:4px 8px; border-radius:6px; border:1px solid #d2d2d7;">매년 2,000만 입금</span>
+      <span style="color:#86868b;">➔</span>
+      <span style="background:#ffffff; padding:4px 8px; border-radius:6px; border:1px solid #d2d2d7; color:#ae8b63; font-weight:600;">미국 직투 계좌 락인</span>
+      <span style="color:#86868b;">➔</span>
+      <span style="background:#fafafa; padding:4px 8px; border-radius:6px; color:#424245;">매년 말 250만 비과세 스왑(매도 후 재매수) 강제 집행</span>
+      <span style="color:#86868b;">➔</span>
+      <span style="background:#ffffff; padding:4px 8px; border-radius:6px; border:1px solid #d2d2d7; color:#ff2d55;">7년 차: 22% 잠재 양도세 누적 중</span>
+    </div>
+  </div>
+
+  <div style="background: #f5f5f7; border-radius: 14px; padding: 1.2rem; margin-bottom: 1rem; border: 1px solid rgba(0,0,0,0.02);">
+    <strong style="color: #ff2d55; font-size: 0.85rem; display: block; margin-bottom: 8px;">2) 전략 B (단순 ISA 재개설 무한루프)</strong>
+    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.82rem;">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px;">
+        <span style="font-weight:600; color:#1d1d1f; width: 75px;">• 1~3년 차:</span>
+        <span style="background:#007aff; color:white; padding:2px 6px; border-radius:4px;">ISA 1회독 가동</span> (총 6,000만 원 납입) ➔ <b>3년 차 말 만기 해지</b> (9.9% 분리과세 정산)
+      </div>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px;">
+        <span style="font-weight:600; color:#1d1d1f; width: 75px;">• 4~6년 차:</span>
+        <span style="background:#ff2d55; color:white; padding:2px 6px; border-radius:4px;">ISA 2회독 즉시 개설</span> (새 원금 연 2,000만 입금) <span style="color:#ff2d55; font-weight:600;">[+ 1회독 만기 환급금 전액은 미국 직투로 이전 후 운용]</span> ➔ <b>6년 차 말 만기 해지</b>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px;">
+        <span style="font-weight:600; color:#1d1d1f; width: 75px;">• 7년 차~:</span>
+        <span style="background:#34c759; color:white; padding:2px 6px; border-radius:4px;">ISA 3회독 진입 완공</span> (비과세 실드 3번째 리셋) <span style="color:#ae8b63;">[+ 1, 2회독에서 튕겨 나온 모든 불어난 자산은 미국 직투 계좌에서 복리 증식 중]</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="background: #f5f5f7; border-radius: 14px; padding: 1.2rem; border: 1px solid rgba(0,0,0,0.02);">
+    <strong style="color: #007aff; font-size: 0.85rem; display: block; margin-bottom: 8px;">3) 전략 C (연금 이체 마스터 파이프라인)</strong>
+    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.82rem;">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px;">
+        <span style="font-weight:600; color:#1d1d1f; width: 75px;">• 1~3년 차:</span>
+        <span style="background:#007aff; color:white; padding:2px 6px; border-radius:4px;">ISA 1회독 가동</span> ➔ <b>3년 차 말 해지</b> ➔ <span style="background:#34c759; color:white; padding:1px 4px; border-radius:3px;">3,000만 연금 이체</span> (즉시 39.6만 환급 보너스)
+      </div>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px;">
+        <span style="font-weight:600; color:#1d1d1f; width: 75px;">• 4~6년 차:</span>
+        <span style="background:#ff2d55; color:white; padding:2px 6px; border-radius:4px;">ISA 2회독 스왑 개설</span> ➔ <span style="color:#ae8b63; font-weight:600;">[연금 3천만 이체 후 \"남은 초과 수익금\"만 미국 직투로 유출]</span> ➔ <b>6년 차 말 해지</b> ➔ <span style="background:#34c759; color:white; padding:1px 4px; border-radius:3px;">또 3,000만 연금 이체</span>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px;">
+        <span style="font-weight:600; color:#1d1d1f; width: 75px;">• 7년 차~:</span>
+        <span style="background:#34c759; color:white; padding:2px 6px; border-radius:4px;">ISA 3회독 결착</span> ➔ <span style="color:#007aff; font-weight:600;">[연금저축에 총 6,000만 원 과세이연 락인 완공]</span> + ISA 3번째 쉴드 가동 + Surplus 잔여 자산 미국 직투 운용
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+</section>
+<section id="개년-장기-경로-시뮬레이션-그래프" class="level3">
+<h3 class="anchored" data-anchor-id="개년-장기-경로-시뮬레이션-그래프">3. 20개년 장기 경로 시뮬레이션 그래프</h3>
+<p>3년마다 만기가 끝날 때 후속 ISA 계좌에 입금할 연간 2,000만 원 줄기를 제외한 모든 초과 만기 환급금(Surplus Cash)이 미국 직접투자 계좌(연수익 10%, 매년 250만 원 공제 스왑)로 유입되어 연동 성장하는 장기 복리 성장 곡선입니다.</p>
+<div class="chart-container-wrapper" style="display: block; width: 100%; clear: both; margin: 2rem 0;">
+  <div id="isaSimulationChart" style="width: 100%; max-width: 850px; height: 450px; margin: 0 auto;"></div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const xYears = ['0년', '1년', '2년', '3년', '4년', '5년', '6년', '7년', '8년', '9년', '10년', '11년', '12년', '13년', '14년', '15년', '16년', '17년', '18년', '19년', '20년'];
+  
+  let traceUsOnly = {
+    x: xYears, y: [0, 0.21, 0.44, 0.68, 0.94, 1.23, 1.54, 1.87, 2.24, 2.63, 3.06, 3.53, 4.05, 4.61, 5.22, 5.89, 6.62, 7.42, 8.29, 9.25, 10.40],
+    name: '1) 일반 미국 직투 올인 (매년 250만 공제 스왑)', type: 'scatter', mode: 'lines',
+    line: { color: '#8e8e93', width: 2, dash: 'dash' },
+    hovertemplate: '<b>1) 미국 직투 올인</b><br>%{x} 총액: %{y}억 원<br><extra></extra>'
+  };
+  let traceB = {
+    x: xYears, y: [0, 0.21, 0.44, 0.69, 0.97, 1.28, 1.59, 1.95, 2.36, 2.75, 3.23, 3.77, 4.26, 4.89, 5.59, 6.22, 7.05, 7.96, 8.76, 9.85, 10.33],
+    name: '2) 전략 B (단순 ISA 재개설 + 남는 돈 미국직투)', type: 'scatter', mode: 'lines+markers',
+    line: { color: '#ff2d55', width: 2 }, marker: { size: 4 },
+    hovertemplate: '<b>2) 전략 B (ISA 재개설+직투)</b><br>%{x} 총액: %{y}억 원<br><extra></extra>'
+  };
+  let traceC = {
+    x: xYears, y: [0, 0.21, 0.44, 0.69, 0.97, 1.28, 1.6, 1.97, 2.38, 2.79, 3.28, 3.82, 4.36, 5.0, 5.71, 6.41, 7.26, 8.2, 9.11, 10.22, 11.06],
+    name: '3) 전략 C (연금 3천 이체 + 남는 돈 미국직투)', type: 'scatter', mode: 'lines+markers',
+    line: { color: '#007aff', width: 3 }, marker: { size: 6 },
+    hovertemplate: '<b>3) 전략 C (연금이체+직투)</b><br>%{x} 총액: %{y}억 원<br><extra></extra>'
+  };
+
+  let layout = {
+    title: { text: '<b>운용 전략별 20개년 최종 총 잔고 자산 경로 비교</b>', font: { size: 15, family: '-apple-system, sans-serif' } },
+    plot_bgcolor: '#f5f5f7', paper_bgcolor: 'rgba(0,0,0,0)',
+    xaxis: { tickfont: { size: 10 }, gridcolor: '#e8e8ed' },
+    yaxis: { title: '자산 평가 총액 (억 원)', tickfont: { size: 11 }, gridcolor: '#e8e8ed', ticksuffix: '억' },
+    legend: { orientation: 'h', x: 0.5, xanchor: 'center', y: -0.22, font: { size: 10 } },
+    margin: { t: 50, b: 100, l: 65, r: 20 }
+  };
+
+  Plotly.newPlot('isaSimulationChart', [traceUsOnly, traceB, traceC], layout, {responsive: true, displayModeBar: false});
+});
+</script>
+<hr>
+</section>
+<section id="장기-20개년-전략별-계좌-상세-잔고-내역" class="level3">
+<h3 class="anchored" data-anchor-id="장기-20개년-전략별-계좌-상세-잔고-내역">4. 장기 20개년 전략별 계좌 상세 잔고 내역</h3>
+<p>20년간 총 납입 원금 4억 원이 시계열로 투입되었을 때, 각 전략의 최종 종착지(240개월 차)에서 정산된 <strong>최종 총 잔고 및 계좌별 디테일 잔고 현황판</strong>입니다. (미국 직투 계좌는 최종 시점 청산 양도세 22%가 전원 반영된 최종 세후 금액입니다.)</p>
+<div style="overflow-x: auto; margin: 2rem 0;">
+  
+<table class="table caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header" style="background: #fafafa; border-bottom: 2px solid #1d1d1f; font-weight: 600;">
+<th data-quarto-table-cell-role="th" style="padding: 12px 4px; width: 30%">포트폴리오 전략 포지션</th>
+<th data-quarto-table-cell-role="th" style="padding: 12px 4px; width: 20%; color: #007aff; font-size: 1rem">최종 총 잔고</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; padding: 12px 4px; width: 50%; padding-left: 3%;">계좌별 상세 잔고 내역 (세후 최종 가치)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd" style="border-bottom: 1px solid #e8e8ed;">
+<td style="padding: 15px 4px; font-weight: 500"><strong>1) 일반 미국 직투 올인</strong><br>
+<span style="font-size:0.75rem; color:#86868b;">(매년 250만 공제 활용)</span></td>
+<td style="padding: 15px 4px; font-weight: 700">10억 4,018만 원</td>
+<td style="text-align: left; padding: 15px 4px; padding-left: 3%; line-height: 1.5;">• <strong>미국 직접투자 계좌:</strong> 10억 4,018만 원<br>
+<span style="font-size:0.8rem; color:#86868b;">(20년간 초기 가동기 공제 한도 소실 분 및 최종 청산세 자동 연산 반영 완료)</span></td>
+</tr>
+<tr class="even" style="border-bottom: 1px solid #e8e8ed;">
+<td style="padding: 15px 4px; font-weight: 500"><strong>2) 전략 B</strong><br>
+<span style="font-size:0.75rem; color:#86868b;">(단순 ISA 재개설 + 직투)</span></td>
+<td style="padding: 15px 4px; font-weight: 700">10억 3,293만 원</td>
+<td style="text-align: left; padding: 15px 4px; padding-left: 3%; line-height: 1.5;">• <strong>현재 운용 중인 ISA 계좌 (2년 차):</strong> 4,424만 원<br>
+• <strong>만기 후 유출된 미국 직투 계좌:</strong> 9억 8,869만 원</td>
+</tr>
+<tr class="odd" style="border-bottom: 1px solid #e8e8ed; background: #f5f5f7;">
+<td style="padding: 15px 4px; font-weight: 500; color: #007aff"><strong>3) 전략 C</strong><br>
+<span style="font-size:0.75rem; color:#007aff;">(연금 이체 무한루프 + 직투)</span></td>
+<td style="padding: 15px 4px; font-weight: 700; color: #34c759; font-size: 1rem">11억 572만 원</td>
+<td style="text-align: left; padding: 15px 4px; padding-left: 3%; line-height: 1.5;">• <strong>현재 운용 중인 ISA 계좌 (2년 차):</strong> 4,424만 원<br>
+• <strong>누적 연금저축펀드 계좌 (과세이연):</strong> 5억 75만 원<br>
+• <strong>만기 후 유출된 미국 직투 계좌:</strong> 5억 5,903만 원<br>
+• <strong>누적 환급 캐시백 (연금세액공제 분):</strong> 237만 원</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<hr>
+</section>
+<section id="핵심-전략-파이프라인-장단점-및-절세-시너지-분석" class="level3">
+<h3 class="anchored" data-anchor-id="핵심-전략-파이프라인-장단점-및-절세-시너지-분석">5. 핵심 전략 파이프라인 장단점 및 절세 시너지 분석</h3>
+<section id="전략-분기점-마스터-제안" class="level4">
+<h4 class="anchored" data-anchor-id="전략-분기점-마스터-제안">💡 전략 분기점 마스터 제안</h4>
+<ul>
+<li><strong>일반 미국 직투 올인</strong>: 자금 락인 현상이 전혀 없어 긴급 상황 시 기동력이 최고 수준이나, 자산 총량이 불어날수록 매년 고정 제공되는 250만 원 공제가 전체 포트폴리오에서 방어해내는 절세 비율이 급격히 희석되는 한계가 있습니다.</li>
+<li><strong>전략 B (단순 ISA + 직투)</strong>: 3년 주기 비과세(200만 원) 밸브를 리셋하며 자금의 통제권을 쥐지만, ISA 만기 목돈이 연간 한도 제약 때문에 후속 ISA에 결착되지 못하고 22% 양도세 구역(미국 직투)으로 계속 강제 유출됩니다. 이 병목 구간 때문에 20년 장기전 시 순수 직투 올인보다 최종 총액이 약 700만 원 소폭 하락하는 수학적 현상이 발생합니다.</li>
+<li><strong>전략 C (연금 이체 + 직투)</strong>: <strong>순수 미국 직투 대비 +6,554만 원의 독보적인 절세 초과 수율</strong>을 도출합니다. 3년 주기로 3,000만 원씩 연금저축펀드로 밀어 넣으며 완성 한 ’강력한 과세이연 방어선’과, 매회 39.6만 원씩 튀어나오는 국가 보너스(세액공제)를 주식 자산에 복리로 무한 재투입한 계량 연산의 결과물입니다.</li>
+</ul>
+</section>
+</section>
+<section id="결론-연금-총액-극대화를-위한-필수-계좌-isa" class="level3">
+<h3 class="anchored" data-anchor-id="결론-연금-총액-극대화를-위한-필수-계좌-isa">결론: 연금 총액 극대화를 위한 필수 계좌, ISA</h3>
+<p>앞서 계산해 본 바와 같이 <em>ISA 계좌 자체만으로 다른 투자 계좌 대비 절세효과가 압도적으로 큰 것은 아닙니다.</em> 다만 ISA 계좌를 <strong>연금저축펀드와 연계</strong>하여 3년마다 반복적으로 연금 이체를 수행하면, 단순히 매년 250만 원 공제를 활용하는 미국 직투 계좌 대비 <strong>장기 복리 성장률이 압도적으로 높아지는 구조</strong>가 완성됩니다.</p>
+<p>다만, <em>이 전략을 구사하기 위해서는 다른 투자 (미국 직투, 연금저축, IRP 등) 를 운용하면서도 매년 2천만원 정도의 ISA 납입 여력이 있어야 한다는 점이 전제 조건</em>입니다. 따라서 본인의 은퇴 사령탑이 55세 이전 주택 확장이나 대규모 모빌리티 자금이 필요한 구조라면, 자금이 장기 동결되는 전략 C 대신 매년 평단가 스왑을 치며 유동성을 100% 거머쥐는 <strong>1) 미국 직투 전략을 유지하며, 미국 주식 자산이 충분히 쌓인 이후에 ISA 전략을 병행하는 것이 현실적</strong>입니다.</p>
+<hr>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/T1Kim\.github\.io\/t1-blog\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

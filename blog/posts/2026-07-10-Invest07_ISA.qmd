@@ -1,0 +1,223 @@
+---
+title: "ISA 절세 시뮬레이션: 미국 직투 양도세 매년 기본공제 스왑 대비 실질 이득"
+date: "2026-07-10"
+categories: [Investment, Tax, ISA]
+author: "T1"
+description: "ISA 계좌의 절세 효과는 실제로 얼마나 큰가?"
+from: markdown+hard_line_breaks
+toc: true
+toc-location: right
+page-layout: article
+header-includes: |
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+---
+
+### 계좌 아키텍처가 바꾸는 자산의 최종 수율
+
+매년 2,000만 원(월 166.6만 원 선제 적립)을 납입하고, 연 평균 수익률 **10%**가 발생할 때 일반 미국 주식 직투 계좌와 ISA(개인종합자산관리계좌) 연계 전략의 실질 수율을 정밀 비교합니다. 
+
+특히 모든 미국 직투 파이프라인은 **'매년 이득이 250만 원 한도까지 주식을 팔았다가 바로 재매수하여 평단가를 합법적으로 올려두는 절세 전략(Tax Harvesting)'**을 매년 무결하게 집행한다고 가정하여 시뮬레이션의 변별력을 극대화했습니다.
+
+---
+
+### 1. 3년 단기 만기 해지 시 절세 수율 비교
+
+총 6,000만 원의 원금이 투입된 3년 차 만기 시점의 확정 정산 비교입니다. 3년 뒤 명목 자산 총액은 **6,973만 원**(순수익 **973만 원**)으로 동일하게 출발합니다.
+
+#### ① 1-1) 일반 미국 직접투자 계좌 (매년 250만 원 기본공제 활용 가능 시)
+* 적립식 투자 초기 가동(Start-up) 구간의 평잔 효과로 인해, 1년 차 말 실제 이익은 약 109만 원에 불과합니다. 따라서 첫해에는 250만 원 한도를 다 채우지 못하고 109만 원만 공제된 채 나머지 한도가 소멸(Waste)됩니다.
+* 2년 차(이익 약 328만 원), 3년 차(이익 약 536만 원)에는 250만 원씩 정상 공제됩니다. 3개년 누적 실질 공제액은 **약 687만 원**으로 축소됩니다.
+* **최종 과세 대상 수익**: $9,733,627 - 6,870,000 = 2,863,627\text{원}$
+* **부과 양도소득세 ($22\%$)**: **630,000원**
+* **3년 차 최종 세후 잔고**: **69,103,627원**
+
+#### ② 1-2) 일반 미국 직접투자 계좌 (★이미 미국 주식 자산이 많아 기본공제가 소각된 경우)
+* 이미 기존 포트폴리오의 대규모 운용이나 익절로 인해 매년 제공되는 250만 원 비과세 실드가 타 자산에서 이미 100% 전액 소각(Exhausted)되고 있는 케이스입니다.
+* 이 경우 새로 투입되는 6,000만 원 라인에서 발생하는 수익 973만 원은 **첫 1원부터 어떠한 기본공제 혜택도 없이 전액 22% 중과세 영역에 노출**됩니다.
+* **최종 과세 대상 수익**: $9,733,627\text{원}$ (공제 0원)
+* **부과 양도소득세 ($22\%$)**: $9,733,627 \times 0.22 = \mathbf{2,141,398\text{원}}$
+* **3년 차 최종 세후 잔고**: **67,592,229원**
+
+#### ③ ISA 개인종합자산관리계좌 (일반형 만기 해지)
+* 매년 정산하지 않고 3년 만기 시점에 그동안 쌓인 3개년 치 수익을 한 번에 통산(Netting)정산하므로 초기 년차의 수익 과소 구간까지 전부 흡수합니다. 타 자산의 양도세 발생 여부와 관계없이 완전히 독립된 절세 실드가 유지됩니다.
+* 만기 해지 시 순수익 973만 원 중 200만 원 기본 비과세 혜택을 적용받습니다.
+* **최종 과세 대상 수익**: $9,733,627 - 2,000,000 = 7,733,627\text{원}$
+* **부과 분리과세 ($9.9\%$)**: $7,733,627 \times 0.099 = \mathbf{765,629\text{원}}$
+* **3년 차 최종 세후 잔고**: **68,967,998원**
+
+> 📊 **단기 3년 정산 결론**
+> 기본공제를 매년 고스란히 새로 쓸 수 있는 자산 형성기 초반(케이스 1-1)에는 미국 직투가 ISA보다 약 13.5만 원 미세하게 우세합니다. 
+> 하지만 **이미 미국 주식 자산이 충분하여 기본공제 실드가 소각된 고자산가 사령탑(케이스 1-2)의 경우, 단기 3년 레이스에서도 ISA가 미국 직투를 세후 잔고 기준 무려 약 137만 원 격차로 완전히 압도**합니다. 신규 자금이 22% 중세율에 직면하는 것을 분리과세 쉴드로 완벽히 방어해내기 때문입니다.
+
+---
+
+### 2. 7개년(ISA 3회독 진입) 전략별 자금 흐름 모식도
+
+많은 투자자가 '3년 만기' 계좌를 단순 선형적 타임라인으로 오인합니다. 하지만 실제로는 만기 도달 즉시 당일 해지 후 당일 재개설(스왑)이 가능하므로, 7년 차 진입 시점에 이미 3회독 계좌의 비과세 쉴드가 가동되는 고속 회전 배관이 완성됩니다.
+
+```{=html}
+<div class="strategy-flow-container" style="margin: 2rem auto; max-width: 850px; font-family: -apple-system, sans-serif;">
+  <div style="background: #f5f5f7; border-radius: 14px; padding: 1.2rem; margin-bottom: 1rem; border: 1px solid rgba(0,0,0,0.02);">
+    <strong style="color: #86868b; font-size: 0.85rem; display: block; margin-bottom: 8px;">1) 일반 미국 직투 올인</strong>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 0.82rem;">
+      <span style="background:#ffffff; padding:4px 8px; border-radius:6px; border:1px solid #d2d2d7;">매년 2,000만 입금</span>
+      <span style="color:#86868b;">➔</span>
+      <span style="background:#ffffff; padding:4px 8px; border-radius:6px; border:1px solid #d2d2d7; color:#ae8b63; font-weight:600;">미국 직투 계좌 락인</span>
+      <span style="color:#86868b;">➔</span>
+      <span style="background:#fafafa; padding:4px 8px; border-radius:6px; color:#424245;">매년 말 250만 비과세 스왑(매도 후 재매수) 강제 집행</span>
+      <span style="color:#86868b;">➔</span>
+      <span style="background:#ffffff; padding:4px 8px; border-radius:6px; border:1px solid #d2d2d7; color:#ff2d55;">7년 차: 22% 잠재 양도세 누적 중</span>
+    </div>
+  </div>
+
+  <div style="background: #f5f5f7; border-radius: 14px; padding: 1.2rem; margin-bottom: 1rem; border: 1px solid rgba(0,0,0,0.02);">
+    <strong style="color: #ff2d55; font-size: 0.85rem; display: block; margin-bottom: 8px;">2) 전략 B (단순 ISA 재개설 무한루프)</strong>
+    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.82rem;">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px;">
+        <span style="font-weight:600; color:#1d1d1f; width: 75px;">• 1~3년 차:</span>
+        <span style="background:#007aff; color:white; padding:2px 6px; border-radius:4px;">ISA 1회독 가동</span> (총 6,000만 원 납입) ➔ <b>3년 차 말 만기 해지</b> (9.9% 분리과세 정산)
+      </div>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px;">
+        <span style="font-weight:600; color:#1d1d1f; width: 75px;">• 4~6년 차:</span>
+        <span style="background:#ff2d55; color:white; padding:2px 6px; border-radius:4px;">ISA 2회독 즉시 개설</span> (새 원금 연 2,000만 입금) <span style="color:#ff2d55; font-weight:600;">[+ 1회독 만기 환급금 전액은 미국 직투로 이전 후 운용]</span> ➔ <b>6년 차 말 만기 해지</b>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px;">
+        <span style="font-weight:600; color:#1d1d1f; width: 75px;">• 7년 차~:</span>
+        <span style="background:#34c759; color:white; padding:2px 6px; border-radius:4px;">ISA 3회독 진입 완공</span> (비과세 실드 3번째 리셋) <span style="color:#ae8b63;">[+ 1, 2회독에서 튕겨 나온 모든 불어난 자산은 미국 직투 계좌에서 복리 증식 중]</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="background: #f5f5f7; border-radius: 14px; padding: 1.2rem; border: 1px solid rgba(0,0,0,0.02);">
+    <strong style="color: #007aff; font-size: 0.85rem; display: block; margin-bottom: 8px;">3) 전략 C (연금 이체 마스터 파이프라인)</strong>
+    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.82rem;">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px;">
+        <span style="font-weight:600; color:#1d1d1f; width: 75px;">• 1~3년 차:</span>
+        <span style="background:#007aff; color:white; padding:2px 6px; border-radius:4px;">ISA 1회독 가동</span> ➔ <b>3년 차 말 해지</b> ➔ <span style="background:#34c759; color:white; padding:1px 4px; border-radius:3px;">3,000만 연금 이체</span> (즉시 39.6만 환급 보너스)
+      </div>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px;">
+        <span style="font-weight:600; color:#1d1d1f; width: 75px;">• 4~6년 차:</span>
+        <span style="background:#ff2d55; color:white; padding:2px 6px; border-radius:4px;">ISA 2회독 스왑 개설</span> ➔ <span style="color:#ae8b63; font-weight:600;">[연금 3천만 이체 후 \"남은 초과 수익금\"만 미국 직투로 유출]</span> ➔ <b>6년 차 말 해지</b> ➔ <span style="background:#34c759; color:white; padding:1px 4px; border-radius:3px;">또 3,000만 연금 이체</span>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px;">
+        <span style="font-weight:600; color:#1d1d1f; width: 75px;">• 7년 차~:</span>
+        <span style="background:#34c759; color:white; padding:2px 6px; border-radius:4px;">ISA 3회독 결착</span> ➔ <span style="color:#007aff; font-weight:600;">[연금저축에 총 6,000만 원 과세이연 락인 완공]</span> + ISA 3번째 쉴드 가동 + Surplus 잔여 자산 미국 직투 운용
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+### 3. 20개년 장기 경로 시뮬레이션 그래프
+
+3년마다 만기가 끝날 때 후속 ISA 계좌에 입금할 연간 2,000만 원 줄기를 제외한 모든 초과 만기 환급금(Surplus Cash)이 미국 직접투자 계좌(연수익 10%, 매년 250만 원 공제 스왑)로 유입되어 연동 성장하는 장기 복리 성장 곡선입니다.
+
+```{=html}
+<div class="chart-container-wrapper" style="display: block; width: 100%; clear: both; margin: 2rem 0;">
+  <div id="isaSimulationChart" style="width: 100%; max-width: 850px; height: 450px; margin: 0 auto;"></div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const xYears = ['0년', '1년', '2년', '3년', '4년', '5년', '6년', '7년', '8년', '9년', '10년', '11년', '12년', '13년', '14년', '15년', '16년', '17년', '18년', '19년', '20년'];
+  
+  let traceUsOnly = {
+    x: xYears, y: [0, 0.21, 0.44, 0.68, 0.94, 1.23, 1.54, 1.87, 2.24, 2.63, 3.06, 3.53, 4.05, 4.61, 5.22, 5.89, 6.62, 7.42, 8.29, 9.25, 10.40],
+    name: '1) 일반 미국 직투 올인 (매년 250만 공제 스왑)', type: 'scatter', mode: 'lines',
+    line: { color: '#8e8e93', width: 2, dash: 'dash' },
+    hovertemplate: '<b>1) 미국 직투 올인</b><br>%{x} 총액: %{y}억 원<br><extra></extra>'
+  };
+  let traceB = {
+    x: xYears, y: [0, 0.21, 0.44, 0.69, 0.97, 1.28, 1.59, 1.95, 2.36, 2.75, 3.23, 3.77, 4.26, 4.89, 5.59, 6.22, 7.05, 7.96, 8.76, 9.85, 10.33],
+    name: '2) 전략 B (단순 ISA 재개설 + 남는 돈 미국직투)', type: 'scatter', mode: 'lines+markers',
+    line: { color: '#ff2d55', width: 2 }, marker: { size: 4 },
+    hovertemplate: '<b>2) 전략 B (ISA 재개설+직투)</b><br>%{x} 총액: %{y}억 원<br><extra></extra>'
+  };
+  let traceC = {
+    x: xYears, y: [0, 0.21, 0.44, 0.69, 0.97, 1.28, 1.6, 1.97, 2.38, 2.79, 3.28, 3.82, 4.36, 5.0, 5.71, 6.41, 7.26, 8.2, 9.11, 10.22, 11.06],
+    name: '3) 전략 C (연금 3천 이체 + 남는 돈 미국직투)', type: 'scatter', mode: 'lines+markers',
+    line: { color: '#007aff', width: 3 }, marker: { size: 6 },
+    hovertemplate: '<b>3) 전략 C (연금이체+직투)</b><br>%{x} 총액: %{y}억 원<br><extra></extra>'
+  };
+
+  let layout = {
+    title: { text: '<b>운용 전략별 20개년 최종 총 잔고 자산 경로 비교</b>', font: { size: 15, family: '-apple-system, sans-serif' } },
+    plot_bgcolor: '#f5f5f7', paper_bgcolor: 'rgba(0,0,0,0)',
+    xaxis: { tickfont: { size: 10 }, gridcolor: '#e8e8ed' },
+    yaxis: { title: '자산 평가 총액 (억 원)', tickfont: { size: 11 }, gridcolor: '#e8e8ed', ticksuffix: '억' },
+    legend: { orientation: 'h', x: 0.5, xanchor: 'center', y: -0.22, font: { size: 10 } },
+    margin: { t: 50, b: 100, l: 65, r: 20 }
+  };
+
+  Plotly.newPlot('isaSimulationChart', [traceUsOnly, traceB, traceC], layout, {responsive: true, displayModeBar: false});
+});
+</script>
+```
+
+---
+
+### 4. 장기 20개년 전략별 계좌 상세 잔고 내역
+
+20년간 총 납입 원금 4억 원이 시계열로 투입되었을 때, 각 전략의 최종 종착지(240개월 차)에서 정산된 **최종 총 잔고 및 계좌별 디테일 잔고 현황판**입니다. (미국 직투 계좌는 최종 시점 청산 양도세 22%가 전원 반영된 최종 세후 금액입니다.)
+
+```{=html}
+<div style="overflow-x: auto; margin: 2rem 0;">
+  <table class="table" style="width: 100%; min-width: 650px; font-size: 0.88rem; text-align: center; border-collapse: collapse;">
+    <thead>
+      <tr style="background: #fafafa; border-bottom: 2px solid #1d1d1f; font-weight: 600;">
+        <th style="padding: 12px 4px; width: 30%;">포트폴리오 전략 포지션</th>
+        <th style="padding: 12px 4px; width: 20%; color: #007aff; font-size: 1rem;">최종 총 잔고</th>
+        <th style="padding: 12px 4px; width: 50%; text-align: left; padding-left: 3%;">계좌별 상세 잔고 내역 (세후 최종 가치)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom: 1px solid #e8e8ed;">
+        <td style="padding: 15px 4px; font-weight: 500;"><b>1) 일반 미국 직투 올인</b><br><span style="font-size:0.75rem; color:#86868b;">(매년 250만 공제 활용)</span></td>
+        <td style="padding: 15px 4px; font-weight: 700;">10억 4,018만 원</td>
+        <td style="padding: 15px 4px; text-align: left; padding-left: 3%; line-height: 1.5;">
+          • <b>미국 직접투자 계좌:</b> 10억 4,018만 원 <br>
+          <span style="font-size:0.8rem; color:#86868b;">(20년간 초기 가동기 공제 한도 소실 분 및 최종 청산세 자동 연산 반영 완료)</span>
+        </td>
+      </tr>
+      <tr style="border-bottom: 1px solid #e8e8ed;">
+        <td style="padding: 15px 4px; font-weight: 500;"><b>2) 전략 B</b><br><span style="font-size:0.75rem; color:#86868b;">(단순 ISA 재개설 + 직투)</span></td>
+        <td style="padding: 15px 4px; font-weight: 700;">10억 3,293만 원</td>
+        <td style="padding: 15px 4px; text-align: left; padding-left: 3%; line-height: 1.5;">
+          • <b>현재 운용 중인 ISA 계좌 (2년 차):</b> 4,424만 원<br>
+          • <b>만기 후 유출된 미국 직투 계좌:</b> 9억 8,869만 원
+        </td>
+      </tr>
+      <tr style="border-bottom: 1px solid #e8e8ed; background: #f5f5f7;">
+        <td style="padding: 15px 4px; font-weight: 500; color: #007aff;"><b>3) 전략 C</b><br><span style="font-size:0.75rem; color:#007aff;">(연금 이체 무한루프 + 직투)</span></td>
+        <td style="padding: 15px 4px; font-weight: 700; color: #34c759; font-size: 1rem;">11억 572만 원</td>
+        <td style="padding: 15px 4px; text-align: left; padding-left: 3%; line-height: 1.5;">
+          • <b>현재 운용 중인 ISA 계좌 (2년 차):</b> 4,424만 원<br>
+          • <b>누적 연금저축펀드 계좌 (과세이연):</b> 5억 75만 원<br>
+          • <b>만기 후 유출된 미국 직투 계좌:</b> 5억 5,903만 원<br>
+          • <b>누적 환급 캐시백 (연금세액공제 분):</b> 237만 원
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
+
+---
+
+### 5. 핵심 전략 파이프라인 장단점 및 절세 시너지 분석
+
+#### 💡 전략 분기점 마스터 제안
+
+* **일반 미국 직투 올인**: 자금 락인 현상이 전혀 없어 긴급 상황 시 기동력이 최고 수준이나, 자산 총량이 불어날수록 매년 고정 제공되는 250만 원 공제가 전체 포트폴리오에서 방어해내는 절세 비율이 급격히 희석되는 한계가 있습니다.
+* **전략 B (단순 ISA + 직투)**: 3년 주기 비과세(200만 원) 밸브를 리셋하며 자금의 통제권을 쥐지만, ISA 만기 목돈이 연간 한도 제약 때문에 후속 ISA에 결착되지 못하고 22% 양도세 구역(미국 직투)으로 계속 강제 유출됩니다. 이 병목 구간 때문에 20년 장기전 시 순수 직투 올인보다 최종 총액이 약 700만 원 소폭 하락하는 수학적 현상이 발생합니다.
+* **전략 C (연금 이체 + 직투)**: **순수 미국 직투 대비 +6,554만 원의 독보적인 절세 초과 수율**을 도출합니다. 3년 주기로 3,000만 원씩 연금저축펀드로 밀어 넣으며 완성 한 '강력한 과세이연 방어선'과, 매회 39.6만 원씩 튀어나오는 국가 보너스(세액공제)를 주식 자산에 복리로 무한 재투입한 계량 연산의 결과물입니다.
+
+### 결론: 연금 총액 극대화를 위한 필수 계좌, ISA
+
+앞서 계산해 본 바와 같이 *ISA 계좌 자체만으로 다른 투자 계좌 대비 절세효과가 압도적으로 큰 것은 아닙니다.* 다만 ISA 계좌를 **연금저축펀드와 연계**하여 3년마다 반복적으로 연금 이체를 수행하면, 단순히 매년 250만 원 공제를 활용하는 미국 직투 계좌 대비 **장기 복리 성장률이 압도적으로 높아지는 구조**가 완성됩니다.
+
+다만, *이 전략을 구사하기 위해서는 다른 투자 (미국 직투, 연금저축, IRP 등) 를 운용하면서도 매년 2천만원 정도의 ISA 납입 여력이 있어야 한다는 점이 전제 조건*입니다. 따라서 본인의 은퇴 사령탑이 55세 이전 주택 확장이나 대규모 모빌리티 자금이 필요한 구조라면, 자금이 장기 동결되는 전략 C 대신 매년 평단가 스왑을 치며 유동성을 100% 거머쥐는 **1) 미국 직투 전략을 유지하며, 미국 주식 자산이 충분히 쌓인 이후에 ISA 전략을 병행하는 것이 현실적**입니다.
+
+---
