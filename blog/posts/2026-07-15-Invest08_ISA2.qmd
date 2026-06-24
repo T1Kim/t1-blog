@@ -1,8 +1,8 @@
 ---
-title: "ISA 극단의 전술 비교: 3년 만기 회전형 vs 만기 연장 존버형 vs 연금 세탁 출구 전략"
+title: "ISA 만기되면 해지 후 재가입? 만기연장?"
 date: "2026-07-15"
 author: "T1"
-description: ""
+description: "ISA 만기 시 재가입이 유리할지, 만기연장이 유리할지 비교해보았습니다."
 categories: [Investment, Tax, ISA, Portfolio]
 from: markdown+hard_line_breaks
 toc: true

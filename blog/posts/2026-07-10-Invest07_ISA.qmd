@@ -1,5 +1,5 @@
 ---
-title: "ISA 절세 시뮬레이션: 미국 직투 양도세 매년 기본공제 스왑 대비 실질 이득"
+title: "ISA 절세 시뮬레이션: 미국 직투 대비 실질 이득"
 date: "2026-07-10"
 categories: [Investment, Tax, ISA]
 author: "T1"
