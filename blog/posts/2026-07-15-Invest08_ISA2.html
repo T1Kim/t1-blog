@@ -75,35 +75,6 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <script src="[https://cdn.plot.ly/plotly-2.27.0.min.js](https://cdn.plot.ly/plotly-2.27.0.min.js)"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -161,8 +132,8 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#계좌의-회전율과-출구-전략이-만드는-자산의-임계점" id="toc-계좌의-회전율과-출구-전략이-만드는-자산의-임계점" class="nav-link active" data-scroll-target="#계좌의-회전율과-출구-전략이-만드는-자산의-임계점">계좌의 회전율과 출구 전략이 만드는 자산의 임계점</a></li>
-  <li><a href="#전술별-금융공학적-연산-메커니즘" id="toc-전술별-금융공학적-연산-메커니즘" class="nav-link" data-scroll-target="#전술별-금융공학적-연산-메커니즘">1. 전술별 금융공학적 연산 메커니즘</a></li>
+  <li><a href="#isa-계좌의-출구전략-별-세후-실질-수익률-비교" id="toc-isa-계좌의-출구전략-별-세후-실질-수익률-비교" class="nav-link active" data-scroll-target="#isa-계좌의-출구전략-별-세후-실질-수익률-비교">ISA 계좌의 출구전략 별 세후 실질 수익률 비교</a></li>
+  <li><a href="#전술별-연산-메커니즘" id="toc-전술별-연산-메커니즘" class="nav-link" data-scroll-target="#전술별-연산-메커니즘">1. 전술별 연산 메커니즘</a></li>
   <li><a href="#개년-대주기-종료-시점-최종-정산-원장-연수익-10-기준" id="toc-개년-대주기-종료-시점-최종-정산-원장-연수익-10-기준" class="nav-link" data-scroll-target="#개년-대주기-종료-시점-최종-정산-원장-연수익-10-기준">2. 21개년 대주기 종료 시점 최종 정산 원장 (연수익 10% 기준)</a></li>
   <li><a href="#수익률-시나리오별-최종-자산-크로스오버-interactive" id="toc-수익률-시나리오별-최종-자산-크로스오버-interactive" class="nav-link" data-scroll-target="#수익률-시나리오별-최종-자산-크로스오버-interactive">3. 수익률 시나리오별 최종 자산 크로스오버 (Interactive)</a></li>
   <li><a href="#금융-공학적-크로스오버-및-건보료-실드-해석" id="toc-금융-공학적-크로스오버-및-건보료-실드-해석" class="nav-link" data-scroll-target="#금융-공학적-크로스오버-및-건보료-실드-해석">4. 금융 공학적 크로스오버 및 건보료 실드 해석</a></li>
@@ -216,35 +187,51 @@ window.Quarto = {
 </header>
 
 
-<section id="계좌의-회전율과-출구-전략이-만드는-자산의-임계점" class="level3">
-<h3 class="anchored" data-anchor-id="계좌의-회전율과-출구-전략이-만드는-자산의-임계점">계좌의 회전율과 출구 전략이 만드는 자산의 임계점</h3>
-<p>미국 주식 장기 투자를 위한 ISA(개인종합자산관리계좌)를 운용할 때, 자산의 수율을 결정짓는 핵심 변수는 ’계좌의 복리 수명’과 ’종착지에서의 출구 전술(Exit Strategy)’입니다. 본 포스팅에서는 매년 초 2,000만 원씩 21년간 동일한 자금(총 원금 4억 2,000만 원)을 투입할 때, 금융소득종합과세와 건강보험료 폭탄을 우회하는 가장 극단적이면서 강력한 3가지 거시 전술의 세후 실질 수율을 종단 계측합니다.</p>
-<ol type="1">
-<li><strong>전략 1 (3년 주기 만기 회전형)</strong>: 3년마다 만기 해지 후 3,000만 원 연금이체, 잔액(원금 잔여분+세후수익금)은 미국 직투 계좌로 이전하며 새 ISA를 무한 재개설하는 전술.</li>
-<li><strong>전략 2 (9999년 만기 연장 청산형)</strong>: 5년 동안 1억 한도를 가득 채운 뒤 만기를 9999년으로 연장하여 과세이연으로 굴리다 21년 차에 전액 9.9% 분리과세로 단순 청산하는 전술.</li>
-<li><strong>전략 3 (9999년 만기 연장 + 연금 세탁 출구형)</strong>: 전략 2와 동일하게 21년간 무과세 복리 눈덩이를 굴리되, 종료 시점에 <strong>원금 1억 원은 세금 없이 비과세 인출하고 불어난 수익금 전액을 연금저축으로 이전하여 세율을 5.5%로 세탁하는 전술</strong>.</li>
-</ol>
+<section id="isa-계좌의-출구전략-별-세후-실질-수익률-비교" class="level3">
+<h3 class="anchored" data-anchor-id="isa-계좌의-출구전략-별-세후-실질-수익률-비교">ISA 계좌의 출구전략 별 세후 실질 수익률 비교</h3>
+<p>ISA(개인종합자산관리계좌)를 운용할 때, 자산의 수율을 결정짓는 핵심 변수 중 하나는 ’’계좌의 복리 수명’과 ’종착지에서의 ’출구 전략(Exit Strategy)’입니다. ISA 계좌의 대표적인 출구 전략에는 i) 3년 만기 시 해지 후 재개설, ii) 한도까지 납입 후 해지 없이 복리 운용이 있습니다. 본 포스팅에서는 매년 초 2,000만 원씩 21년간 동일한 자금(총 원금 4억 2,000만 원)을 투입할 때, 어떤 방법이 유리할지 비교해보았습니다. (금융소득종합과세와 건강보험료 폭탄 포함)</p>
 <hr>
 </section>
-<section id="전술별-금융공학적-연산-메커니즘" class="level3">
-<h3 class="anchored" data-anchor-id="전술별-금융공학적-연산-메커니즘">1. 전술별 금융공학적 연산 메커니즘</h3>
+<section id="전술별-연산-메커니즘" class="level3">
+<h3 class="anchored" data-anchor-id="전술별-연산-메커니즘">1. 전술별 연산 메커니즘</h3>
 <p>계산의 변별력을 위해 모든 자금은 <strong>매년 초 선제 투입(정상 상태 피딩)</strong>되며, 수익률은 <strong>연 복리</strong>로 정산됩니다.</p>
-<section id="전략-1-3년-만기-회전-정산형" class="level4">
-<h4 class="anchored" data-anchor-id="전략-1-3년-만기-회전-정산형">① 전략 1 (3년 만기 회전 정산형)</h4>
-<p>3년마다 발생하는 순수익에 대해 <span class="math inline">\(9.9\%\)</span> 분리과세 정산 후 복리가 미세하게 단절(Tax Drag)됩니다. 만기 자금 중 3,000만 원은 연금 계좌로 넘겨 세액공제 캐시백(<span class="math inline">\(39.6\text{만 원}\)</span>)을 확보하고, 나머지 세후 환급금은 22% 양도세 구역인 미국 직투 계좌로 이전됩니다.</p>
-</section>
-<section id="전략-2-9999년-만기-연장-단순-청산형" class="level4">
-<h4 class="anchored" data-anchor-id="전략-2-9999년-만기-연장-단순-청산형">② 전략 2 (9999년 만기 연장 단순 청산형)</h4>
-<p>초기 5년간 1억 원을 채운 뒤 21년 차까지 단 1원의 세금 유출도 없이 무과세 진공 복리 운동을 지속합니다. 단, 21년 차 최종 종료 시점에 전체 수익에 대해 <span class="math inline">\(9.9\%\)</span>의 분리과세를 맞으며 계좌를 전면 청산합니다.<br>
-<span class="math display">\[T_{isa\_strat2} = (R_{gross} - 2,000,000) \times 0.099\]</span></p>
-</section>
-<section id="전략-3-9999년-만기-연장-연금-세탁-출구형" class="level4">
-<h4 class="anchored" data-anchor-id="전략-3-9999년-만기-연장-연금-세탁-출구형">③ 전략 3 (9999년 만기 연장 + 연금 세탁 출구형)</h4>
-<p>전략 2와 동일하게 21년간 무과세 복리 눈덩이를 굴리지만, 종착지에서 세법의 출구 전략을 극대화합니다. 만기 자금 중 <strong>순수 납입 원금 1억 원은 세금 없이 그대로 인출</strong>하여 즉시 활용 가능한 목돈으로 쥐고, <strong>불어난 수익금 전액은 연금저축펀드로 전량 이체</strong>합니다.<br>
-이 경우 당장 청산해야 할 9.9%의 ISA 세금이 전면 유예되며, 향후 연금 인출 시 복리 단절 없이 <strong><span class="math inline">\(3.3\% \sim 5.5\%\)</span>의 연금소득세</strong>로 세율이 다운그레이드됩니다. 추가로 전환 금액에 대한 막판 세액공제 환급금 <span class="math inline">\(39.6\text{만 원}\)</span>까지 보너스로 결착됩니다.<br>
-<span class="math display">\[T_{isa\_strat3} = R_{profit} \times 0.055 \quad \text{(향후 연금 수령 시점 분할 과세 유예 연산)}\]</span></p>
+<div style="margin-bottom: 2.5rem; border-left: 4px solid #34c759; padding-left: 1.2rem; font-family: -apple-system, BlinkMacSystemFont, sans-serif;">
+  <span style="font-size: 0.72rem; font-weight: 700; color: #34c759; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 4px;">COMPARISON . 21-Year Simulation</span>
+  <strong style="font-size: 1.15rem; color: #1d1d1f; display: block; margin-bottom: 12px;">전략별 시뮬레이션 연산 메커니즘 비교</strong>
+  
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px;">
+    
+    <div style="background: #f5f5f7; padding: 12px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.01); display: flex; flex-direction: column;">
+      <span style="background: #007aff; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; width: max-content;">전략 1</span>
+      <strong style="display:block; margin: 6px 0 2px 0; font-size:0.9rem;">3년 만기 회전 정산형</strong>
+      <p style="margin:0; font-size: 0.82rem; color: #424245; line-height: 1.45; flex-grow: 1;">
+        • 3년마다 발생하는 순수익에 대해 9.9% 분리과세 정산 후 복리가 미세하게 단절(Tax Drag).<br>
+        <span style="color:#007aff; font-weight:500;">➔ 만기 자금 중 3,000만 원은 연금 계좌로 넘겨 세액공제 캐시백(39.6만 원)을 확보, 나머지 세후 환급금은 미국 직투 계좌로 이전.</span>
+      </p>
+    </div>
+    
+    <div style="background: #f5f5f7; padding: 12px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.01); display: flex; flex-direction: column;">
+      <span style="background: #ff2d55; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; width: max-content;">전략 2</span>
+      <strong style="display:block; margin: 6px 0 2px 0; font-size:0.9rem;">9999년 만기 단순 청산형</strong>
+      <div style="margin:0; font-size: 0.82rem; color: #424245; line-height: 1.45; flex-grow: 1;">
+        • 초기 5년간 1억 원을 채운 뒤 21년 차까지 단 1원의 세금 유출도 없이 무과세 복리 운동을 지속.<br>
+        <span style="color:#ff2d55; font-weight:500;">➔ 단, 21년 차 최종 종료 시점에 전체 수익에 대해 9.9%의 분리과세를 맞으며 계좌를 전면 청산.</span>
+      </div>
+    </div>
+    
+    <div style="background: #f5f5f7; padding: 12px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.01); display: flex; flex-direction: column;">
+      <span style="background: #34c759; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; width: max-content;">전략 3</span>
+      <strong style="display:block; margin: 6px 0 2px 0; font-size:0.9rem;">9999년 연장 + 연금 이전형</strong>
+      <p style="margin:0; font-size: 0.82rem; color: #424245; line-height: 1.45; flex-grow: 1;">
+        • 전략 2와 동일하게 21년간 무과세 복리 눈덩이를 굴리지만, 종착지에서 세법의 출구 전략을 극대화.<br>
+        • 만기 자금 중 순수 납입 원금 1억 원은 세금 없이 그대로 인출하여 즉시 활용, 불어난 수익금 전액은 연금저축펀드로 전량 이체.<br>
+        <span style="color:#34c759; font-weight:500;">➔ 9.9%의 ISA 세금이 전면 유예되며, 향후 연금 인출 시 복리 단절 없이 3.3%~5.5%의 연금소득세로 세율이 다운그레이드. 추가로 전환 막판 세액공제 환급금 39.6만 원까지 확보.</span>
+      </p>
+    </div>
+    
+  </div>
+</div>
 <hr>
-</section>
 </section>
 <section id="개년-대주기-종료-시점-최종-정산-원장-연수익-10-기준" class="level3">
 <h3 class="anchored" data-anchor-id="개년-대주기-종료-시점-최종-정산-원장-연수익-10-기준">2. 21개년 대주기 종료 시점 최종 정산 원장 (연수익 10% 기준)</h3>
