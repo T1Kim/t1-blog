@@ -1072,8 +1072,8 @@ header-includes: |
   </div>
 
   <div class="large-project-card">
-    <div class="card-subtitle">Matrix 03 . Shield & Harvest</div>
-    <div class="card-main-title">Tax & Decumulation</div>
+    <div class="card-subtitle">Matrix 03 . Quantitative Lab</div>
+    <div class="card-main-title">Empirical Alpha Backtest</div>
     
     <div class="card-visual-zone" style="height: 420px; background: #ffffff; padding: 1.5rem; flex-direction: column;">
       <div class="css-chart-grid">
@@ -1085,9 +1085,6 @@ header-includes: |
         <div class="css-chart-box" style="border: 1px dashed #e8e8ed; border-radius: 18px; background: #fafafa; height: 350px;">
           <span style="font-size: 0.85rem; color: #a1a1a6; font-weight: 500; letter-spacing: -0.01em;">새로운 분석 지표 배치 예정</span>
         </div>
-
-        </div>
-        
       </div>
     </div>
 
