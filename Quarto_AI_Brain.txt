@@ -1073,28 +1073,77 @@ header-includes: |
 
   <div class="large-project-card">
     <div class="card-subtitle">Matrix 03 . Quantitative Lab</div>
-    <div class="card-main-title">Empirical Alpha Live-test</div>
+    <div class="card-main-title">Empirical Alpha Real-Test</div>
     
-    <div class="card-visual-zone" style="height: 420px; background: #ffffff; padding: 1.5rem; flex-direction: column;">
-      <div class="css-chart-grid">
+    <div class="card-visual-zone" style="min-height: 420px; height: auto; background: #f5f5f7; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center;">
+      <div class="css-chart-grid" style="display: flex; flex-wrap: wrap; gap: 1.5rem; width: 100%;">
         
-        <div class="css-chart-box" style="border: 1px dashed #e8e8ed; border-radius: 18px; background: #fafafa; height: 350px;">
-          <span style="font-size: 0.85rem; color: #a1a1a6; font-weight: 500; letter-spacing: -0.01em;">새로운 분석 지표 배치 예정</span>
+        <div class="css-chart-box" style="border: 1px solid rgba(0,122,255,0.1); border-radius: 18px; background: #ffffff; height: auto; padding: 1.5rem; align-items: flex-start; text-align: left; flex: 1 1 calc(50% - 0.75rem); min-width: 280px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="card-subtitle" style="color: #007AFF;">Strategy A . Value Turnaround</div>
+            <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.8rem;">마법공식 + F-Score 하이브리드</div>
+            <p style="font-size: 0.85rem; color: #424245; margin-bottom: 1.2rem; line-height: 1.5;">
+              저평가된 수익성 지표(EY)와 자본 효율성(ROC)을 결합하고, Piotroski F-Score로 재무 건전성을 2차 검증하여 부실주를 원천 차단하는 가치 투자 엔진입니다.
+            </p>
+          </div>
+          
+          <div style="width: 100%; background: #f5f5f7; border-radius: 12px; padding: 1.2rem; font-family: 'Times New Roman', Times, serif; box-sizing: border-box;">
+            <div style="font-size: 0.7rem; color: #86868b; margin-bottom: 10px; font-weight: bold; font-family: -apple-system, sans-serif; letter-spacing: 0.5px;">CORE FORMULA</div>
+            <div style="font-size: 1.05rem; color: #1d1d1f; line-height: 2.2; display: flex; flex-direction: column; gap: 8px;">
+              
+              <div style="display: flex; align-items: center;">
+                <span style="font-style: italic; font-weight: 600;">EY</span>&nbsp;=&nbsp;
+                <span style="display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; line-height: 1; padding: 0 4px;">
+                  <span style="border-bottom: 1px solid #1d1d1f; padding-bottom: 2px; font-size: 0.85rem; font-family: -apple-system, sans-serif; font-weight: 500;">EBIT</span>
+                  <span style="padding-top: 3px; font-size: 0.85rem; font-family: -apple-system, sans-serif; font-weight: 500;">EV</span>
+                </span>
+              </div>
+              
+              <div style="display: flex; align-items: center;">
+                <span style="font-style: italic; font-weight: 600;">ROC</span>&nbsp;=&nbsp;
+                <span style="display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; line-height: 1; padding: 0 4px;">
+                  <span style="border-bottom: 1px solid #1d1d1f; padding-bottom: 2px; font-size: 0.85rem; font-family: -apple-system, sans-serif; font-weight: 500;">EBIT</span>
+                  <span style="padding-top: 3px; font-size: 0.85rem; font-family: -apple-system, sans-serif; font-weight: 500; letter-spacing: -0.3px;">Net Fixed Assets + WC</span>
+                </span>
+              </div>
+              
+              <div style="font-size: 0.9rem; font-family: -apple-system, sans-serif; font-weight: 500; margin-top: 2px;">
+                <span style="color: #86868b; font-size: 0.75rem; font-weight: bold; margin-right: 4px;">Condition:</span> F-Score &ge; 7/9
+              </div>
+              
+            </div>
+          </div>
         </div>
-        
-        <div class="css-chart-box" style="border: 1px dashed #e8e8ed; border-radius: 18px; background: #fafafa; height: 350px;">
-          <span style="font-size: 0.85rem; color: #a1a1a6; font-weight: 500; letter-spacing: -0.01em;">새로운 분석 지표 배치 예정</span>
-        </div>
+  
+        <div class="css-chart-box" style="border: 1px solid rgba(52,199,89,0.1); border-radius: 18px; background: #ffffff; height: auto; padding: 1.5rem; align-items: flex-start; text-align: left; flex: 1 1 calc(50% - 0.75rem); min-width: 280px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="card-subtitle" style="color: #34C759;">Strategy B . Alpha Momentum</div>
+            <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.8rem;">AMA (Alpha Momentum Accelerator)</div>
+            <p style="font-size: 0.85rem; color: #424245; margin-bottom: 1.2rem; line-height: 1.5;">
+              EPS 성장 가속도와 상대 강도(RS)를 추적하여 주가가 기술적 정배열 구간에 진입한 주도주를 포착합니다. VCP 패턴을 통해 에너지 응축 구간을 공략합니다.
+            </p>
+          </div>
+          
+          <div style="width: 100%; background: #f5f5f7; border-radius: 12px; padding: 1.2rem; font-family: -apple-system, sans-serif; box-sizing: border-box;">
+            <div style="font-size: 0.7rem; color: #86868b; margin-bottom: 10px; font-weight: bold; letter-spacing: 0.5px;">ACCELERATION LOGIC</div>
+            <div style="font-size: 0.9rem; color: #1d1d1f; line-height: 1.8; font-weight: 500;">
+              <div style="margin-bottom: 6px;">&Delta;EPS<sub>YoY</sub> &gt; 25% <span style="color: #86868b; font-size: 0.75rem; margin-left: 4px; font-weight: normal;">(Acceleration)</span></div>
+              <div style="margin-bottom: 6px;">RS &ge; 85 <span style="color: #86868b; font-size: 0.75rem; margin-left: 4px; font-weight: normal;">(Top 15% Strength)</span></div>
+              <div style="line-height: 1.4; word-break: keep-all;">Price &gt; MA<sub>50</sub> &gt; MA<sub>150</sub> &gt; MA<sub>200</sub></div>
+            </div>
+          </div>
+        </div>       
       </div>
     </div>
 
     <div class="card-tags-group" style="margin-top: 1.5rem;">
-      <span class="tag-chip">연금저축</span>
-      <span class="tag-chip">세금혜택</span>
-      <span class="tag-chip">인출전략</span>
+      <span class="tag-chip">마법공식</span>
+      <span class="tag-chip">F-Score</span>
+      <span class="tag-chip">AMA 추세추종</span>
+      <span class="tag-chip">실전 임상시험</span>
     </div>
     <p class="card-description">
-      은퇴 후 인출 시점에서의 세금 부담을 최소화하는 전략적 자산 배분과 리밸런싱 시스템입니다. 연금저축, IRP, ISA 계좌의 세제 혜택을 극대화하여, 노후에 안정적인 현금흐름을 유지하면서도 세금 효율성을 극대화하는 전술적 스윙과 리밸런싱 지표를 제공합니다.
+      계량 가치 투자의 표준인 마법공식과 재무 건전성 필터인 F-Score 결합 모델, 그리고 시장의 효율성에 따라 동적으로 반응하는 AMA(알파모멘텀가속) 알고리즘을 기반으로 가동되는 실전 오퍼레이팅 통제실입니다. 인간의 주관적 감정을 철저히 배제한 채 확립된 룰에 따라 집행되는 두 전략의 실시간 실증 수율과 리밸런싱 타임라인 로그를 투명하게 기록해 나갈 예정입니다.
     </p>
   </div>
 
