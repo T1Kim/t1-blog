@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="T1">
+<meta name="dcterms.date" content="2026-07-30">
+<meta name="description" content="줄글을 읽지 않고 몇 가지 질문의 갈림길을 따라가며 자산 체급과 타임라인에 맞는 최적의 계좌 파이프라인 찾기">
+
+<title>나의 상황에 맞는 최적의 투자 계좌 선택 가이드 (의사결정 트리) – Invest For Me</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-7b4ebf61bc5da800f0adb73230d1d875.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Invest For Me</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../investment/index.html"> 
+<span class="menu-text">Investment</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../hobbies/index.html"> 
+<span class="menu-text">Hobbies</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../gallery/index.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#은퇴-후-누수를-막기-위한-계좌-선택의-시작점" id="toc-은퇴-후-누수를-막기-위한-계좌-선택의-시작점" class="nav-link active" data-scroll-target="#은퇴-후-누수를-막기-위한-계좌-선택의-시작점">은퇴 후 누수를 막기 위한 계좌 선택의 시작점</a></li>
+  <li><a href="#최적-투자-계좌-탐색-테크트리-decision-tech-tree" id="toc-최적-투자-계좌-탐색-테크트리-decision-tech-tree" class="nav-link" data-scroll-target="#최적-투자-계좌-탐색-테크트리-decision-tech-tree">1. 최적 투자 계좌 탐색 테크트리 (Decision Tech-Tree)</a></li>
+  <li><a href="#의사결정-트리-노드별-핵심-전략-리포트" id="toc-의사결정-트리-노드별-핵심-전략-리포트" class="nav-link" data-scroll-target="#의사결정-트리-노드별-핵심-전략-리포트">2. 의사결정 트리 노드별 핵심 전략 리포트</a></li>
+  <li><a href="#결론-시간-할인-오류를-극복하는-정밀-설계" id="toc-결론-시간-할인-오류를-극복하는-정밀-설계" class="nav-link" data-scroll-target="#결론-시간-할인-오류를-극복하는-정밀-설계">결론: 시간 할인 오류를 극복하는 정밀 설계</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">나의 상황에 맞는 최적의 투자 계좌 선택 가이드 (의사결정 트리)</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Investment</div>
+    <div class="quarto-category">Tax</div>
+    <div class="quarto-category">ISA</div>
+    <div class="quarto-category">Pension</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    줄글을 읽지 않고 몇 가지 질문의 갈림길을 따라가며 자산 체급과 타임라인에 맞는 최적의 계좌 파이프라인 찾기
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>T1 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 30, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="은퇴-후-누수를-막기-위한-계좌-선택의-시작점" class="level3">
+<h3 class="anchored" data-anchor-id="은퇴-후-누수를-막기-위한-계좌-선택의-시작점">은퇴 후 누수를 막기 위한 계좌 선택의 시작점</h3>
+<p>돈을 모으고 투자하기에 앞서, 어떤 성격의 계좌에 시드를 먼저 피딩할지 결정하는 것은 세후 실질 수율을 가르는 가장 기초적인 공정입니다. 장기 과세이연의 강력한 복리 쉴드가 필요한 사람과 당장 몇 년 내로 목돈을 인출해야 하는 사람의 저장조(계좌)는 완전히 달라야 하기 때문입니다.</p>
+<p>복잡한 세법 용어나 구구절절한 설명은 전부 생략합니다. 아래 준비된 직관적인 의사결정 갈림길을 따라가며, 사령탑인 본인의 현재 자금 상황과 타임라인에 100% 매칭되는 최적의 계좌 포트폴리오 항로를 즉시 관제해 보십시오.</p>
+<hr>
+</section>
+<section id="최적-투자-계좌-탐색-테크트리-decision-tech-tree" class="level3">
+<h3 class="anchored" data-anchor-id="최적-투자-계좌-탐색-테크트리-decision-tech-tree">1. 최적 투자 계좌 탐색 테크트리 (Decision Tech-Tree)</h3>
+<style>
+  .techtree-container {
+    margin: 2.5rem auto;
+    max-width: 850px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    position: relative;
+    padding-left: 20px;
+  }
+  
+  /* 테크트리 세로 메인 주 배관 */
+  .techtree-main-line {
+    position: absolute;
+    left: 6px;
+    top: 10px;
+    bottom: 40px;
+    width: 2px;
+    background: #e8e8ed;
+    z-index: 1;
+  }
+
+  .techtree-node {
+    position: relative;
+    margin-bottom: 3.5rem;
+    z-index: 2;
+  }
+
+  /* 각 노드별 원형 안착 단자 */
+  .node-circle {
+    position: absolute;
+    left: -20px;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 3px solid #e8e8ed;
+    z-index: 3;
+    transition: all 0.3s ease;
+  }
+  .techtree-node:hover .node-circle {
+    transform: scale(1.2);
+  }
+
+  .node-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .node-question {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #1d1d1f;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  /* 서브 테크트리 가로 분기 그리드 */
+  .techtree-branch-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    position: relative;
+  }
+
+  .techtree-card {
+    background: #f5f5f7;
+    padding: 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .techtree-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.03);
+  }
+
+  .branch-tag {
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    width: max-content;
+    letter-spacing: -0.01em;
+  }
+  .branch-main-title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #1d1d1f;
+  }
+  .branch-sub-desc {
+    margin: 0;
+    font-size: 0.82rem;
+    color: #424245;
+    line-height: 1.5;
+  }
+
+  /* 📱 모바일 국면 진입 시 테크트리 강제 수직 압축 통제선 */
+  @media (max-width: 768px) {
+    .techtree-branch-grid {
+      grid-template-columns: 1fr !important;
+      gap: 12px !important;
+    }
+    .techtree-node {
+      margin-bottom: 2.5rem !important;
+    }
+    .techtree-main-line {
+      bottom: 20px !important;
+    }
+  }
+</style>
+
+<div class="techtree-container">
+  
+  <div class="techtree-main-line"></div>
+
+  <div class="techtree-node">
+    <div class="node-circle" style="border-color: #007aff; box-shadow: 0 0 8px rgba(0,122,255,0.2);"></div>
+    <span class="node-label" style="color: #007aff;">NODE 01 . Liquidity Horizon</span>
+    <span class="node-question">Q. 3년 이내에 주택 자금 등 목돈을 인출하여 쓸 일이 있습니까?</span>
+    
+    <div class="techtree-branch-grid">
+      <div class="techtree-card" style="border-left: 3.5px solid #ff2d55;">
+        <span class="branch-tag" style="background: #ff2d55;">▼ YES (단기 유동성 필요)</span>
+        <strong class="branch-main-title">일반 미국 직접투자 계좌 또는 예금</strong>
+        <p class="branch-sub-desc">➔ 절세 계좌의 장기 락인 페널티를 우회하고 원금 인출의 무조건적인 자유를 확보해야 합니다. 세액공제나 과세이연 효과보다 <b>'중도 청산 기동성'</b>이 최우선인 국면입니다.</p>
+      </div>
+      
+      <div class="techtree-card" style="border-left: 3.5px solid #34c759;">
+        <span class="branch-tag" style="background: #34c759;">▼ NO (3년 이상 존버 가능)</span>
+        <strong class="branch-main-title">절세 파이프라인 테크 가동</strong>
+        <p class="branch-sub-desc">➔ 축하합니다. 국가가 합법적으로 허용하는 과세이연 진공 실드를 가동할 자격이 주어졌습니다. 자산의 최종 수령 스케줄링 조율을 위해 하단의 <b>[NODE 02]</b> 배관으로 진입합니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="techtree-node">
+    <div class="node-circle" style="border-color: #af52de; box-shadow: 0 0 8px rgba(175,82,222,0.2);"></div>
+    <span class="node-label" style="color: #af52de;">NODE 02 . Horizon &amp; Lock-in</span>
+    <span class="node-question">Q. 55세 은퇴 시점까지 자산이 동결되어도 수용 가능합니까?</span>
+    
+    <div class="techtree-branch-grid">
+      <div class="techtree-card" style="border-left: 3.5px solid #007aff;">
+        <span class="branch-tag" style="background: #007aff;">▼ YES (노후 연금 자산화 선언)</span>
+        <strong class="branch-main-title">연금저축 + IRP (필수 매립 파이프)</strong>
+        <p class="branch-sub-desc">➔ 매년 연 900만 원 상한선을 최우선 선제 매립하여 확실한 세액공제 현금 피드백을 탈취하고, 은퇴 후 연 1,500만 원 사적연금 쿼터 내에서 3.3%~5.5% 최저 세율 세탁 수령 항로를 락인합니다.</p>
+      </div>
+      
+      <div class="techtree-card" style="border-left: 3.5px solid #ff9500;">
+        <span class="branch-tag" style="background: #ff9500;">▼ NO (55세 전 중간 정산 필요)</span>
+        <strong class="branch-main-title">ISA 계좌 한도 충전 후 만기 연장</strong>
+        <p class="branch-sub-desc">➔ 5년 동안 총 1억 원 원금을 채우는 데 집중한 뒤 만기를 9999년으로 늘립니다. 은퇴 전 목돈이 필요할 때 <b>[원금 1억 무세 회수 + 수익 전액 연금 토스 출구 전략]</b>으로 수율의 임계점을 확보합니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="techtree-node" style="margin-bottom: 0;">
+    <div class="node-circle" style="border-color: #34c759; box-shadow: 0 0 8px rgba(52,199,89,0.2);"></div>
+    <span class="node-label" style="color: #34c759;">NODE 03 . Seed Size &amp; Scale</span>
+    <span class="node-question">Q. 연금 세액공제 한도(연 900만 원)를 채우고도 투자 여력이 남습니까?</span>
+    
+    <div class="techtree-branch-grid">
+      <div class="techtree-card" style="border-left: 3.5px solid #5ac8fa;">
+        <span class="branch-tag" style="background: #5ac8fa;">▼ YES (초과 유동성 확보 상태)</span>
+        <strong class="branch-main-title">ISA 충전 ➔ 미국 직접투자 (알파 병행)</strong>
+        <p class="branch-sub-desc">➔ 기본 절세 뼈대를 완성한 우수한 상태입니다. 남은 자금은 ISA 계좌 2,000만 원 한도 스왑에 배분하고, 보너스나 성과급 등 추가 유량은 추납형 분리 연금 계좌나 미장 직접투자로 분산 사출합니다.</p>
+      </div>
+      
+      <div class="techtree-card" style="border-left: 3.5px solid #8e8e93;">
+        <span class="branch-tag" style="background: #8e8e93;">▼ NO (기본 필수금 소화 집중)</span>
+        <strong class="branch-main-title">선택과 집중: 필수 절세 노드 + 미국 직투 선호</strong>
+        <p class="branch-sub-desc">➔ 매년 가용할 수 있는 투자 여력이 적다면 계좌 배관을 늘릴 필요가 없습니다. 연금 필수 상한선만 견고히 채운 후, 남은 소액의 시드는 유동성과 기대수익률(Alpha) 극대화가 가능한 <b>미국 직접투자</b>로 단일화합니다.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+<hr>
+</section>
+<section id="의사결정-트리-노드별-핵심-전략-리포트" class="level3">
+<h3 class="anchored" data-anchor-id="의사결정-트리-노드별-핵심-전략-리포트">2. 의사결정 트리 노드별 핵심 전략 리포트</h3>
+<p>갈림길의 끝에서 도출된 결론 패널들이 지니는 실제 절세 및 기회비용 사양서입니다.</p>
+<section id="일반-미국-직접투자-및-예금-단기-유동성-포지션" class="level4">
+<h4 class="anchored" data-anchor-id="일반-미국-직접투자-및-예금-단기-유동성-포지션">① 일반 미국 직접투자 및 예금 (단기 유동성 포지션)</h4>
+<ul>
+<li><strong>적용 대상</strong>: 3년 이내 결혼, 주택 중도금, 벤처 펀딩 등 확정적인 지출 타임라인이 존재하는 시드 자산입니다.</li>
+<li><strong>비판적 검토</strong>: 연금저축이나 IRP 같은 절세 계좌는 55세 이전 중도 해지 시 그동안 받았던 세액공제 혜택과 운용 이익에 대해 <strong><span class="math inline">\(16.5\%\)</span>의 기타소득세 페널티 중과세</strong>가 부과됩니다. ISA 역시 의무가입기간 3년이 존재하므로, 기동성이 필요한 자금은 22% 양도소득세 구역이라 할지라도 일반 직접투자 계좌로 통제하는 것이 구조적으로 우세합니다.</li>
+</ul>
+</section>
+<section id="연금저축-irp-평생-필수-기본값-배관" class="level4">
+<h4 class="anchored" data-anchor-id="연금저축-irp-평생-필수-기본값-배관">② 연금저축 + IRP (평생 필수 기본값 배관)</h4>
+<ul>
+<li><strong>적용 대상</strong>: 시드의 체급과 무관하게 자산 형성기 가계가 반드시 선제적으로 구축해야 하는 필수 철갑 실드입니다.</li>
+<li><strong>절세 사양</strong>: 연간 900만 원 한도까지 소득 구간에 따라 <strong><span class="math inline">\(13.2\% \sim 16.5\%\)</span>의 세액공제 캐시백</strong>을 당해 연도 연말정산 시 즉시 징수해 줍니다. 운용 기간 중 배당세 15.4% 소각 효과와 함께 은퇴 수령 시점에 건보료 합산 제외 혜택을 향유하는 포트폴리오의 중추 노드입니다.</li>
+</ul>
+</section>
+<section id="isa-만기-연장-및-초과-미국-직투-알파-병행-포지션" class="level4">
+<h4 class="anchored" data-anchor-id="isa-만기-연장-및-초과-미국-직투-알파-병행-포지션">③ ISA 만기 연장 및 초과 미국 직투 (알파 병행 포지션)</h4>
+<ul>
+<li><strong>적용 대상</strong>: 연 900만 원의 필수 절세 실드를 상회하는 가용 유동 자산을 보유한 고자산가 사령탑 국면입니다.</li>
+<li><strong>운용 메커니즘</strong>: 연 2,000만 원씩 5년간 1억 원을 가득 매립한 후 만기를 9999년으로 늘려 과세이연 복리 효과를 극대화합니다. 만약 이 상한선마저 초과하여 튕겨 나오는 시드가 있다면, 자산의 영구 동결 리스크(Lock-in)를 방어하고 미장 개별 우량주나 고변동성 레버리지 자산의 초과수익률(Alpha)을 탈취하기 위해 <strong>미국 주식 직접 투자 계좌로 단일화</strong>하여 포메이션을 병행 운용합니다.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="결론-시간-할인-오류를-극복하는-정밀-설계" class="level3">
+<h3 class="anchored" data-anchor-id="결론-시간-할인-오류를-극복하는-정밀-설계">결론: 시간 할인 오류를 극복하는 정밀 설계</h3>
+<p>인간은 먼 미래의 노후 잔고보다 눈앞의 소비 가치와 당장 통제 가능한 단기 유동성을 과대평가하는 <strong>‘시간 할인(Time Discounting)’</strong> 성향을 본능적으로 지니고 있습니다. 이 때문에 필요성을 체감하지 못하는 젊고 소득이 왕성한 시기에 연금 파이프라인의 기초 공사를 소홀히 하다가, 은퇴 시점에 도달해서야 건강보험료 폭탄과 자산 누수를 마주하고 후회하는 악순환이 반복됩니다.</p>
+<p>본 의사결정 트리가 제시하는 항로는 주관적인 감정이나 막연한 낙관론을 배제하고, 오직 <strong>‘자금의 수명(Time Horizon)’</strong>과 <strong>‘세후 가처분 소득의 극대화’</strong>라는 명확한 정량적 기준선에 따라 도출된 결과입니다. 본인의 자산 체급과 가용 유량의 크기를 냉정하게 대입하여, 지금 즉시 세법의 빈틈을 파고드는 흔들리지 않는 연금 파이프라인의 밸브를 락인하십시오.</p>
+<hr>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/T1Kim\.github\.io\/t1-blog\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
